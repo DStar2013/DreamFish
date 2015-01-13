@@ -1,3 +1,16 @@
 body {background-color: #d0e4fe;}
 h1 {color: orange;text-align: center;}
 p {font-family: "TTimes New Roman";font-size: 20px;}
+
+.pagination-centered {text-align: center;}
+.pagination {margin: 20px 0;}
+.pagination ul>li {display: inline;}
+.pagination ul > li > a,
+.pagination ul > li > span {
+  padding: 4px 12px;
+  line-height: 20px;
+  text-decoration: none;
+  background-color: #ffffff;
+  border: 1px solid #dddddd;
+  border-left-width: 0;
+}
