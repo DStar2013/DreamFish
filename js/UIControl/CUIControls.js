@@ -3,7 +3,8 @@
 	var cfg = {
 		versions: {
 			address: '1.0',
-			validate: '1.1'
+			validate: '1.1',
+			calendar: '6.0'
 		}
 	};
 	var $el = function(id) {
@@ -16,6 +17,25 @@
 
 	//====================================Warn Control S========================================
 	var WarnControl = (function() {
+		var w = $(document).regMod('validate', cfg.versions.validate);
+
+		function show(target, msg, options) {
+			if (!options) options = {
+				removeErrorClass: true,
+				isScroll: false,
+				hideEvent: 'blur'
+			};
+			options.$obj = target;
+			options.data = msg;
+			w.method('show', options);
+		}
+
+		return {
+			show: show,
+			hide: function() {
+				w.method('hide');
+			}
+		}
 
 	})();
 	//====================================Warn Control E========================================
@@ -140,11 +160,11 @@
 					var list = [];
 					var data = result.data.split('@');
 					var val = city.value();
-					
+
 					if (val) {
 						var reg = new RegExp(val + '+', 'gi');
 						for (var i = 0, l = data.length; i < l; i++) {
-							if(reg.test(val)) list.push(data[i]);
+							if (reg.test(val)) list.push(data[i]);
 						}
 					} else {
 						list = data;
@@ -191,9 +211,41 @@
 	})();
 	//====================================City Control S========================================
 
+	//====================================Date Control S========================================
+	var DateControl = (function() {
+		function setDataObj(id) {
+			var o = $el(id);
+			o.getDate = function() {
+				var v = o.value();
+				if (!v) return;
+				return v.toDate();
+			}
+			o.setval = function() {
+				if (arguments.length > 0) {
+					var d = arguments[0],
+						v = '';
+					d && (v = d.substring ? d : d.toFormatString('yyyy-MM-dd'));
+					this[0].value = v;
+					return v;
+				}
+			}
+			return o;
+		}
+
+		var create = function(o) {
+			
+		}
+
+		return {
+			init: create
+		}
+	})();
+	//====================================Date Control E========================================
+
 	//☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆Control End☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆
 	(function(c) {
 		c.CityInit = CityControl.init;
+		c.DateInit = DateControl.init;
 	})(window.CUIControls);
 
 })(window, cQuery, {
