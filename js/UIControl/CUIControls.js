@@ -213,6 +213,41 @@
 
 	//====================================Date Control S========================================
 	var DateControl = (function() {
+		//覆盖isDate()、toDate()，支持英文日历
+		$.extend(String.prototype, {
+			//add 合法性
+			isDate: function() {
+				var dCh = this.match(/^(\d{4})-(\d{1,2})-(\d{1,2})$/),
+					dEn = this.match(/^(\d{1,2})-(\d{1,2})-(\d{4})$/);
+				if (dCh || dEn) {
+					var year = dEn ? dEn[3].toInt() : dCh[1].toInt(),
+						month = dEn ? dEn[1].toInt() - 1 : dCh[2].toInt() - 1,
+						day = dEn ? dEn[2].toInt() : dCh[3].toInt(),
+						rDate = new Date(year, month, day);
+					if (rDate.getFullYear() == year && rDate.getMonth() == month && rDate.getDate() == day) {
+						return !0;
+					}
+				}
+
+				return !1;
+			},
+			toDate: function() {
+				var dCh = this.match(/^(\d{4})-(\d{1,2})-(\d{1,2})( \d{1,2}:\d{1,2}:\d{1,2}(\.\d+)?)?$/),
+					dEn = this.match(/^(\d{1,2})-(\d{1,2})-(\d{4})( \d{1,2}:\d{1,2}:\d{1,2}(\.\d+)?)?$/);
+				if (dCh || dEn) {
+					var year = dEn ? dEn[3].toInt() : dCh[1].toInt(),
+						month = dEn ? dEn[1].toInt() - 1 : dCh[2].toInt() - 1,
+						day = dEn ? dEn[2].toInt() : dCh[3].toInt(),
+						rDate = new Date(year, month, day);
+					if (rDate.getFullYear() == year && rDate.getMonth() == month && rDate.getDate() == day) {
+						return rDate;
+					}
+				}
+
+				return null;
+			}
+		});
+
 		function setDataObj(id) {
 			var o = $el(id);
 			o.getDate = function() {
@@ -229,11 +264,102 @@
 					return v;
 				}
 			}
+			// o.checkValue = function() {
+			// 	if (isFormatMMddyyyy && this[0].value.indexOf('-') == 4) {
+			// 		var d = this[0].value.toDate();
+			// 		if (d) this[0].value = d.toFormatString('MM-dd-yyyy');
+			// 	}
+
+			// 	return this;
+			// };
+
+			// o.checkValue();
 			return o;
 		}
 
+		function createCalendar(obj, options) {
+			var tmp = {
+				options: options,
+				listeners: {
+					onShow: function() {
+						this._layout && this._layout.css('position', 'absolute');
+					}
+				}
+			};
+			return obj.regMod("calendar", cfg.versions.calendar, tmp);
+		}
+
+		function getCalendar(obj) {
+			return obj.getMod("calendar", cfg.versions.calendar);
+		}
+
+		function checkDate(start, end) {
+			if (start && start.length > 0) {
+				if (!start.value()) {
+					WarnControl.show(start, "时间不能为空");
+					return false;
+				}
+				if (!start.getDate()) {
+					WarnControl.show(start, "时间格式需要为yyyy-MM-dd");
+					return false;
+				}
+			}
+			if (end && end.length > 0) {
+				if (end && !end.value()) {
+					WarnControl.show(end, "时间不能为空");
+					return false;
+				}
+				if (!end.getDate()) {
+					WarnControl.show(end, "时间格式需要为yyyy-MM-dd");
+					return false;
+				}
+				if(start.getDate() >= endDate.getDate()){
+					WarnControl.show(end, "起始时间不能晚于结束时间");
+				}
+			}
+			return true;
+		}
+
 		var create = function(o) {
-			
+			var start = setDataObj(o.start),
+				end = setDataObj(o.end),
+				_minDate = o.nowdate ? o.nowdate.toDate() : new Date();
+
+			//
+			var startDate = createCalendar(start, {
+				minDate: _minDate,
+				container: cQuery.container
+			});
+			if (o && o.end) {
+				var endDate = createCalendar(end, {
+					reference: o.start,
+					step: 2,
+					minDate: (start.getDate() || _minDate).addDays(1).toStdDateString()
+				});
+				start.bind('change', function() {
+					var sDate = start.getDate(),
+						eDate = end.getDate();
+					if (sDate) {
+						var nextDate = sDate.addDays(1);
+						end.data('minDate', nextDate.toStdDateString());
+						//...
+						if (!eDate || eDate <= sDate) {
+							end.setval(nextDate);
+							getCalendar(end).method("setWeek");
+						}
+						//
+						end[0].focus();
+					} else {
+						end.data('minDate', new Date().addDays(1).toStdDateString());
+					}
+				});
+			}
+
+			return {
+				validate: function() {
+					return checkDate(start, end);
+				}
+			}
 		}
 
 		return {
@@ -242,10 +368,13 @@
 	})();
 	//====================================Date Control E========================================
 
+
+
 	//☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆Control End☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆
 	(function(c) {
 		c.CityInit = CityControl.init;
 		c.DateInit = DateControl.init;
+
 	})(window.CUIControls);
 
 })(window, cQuery, {
