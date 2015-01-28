@@ -9,7 +9,7 @@
 		<div>
 			<span>城市选择器：</span><br/>
 			<input type="text" id="txtCity" name="txtCity" value="">
-		</div>
+		</div><hr/>
 
 		<div>
 			<span>日历选择器</span>
@@ -21,8 +21,65 @@
 				<span>終止時間:</span>
 				<input type="text" id="end">
 			</div>
+		</div><hr/>
+
+		<div>
+			<span>基于cQuery的模板使用：</span>
+			<div id="depDiv">
+			</div>
 		</div>
-		
+		<!-- ☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆ 模板 tmpl ☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆ -->
+		<script type="text/startmpl" id="departTmpl">
+			{{if ((pInfo = $data.PartInfo) && (tInfo = $data.TotalInfo))}}{{/if}}
+			<table>
+				<thead>
+					<tr>
+						<th width="15%">部门</th>
+						<th width="15%">金额</th>
+						<th width="10%">张数</th>
+						<th width="10%">平均折扣</th>
+						<th width="10%">全价票比例</th>
+						<th width="10%">节省</th>
+						<th width="10%">节省率</th>
+						<th width="10%">损失</th>
+						<th width="10%">损失率</th>
+					</tr>
+				</thead>
+				<tbody>
+					{{each(i, v) pInfo}}
+						<tr>
+							<td width="15%">${v.DepartName}</td>
+							<td width="15%">${v.Price}</td>
+							<td width="10%">${v.Numbers}</td>
+							<td width="10%">${v.AvgDiscount}</td>
+							<td width="10%">${v.FullPerc}</td>
+							<td width="10%">${v.Save}</td>
+							<td width="10%">${v.SaveRate}</td>
+							<td width="10%">${v.Loss}</td>
+							<td width="10%">${v.LossRate}</td>
+						</tr>
+					{{/each}}
+				</tbody>
+				<tfoot>
+					<tr>
+						<td width="15%">总计</td>
+						<td width="15%">${tInfo.TolPrice}</td>
+						<td width="10%">${tInfo.TolNumbers}</td>
+						<td width="10%">${tInfo.TolAvgDiscount}</td>
+						<td width="10%">${tInfo.TolFullPer}</td>
+						<td width="10%">${tInfo.TolSave}</td>
+						<td width="10%">${tInfo.TolSaveRate}</td>
+						<td width="10%">${tInfo.TolLoss}</td>
+						<td width="10%">${tInfo.TolLossRate}</td>
+					</tr>
+				</tfoot>
+			</table>
+		</script>
+
+
+
+		<!-- ☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆ 模板 tmpl ☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆ -->
+
 		<script type="text/javascript" src="../js/frame/cQuery/cQuery_110421.js"></script>
 		<script type="text/javascript" src="../js/frame/cQuery/adFrame-1.0_address-1.0_allyes-1.0_calendar-6.0_dropBox-1.0_notice-1.0_tab-1.2_toggle-1.0_validate-1.1.js"></script>
 		<!-- <script type="text/javascript" src="../js/frame/cQuery/LAB.js"></script> -->
