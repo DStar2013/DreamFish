@@ -1,3 +1,6 @@
+
+body {margin: 20px 20px 20px 10px;}
+
 /* prettyprint */
 .prettyprint {margin-bottom: 15px;padding: 8px;border-radius: 2px;background-color: #272822;font-size: 12px;font-family: "Courier New", Courier, "Consolas", "Bitstream Vera Sans Mono",monospace;word-wrap:break-word;word-break:normal;overflow:auto;}
 .prettyprint ::selection{background:rgba(255,255,255,.15);}

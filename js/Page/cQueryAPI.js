@@ -23,16 +23,25 @@
 	//tab list Init
 	function tabInit() {
 		//
+		$('#loading').mask();
 		$.ajax({
 			type: "GET",
 			url: "../js/data/cQueryAPI/AllKey.txt",
 			//dataType: "jsonp",
 			success: function(data, textStatus) {
+				$('#loading').unmask();
+				//
 				var tab = $('#navTab');
 				tab.empty().html($('#tpl_nav').tmpl($.parseJSON(data)));
 				//
 				tabtitleEv();
 				tablistEv();
+			},
+			error: function(XMLHttpRequest, textStatus, errorThrown) {
+				$('#loading').unmask();
+				console.log("textStatus: " + textStatus);
+				console.log("error: "+ errorThrown);
+
 			}
 		});
 	}
