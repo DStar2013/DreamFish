@@ -1,0 +1,37 @@
+/* prettyprint */
+.prettyprint {margin-bottom: 15px;padding: 8px;border-radius: 2px;background-color: #272822;font-size: 12px;font-family: "Courier New", Courier, "Consolas", "Bitstream Vera Sans Mono",monospace;word-wrap:break-word;word-break:normal;overflow:auto;}
+.prettyprint ::selection{background:rgba(255,255,255,.15);}
+.prettyprint ::-moz-selection{background:#49483E;}
+.prettyprint.linenums {box-shadow: inset 47px 0 0 #1E1E1E, inset 48px 0 0 #1E1E1E;}
+
+.prettyprint code{font-weight: normal;background: none;}
+/* prettyprint */
+.com { color: #93a1a1; }
+.lit { color: #AE81FF; }
+.pun, .opn, .clo { color: #F8F8F2; }
+.fun { color: #dc322f; }
+.str, .atv { color: #E6DB74; }
+.prettyprint .tag { color: #F92672; }
+.typ, .atn,  .var { color: #A6E22C; }
+.dec,.pln { color: #F8F8F2; }
+.kwd{color: #5CD9EF;}
+.nessy{color: #E30404;}
+
+/* apidetail */
+.apidetail h1,.apidetail h2,.apidetail h3,.apidetail h4,.apidetail h5,.apidetail h6{margin-bottom: 15px;line-height: 20px;}
+.apidetail h1{font-size: 25px;}
+.apidetail h1 strong{font-size: 12px;margin-left: 10px;color: #999;font-weight: normal;}
+.apidetail h2{font-size: 16px;border-bottom: 1px solid #e6e6e6;padding:20px 0 5px;color: #222;font-family: microsoft yahei;}
+.apidetail h3{margin-left: 28px;}
+.apidetail h3,.apidetail h4{font-size: 14px;}
+.apidetail h5,.apidetail h6{font-size: 12px;}
+
+.apidetail p{margin-bottom: 15px}
+
+.apidetail ul, .apidetail ol{margin:0 0 20px 64px;}
+.apidetail ul{list-style: disc;}
+.apidetail ol{list-style: decimal;}
+.apidetail li{margin-bottom: 8px;}
+
+.apidetail pre{margin-bottom: 15px;}
+.apidetail pre code{padding: 0;background:none;border-radius: 0;font-weight: normal;color: auto;font-family: "Courier New", Courier, "Consolas", "Bitstream Vera Sans Mono",monospace;}

@@ -4,20 +4,109 @@
 		<meta http-equiv=Content-Type content="text/html;charset=utf-8"> <!-- meta -->
 		<title>cQuery 在线API</title>
 		<meta http-equiv="X-UA-Compatible" content="IE=edge"> <!-- 针对ie8的设置,用最高版本的ie识别 -->
+		<link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
 		<link rel="stylesheet" type="text/css" href="../css/cQueryAPI.css">
 	</head>
 	<body>
-		<div class="header">
-			<div class="navbar">
-				<div class="navbar-inner">
-					<a href="javascript:void(0)" class="logo">cQuery Document API</a>
-					<ul class="nav">
-						<li>cQuery API</li>
-					</ul>
+		<div class="container-fluid">
+			<div class="row-fluid">
+				<div class="span12">
+					<div class="row-fluid">
+						<div class="span10">
+							<div>
+								<ul class="nav nav-tabs">
+									<li>
+										<a href="javascript:void(0)">首页</a>
+									</li>
+									<li class="active">
+										<a href="javascript:void(0)">API</a>
+									</li>
+									<li class="disabled">
+										<a href="javascript:void(0)">无效信息</a>
+									</li>
+								</ul>
+							</div>
+							<div>
+								<div class="span2" id="navTab">
+<!-- 									<ul class="nav">
+										<li class="dropdown">
+											<a href="#" data-toggle="dropdown" class="dropdown-toggle">ajax<b class="caret"></b></a>
+											<ul class="nav nav-pills nav-stacked" style="">
+												<li class="active"><a href="#">ajax</a></li>
+												<li><a href="#">文件</a></li>
+												<li><a href="#">信息</a></li>
+											</ul>
+										</li>
+										<li class="dropdown">
+											<a href="#" data-toggle="dropdown" class="dropdown-toggle">下拉框<b class="caret"></b></a>
+											<ul class="nav nav-pills nav-stacked">
+												<li class="active"><a href="#">Home</a></li>
+												<li><a href="#">文件</a></li>
+												<li><a href="#">信息</a></li>
+											</ul>
+										</li>										
+									</ul> -->
+								</div>
+								<div class="span10">
+									<div class="apidetail" id="apiD"></div>
+								</div>
+							</div>
+						</div>
+						<div class="span2">
+							<img alt="140x140" src="../images/portrait/Panda.jpg" class="img-circle" />
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
+		
+		<script type="text/javascript" src="../js/frame/jQuery/jquery-1.11.2.min.js"></script>
+		<script type="text/javascript" src="../js/frame/jquery.tmpl.min.js"></script>
+		<script type="text/javascript" src="../js/Page/cQueryAPI.js"></script>
+		<script type="text/x-jquery-tmpl" id="tpl_detail">
+			<h1>{{html key}}</h1>
+			<h2>${desName}</h2>
+			<pre class="prettyprint">{{html desDetail}}</pre>
+			<p>{{html desP}}</p>
+			<h2>${argName}</h2>
+			<h3>${argUrl}</h3>
+			<ul>{{html argLi}}</ul>
+			<h3>${argObj}</h3>
+			<pre class="prettyprint">{{html argDetail}}</pre>
+			<h2>${backName}</h2>
+			<h3>${backObj}</h3>
+			<h2>${demoName}</h2>
+			<p>${demoP_1}</p>
+			<pre class="prettyprint">{{html demoDetail_1}}</pre>
+			<p>${demoP_2}</p>
+			<pre class="prettyprint">{{html demoDetail_2}}</pre>
+		</script>
+		<script type="text/x-jquery-tmpl" id="tpl_nav">
+			<ul class="nav">
+			{{each(i, m) Info}}
+				<li class="dropdown">
+					<a href="javascript:void(0)" data-toggle="dropdown" class="dropdown-toggle">${m.category}<b class="caret"></b></a>
+					<ul class="nav nav-pills nav-stacked" style="">
+					{{each value}}
+						<li class="active"><a href="javascript:void(0)">${$value}</a></li>
+					{{/each}}
+					</ul>
+				</li>
+			{{/each}}
+			<ul>
+		</script>
 
+		<script type="text/javascript">
+			$.ajax({
+				type: "GET",
+				url: "../js/data/cQueryAPI/ajax.txt",
+				//dataType: "jsonp",
+				success: function(data, textStatus) {
+					var tpl_nav = $('#tpl_nav').html();
+					//$('#apiD').empty().html($.tmpl(tpl_nav, $.parseJSON(data)));
+				}
+			});
+		</script>
 
 	</body>
 </html>

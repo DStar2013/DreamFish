@@ -1,0 +1,72 @@
+﻿{
+	"Info": [{
+		"category": "ajax",
+		"value": ["ajax", "jsonp", "abort"]
+	}, {
+		"category": "Array",
+		"value": ["each", "filter", "map", "unique", "indexOf"]
+	}, {
+		"category": "cookie",
+		"value": ["set", "del", "get"]
+	}, {
+		"category": "cQuery",
+		"value": ["isPlainObject", "ready", "bindMethod", "stringifyJSON", "config", "type", "parseXML", "copy", "uid", "run", "browser",
+
+			"isCDom", "extend", "parseJSON", "active", "sleep", "error", "isEmptyObject"
+		]
+	}, {
+		"category": "cQuery_fn",
+		"value": ["uncover", "allUnregMod", "mask", "childNodes", "unregMod", "regMod", "appendTo", "offset", "length", "is",
+
+			"parentNode", "each", "click", "slice", "pushStack", "insertAfter", "clone", "trigger", "offsetParent", "prependTo", "text", "lastChild",
+
+			"prepend", "uid", "push", "remove", "getMod", "first", "insertBefore", "contains", "cover", "firstChild", "unbind", "sort", "last", "addClass",
+
+			"hasClass", "splice", "ohtml", "filter", "get", "data", "removeData", "toggleClass", "indexOf", "value", "find", "unmask", "nextSibling", "bind",
+
+			"append", "toArray", "removeClass", "previousSibling", "css", "allRegMod", "html", "attr"
+		]
+	}, {
+		"category": "crypto",
+		"value": ["sha1"]
+	}, {
+		"category": "Date",
+		"value": ["toEngDateString", "addSeconds", "addYears", "addMinutes", "toDate", "addHours", "toStdDateTimeString", "toFormatString",
+
+			"addMonths", "addDays", "toStdDateString"
+		]
+	}, {
+		"category": "event",
+		"value": ["clone", "trigger", "remove", "add"]
+	}, {
+		"category": "Function",
+		"value": ["delay", "pass", "repeat", "bind"]
+	}, {
+		"category": "LAB",
+		"value": ["script", "wait", "padScript"]
+	}, {
+		"category": "loader",
+		"value": ["js", "image", "pre", "css"]
+	}, {
+		"category": "mod",
+		"value": ["multiLoad", "instantiate", "unreg", "reg", "load"]
+	}, {
+		"category": "Number",
+		"value": ["toCurString"]
+	}, {
+		"category": "pageStorage",
+		"value": ["set", "clear", "remove", "reset", "get", "keys"]
+	}, {
+		"category": "selector",
+		"value": ["cQuery"]
+	}, {
+		"category": "storage",
+		"value": ["set", "clear", "remove", "size", "get", "isEnabled", "expire", "keys"]
+	}, {
+		"category": "String",
+		"value": ["toReString", "isFloat", "toDate", "toInt", "isInt", "toDateTime", "isDate", "repeat", "isDateTime", "trim"]
+	}, {
+		"category": "tmpl",
+		"value": ["renderStrict", "render"]
+	}]
+}
