@@ -1,6 +1,5 @@
 (function($) {
 
-
 	var s = {
 		"key": "ajax <strong>Version:cQuery_110421</strong>",
 		"desName": "说明",
@@ -22,21 +21,66 @@
 
 
 	//tab list Init
-	$.ajax({
-		type: "GET",
-		url: "../js/data/cQueryAPI/AllKey.txt",
-		//dataType: "jsonp",
-		success: function(data, textStatus) {
-			var tpl_nav = $('#tpl_nav').html(),
-				tab = $('#navTab');
-			tab.empty().html($('#tpl_nav').tmpl($.parseJSON(data)));
-			//
-
-		}
-	});
+	function tabInit() {
+		//
+		$.ajax({
+			type: "GET",
+			url: "../js/data/cQueryAPI/AllKey.txt",
+			//dataType: "jsonp",
+			success: function(data, textStatus) {
+				var tab = $('#navTab');
+				tab.empty().html($('#tpl_nav').tmpl($.parseJSON(data)));
+				//
+				tabtitleEv();
+				tablistEv();
+			}
+		});
+	}
 
 	//tab event
+	function tabtitleEv() {
+		var tab = $('#navTab');
+		tab.find('.tabtitle').on("click", function(event) {
+			// $(this).toggleClass(function() {
+			// 	if ($(this).hasClass("dropdown")) {
+			// 		return "dropup";
+			// 	} else {
+			// 		return "dropdown";
+			// 	}
+			// });
+			var tObj = $(this);
+			if (tObj.hasClass("dropdown")) {
+				tObj.removeClass("dropdown").addClass("dropup");
+				tObj.find('ul').css('display', '');
+			} else {
+				tObj.removeClass("dropup").addClass("dropdown");
+				tObj.find('ul').css('display', 'none');
+			}
+			//
+		});
+	}
 
+	function tablistEv() {
+		var tab = $('#navTab'),
+			tablist = tab.find('.tablist');
+		tablist.on("click", function(event) {
+			if (!$(this).hasClass("active")) {
+				tablist.removeClass("active");
+				$(this).addClass("active");
+				//
+				tabDetail($(this).find('a').attr('dInfo'));
+			}
+			event.stopPropagation();
+		});
+	}
 
+	function tabDetail(key) {
 
+	}
+
+	//Init
+	$(document).ready(function() {
+		//
+		tabInit();
+	});
 })(jQuery);

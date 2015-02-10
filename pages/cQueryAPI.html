@@ -84,11 +84,11 @@
 		<script type="text/x-jquery-tmpl" id="tpl_nav">
 			<ul class="nav">
 			{{each(i, m) Info}}
-				<li class="dropdown">
+				<li class="tabtitle dropdown">
 					<a href="javascript:void(0)" data-toggle="dropdown" class="dropdown-toggle">${m.category}<b class="caret"></b></a>
-					<ul class="nav nav-pills nav-stacked" style="">
+					<ul class="nav nav-pills nav-stacked" style="display:none">
 					{{each value}}
-						<li class="active"><a href="javascript:void(0)">${$value}</a></li>
+						<li class="tablist"><a href="javascript:void(0)" dInfo=${$value}>${$value}</a></li>
 					{{/each}}
 					</ul>
 				</li>
