@@ -1,5 +1,6 @@
 (function($) {
 
+	/*
 	var s = {
 		"key": "ajax <strong>Version:cQuery_110421</strong>",
 		"desName": "说明",
@@ -14,10 +15,11 @@
 		"backObj": "Object#ajax对象",
 		"demoName": "实例",
 		"demoP_1": "Example",
-		"demoDetail_1": "<code><span class=\"pln\">cQuery</span><span class=\"pun\">.</span><span class=\"pln\">ajax</span><span class=\"pun\">(</span><span class=\"str\">'http://xxx'</span><span class=\"pun\">,</span><span class=\"pln\"> </span><span class=\"pun\">{</span><span class=\"pln\">onsuccess</span><span class=\"pun\">:</span><span class=\"pln\"> </span><span class=\"kwd\">function</span><span class=\"pun\">(){</span><span class=\"pln\">    xxxxxx    xxxx    xxxxx</span><span class=\"pun\">}});</span></code>",
+		"demoDetail_1": "<code><span class=\"pln\">cQuery</span><span class=\"pun\">.</span><span class=\"pln\">ajax</span><span class=\"pun\">(</span><span class=\"str\">'http://xxx'</span><span class=\"pun\">,</span><span class=\"pln\"> </span><span class=\"pun\">{</span><span class=\"pln\">onsuccess</span><span class=\"pun\">:</span><span class=\"pln\"> </span><span class=\"kwd\">function</span><span class=\"pun\">(){</span><br/><span class=\"pln\">    xxxxxx<br/>    xxxx<br/>    xxxxx<br/></span><span class=\"pun\">}});</span></code>",
 		"demoP_2": "以上代码效果",
 		"demoDetail_2": "<code><span class=\"pun\">会发起一个</span><span class=\"pln\">ajax</span><span class=\"pun\">请求，并返回一个</span><span class=\"pln\">ajax</span><span class=\"pun\">对象</span></code>"
 	}
+	*/
 
 
 	//tab list Init
@@ -39,9 +41,8 @@
 			},
 			error: function(XMLHttpRequest, textStatus, errorThrown) {
 				$('#loading').unmask();
+				console.log("ajaxUrl: /js/data/cQueryAPI/AllKey.txt");
 				console.log("textStatus: " + textStatus);
-				console.log("error: "+ errorThrown);
-
 			}
 		});
 	}
@@ -77,14 +78,31 @@
 				tablist.removeClass("active");
 				$(this).addClass("active");
 				//
-				tabDetail($(this).find('a').attr('dInfo'));
+				tabDetail($(this).parent().attr('dInfo'), $(this).find('a').attr('dInfo'));
 			}
 			event.stopPropagation();
 		});
 	}
 
-	function tabDetail(key) {
+	function tabDetail(file, key) {
+		var urlArr = ["../js/data/cQueryAPI/", file, key, ".txt"];
+		$('#loading').mask();
+		$.ajax({
+			type: "GET",
+			url: urlArr.join(""),
+			success: function(data, textStatus) {
+				$('#loading').unmask();
 
+				//$('#apiD').empty().html($('#tpl_detail').tmpl($.parseJSON(data)));
+				$('#apiD').empty().html(data);
+			},
+			error: function(XMLHttpRequest, textStatus, errorThrown) {
+				$('#loading').unmask();
+				$('#apiD').empty();
+				console.log("ajaxUrl: " + urlArr.join(""))
+				console.log("textStatus: " + textStatus);
+			}
+		});
 	}
 
 	//Init

@@ -1,0 +1,25 @@
+﻿        <h1>unique    <strong>Version:cQuery_110421</strong></h1>
+
+<h2>说明</h2>
+
+<pre class="prettyprint"><code><span class="typ">Array</span><span class="pln"> unique</span><span class="pun">()</span></code></pre>
+
+<p>数组的<code>unique</code>的方法，移除数组中的重复项</p>
+
+<h2>参数</h2>
+
+<h3>无</h3>
+
+<h2>返回值</h2>
+
+<h3>Array#返回移除重复项之后的数组</h3>
+
+<h2>实例</h2>
+
+<p>Example</p>
+
+<pre class="prettyprint"><code><span class="pun">[</span><span class="lit">1</span><span class="pun">,</span><span class="lit">2</span><span class="pun">,</span><span class="lit">3</span><span class="pun">,</span><span class="lit">3</span><span class="pun">,</span><span class="lit">2</span><span class="pun">].</span><span class="pln">unique</span><span class="pun">();</span></code></pre>
+
+<p>以上过程会输出</p>
+
+<pre class="prettyprint"><code><span class="pun">[</span><span class="lit">1</span><span class="pun">,</span><span class="lit">2</span><span class="pun">,</span><span class="lit">3</span><span class="pun">]</span></code></pre>    

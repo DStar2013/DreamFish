@@ -1,0 +1,50 @@
+﻿        <h1>ajax    <strong>Version:cQuery_110421</strong></h1>
+
+<h2>说明</h2>
+
+<pre class="prettyprint"><code><span class="typ">Object</span><span class="pln"> cQuery</span><span class="pun">.</span><span class="pln">ajax</span><span class="pun">(</span><span class="pln">url</span><span class="pun">,</span><span class="pln"> opt</span><span class="pun">)</span></code></pre>
+
+<p>cQuery的<code>ajax</code>的方法，发起一个ajax请求</p>
+
+<h2>参数</h2>
+
+<h3>url(String)</h3>
+
+<ul>
+<li>发起ajax请求的url地址</li>
+</ul>
+
+<h3>opt(Object)</h3>
+
+<pre class="prettyprint"><code><span class="pln">ajax</span><span class="pun">的配置参数</span><span class="pln">
+</span><span class="pun">{</span><span class="pln">
+    method</span><span class="pun">:‘</span><span class="pln">GET</span><span class="str">', //可选参数为GET和POST
+    context: '</span><span class="kwd">string</span><span class="str">' || {}, //post发送数据的参数,可以是字符串或者键值对对象
+    escape: false,
+    async: true,
+    cache: false,
+    header: {},
+    unique: '',
+    uniqueType: '</span><span class="kwd">string</span><span class="str">',
+    onsuccess: function,
+    onerror: function,
+    onabort: function
+}</span></code></pre>
+
+<h2>返回值</h2>
+
+<h3>Object#ajax对象</h3>
+
+<h2>实例</h2>
+
+<p>Example</p>
+
+<pre class="prettyprint"><code><span class="pln">cQuery</span><span class="pun">.</span><span class="pln">ajax</span><span class="pun">(</span><span class="str">'http://xxx'</span><span class="pun">,</span><span class="pln"> </span><span class="pun">{</span><span class="pln">onsuccess</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">function</span><span class="pun">(){</span><span class="pln">
+    xxxxxx
+    xxxx
+    xxxxx
+</span><span class="pun">}});</span></code></pre>
+
+<p>以上代码效果</p>
+
+<pre class="prettyprint"><code><span class="pun">会发起一个</span><span class="pln">ajax</span><span class="pun">请求，并返回一个</span><span class="pln">ajax</span><span class="pun">对象</span></code></pre>    

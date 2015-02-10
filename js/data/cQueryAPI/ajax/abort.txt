@@ -1,0 +1,26 @@
+﻿        <h1>abort    <strong>Version:cQuery_110421</strong></h1>
+
+<h2>说明</h2>
+
+<pre class="prettyprint"><code><span class="pln">abort</span><span class="pun">()</span></code></pre>
+
+<p>取消ajax的请求</p>
+
+<h2>参数</h2>
+
+<h3>无</h3>
+
+<h2>返回值</h2>
+
+<h3>undefined</h3>
+
+<h2>实例</h2>
+
+<p>Example</p>
+
+<pre class="prettyprint"><code><span class="kwd">var</span><span class="pln"> req </span><span class="pun">=</span><span class="pln"> cQuery</span><span class="pun">.</span><span class="pln">ajax</span><span class="pun">(</span><span class="str">'http://xxx'</span><span class="pun">,</span><span class="pln"> opt</span><span class="pun">);</span><span class="pln">
+req</span><span class="pun">.</span><span class="pln">abort</span><span class="pun">();</span></code></pre>
+
+<p>以上代码的效果</p>
+
+<pre class="prettyprint"><code><span class="pun">取消已发起的</span><span class="pln">ajax</span><span class="pun">请求</span></code></pre>    

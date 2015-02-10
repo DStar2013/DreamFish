@@ -53,7 +53,8 @@
 							</div>
 						</div>
 						<div class="span2">
-							<img alt="140x140" src="../images/portrait/Panda.jpg" class="img-circle" />
+							<img alt="140x140" src="../images/portrait/Panda.jpg" class="img-circle" /><hr/>
+							<img alt="140x140" src="../images/star.jpg" class="img-circle" />
 						</div>
 					</div>
 				</div>
@@ -88,7 +89,7 @@
 			{{each(i, m) Info}}
 				<li class="tabtitle dropdown">
 					<a href="javascript:void(0)" data-toggle="dropdown" class="dropdown-toggle">${m.category}<b class="caret"></b></a>
-					<ul class="nav nav-pills nav-stacked" style="display:none">
+					<ul class="nav nav-pills nav-stacked" dInfo=${m.category} style="display:none">
 					{{each value}}
 						<li class="tablist"><a href="javascript:void(0)" dInfo=${$value}>${$value}</a></li>
 					{{/each}}
@@ -96,18 +97,6 @@
 				</li>
 			{{/each}}
 			<ul>
-		</script>
-
-		<script type="text/javascript">
-			$.ajax({
-				type: "GET",
-				url: "../js/data/cQueryAPI/ajax.txt",
-				//dataType: "jsonp",
-				success: function(data, textStatus) {
-					var tpl_nav = $('#tpl_nav').html();
-					//$('#apiD').empty().html($.tmpl(tpl_nav, $.parseJSON(data)));
-				}
-			});
 		</script>
 
 	</body>

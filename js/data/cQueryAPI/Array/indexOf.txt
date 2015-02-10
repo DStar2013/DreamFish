@@ -1,0 +1,35 @@
+﻿        <h1>indexOf    <strong>Version:cQuery_110421</strong></h1>
+
+<h2>说明</h2>
+
+<pre class="prettyprint"><code><span class="typ">Number</span><span class="pln"> indexOf</span><span class="pun">(</span><span class="pln">item</span><span class="pun">[,</span><span class="pln"> pos</span><span class="pun">])</span></code></pre>
+
+<p>数组的<code>indexOf</code>的方法，在数组中查找指定项</p>
+
+<h2>参数</h2>
+
+<h3>item</h3>
+
+<ul>
+<li>需要查找的对象</li>
+</ul>
+
+<h3>pos(Number)</h3>
+
+<ul>
+<li>开始查找的位置(如果是负数，则加上此数组的长度)</li>
+</ul>
+
+<h2>返回值</h2>
+
+<h3>Number#如果找到，则返回被查找对象的位置;否则返回-1；</h3>
+
+<h2>实例</h2>
+
+<p>Examples</p>
+
+<pre class="prettyprint"><code><span class="pun">[</span><span class="lit">1</span><span class="pun">,</span><span class="lit">5</span><span class="pun">,</span><span class="lit">8</span><span class="pun">,</span><span class="lit">2</span><span class="pun">].</span><span class="pln">indexOf</span><span class="pun">(</span><span class="lit">2</span><span class="pun">);</span></code></pre>
+
+<p>以上过程会输出</p>
+
+<pre class="prettyprint"><code><span class="lit">3</span></code></pre>    
