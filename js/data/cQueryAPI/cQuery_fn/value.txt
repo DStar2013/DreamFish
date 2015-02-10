@@ -1,1 +1,48 @@
-﻿
+﻿        <h1>value    <strong>Version:cQuery_110421</strong></h1>
+
+<h2>说明</h2>
+
+<pre class="prettyprint"><code><span class="pln">cDom</span><span class="pun">.</span><span class="pln">value</span><span class="pun">()</span></code></pre>
+
+<p>cDom读取或写入value</p>
+
+<h2>参数</h2>
+
+<h3>val</h3>
+
+<ul>
+<li>cDom value</li>
+<li>为空则读取value，不为空则为写入value</li>
+</ul>
+
+<h2>返回值</h2>
+
+<p>cDom value</p>
+
+<h2>实例 (读取value)</h2>
+
+<p>HTML: </p>
+
+<pre class="prettyprint"><code><span class="tag">&lt;input</span><span class="pln"> </span><span class="atn">type</span><span class="pun">=</span><span class="atv">"text"</span><span class="pln"> </span><span class="atn">id</span><span class="pun">=</span><span class="atv">"a"</span><span class="pln"> </span><span class="atn">value</span><span class="pun">=</span><span class="atv">"110"</span><span class="tag">&gt;</span></code></pre>
+
+<p>JS: </p>
+
+<pre class="prettyprint"><code><span class="pln">$</span><span class="pun">(</span><span class="str">'#a'</span><span class="pun">).</span><span class="pln">value</span><span class="pun">()</span></code></pre>
+
+<p>输出</p>
+
+<pre class="prettyprint"><code><span class="lit">110</span></code></pre>
+
+<h2>实例 (写入value)</h2>
+
+<p>HTML: </p>
+
+<pre class="prettyprint"><code><span class="tag">&lt;input</span><span class="pln"> </span><span class="atn">type</span><span class="pun">=</span><span class="atv">"text"</span><span class="pln"> </span><span class="atn">id</span><span class="pun">=</span><span class="atv">"a"</span><span class="pln"> </span><span class="atn">value</span><span class="pun">=</span><span class="atv">"110"</span><span class="tag">&gt;</span></code></pre>
+
+<p>JS: </p>
+
+<pre class="prettyprint"><code><span class="pln">$</span><span class="pun">(</span><span class="str">'#a'</span><span class="pun">).</span><span class="pln">value</span><span class="pun">(</span><span class="str">'120'</span><span class="pun">)</span></code></pre>
+
+<p>结果: </p>
+
+<pre class="prettyprint"><code><span class="tag">&lt;input</span><span class="pln"> </span><span class="atn">type</span><span class="pun">=</span><span class="atv">"text"</span><span class="pln"> </span><span class="atn">id</span><span class="pun">=</span><span class="atv">"a"</span><span class="pln"> </span><span class="atn">value</span><span class="pun">=</span><span class="atv">"120"</span><span class="tag">&gt;</span></code></pre>    

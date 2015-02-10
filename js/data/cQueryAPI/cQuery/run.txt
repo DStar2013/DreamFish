@@ -1,1 +1,21 @@
-﻿
+﻿        <h1>run    <strong>Version:cQuery_110421</strong></h1>
+
+<h2>说明</h2>
+
+<p>cQuery 执行参数中传入的函数</p>
+
+<h2>参数</h2>
+
+<p>可以是字符串（函数内容）、函数</p>
+
+<h2>实例</h2>
+
+<pre class="prettyprint"><code><span class="com">//函数</span><span class="pln">
+</span><span class="kwd">var</span><span class="pln"> test </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">function</span><span class="pun">(){</span><span class="pln">alert</span><span class="pun">(</span><span class="lit">1</span><span class="pun">);}</span><span class="pln">
+cQuery</span><span class="pun">.</span><span class="pln">run</span><span class="pun">(</span><span class="pln">test</span><span class="pun">);</span><span class="pln">
+
+</span><span class="com">//字符串函数内容</span><span class="pln">
+cQuery</span><span class="pun">.</span><span class="pln">run</span><span class="pun">(</span><span class="str">"alert(1)"</span><span class="pun">);</span><span class="pln">
+
+</span><span class="com">//多个函数内容</span><span class="pln">
+cQuery</span><span class="pun">.</span><span class="pln">run</span><span class="pun">(</span><span class="str">"alert(1)"</span><span class="pun">,</span><span class="pln"> </span><span class="str">"alert(2)"</span><span class="pun">);</span></code></pre>    

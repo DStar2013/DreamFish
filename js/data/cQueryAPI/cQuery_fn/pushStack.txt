@@ -1,1 +1,36 @@
-﻿
+﻿        <h1>pushStack    <strong>Version:cQuery_110421</strong></h1>
+
+<h2>说明</h2>
+
+<pre class="prettyprint"><code><span class="pln">cDom pushStack</span><span class="pun">(</span><span class="pln">arr</span><span class="pun">)</span></code></pre>
+
+<p>cDom方法，将dom对象数组转换成cDom对象数组</p>
+
+<h2>参数</h2>
+
+<h3>arr{object}</h3>
+
+<ul>
+<li>需要转换的dom对象数组 </li>
+</ul>
+
+<h2>返回值</h2>
+
+<p>{object} cDom对象数组</p>
+
+<h2>实例</h2>
+
+<h2>Example</h2>
+
+<p>html:</p>
+
+<pre class="prettyprint"><code><span class="tag">&lt;div</span><span class="pln"> </span><span class="atn">id</span><span class="pun">=</span><span class="atv">"id2"</span><span class="tag">&gt;&lt;/div&gt;</span></code></pre>
+
+<p>javascript:</p>
+
+<pre class="prettyprint"><code><span class="kwd">var</span><span class="pln"> cdom </span><span class="pun">=</span><span class="pln"> cQuery</span><span class="pun">.</span><span class="pln">fn</span><span class="pun">.</span><span class="pln">pushStack</span><span class="pun">([</span><span class="pln">document</span><span class="pun">.</span><span class="pln">getElementById</span><span class="pun">(</span><span class="str">'id2'</span><span class="pun">)]);</span><span class="pln">
+console</span><span class="pun">.</span><span class="pln">log</span><span class="pun">(</span><span class="pln">cdom</span><span class="pun">);</span></code></pre>
+
+<h2>输出</h2>
+
+<pre class="prettyprint"><code><span class="typ">Object</span><span class="pun">[</span><span class="pln">div</span><span class="com">#id2]</span></code></pre>    

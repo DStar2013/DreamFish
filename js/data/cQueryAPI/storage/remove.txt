@@ -1,1 +1,29 @@
-﻿
+﻿        <h1>remove    <strong>Version:cQuery_110421</strong></h1>
+
+<h2>说明</h2>
+
+<pre class="prettyprint"><code><span class="pln">$</span><span class="pun">.</span><span class="pln">storage</span><span class="pun">.</span><span class="pln">remove</span><span class="pun">(</span><span class="pln">key</span><span class="pun">)</span></code></pre>
+
+<p>删除指定key的存储值</p>
+
+<h2>参数</h2>
+
+<h3>key(string)</h3>
+
+<ul>
+<li>需要删除值的key</li>
+</ul>
+
+<h2>返回值</h2>
+
+<h3>Boolean</h3>
+
+<h2>实例</h2>
+
+<p>Example</p>
+
+<pre class="prettyprint"><code><span class="pln">$</span><span class="pun">.</span><span class="pln">storage</span><span class="pun">.</span><span class="pln">remove</span><span class="pun">(</span><span class="str">'name'</span><span class="pun">);</span></code></pre>
+
+<p>以上结果为</p>
+
+<pre class="prettyprint"><code><span class="pln">key</span><span class="pun">为</span><span class="pln">name</span><span class="pun">的本地存储值被清除</span></code></pre>    

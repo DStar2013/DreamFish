@@ -1,1 +1,40 @@
-﻿
+﻿        <h1>ohtml    <strong>Version:cQuery_110421</strong></h1>
+
+<h2>说明</h2>
+
+<pre class="prettyprint"><code><span class="pln">cDom</span><span class="pun">.</span><span class="pln">ohtml</span><span class="pun">()</span></code></pre>
+
+<p>读取或写入outerHTML</p>
+
+<h2>参数</h2>
+
+<h3>val</h3>
+
+<ul>
+<li>cDom outerHTML</li>
+<li>如果为空，则返回此对象的outerHTML；否则，给此对象设置outerHTML</li>
+</ul>
+
+<h2>实例 (读取outerHTML)</h2>
+
+<p>HTML: </p>
+
+<pre class="prettyprint"><code><span class="tag">&lt;div</span><span class="pln"> </span><span class="atn">id</span><span class="pun">=</span><span class="atv">"a"</span><span class="tag">&gt;</span><span class="pln">aaa</span><span class="tag">&lt;/div&gt;</span></code></pre>
+
+<p>JS: </p>
+
+<pre class="prettyprint"><code><span class="pln">$</span><span class="pun">(</span><span class="str">'#a'</span><span class="pun">).</span><span class="pln">ohtml</span><span class="pun">()</span></code></pre>
+
+<p>输出: </p>
+
+<pre class="prettyprint"><code><span class="tag">&lt;div</span><span class="pln"> </span><span class="atn">id</span><span class="pun">=</span><span class="atv">"a"</span><span class="tag">&gt;</span><span class="pln">aaa</span><span class="tag">&lt;/div&gt;</span></code></pre>
+
+<h2>实例 (写入outerHTML)</h2>
+
+<p>HTML: </p>
+
+<pre class="prettyprint"><code><span class="tag">&lt;div</span><span class="pln"> </span><span class="atn">id</span><span class="pun">=</span><span class="atv">"a"</span><span class="tag">&gt;</span><span class="pln">aaa</span><span class="tag">&lt;/div&gt;</span></code></pre>
+
+<p>JS: </p>
+
+<pre class="prettyprint"><code><span class="pln">$</span><span class="pun">(</span><span class="str">'#a'</span><span class="pun">).</span><span class="pln">ohtml</span><span class="pun">(</span><span class="str">'bbb'</span><span class="pun">)</span></code></pre>    

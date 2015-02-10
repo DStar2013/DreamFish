@@ -1,1 +1,13 @@
-﻿
+﻿        <h1>isPlainObject    <strong>Version:cQuery_110421</strong></h1>
+
+<h2>说明</h2>
+
+<p>判断变量是否为字面量对象 </p>
+
+<h2>参数</h2>
+
+<p>{object} 待检测的元素</p>
+
+<h2>返回值</h2>
+
+<p>{boolean} 返回一个对象是否由{}或new Object()创建 true | false</p>    

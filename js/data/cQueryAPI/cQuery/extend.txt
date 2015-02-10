@@ -1,1 +1,24 @@
-﻿
+﻿        <h1>extend    <strong>Version:cQuery_110421</strong></h1>
+
+<h2>说明</h2>
+
+<p>对象扩展，两个或多个对象的内容合并到第一个对象，并且相同的内容会被后续的覆盖扩展。</p>
+
+<h2>参数</h2>
+
+<pre class="prettyprint"><code><span class="lit">@param</span><span class="pln"> </span><span class="pun">{</span><span class="kwd">boolean</span><span class="pun">}</span><span class="pln"> </span><span class="pun">[</span><span class="pln"> </span><span class="pun">可选</span><span class="pln"> </span><span class="pun">]</span><span class="pln"> </span><span class="kwd">true</span><span class="pun">表示深度复制;</span><span class="kwd">false</span><span class="pun">表示不是深度复制，且如果有值，则不做覆盖</span><span class="pln">
+</span><span class="lit">@param</span><span class="pln"> </span><span class="pun">{</span><span class="kwd">object</span><span class="pun">}</span><span class="pln"> </span><span class="pun">被扩展的对象</span><span class="lit">1</span><span class="pln">
+</span><span class="lit">@param</span><span class="pln"> </span><span class="pun">{</span><span class="kwd">object</span><span class="pun">}</span><span class="pln"> </span><span class="pun">扩展的对象</span><span class="lit">2</span><span class="pln">
+</span><span class="lit">@param</span><span class="pln"> </span><span class="pun">{</span><span class="kwd">object</span><span class="pun">}</span><span class="pln"> </span><span class="pun">[</span><span class="pln"> </span><span class="pun">可选</span><span class="pln"> </span><span class="pun">]</span><span class="pln"> </span><span class="pun">扩展的对象</span><span class="lit">3.</span><span class="pun">..</span><span class="pln">N</span><span class="pun">(都是扩展到对象</span><span class="lit">1</span><span class="pun">上)</span></code></pre>
+
+<h2>返回值</h2>
+
+<p>{object} 扩展完毕的对象</p>
+
+<h2>Example</h2>
+
+<pre class="prettyprint"><code><span class="com">//=一般</span><span class="pln">
+cQuery</span><span class="pun">.</span><span class="pln">extend</span><span class="pun">({},</span><span class="pln"> </span><span class="pun">{});</span><span class="pln">
+
+</span><span class="com">//深度</span><span class="pln">
+cQuery</span><span class="pun">.</span><span class="pln">extend</span><span class="pun">(</span><span class="kwd">true</span><span class="pun">,</span><span class="pln"> </span><span class="pun">{{},</span><span class="pln"> </span><span class="pun">{}},</span><span class="pln"> </span><span class="pun">{{}});</span></code></pre>    

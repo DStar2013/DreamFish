@@ -1,1 +1,37 @@
-﻿
+﻿        <h1>prependTo    <strong>Version:cQuery_110421</strong></h1>
+
+<h2>说明</h2>
+
+<pre class="prettyprint"><code><span class="pln">cDom</span><span class="pun">.</span><span class="pln">prependTo</span><span class="pun">()</span></code></pre>
+
+<p>把cDom作为附加节点至首部</p>
+
+<h2>参数</h2>
+
+<h3>parent (cDom)</h3>
+
+<ul>
+<li>被附加的cDom</li>
+</ul>
+
+<h2>返回值</h2>
+
+<p>cDom本身</p>
+
+<h2>实例</h2>
+
+<p>HTML: </p>
+
+<pre class="prettyprint"><code><span class="tag">&lt;div</span><span class="pln"> </span><span class="atn">id</span><span class="pun">=</span><span class="atv">"a"</span><span class="tag">&gt;</span><span class="pln">aaa</span><span class="tag">&lt;/div&gt;</span><span class="pln">
+</span><span class="tag">&lt;div</span><span class="pln"> </span><span class="atn">id</span><span class="pun">=</span><span class="atv">"b"</span><span class="tag">&gt;</span><span class="pln">bbb</span><span class="tag">&lt;/div&gt;</span></code></pre>
+
+<p>JS: </p>
+
+<pre class="prettyprint"><code><span class="pln">$</span><span class="pun">(</span><span class="str">'#a'</span><span class="pun">).</span><span class="pln">prependTo</span><span class="pun">(</span><span class="pln">$</span><span class="pun">(</span><span class="str">'#b'</span><span class="pun">))</span></code></pre>
+
+<h2>结果</h2>
+
+<pre class="prettyprint"><code><span class="tag">&lt;div</span><span class="pln"> </span><span class="atn">id</span><span class="pun">=</span><span class="atv">"b"</span><span class="tag">&gt;</span><span class="pln">
+    </span><span class="tag">&lt;div</span><span class="pln"> </span><span class="atn">id</span><span class="pun">=</span><span class="atv">"a"</span><span class="tag">&gt;</span><span class="pln">aaa</span><span class="tag">&lt;/div&gt;</span><span class="pln">
+    bbb
+</span><span class="tag">&lt;/div&gt;</span></code></pre>    

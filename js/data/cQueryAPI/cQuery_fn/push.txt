@@ -1,1 +1,33 @@
-﻿
+﻿        <h1>push    <strong>Version:cQuery_110421</strong></h1>
+
+<h2>说明</h2>
+
+<pre class="prettyprint"><code><span class="pln">cDom push</span><span class="pun">(</span><span class="pln">element</span><span class="pun">)</span></code></pre>
+
+<p>cDom的<code>push</code>的方法，将html element object加入到cDom</p>
+
+<h2>参数</h2>
+
+<h3>element(html element object)</h3>
+
+<ul>
+<li>html元素</li>
+</ul>
+
+<h2>返回值</h2>
+
+<h3>cDom#返回cDom本身</h3>
+
+<h2>实例</h2>
+
+<p>Example</p>
+
+<pre class="prettyprint"><code><span class="pln">cQuery</span><span class="pun">(</span><span class="str">'head'</span><span class="pun">).</span><span class="pln">push</span><span class="pun">(</span><span class="pln">document</span><span class="pun">.</span><span class="pln">body</span><span class="pun">);</span></code></pre>
+
+<p>以上过程会输出</p>
+
+<pre class="prettyprint"><code><span class="pun">{</span><span class="pln">
+    </span><span class="str">'0'</span><span class="pun">:</span><span class="pln">html head </span><span class="kwd">object</span><span class="pun">,</span><span class="pln">
+    </span><span class="str">'1'</span><span class="pun">:</span><span class="pln">html body </span><span class="kwd">object</span><span class="pun">,</span><span class="pln">
+    </span><span class="str">'length'</span><span class="pun">:</span><span class="lit">2</span><span class="pln">
+</span><span class="pun">}</span></code></pre>    

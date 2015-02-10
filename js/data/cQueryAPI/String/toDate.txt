@@ -1,1 +1,25 @@
-﻿
+﻿        <h1>toDate    <strong>Version:cQuery_110421</strong></h1>
+
+<h2>说明</h2>
+
+<pre class="prettyprint"><code><span class="typ">Object</span><span class="pln"> toDate</span><span class="pun">()</span></code></pre>
+
+<p>字符串的<code>toDate</code>的方法，转换为日期型</p>
+
+<h2>参数</h2>
+
+<h3>无</h3>
+
+<h2>返回值</h2>
+
+<h3>Object#返回yyyy-mm-dd 格式的日期对象</h3>
+
+<h2>实例</h2>
+
+<p>Example</p>
+
+<pre class="prettyprint"><code><span class="str">'2012-12-21'</span><span class="pun">.</span><span class="pln">toDate</span><span class="pun">();</span></code></pre>
+
+<p>以上过程会输出</p>
+
+<pre class="prettyprint"><code><span class="typ">Fri</span><span class="pln"> </span><span class="typ">Dec</span><span class="pln"> </span><span class="lit">21</span><span class="pln"> </span><span class="lit">2012</span><span class="pln"> </span><span class="lit">00</span><span class="pun">:</span><span class="lit">00</span><span class="pun">:</span><span class="lit">00</span><span class="pln"> GMT</span><span class="pun">+</span><span class="lit">0800</span></code></pre>    

@@ -1,1 +1,13 @@
-﻿
+﻿        <h1>type    <strong>Version:cQuery_110421</strong></h1>
+
+<h2>说明</h2>
+
+<p>cQuery.type 类型判断</p>
+
+<h2>参数</h2>
+
+<p>@param {mulit-type}</p>
+
+<h2>返回值</h2>
+
+<p>{string}    参数对应的类型(number|string|boolean|array|object|function)</p>    

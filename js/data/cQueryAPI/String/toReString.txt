@@ -1,1 +1,25 @@
-﻿
+﻿        <h1>toReString    <strong>Version:cQuery_110421</strong></h1>
+
+<h2>说明</h2>
+
+<pre class="prettyprint"><code><span class="typ">String</span><span class="pln"> toReString</span><span class="pun">()</span></code></pre>
+
+<p>字符串的<code>toReString</code>的方法，转义正则特殊字符</p>
+
+<h2>参数</h2>
+
+<h3>无</h3>
+
+<h2>返回值</h2>
+
+<h3>String#返回转义后的特殊字符 (\r转为\r；\n转为\n；\t转为\t；)</h3>
+
+<h2>实例</h2>
+
+<p>Example</p>
+
+<pre class="prettyprint"><code><span class="str">'hello word. \t'</span><span class="pun">.</span><span class="pln">toReString</span><span class="pun">();</span></code></pre>
+
+<p>以上过程会输出</p>
+
+<pre class="prettyprint"><code><span class="str">'hello word\. \\t'</span></code></pre>    

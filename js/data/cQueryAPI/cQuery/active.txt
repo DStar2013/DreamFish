@@ -1,1 +1,21 @@
-﻿
+﻿        <h1>active    <strong>Version:cQuery_110421</strong></h1>
+
+<h2>说明</h2>
+
+<pre class="prettyprint"><code><span class="pln">$</span><span class="pun">.</span><span class="pln">active</span><span class="pun">()</span></code></pre>
+
+<p>对象复制</p>
+
+<h2>参数</h2>
+
+<h3>无</h3>
+
+<h2>返回值</h2>
+
+<h3>object#当前获得焦点的元素</h3>
+
+<h2>实例</h2>
+
+<p>Example</p>
+
+<pre class="prettyprint"><code><span class="pun">输入框获得焦点后，调用</span><span class="pln">$</span><span class="pun">.</span><span class="pln">active</span><span class="pun">()</span><span class="pln"> </span><span class="pun">返回当前输入框</span></code></pre>    

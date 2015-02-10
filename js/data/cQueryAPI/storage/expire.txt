@@ -1,1 +1,36 @@
-﻿
+﻿<div class="span10 apidetail">
+        <h1>expire    <strong>Version:cQuery_110421</strong></h1>
+
+<h2>说明</h2>
+
+<pre class="prettyprint"><code><span class="pln">expire</span><span class="pun">(</span><span class="pln">key</span><span class="pun">,</span><span class="pln"> ttl</span><span class="pun">)</span></code></pre>
+
+<p>设置指定key值的过期时间</p>
+
+<h2>参数</h2>
+
+<h3>key(string)</h3>
+
+<ul>
+<li>要设置过期时间的key</li>
+</ul>
+
+<h3>ttl(Number)</h3>
+
+<ul>
+<li>过期时间，单位分钟，设置0或留空表示清除相关key的值</li>
+</ul>
+
+<h2>返回值</h2>
+
+<h3>无</h3>
+
+<h2>实例</h2>
+
+<p>Example</p>
+
+<pre class="prettyprint"><code><span class="pln">$</span><span class="pun">.</span><span class="pln">storage</span><span class="pun">.</span><span class="pln">expire</span><span class="pun">(</span><span class="str">'name'</span><span class="pun">,</span><span class="pln"> </span><span class="lit">1</span><span class="pun">)</span></code></pre>
+
+<p>以上结果为</p>
+
+<pre class="prettyprint"><code><span class="pun">本地缓存</span><span class="pln">name</span><span class="pun">的值在</span><span class="lit">1</span><span class="pun">分钟后过期</span></code></pre>    

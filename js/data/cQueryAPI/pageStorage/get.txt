@@ -1,1 +1,29 @@
-﻿
+﻿        <h1>get    <strong>Version:cQuery_110421</strong></h1>
+
+<h2>说明</h2>
+
+<pre class="prettyprint"><code><span class="pln">node $</span><span class="pun">.</span><span class="pln">pageStorage</span><span class="pun">.</span><span class="kwd">get</span><span class="pun">(</span><span class="pln">key</span><span class="pun">)</span></code></pre>
+
+<p>获取页面缓存内容，一般用来做回退保存使用。</p>
+
+<h2>参数</h2>
+
+<h3>key(String)</h3>
+
+<ul>
+<li>页面缓存主键</li>
+</ul>
+
+<h2>返回值</h2>
+
+<h3>String/Object#返回对应主键的值</h3>
+
+<h2>实例</h2>
+
+<p>Example</p>
+
+<pre class="prettyprint"><code><span class="pln">$</span><span class="pun">.</span><span class="pln">pageStorage</span><span class="pun">.</span><span class="kwd">get</span><span class="pun">(</span><span class="str">'startCity'</span><span class="pun">);</span></code></pre>
+
+<p>以上代码效果</p>
+
+<pre class="prettyprint"><code><span class="pun">返回“上海”（先前设置的值）</span></code></pre>    

@@ -1,1 +1,31 @@
-﻿
+﻿        <h1>pass    <strong>Version:cQuery_110421</strong></h1>
+
+<h2>说明</h2>
+
+<pre class="prettyprint"><code><span class="typ">Function</span><span class="pln"> </span><span class="kwd">pass</span><span class="pun">(</span><span class="pln">arg</span><span class="pun">,</span><span class="pln"> </span><span class="pun">...)</span></code></pre>
+
+<p>函数的<code>pass</code>的方法，Curry化预先绑定函数的参数</p>
+
+<h2>参数</h2>
+
+<h3>arg</h3>
+
+<ul>
+<li>预先需要绑定的参数</li>
+</ul>
+
+<h2>返回值</h2>
+
+<h3>Function#填充了参数后的函数</h3>
+
+<h2>实例</h2>
+
+<p>Example</p>
+
+<pre class="prettyprint"><code><span class="kwd">function</span><span class="pln"> add </span><span class="pun">(</span><span class="pln">a</span><span class="pun">,</span><span class="pln"> b</span><span class="pun">){</span><span class="pln">
+    </span><span class="kwd">return</span><span class="pln"> a </span><span class="pun">+</span><span class="pln"> b</span><span class="pun">;</span><span class="pln">
+</span><span class="pun">}</span><span class="pln">
+
+</span><span class="kwd">var</span><span class="pln"> addOne </span><span class="pun">=</span><span class="pln"> add</span><span class="pun">.</span><span class="kwd">pass</span><span class="pun">(</span><span class="lit">1</span><span class="pun">);</span><span class="pln">
+
+addOne</span><span class="pun">(</span><span class="lit">3</span><span class="pun">);</span><span class="pln"> </span><span class="com">// -&gt; 4</span></code></pre>    

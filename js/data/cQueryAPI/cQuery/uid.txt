@@ -1,1 +1,17 @@
-﻿
+﻿        <h1>uid    <strong>Version:cQuery_110421</strong></h1>
+
+<h2>说明</h2>
+
+<p>获取元素对应的唯一标识符    </p>
+
+<h2>参数</h2>
+
+<p>{htmlElement} 元素</p>
+
+<h2>返回值</h2>
+
+<p>{string} 返回唯一标识符</p>
+
+<h2>Example</h2>
+
+<pre class="prettyprint"><code><span class="pln">cQuery</span><span class="pun">.</span><span class="pln">uid</span><span class="pun">(</span><span class="pln">domElement</span><span class="pun">);</span></code></pre>     

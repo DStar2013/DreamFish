@@ -1,1 +1,25 @@
-﻿
+﻿        <h1>mask    <strong>Version:cQuery_110421</strong></h1>
+
+<h2>说明</h2>
+
+<pre class="prettyprint"><code><span class="pln">cDom mask</span><span class="pun">()</span></code></pre>
+
+<p>cDom的'mask'的方法，将cDom获取的第一个元素转换为遮罩弹窗元素显示</p>
+
+<h2>参数</h2>
+
+<pre class="prettyprint"><code><span class="pun">无</span></code></pre>
+
+<h2>返回值</h2>
+
+<h3>cDom#返回cDom本身</h3>
+
+<h2>实例</h2>
+
+<p>Example</p>
+
+<pre class="prettyprint"><code><span class="pln">$</span><span class="pun">(</span><span class="str">'#id'</span><span class="pun">).</span><span class="pln">click</span><span class="pun">();</span></code></pre>
+
+<p>输出</p>
+
+<pre class="prettyprint"><code><span class="pln">id</span><span class="pun">元素被转换为遮罩弹窗元素展示</span></code></pre>    

@@ -1,1 +1,9 @@
-﻿
+﻿        <h1>sleep    <strong>Version:cQuery_110421</strong></h1>
+
+<h2>说明</h2>
+
+<p>阻塞脚本执行</p>
+
+<h2>参数</h2>
+
+<p>time    int     阻塞脚本执行的毫秒值</p>    

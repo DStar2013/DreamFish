@@ -1,1 +1,29 @@
-﻿
+﻿        <h1>removeClass    <strong>Version:cQuery_110421</strong></h1>
+
+<h2>说明</h2>
+
+<pre class="prettyprint"><code><span class="pln">cDom removeClass</span><span class="pun">(</span><span class="pln">className</span><span class="pun">)</span><span class="pln"> </span></code></pre>
+
+<p>cDom的<code>removeClass</code>的方法，移除cDom元素的class</p>
+
+<h2>参数</h2>
+
+<h3>className(String)</h3>
+
+<ul>
+<li>要删除的class名，为空则将cDom元素上的所有class去除</li>
+</ul>
+
+<h2>返回值</h2>
+
+<h3>cDom#返回cDom本身</h3>
+
+<h2>实例</h2>
+
+<p>Example</p>
+
+<pre class="prettyprint"><code><span class="pln">$</span><span class="pun">(</span><span class="str">'#id'</span><span class="pun">).</span><span class="pln">removeClass</span><span class="pun">(</span><span class="str">'class'</span><span class="pun">);</span></code></pre>
+
+<p>输出</p>
+
+<pre class="prettyprint"><code><span class="pun">移除了</span><span class="pln">id</span><span class="pun">元素上的名为</span><span class="str">'class'</span><span class="pun">的类</span></code></pre>    

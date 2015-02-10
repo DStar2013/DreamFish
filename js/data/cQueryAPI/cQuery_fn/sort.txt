@@ -1,1 +1,43 @@
-﻿
+﻿        <h1>sort    <strong>Version:cQuery_110421</strong></h1>
+
+<h2>说明</h2>
+
+<pre class="prettyprint"><code><span class="pln">cDom sort</span><span class="pun">(</span><span class="pln">sortby</span><span class="pun">)</span></code></pre>
+
+<p>sort方法用于对cDom集合进行排序，其排序规则等同于Array的sort</p>
+
+<h2>参数</h2>
+
+<h3>sortby</h3>
+
+<ul>
+<li>可选 排序规则</li>
+</ul>
+
+<h2>返回值</h2>
+
+<p>新的cDom集合</p>
+
+<h2>实例</h2>
+
+<h2>Example</h2>
+
+<p>html:</p>
+
+<pre class="prettyprint"><code><span class="tag">&lt;div</span><span class="pln"> </span><span class="atn">id</span><span class="pun">=</span><span class="atv">"id1"</span><span class="tag">&gt;</span><span class="pln">
+    </span><span class="tag">&lt;input</span><span class="pln"> </span><span class="atn">id</span><span class="pun">=</span><span class="atv">"id3"</span><span class="pln"> </span><span class="atn">type</span><span class="pun">=</span><span class="atv">"button"</span><span class="pln"> </span><span class="tag">/&gt;</span><span class="pln">
+    </span><span class="tag">&lt;div</span><span class="pln"> </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"c1"</span><span class="tag">&gt;&lt;/div&gt;</span><span class="pln">
+    </span><span class="tag">&lt;div</span><span class="pln"> </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"c2"</span><span class="tag">&gt;&lt;/div&gt;</span><span class="pln">
+</span><span class="tag">&lt;/div&gt;</span></code></pre>
+
+<p>javascript:</p>
+
+<pre class="prettyprint"><code><span class="kwd">var</span><span class="pln"> objs </span><span class="pun">=</span><span class="pln"> $</span><span class="pun">(</span><span class="str">'#id1&gt;*'</span><span class="pun">);</span><span class="pln">
+console</span><span class="pun">.</span><span class="pln">log</span><span class="pun">(</span><span class="pln">objs</span><span class="pun">);</span><span class="pln">
+objs</span><span class="pun">.</span><span class="pln">sort</span><span class="pun">();</span><span class="pln">
+console</span><span class="pun">.</span><span class="pln">log</span><span class="pun">(</span><span class="pln">objs</span><span class="pun">);</span></code></pre>
+
+<h2>输出</h2>
+
+<pre class="prettyprint"><code><span class="typ">Object</span><span class="pun">[</span><span class="pln">input</span><span class="com">#id3, div.c1, div.c2]</span><span class="pln">
+</span><span class="typ">Object</span><span class="pun">[</span><span class="pln">div</span><span class="pun">.</span><span class="pln">c1</span><span class="pun">,</span><span class="pln"> div</span><span class="pun">.</span><span class="pln">c2</span><span class="pun">,</span><span class="pln"> input</span><span class="com">#id3]</span></code></pre>    

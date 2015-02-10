@@ -1,1 +1,26 @@
-﻿
+﻿<div class="span10 apidetail">
+        <h1>size    <strong>Version:cQuery_110421</strong></h1>
+
+<h2>说明</h2>
+
+<pre class="prettyprint"><code><span class="pln">$</span><span class="pun">.</span><span class="pln">storage</span><span class="pun">.</span><span class="pln">size</span><span class="pun">()</span></code></pre>
+
+<p>返回存储的数据的字节大小</p>
+
+<h2>参数</h2>
+
+<h3>无</h3>
+
+<h2>返回值</h2>
+
+<h3>Number#存储数据的大小</h3>
+
+<h2>实例</h2>
+
+<p>Example</p>
+
+<pre class="prettyprint"><code><span class="pln">$</span><span class="pun">.</span><span class="pln">storage</span><span class="pun">.</span><span class="pln">size</span><span class="pun">();</span></code></pre>
+
+<p>以上过程会输出</p>
+
+<pre class="prettyprint"><code><span class="lit">1234</span></code></pre>    

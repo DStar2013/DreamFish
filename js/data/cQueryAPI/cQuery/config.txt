@@ -1,1 +1,30 @@
-﻿
+﻿        <h1>config    <strong>Version:cQuery_110421</strong></h1>
+
+<h2>说明</h2>
+
+<p>cQuery 配置获取或设置</p>
+
+<h2>参数</h2>
+
+<p>默认配置项</p>
+
+<pre class="prettyprint"><code><span class="pun">{</span><span class="pln">
+    </span><span class="kwd">namespace</span><span class="pun">:</span><span class="str">'$'</span><span class="pun">,</span><span class="pln">  </span><span class="com">//空间名称</span><span class="pln">
+    loadAsync</span><span class="pun">:</span><span class="kwd">true</span><span class="pun">,</span><span class="pln"> </span><span class="com">//是否异步加载</span><span class="pln">
+    jQueryPath</span><span class="pun">:</span><span class="str">'http://webresource.c-ctrip.com/code/cquery/jquery/jquery-1.9.1.js'</span><span class="pun">,</span><span class="pln">
+    modPath</span><span class="pun">:</span><span class="str">'http://webresource.c-ctrip.com/code/cquery/mod/'</span><span class="pun">,</span><span class="pln"> </span><span class="com">//模块配置的目录</span><span class="pln">
+    loadMultiMod</span><span class="pun">:</span><span class="kwd">true</span><span class="pun">,</span><span class="pln">  </span><span class="com">//是否支持多模块同时加载</span><span class="pln">
+    modBuffer</span><span class="pun">:</span><span class="kwd">true</span><span class="pun">,</span><span class="pln">  </span><span class="com">//是否支持模块缓冲</span><span class="pln">
+    charset</span><span class="pun">:(</span><span class="pln">document</span><span class="pun">.</span><span class="pln">charset</span><span class="pun">||</span><span class="pln">document</span><span class="pun">.</span><span class="pln">characterSet</span><span class="pun">||</span><span class="str">'utf-8'</span><span class="pun">).</span><span class="pln">toLowerCase</span><span class="pun">(),</span><span class="pln">   </span><span class="com">// gb2312 , big5 ,utf-8  页面编码</span><span class="pln">
+    blankPage</span><span class="pun">:</span><span class="str">'about:blank'</span><span class="pun">,</span><span class="pln">
+    allowDebug</span><span class="pun">:</span><span class="kwd">false</span><span class="pun">,</span><span class="pln"> </span><span class="com">//是否debug</span><span class="pln">
+    now</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">Date</span><span class="pun">()</span><span class="pln"> </span><span class="com">//现在的时间</span><span class="pln">
+</span><span class="pun">}</span></code></pre>
+
+<h2>Example</h2>
+
+<pre class="prettyprint"><code><span class="com">//设置</span><span class="pln">
+$</span><span class="pun">.</span><span class="pln">config</span><span class="pun">(</span><span class="str">'param'</span><span class="pun">,</span><span class="pln"> </span><span class="str">'value'</span><span class="pun">);</span><span class="pln">
+
+</span><span class="com">//获取</span><span class="pln">
+$</span><span class="pun">.</span><span class="pln">config</span><span class="pun">(</span><span class="str">'param'</span><span class="pun">);</span></code></pre>    

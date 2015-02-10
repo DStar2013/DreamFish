@@ -1,1 +1,47 @@
-﻿
+﻿        <h1>renderStrict    <strong>Version:cQuery_110421</strong></h1>
+
+<h2>说明</h2>
+
+<pre class="prettyprint"><code><span class="typ">String</span><span class="pln"> renderStrict</span><span class="pun">(</span><span class="pln">source</span><span class="pun">,</span><span class="pln"> data</span><span class="pun">,</span><span class="pln"> opt</span><span class="pun">)</span></code></pre>
+
+<p>严格的模板渲染方法，性能更优</p>
+
+<p>所有模版中的参数必须有引用，默认顶层引用为$data</p>
+
+<h2>参数</h2>
+
+<h3>source(string)</h3>
+
+<ul>
+<li>模板的内容</li>
+</ul>
+
+<h3>data(Object)</h3>
+
+<ul>
+<li>数据的内容</li>
+</ul>
+
+<h3>opt(Object)</h3>
+
+<ul>
+<li>配置项</li>
+</ul>
+
+<h2>返回值</h2>
+
+<h3>String#返回模板渲染之后的结果</h3>
+
+<h2>实例</h2>
+
+<p>Example</p>
+
+<pre class="prettyprint"><code><span class="kwd">var</span><span class="pln"> source </span><span class="pun">=</span><span class="pln"> </span><span class="str">'&lt;div class="controls_form_a"&gt;&lt;input type="text" class="j_depart_text" placeholder="${$data.message}" /&gt;&lt;span class="btn_search"&gt;&lt;/span&gt;&lt;/div&gt;'</span><span class="pun">;</span><span class="pln">
+
+</span><span class="kwd">var</span><span class="pln"> data </span><span class="pun">=</span><span class="pln"> </span><span class="pun">{</span><span class="pln">message</span><span class="pun">:</span><span class="pln"> </span><span class="str">'就是我'</span><span class="pun">};</span><span class="pln">
+
+$</span><span class="pun">.</span><span class="pln">tmpl</span><span class="pun">.</span><span class="pln">renderStrict</span><span class="pun">(</span><span class="pln">source</span><span class="pun">,</span><span class="pln"> data</span><span class="pun">);</span></code></pre>
+
+<p>以上过程会输出</p>
+
+<pre class="prettyprint"><code><span class="tag">&lt;div</span><span class="pln"> </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"controls_form_a"</span><span class="tag">&gt;&lt;input</span><span class="pln"> </span><span class="atn">type</span><span class="pun">=</span><span class="atv">"text"</span><span class="pln"> </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"j_depart_text"</span><span class="pln"> </span><span class="atn">placeholder</span><span class="pun">=</span><span class="atv">"就是我"</span><span class="pln"> </span><span class="tag">/&gt;&lt;span</span><span class="pln"> </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"btn_search"</span><span class="tag">&gt;&lt;/span&gt;&lt;/div&gt;</span></code></pre>    

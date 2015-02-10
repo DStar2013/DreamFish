@@ -85,7 +85,7 @@
 	}
 
 	function tabDetail(file, key) {
-		var urlArr = ["../js/data/cQueryAPI/", file, key, ".txt"];
+		var urlArr = ["../js/data/cQueryAPI/", file, "/",key, ".txt"];
 		$('#loading').mask();
 		$.ajax({
 			type: "GET",

@@ -1,1 +1,39 @@
-﻿
+﻿        <h1>$LAB.padScript</h1>
+
+<h2>说明</h2>
+
+<pre class="prettyprint"><code><span class="typ">Object</span><span class="pln"> $LAB</span><span class="pun">.</span><span class="pln">padScript</span><span class="pun">(</span><span class="pln">variables</span><span class="pun">,.....)</span><span class="pln">
+
+  </span><span class="pun">使用方法同</span><span class="pln">script</span><span class="pun">,发送一个脚本请求，可接收一个或多个不同类型的参数。</span><span class="pln">
+</span><span class="pun">这个方法只在</span><span class="pln">ctrip on pad</span><span class="pun">项目中引用,在</span><span class="pln">cQuery</span><span class="pun">之后引用。</span></code></pre>
+
+<h2>参数</h2>
+
+<h3>variables</h3>
+
+<ul>
+<li>string : 字符串，一个相对路径或绝对路径的脚本链接地址。</li>
+<li>object : 对象，包含以下的数据:
+<ul><li>string : (必选) 一个相对路径或绝对路径的脚本链接地址</li>
+<li>string type : (可选) 文件类型 (例如, "text/javascript", "text/vbscript")</li>
+<li>string charset : (可选) 文件编码 (例如, "utf-8")</li></ul></li>
+<li>array : 数组，可以包含以上类型</li>
+<li>function : 如果函数作为一个参数传入，那么会立刻执行函数并且此函数需要有一个返回值，包含上述的类型。如果函数无返回值或者为false,那么不会加载任何JS文件。</li>
+</ul>
+
+<h2>返回值</h2>
+
+<h3>Object LABJS的链式对象引用，可以紧接着使用.script和.wait方法</h3>
+
+<h2>实例</h2>
+
+<p>Example</p>
+
+<pre class="prettyprint"><code><span class="pln">$LAB
+</span><span class="pun">.</span><span class="pln">script</span><span class="pun">({</span><span class="pln"> src</span><span class="pun">:</span><span class="pln"> </span><span class="str">"cQuery_110421.js"</span><span class="pun">,</span><span class="pln"> charset</span><span class="pun">:</span><span class="pln"> </span><span class="str">"utf-8"</span><span class="pln"> </span><span class="pun">}).</span><span class="pln">wait</span><span class="pun">()</span><span class="pln">
+</span><span class="pun">.</span><span class="pln">padScript</span><span class="pun">({</span><span class="pln"> src</span><span class="pun">:</span><span class="pln"> </span><span class="str">"http://webresource.c-ctrip.com/code/cquery/pad.js"</span><span class="pun">,</span><span class="pln"> charset</span><span class="pun">:</span><span class="pln"> </span><span class="str">"utf-8"</span><span class="pln"> </span><span class="pun">}).</span><span class="pln">wait</span><span class="pun">()</span><span class="pln">
+</span><span class="pun">.</span><span class="pln">script</span><span class="pun">({</span><span class="pln"> src</span><span class="pun">:</span><span class="pln"> </span><span class="str">"private.js"</span><span class="pun">,</span><span class="pln"> charset</span><span class="pun">:</span><span class="pln"> </span><span class="str">"utf-8"</span><span class="pln"> </span><span class="pun">}).</span><span class="pln">wait</span><span class="pun">();</span><span class="pln"> </span></code></pre>
+
+<p>以上过程会输出</p>
+
+<pre class="prettyprint"><code><span class="pun">--</span></code></pre>    

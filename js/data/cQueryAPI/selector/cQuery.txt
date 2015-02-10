@@ -1,1 +1,89 @@
-﻿
+﻿        <h1>cQuery    <strong>Version:cQuery_110421</strong></h1>
+
+<h2>说明</h2>
+
+<pre class="prettyprint"><code><span class="pln">cDom cQuery</span><span class="pun">(</span><span class="pln">selector</span><span class="pun">|</span><span class="pln">element</span><span class="pun">)</span></code></pre>
+
+<p>元素选择器，使用方式同Sizzle</p>
+
+<h2>参数</h2>
+
+<h3>selector string</h3>
+
+<p>Sizzle supports virtually all CSS 3 Selectors - this even includes some parts that are infrequently implemented such as escaped selectors (".foo\+bar"), Unicode selectors, and results returned in document order. There are a few exceptions to CSS3 selector support. These exceptions are only limited to selectors that would require events added to the DOM to keep track of the state of elements. For instance, the following pseudo-selectors are <em>not</em> supported:</p>
+
+<ul>
+<li><code>:hover</code></li>
+<li><code>:active</code></li>
+<li><code>:visited</code></li>
+<li><code>:link</code> (this is the opposite of <code>:visited</code> and also requires an event)</li>
+</ul>
+
+<p><strong>Note: Some CSS3 selectors were not supported until version 1.9. These were added in 1.9:</strong></p>
+
+<ul>
+<li><code>:target</code></li>
+<li><code>:root</code></li>
+<li><code>:nth-last-child</code></li>
+<li><code>:nth-of-type</code> / <code>:nth-last-of-type</code> / <code>:first-of-type</code> / <code>:last-of-type</code> / <code>:only-of-type</code></li>
+<li><code>:lang()</code></li>
+</ul>
+
+<p>In addition to the CSS 3 Selectors Sizzle supports the following additional selectors or conventions.</p>
+
+<p><strong>Changes</strong></p>
+
+<ul>
+<li><code>:not(a.b)</code>, <code>:not(div &gt; p)</code>, <code>:not(div, p)</code>: Sizzle supports complex selectors in <code>:not()</code> (most browsers only support <code>:not(a)</code>, for example).</li>
+<li><code>:not(:not(a))</code>, <code>:not(:has(div:first-child))</code>: Sizzle supports nested pseudos.</li>
+</ul>
+
+<p><strong>Additions</strong></p>
+
+<ul>
+<li><code>[NAME!=VALUE]</code>: Finds all elements whose NAME attribute doesn't match the specified value. Is equivalent to <code>:not([NAME=VALUE])</code>.</li>
+<li><code>:contains(TEXT)</code>: Finds all elements whose textual context contains the word 'TEXT' (case-sensitive).</li>
+<li><code>:header</code>: Finds all elements that are header elements (h1, h2, h3, h4, h5, h6).</li>
+<li><code>:parent</code>: Finds all elements that contain another element.</li>
+</ul>
+
+<p><strong>Positional Selector Additions</strong></p>
+
+<p>The word positional here refers to an element's placement in the set after a selection, based on document order. For instance, <code>div:first</code> would return an array containing the first div on the page and <code>div:first em</code> would initially get the first div on the page, then all of the em's within that div. This works by first doing a selection for divs, retrieving the first one from that set, then using that div as the context for finding all em's. Note that all positional selectors are zero-indexed (corresponding to array positions).</p>
+
+<ul>
+<li><code>:first</code>/<code>:last</code>: Finds the first or last matching element on the page.</li>
+<li><code>:even</code>/<code>:odd</code>: Finds every other element on the page (counting begins at 0, so <code>:even</code> would match the first element).</li>
+<li><code>:eq</code>/<code>:nth</code>: Finds the nth element on the page (e.g. <code>:eq(5)</code> finds the 6th element on the page).</li>
+<li><code>:lt</code>/<code>:gt</code>: Finds all elements at positions less than or greater than the specified positions.</li>
+</ul>
+
+<p><strong>Form Selector Additions</strong></p>
+
+<ul>
+<li><code>:input</code>: Finds all input elements (includes textareas, selects, and buttons).</li>
+<li><code>:text</code>, <code>:checkbox</code>, <code>:file</code>, <code>:password</code>, <code>:submit</code>, <code>:image</code>, <code>:reset</code>, <code>:button</code>: Finds the input element with the specified input type (<code>:button</code> also finds button elements).</li>
+</ul>
+
+<h3>element object</h3>
+
+<ul>
+<li>html element object</li>
+</ul>
+
+<h2>返回值</h2>
+
+<h3>object#cDom对象</h3>
+
+<h2>实例</h2>
+
+<p>Example</p>
+
+<pre class="prettyprint"><code><span class="pln">cQuery</span><span class="pun">(</span><span class="str">'#container div .bg_main'</span><span class="pun">);</span></code></pre>
+
+<p>以上过程会输出</p>
+
+<pre class="prettyprint"><code><span class="pun">{</span><span class="pln">
+    </span><span class="str">'0'</span><span class="pun">:{</span><span class="pln">html element </span><span class="kwd">object</span><span class="pun">},</span><span class="pln">
+    </span><span class="str">'length'</span><span class="pun">:</span><span class="lit">1</span><span class="pln">
+</span><span class="pun">}</span></code></pre>    

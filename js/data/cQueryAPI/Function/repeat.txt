@@ -1,1 +1,31 @@
-﻿
+﻿        <h1>repeat    <strong>Version:cQuery_110421</strong></h1>
+
+<h2>说明</h2>
+
+<pre class="prettyprint"><code><span class="typ">Object</span><span class="pln"> repeat</span><span class="pun">(</span><span class="pln">ms</span><span class="pun">)</span></code></pre>
+
+<p>函数的<code>repeat</code>的方法，让方法间隔固定的时间运行</p>
+
+<h2>参数</h2>
+
+<h3>ms</h3>
+
+<ul>
+<li>需要间隔的毫秒数</li>
+</ul>
+
+<h2>返回值</h2>
+
+<h3>Object#具有clear方法的对象</h3>
+
+<h2>实例</h2>
+
+<p>Example</p>
+
+<pre class="prettyprint"><code><span class="kwd">function</span><span class="pun">(){</span><span class="pln">alert</span><span class="pun">(</span><span class="lit">1</span><span class="pun">);}.</span><span class="pln">repeat</span><span class="pun">(</span><span class="lit">1000</span><span class="pun">);</span><span class="pln">
+</span><span class="com">// 每1秒弹出一次alert框</span><span class="pln">
+
+</span><span class="kwd">var</span><span class="pln"> d </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">function</span><span class="pun">(){</span><span class="pln">alert</span><span class="pun">(</span><span class="lit">1</span><span class="pun">)}.</span><span class="pln">repeat</span><span class="pun">(</span><span class="lit">1000</span><span class="pun">);</span><span class="pln">
+
+    setTimeout</span><span class="pun">(</span><span class="kwd">function</span><span class="pun">(){</span><span class="pln">d</span><span class="pun">.</span><span class="pln">clear</span><span class="pun">();},</span><span class="pln"> </span><span class="lit">3000</span><span class="pun">);</span><span class="pln">
+</span><span class="com">// 3秒之后停止弹出alert框</span></code></pre>    

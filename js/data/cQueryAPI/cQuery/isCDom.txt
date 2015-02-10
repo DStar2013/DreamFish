@@ -1,1 +1,17 @@
-﻿
+﻿        <h1>isCDom    <strong>Version:cQuery_110421</strong></h1>
+
+<h2>说明</h2>
+
+<p>cQuery.isCDom 判断变量是否为cDom</p>
+
+<h2>参数</h2>
+
+<p>{object} 待检测的元素</p>
+
+<h2>返回值</h2>
+
+<p>{boolean} 返回变量是否为cDom true | false</p>
+
+<h2>Example</h2>
+
+<pre class="prettyprint"><code><span class="pln">cQuery</span><span class="pun">.</span><span class="pln">isCDom</span><span class="pun">(</span><span class="pln">obj</span><span class="pun">);</span></code></pre>    

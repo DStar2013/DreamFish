@@ -1,1 +1,13 @@
-﻿
+﻿        <h1>parseJSON    <strong>Version:cQuery_110421</strong></h1>
+
+<h2>说明</h2>
+
+<p>将字符串转换成json对象</p>
+
+<h2>参数</h2>
+
+<p>{string} 字符串</p>
+
+<h2>返回值</h2>
+
+<p>{object(json)} 返回转换之后的json对象</p>    

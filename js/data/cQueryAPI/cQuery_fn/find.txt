@@ -1,1 +1,33 @@
-﻿
+﻿        <h1>find    <strong>Version:cQuery_110421</strong></h1>
+
+<h2>说明</h2>
+
+<pre class="prettyprint"><code><span class="pln">cDom find</span><span class="pun">(</span><span class="pln">selector</span><span class="pun">)</span></code></pre>
+
+<p>在当前元素内寻找符合选择器的元素，并返回cDom</p>
+
+<h2>参数</h2>
+
+<h3>selector(string)</h3>
+
+<ul>
+<li>选择器字符串</li>
+</ul>
+
+<h2>返回值</h2>
+
+<h3>cDom#返回符合选择器的新cDom</h3>
+
+<h2>实例</h2>
+
+<p>Example</p>
+
+<pre class="prettyprint"><code><span class="pln">cQuery</span><span class="pun">(</span><span class="str">'body'</span><span class="pun">).</span><span class="pln">find</span><span class="pun">(</span><span class="str">'div'</span><span class="pun">);</span></code></pre>
+
+<p>以上过程会输出</p>
+
+<pre class="prettyprint"><code><span class="pun">{</span><span class="pln">
+    </span><span class="str">'0'</span><span class="pun">:</span><span class="pln">html div </span><span class="kwd">object</span><span class="pun">,</span><span class="pln">
+    </span><span class="str">'1'</span><span class="pun">:</span><span class="pln">html div </span><span class="kwd">object</span><span class="pun">,</span><span class="pln">
+    </span><span class="str">'length'</span><span class="pun">:</span><span class="lit">2</span><span class="pln">
+</span><span class="pun">}</span></code></pre>    

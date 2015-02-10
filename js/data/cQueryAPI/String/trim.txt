@@ -1,1 +1,29 @@
-﻿
+﻿        <h1>trim    <strong>Version:cQuery_110421</strong></h1>
+
+<h2>说明</h2>
+
+<pre class="prettyprint"><code><span class="typ">String</span><span class="pln"> trim</span><span class="pun">(</span><span class="pln">isMulti</span><span class="pun">)</span></code></pre>
+
+<p>字符串的<code>trim</code>的方法，去除字符串的首尾空格</p>
+
+<h2>参数</h2>
+
+<h3>isMulti(Boolean)</h3>
+
+<ul>
+<li>是否多行匹配</li>
+</ul>
+
+<h2>返回值</h2>
+
+<h3>String#返回去除了首尾空格的字符串</h3>
+
+<h2>实例</h2>
+
+<p>Example</p>
+
+<pre class="prettyprint"><code><span class="str">' hello, word! '</span><span class="pun">.</span><span class="pln">trim</span><span class="pun">();</span></code></pre>
+
+<p>以上过程会输出</p>
+
+<pre class="prettyprint"><code><span class="str">'hello, word!'</span></code></pre>    

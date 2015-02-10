@@ -1,1 +1,29 @@
-﻿
+﻿        <h1>contains    <strong>Version:cQuery_110421</strong></h1>
+
+<h2>说明</h2>
+
+<pre class="prettyprint"><code><span class="pln">cDom contains</span><span class="pun">(</span><span class="pln">el</span><span class="pun">)</span><span class="pln">   </span></code></pre>
+
+<p>cDom的<code>contains</code>的方法，查询cDom元素中是否包含el元素</p>
+
+<h2>参数</h2>
+
+<h3>el(String||cDom)</h3>
+
+<ul>
+<li>要查询是否被包含的元素</li>
+</ul>
+
+<h2>返回值</h2>
+
+<h3>Boolean#存在为true，不存在为false</h3>
+
+<h2>实例</h2>
+
+<p>Example</p>
+
+<pre class="prettyprint"><code><span class="pln">$</span><span class="pun">(</span><span class="str">'#id'</span><span class="pun">).</span><span class="pln">contains</span><span class="pun">(</span><span class="str">'.class'</span><span class="pun">);</span></code></pre>
+
+<p>输出</p>
+
+<pre class="prettyprint"><code><span class="pun">如果</span><span class="kwd">class</span><span class="pun">是</span><span class="pln">id</span><span class="pun">元素的后代元素，则返回</span><span class="kwd">true</span><span class="pun">，否则返回</span><span class="kwd">false</span></code></pre>   

@@ -1,1 +1,13 @@
-﻿
+﻿        <h1>parseXML    <strong>Version:cQuery_110421</strong></h1>
+
+<h2>说明</h2>
+
+<p>将字符串转换成xml document</p>
+
+<h2>参数</h2>
+
+<p>str    {string}    字符串</p>
+
+<h2>返回值</h2>
+
+<p>{XmlDocument} 返回转换之后的xml document</p>    

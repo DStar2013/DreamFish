@@ -1,1 +1,48 @@
-﻿
+﻿        <h1>$LAB.wait</h1>
+
+<h2>说明</h2>
+
+<pre class="prettyprint"><code><span class="typ">Object</span><span class="pln"> $LAB</span><span class="pun">.</span><span class="pln">wait</span><span class="pun">(</span><span class="kwd">function</span><span class="pln"> inlineScript</span><span class="pun">[=</span><span class="kwd">null</span><span class="pun">])</span><span class="pln">
+
+</span><span class="pun">这个函数有两个作用。</span><span class="pln">
+</span><span class="pun">*</span><span class="pln"> </span><span class="pun">首先，当</span><span class="pln">wait</span><span class="pun">插入了一个</span><span class="pln">labjs</span><span class="pun">的链式调用，它表明在</span><span class="pln">wait</span><span class="pun">之前的所有脚本必须都比之后的脚本优先执行。请注意，这里是指执行的优先顺序，而不是加载的顺序。这样是为了保证脚本之间的依赖顺序。</span><span class="pln">
+</span><span class="pun">*</span><span class="pln"> </span><span class="pun">其次，你可以指定一个回调函数，在</span><span class="pln">wait</span><span class="pun">前一个脚本执行完成之后立刻执行。</span><span class="pln">
+
+</span><span class="pun">例如，</span><span class="pln">wait</span><span class="pun">可以用作初始化你下载脚本的执行顺序。比如</span><span class="pln">
+$LAB</span><span class="pun">.</span><span class="pln">script</span><span class="pun">(</span><span class="str">"script.js"</span><span class="pun">).</span><span class="pln">wait</span><span class="pun">(</span><span class="kwd">function</span><span class="pun">(){</span><span class="pln">initScript</span><span class="pun">();});</span><span class="pln"> 
+</span><span class="pun">这里的</span><span class="pln">initScript</span><span class="pun">()就是一个定义在</span><span class="pln">script</span><span class="pun">.</span><span class="pln">js</span><span class="pun">中的函数.</span></code></pre>
+
+<p>Parameters
+inlineScript : (optional, defaults to null)
+Returns
+$LAB : the chained object reference so subsequent calls to script() and wait() can be made.</p>
+
+<h2>参数</h2>
+
+<h3>inlineScript</h3>
+
+<ul>
+<li>回调函数或为空。默认为空。</li>
+</ul>
+
+<h2>返回值</h2>
+
+<h3>Object#LABJS的链式对象引用，可以紧接着使用.script和.wait方法</h3>
+
+<h2>实例</h2>
+
+<p>Example</p>
+
+<pre class="prettyprint"><code><span class="pln">$LAB
+</span><span class="pun">.</span><span class="pln">script</span><span class="pun">(</span><span class="str">"script1.js"</span><span class="pun">)</span><span class="pln"> </span><span class="com">// script1, script2, and script3 相互不依赖, 可以按照任意的顺序执行</span><span class="pln">
+</span><span class="pun">.</span><span class="pln">script</span><span class="pun">(</span><span class="str">"script2.js"</span><span class="pun">)</span><span class="pln">
+</span><span class="pun">.</span><span class="pln">script</span><span class="pun">(</span><span class="str">"script3.js"</span><span class="pun">)</span><span class="pln">
+</span><span class="pun">.</span><span class="pln">wait</span><span class="pun">(</span><span class="kwd">function</span><span class="pun">(){</span><span class="pln">
+    alert</span><span class="pun">(</span><span class="str">"Scripts 1-3 are loaded!"</span><span class="pun">);</span><span class="pln">
+</span><span class="pun">})</span><span class="pln">
+</span><span class="pun">.</span><span class="pln">script</span><span class="pun">(</span><span class="str">"script4.js"</span><span class="pun">)</span><span class="pln"> </span><span class="com">//必须等待script1.js,script2.js,script3.js执行完毕之后才能执行</span><span class="pln">
+</span><span class="pun">.</span><span class="pln">wait</span><span class="pun">(</span><span class="kwd">function</span><span class="pun">(){</span><span class="pln">script4Func</span><span class="pun">();});</span></code></pre>
+
+<p>以上过程会输出</p>
+
+<pre class="prettyprint"><code><span class="pun">--</span></code></pre>    

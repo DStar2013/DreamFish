@@ -1,1 +1,39 @@
-﻿
+﻿        <h1>browser    <strong>Version:cQuery_110421</strong></h1>
+
+<h2>说明</h2>
+
+<p>浏览器判断</p>
+
+<pre class="prettyprint"><code><span class="pln">$</span><span class="pun">.</span><span class="pln">browser </span><span class="pun">=</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+            isOpera</span><span class="pun">:</span><span class="kwd">false</span><span class="pun">,</span><span class="pln">
+            isIE</span><span class="pun">:</span><span class="kwd">false</span><span class="pun">,</span><span class="pln">
+            isIE6</span><span class="pun">:</span><span class="kwd">false</span><span class="pun">,</span><span class="pln">
+            isIE7</span><span class="pun">:</span><span class="kwd">false</span><span class="pun">,</span><span class="pln">
+            isIE8</span><span class="pun">:</span><span class="kwd">false</span><span class="pun">,</span><span class="pln">
+            isIE9</span><span class="pun">:</span><span class="kwd">false</span><span class="pun">,</span><span class="pln">
+            isIE10</span><span class="pun">:</span><span class="kwd">false</span><span class="pun">,</span><span class="pln">
+            isFirefox</span><span class="pun">:</span><span class="kwd">false</span><span class="pun">,</span><span class="pln">
+            isFirefox2</span><span class="pun">:</span><span class="kwd">false</span><span class="pun">,</span><span class="pln">
+            isFirefox3</span><span class="pun">:</span><span class="kwd">false</span><span class="pun">,</span><span class="pln">
+            isFirefox4</span><span class="pun">:</span><span class="kwd">false</span><span class="pun">,</span><span class="pln">
+            isChrome</span><span class="pun">:</span><span class="kwd">false</span><span class="pun">,</span><span class="pln">
+            isSafari</span><span class="pun">:</span><span class="kwd">false</span><span class="pun">,</span><span class="pln">
+            isIOS</span><span class="pun">:</span><span class="kwd">false</span><span class="pun">,</span><span class="pln">
+            isIPhone</span><span class="pun">:</span><span class="kwd">false</span><span class="pun">,</span><span class="pln">
+            isIPod</span><span class="pun">:</span><span class="kwd">false</span><span class="pun">,</span><span class="pln">
+            isIPad</span><span class="pun">:</span><span class="kwd">false</span><span class="pun">,</span><span class="pln">
+            isIPadUCWeb</span><span class="pun">:</span><span class="kwd">false</span><span class="pln">
+</span><span class="pun">}</span></code></pre>
+
+<h2>返回值</h2>
+
+<p>{boolean} true|false</p>
+
+<h2>Example</h2>
+
+<pre class="prettyprint"><code><span class="pln">cQuery</span><span class="pun">.</span><span class="pln">browser</span><span class="pun">.</span><span class="pln">isOpera
+
+</span><span class="com">//=常用</span><span class="pln">
+</span><span class="kwd">if</span><span class="pun">(</span><span class="pln">cQuery</span><span class="pun">.</span><span class="pln">browser</span><span class="pun">.</span><span class="pln">isIE</span><span class="pun">){</span><span class="pln">
+    </span><span class="com">//@todo code</span><span class="pln">
+</span><span class="pun">}</span></code></pre>    

@@ -1,1 +1,30 @@
-﻿
+﻿        <h1>addMinutes    <strong>Version:cQuery_110421</strong></h1>
+
+<h2>说明</h2>
+
+<pre class="prettyprint"><code><span class="typ">Date</span><span class="pln"> addMinutes</span><span class="pun">(</span><span class="pln">minutes</span><span class="pun">)</span></code></pre>
+
+<p>Date的<code>addMinutes</code>的方法，加上特定的分钟数</p>
+
+<h2>参数</h2>
+
+<h3>minutes</h3>
+
+<ul>
+<li>需要加上的特定分钟数</li>
+</ul>
+
+<h2>返回值</h2>
+
+<h3>Date#返回加好分钟数的日期对象</h3>
+
+<h2>实例</h2>
+
+<p>Example</p>
+
+<pre class="prettyprint"><code><span class="kwd">new</span><span class="pln"> </span><span class="typ">Date</span><span class="pun">().</span><span class="pln">addMinutes</span><span class="pun">(</span><span class="lit">7</span><span class="pun">);</span><span class="pln">
+</span><span class="com">//new Date() == Mon Jan 14 2013 12:05:12 GMT+0800</span></code></pre>
+
+<p>以上过程会输出</p>
+
+<pre class="prettyprint"><code><span class="typ">Mon</span><span class="pln"> </span><span class="typ">Jan</span><span class="pln"> </span><span class="lit">14</span><span class="pln"> </span><span class="lit">2013</span><span class="pln"> </span><span class="lit">12</span><span class="pun">:</span><span class="lit">12</span><span class="pun">:</span><span class="lit">12</span><span class="pln"> GMT</span><span class="pun">+</span><span class="lit">0800</span></code></pre>    

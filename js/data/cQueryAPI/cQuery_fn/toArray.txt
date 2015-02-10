@@ -1,1 +1,31 @@
-﻿
+﻿        <h1>toArray    <strong>Version:cQuery_110421</strong></h1>
+
+<h2>说明</h2>
+
+<p>将cDom对象转换成数组</p>
+
+<h2>参数</h2>
+
+<p>无</p>
+
+<h2>返回值</h2>
+
+<p>{object} 转换完成的数组</p>
+
+<h2>实例</h2>
+
+<h2>Example</h2>
+
+<p>html:</p>
+
+<pre class="prettyprint"><code><span class="tag">&lt;div</span><span class="pln"> </span><span class="atn">id</span><span class="pun">=</span><span class="atv">"id1"</span><span class="tag">&gt;&lt;div</span><span class="pln"> </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"c1"</span><span class="tag">&gt;&lt;/div&gt;&lt;div</span><span class="pln"> </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"c2"</span><span class="tag">&gt;&lt;/div&gt;&lt;/div&gt;</span></code></pre>
+
+<p>javascript:</p>
+
+<pre class="prettyprint"><code><span class="kwd">var</span><span class="pln"> obj </span><span class="pun">=</span><span class="pln"> $</span><span class="pun">(</span><span class="str">'#id1&gt;div'</span><span class="pun">),</span><span class="pln">
+arr </span><span class="pun">=</span><span class="pln"> obj</span><span class="pun">.</span><span class="pln">toArray</span><span class="pun">();</span><span class="pln">
+console</span><span class="pun">.</span><span class="pln">log</span><span class="pun">(</span><span class="pln">arr</span><span class="pun">);</span></code></pre>
+
+<h2>输出</h2>
+
+<pre class="prettyprint"><code><span class="pun">[</span><span class="pln">div</span><span class="pun">.</span><span class="pln">c1</span><span class="pun">,</span><span class="pln"> div</span><span class="pun">.</span><span class="pln">c2</span><span class="pun">]</span></code></pre>    

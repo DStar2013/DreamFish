@@ -1,1 +1,182 @@
-﻿
+﻿<div class="span10 apidetail">
+        <h1>render    <strong>Version:cQuery_110421</strong></h1>
+
+<h2>说明</h2>
+
+<pre class="prettyprint"><code><span class="typ">String</span><span class="pln"> render</span><span class="pun">(</span><span class="pln">source</span><span class="pun">,</span><span class="pln"> data</span><span class="pun">,</span><span class="pln"> opt</span><span class="pun">)</span></code></pre>
+
+<p>模板渲染方法，根据模板渲染结果</p>
+
+<p>若对性能有较高要求，请选用renderStrict</p>
+
+<h2>参数</h2>
+
+<h3>source(string)</h3>
+
+<ul>
+<li>模板的内容</li>
+</ul>
+
+<h3>data(Object)</h3>
+
+<ul>
+<li>数据的内容</li>
+</ul>
+
+<h3>opt(Object)</h3>
+
+<ul>
+<li>配置项</li>
+</ul>
+
+<h2>内部语法</h2>
+
+<p><strong>必选参数</strong>  可选参数 <em>关键字</em></p>
+
+<p>${<strong>$data</strong>} 默认数据引用</p>
+
+<p>${<strong>vari</strong>} 输出变量</p>
+
+<p>${<strong>expr</strong>} 输出表达式</p>
+
+<p>{{<em>each</em>(index, value, length) <strong>arrar</strong>}} ... {{/<em>each</em>}} 循环数组变量</p>
+
+<p>{{<em>loop</em>(index, length) start, <strong>end</strong>, step}} ... {{/<em>loop</em>}} 循环</p>
+
+<p>{{<em>enum</em>(key, value) <strong>object</strong>}} ... {{/<em>enum</em>}} 枚举对象</p>
+
+<p>{{<em>if</em> <strong>expr</strong>}} ... {{<em>else</em> expr}} ... {{<em>else</em>}} ... {{/<em>if</em>}} 条件判断</p>
+
+<p>{{<em>tmpl</em> <strong>template</strong>, data}} 模版嵌套</p>
+
+<p>{{<em>code</em> <strong>code</strong>}} 运行代码(测试)</p>
+
+<h2>返回值</h2>
+
+<h3>String#返回模板渲染之后的结果</h3>
+
+<h2>实例</h2>
+
+<p>Example1</p>
+
+<pre class="prettyprint"><code><span class="kwd">var</span><span class="pln"> source </span><span class="pun">=</span><span class="pln"> </span><span class="str">'&lt;div class="controls_form_a"&gt;&lt;input type="text" class="j_depart_text" placeholder="${message}" /&gt;&lt;span class="btn_search"&gt;&lt;/span&gt;&lt;/div&gt;'</span><span class="pun">;</span><span class="pln">
+
+</span><span class="kwd">var</span><span class="pln"> data </span><span class="pun">=</span><span class="pln"> </span><span class="pun">{</span><span class="pln">message</span><span class="pun">:</span><span class="pln"> </span><span class="str">'就是我'</span><span class="pun">};</span><span class="pln">
+
+$</span><span class="pun">.</span><span class="pln">tmpl</span><span class="pun">.</span><span class="pln">render</span><span class="pun">(</span><span class="pln">source</span><span class="pun">,</span><span class="pln"> data</span><span class="pun">);</span></code></pre>
+
+<p>以上过程会输出</p>
+
+<pre class="prettyprint"><code><span class="tag">&lt;div</span><span class="pln"> </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"controls_form_a"</span><span class="tag">&gt;&lt;input</span><span class="pln"> </span><span class="atn">type</span><span class="pun">=</span><span class="atv">"text"</span><span class="pln"> </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"j_depart_text"</span><span class="pln"> </span><span class="atn">placeholder</span><span class="pun">=</span><span class="atv">"就是我"</span><span class="pln"> </span><span class="tag">/&gt;&lt;span</span><span class="pln"> </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"btn_search"</span><span class="tag">&gt;&lt;/span&gt;&lt;/div&gt;</span></code></pre>
+
+<p>Example2</p>
+
+<pre class="prettyprint"><code><span class="pun">模板:</span><span class="pln">
+$</span><span class="pun">{</span><span class="pln">title</span><span class="pun">}</span><span class="pln">
+</span><span class="pun">{{</span><span class="pln">each children</span><span class="pun">}}</span><span class="pln">
+    $</span><span class="pun">{</span><span class="pln">name</span><span class="pun">}:</span><span class="pln">$</span><span class="pun">{</span><span class="pln">sex</span><span class="pun">||</span><span class="str">'unknown'</span><span class="pun">}</span><span class="pln">
+    $</span><span class="pun">{</span><span class="pln">name</span><span class="pun">}:{{</span><span class="kwd">if</span><span class="pln"> sex</span><span class="pun">==</span><span class="str">'boy'</span><span class="pun">}}男{{</span><span class="kwd">else</span><span class="pln"> sex</span><span class="pun">==</span><span class="str">'girl'</span><span class="pun">}}女{{</span><span class="kwd">else</span><span class="pun">}}程序员{{/</span><span class="kwd">if</span><span class="pun">}}</span><span class="pln">
+</span><span class="pun">{{/</span><span class="pln">each</span><span class="pun">}}</span><span class="pln">
+
+</span><span class="pun">数据：</span><span class="pln">
+</span><span class="kwd">var</span><span class="pln"> data</span><span class="pun">={</span><span class="pln">
+    title</span><span class="pun">:</span><span class="str">'hello world'</span><span class="pun">,</span><span class="pln">
+    children</span><span class="pun">:[</span><span class="pln">
+    </span><span class="pun">{</span><span class="pln">name</span><span class="pun">:</span><span class="str">'tom'</span><span class="pun">,</span><span class="pln">sex</span><span class="pun">:</span><span class="str">'boy'</span><span class="pun">},</span><span class="pln">
+    </span><span class="pun">{</span><span class="pln">name</span><span class="pun">:</span><span class="str">'jack'</span><span class="pun">},</span><span class="pln">
+    </span><span class="pun">{</span><span class="pln">name</span><span class="pun">:</span><span class="str">'mary'</span><span class="pun">,</span><span class="pln">sex</span><span class="pun">:</span><span class="str">'girl'</span><span class="pun">}</span><span class="pln">
+    </span><span class="pun">]</span><span class="pln">
+</span><span class="pun">};</span></code></pre>
+
+<p>以上过程会输出</p>
+
+<pre class="prettyprint"><code><span class="pln">hello world
+
+tom</span><span class="pun">:</span><span class="pln">boy
+tom</span><span class="pun">:男</span><span class="pln">
+
+
+jack</span><span class="pun">:</span><span class="pln">unknown
+jack</span><span class="pun">:程序员</span></code></pre>
+
+<p>Example3</p>
+
+<pre class="prettyprint"><code><span class="pun">模板：</span><span class="pln">
+</span><span class="pun">&lt;</span><span class="pln">table border</span><span class="pun">=</span><span class="str">"1"</span><span class="pln"> cellspacing</span><span class="pun">=</span><span class="str">"2"</span><span class="pln"> cellpadding</span><span class="pun">=</span><span class="str">"2"</span><span class="pun">&gt;</span><span class="pln">
+</span><span class="pun">{{</span><span class="kwd">enum</span><span class="pun">(</span><span class="pln">k</span><span class="pun">,</span><span class="pln">v</span><span class="pun">)</span><span class="pln"> $data</span><span class="pun">}}</span><span class="pln">
+    </span><span class="pun">{{</span><span class="pln">each</span><span class="pun">(</span><span class="pln">i</span><span class="pun">,</span><span class="pln">r</span><span class="pun">)</span><span class="pln"> v</span><span class="pun">}}</span><span class="pln">
+        </span><span class="str">&lt;tr&gt;</span><span class="pln">
+        </span><span class="pun">{{</span><span class="kwd">if</span><span class="pln"> i</span><span class="pun">==</span><span class="lit">0</span><span class="pun">}}</span><span class="pln">
+            </span><span class="pun">&lt;</span><span class="pln">td rowspan</span><span class="pun">=</span><span class="str">"${v.length}"</span><span class="pun">&gt;</span><span class="pln">$</span><span class="pun">{</span><span class="pln">k</span><span class="pun">}&lt;/</span><span class="pln">td</span><span class="pun">&gt;</span><span class="pln">
+        </span><span class="pun">{{/</span><span class="kwd">if</span><span class="pun">}}</span><span class="pln">
+        </span><span class="pun">{{</span><span class="pln">each</span><span class="pun">(</span><span class="pln">j</span><span class="pun">,</span><span class="pln">c</span><span class="pun">)</span><span class="pln"> r</span><span class="pun">}}</span><span class="pln">
+            </span><span class="str">&lt;td&gt;</span><span class="pln">$</span><span class="pun">{</span><span class="pln">c</span><span class="pun">}&lt;/</span><span class="pln">td</span><span class="pun">&gt;</span><span class="pln">
+        </span><span class="pun">{{/</span><span class="pln">each</span><span class="pun">}}</span><span class="pln">
+        </span><span class="pun">&lt;</span><span class="str">/tr&gt;
+    {{/</span><span class="pln">each</span><span class="pun">}}</span><span class="pln">
+</span><span class="pun">{{/</span><span class="kwd">enum</span><span class="pun">}}</span><span class="pln">
+</span><span class="pun">&lt;/</span><span class="pln">table</span><span class="pun">&gt;</span><span class="pln">
+
+</span><span class="pun">数据：</span><span class="pln">
+</span><span class="kwd">var</span><span class="pln"> data</span><span class="pun">={</span><span class="pln">
+    </span><span class="str">"flight1"</span><span class="pun">:[</span><span class="pln">
+        </span><span class="pun">[</span><span class="str">"1_1_1"</span><span class="pun">,</span><span class="str">"1_1_2"</span><span class="pun">,</span><span class="str">"1_1_3"</span><span class="pun">,</span><span class="str">"1_1_4"</span><span class="pun">]</span><span class="pln">
+    </span><span class="pun">],</span><span class="pln">
+    </span><span class="str">"flight2"</span><span class="pun">:[</span><span class="pln">
+        </span><span class="pun">[</span><span class="str">"2_1_1"</span><span class="pun">,</span><span class="str">"2_1_2"</span><span class="pun">,</span><span class="str">"2_1_3"</span><span class="pun">,</span><span class="str">"2_1_4"</span><span class="pun">],</span><span class="pln">
+        </span><span class="pun">[</span><span class="str">"2_2_1"</span><span class="pun">,</span><span class="str">"2_2_2"</span><span class="pun">,</span><span class="str">"2_2_3"</span><span class="pun">,</span><span class="str">"2_2_4"</span><span class="pun">]</span><span class="pln">
+    </span><span class="pun">],</span><span class="pln">
+    </span><span class="str">"flight3"</span><span class="pun">:[</span><span class="pln">
+        </span><span class="pun">[</span><span class="str">"3_1_1"</span><span class="pun">,</span><span class="str">"3_1_2"</span><span class="pun">,</span><span class="str">"3_1_3"</span><span class="pun">,</span><span class="str">"3_1_4"</span><span class="pun">],</span><span class="pln">
+        </span><span class="pun">[</span><span class="str">"3_2_1"</span><span class="pun">,</span><span class="str">"3_2_2"</span><span class="pun">,</span><span class="str">"3_2_3"</span><span class="pun">,</span><span class="str">"3_2_4"</span><span class="pun">],</span><span class="pln">
+        </span><span class="pun">[</span><span class="str">"3_3_1"</span><span class="pun">,</span><span class="str">"3_3_2"</span><span class="pun">,</span><span class="str">"3_3_3"</span><span class="pun">,</span><span class="str">"3_3_4"</span><span class="pun">]</span><span class="pln">
+    </span><span class="pun">]</span><span class="pln">
+</span><span class="pun">};</span></code></pre>
+
+<p>结果</p>
+
+<pre class="prettyprint"><code><span class="tag">&lt;div</span><span class="pln"> </span><span class="atn">id</span><span class="pun">=</span><span class="atv">"show2"</span><span class="tag">&gt;</span><span class="pln">
+    </span><span class="tag">&lt;table</span><span class="pln"> </span><span class="atn">cellspacing</span><span class="pun">=</span><span class="atv">"2"</span><span class="pln"> </span><span class="atn">cellpadding</span><span class="pun">=</span><span class="atv">"2"</span><span class="pln"> </span><span class="atn">border</span><span class="pun">=</span><span class="atv">"1"</span><span class="tag">&gt;</span><span class="pln">
+        </span><span class="tag">&lt;tbody&gt;</span><span class="pln">
+            </span><span class="tag">&lt;tr&gt;</span><span class="pln">
+                </span><span class="tag">&lt;td</span><span class="pln"> </span><span class="atn">rowspan</span><span class="pun">=</span><span class="atv">"1"</span><span class="tag">&gt;</span><span class="pln">flight1</span><span class="tag">&lt;/td&gt;</span><span class="pln">
+                </span><span class="tag">&lt;td&gt;</span><span class="pln">1_1_1</span><span class="tag">&lt;/td&gt;</span><span class="pln">
+                </span><span class="tag">&lt;td&gt;</span><span class="pln">1_1_2</span><span class="tag">&lt;/td&gt;</span><span class="pln">
+                </span><span class="tag">&lt;td&gt;</span><span class="pln">1_1_3</span><span class="tag">&lt;/td&gt;</span><span class="pln">
+                </span><span class="tag">&lt;td&gt;</span><span class="pln">1_1_4</span><span class="tag">&lt;/td&gt;</span><span class="pln">
+            </span><span class="tag">&lt;/tr&gt;</span><span class="pln">
+            </span><span class="tag">&lt;tr&gt;</span><span class="pln">
+                </span><span class="tag">&lt;td</span><span class="pln"> </span><span class="atn">rowspan</span><span class="pun">=</span><span class="atv">"2"</span><span class="tag">&gt;</span><span class="pln">flight2</span><span class="tag">&lt;/td&gt;</span><span class="pln">
+                </span><span class="tag">&lt;td&gt;</span><span class="pln">2_1_1</span><span class="tag">&lt;/td&gt;</span><span class="pln">
+                </span><span class="tag">&lt;td&gt;</span><span class="pln">2_1_2</span><span class="tag">&lt;/td&gt;</span><span class="pln">
+                </span><span class="tag">&lt;td&gt;</span><span class="pln">2_1_3</span><span class="tag">&lt;/td&gt;</span><span class="pln">
+                </span><span class="tag">&lt;td&gt;</span><span class="pln">2_1_4</span><span class="tag">&lt;/td&gt;</span><span class="pln">
+            </span><span class="tag">&lt;/tr&gt;</span><span class="pln">
+            </span><span class="tag">&lt;tr&gt;</span><span class="pln">
+                </span><span class="tag">&lt;td&gt;</span><span class="pln">2_2_1</span><span class="tag">&lt;/td&gt;</span><span class="pln">
+                </span><span class="tag">&lt;td&gt;</span><span class="pln">2_2_2</span><span class="tag">&lt;/td&gt;</span><span class="pln">
+                </span><span class="tag">&lt;td&gt;</span><span class="pln">2_2_3</span><span class="tag">&lt;/td&gt;</span><span class="pln">
+                </span><span class="tag">&lt;td&gt;</span><span class="pln">2_2_4</span><span class="tag">&lt;/td&gt;</span><span class="pln">
+            </span><span class="tag">&lt;/tr&gt;</span><span class="pln">
+            </span><span class="tag">&lt;tr&gt;</span><span class="pln">
+                </span><span class="tag">&lt;td</span><span class="pln"> </span><span class="atn">rowspan</span><span class="pun">=</span><span class="atv">"3"</span><span class="tag">&gt;</span><span class="pln">flight3</span><span class="tag">&lt;/td&gt;</span><span class="pln">
+                </span><span class="tag">&lt;td&gt;</span><span class="pln">3_1_1</span><span class="tag">&lt;/td&gt;</span><span class="pln">
+                </span><span class="tag">&lt;td&gt;</span><span class="pln">3_1_2</span><span class="tag">&lt;/td&gt;</span><span class="pln">
+                </span><span class="tag">&lt;td&gt;</span><span class="pln">3_1_3</span><span class="tag">&lt;/td&gt;</span><span class="pln">
+                </span><span class="tag">&lt;td&gt;</span><span class="pln">3_1_4</span><span class="tag">&lt;/td&gt;</span><span class="pln">
+            </span><span class="tag">&lt;/tr&gt;</span><span class="pln">
+            </span><span class="tag">&lt;tr&gt;</span><span class="pln">
+                </span><span class="tag">&lt;td&gt;</span><span class="pln">3_2_1</span><span class="tag">&lt;/td&gt;</span><span class="pln">
+                </span><span class="tag">&lt;td&gt;</span><span class="pln">3_2_2</span><span class="tag">&lt;/td&gt;</span><span class="pln">
+                </span><span class="tag">&lt;td&gt;</span><span class="pln">3_2_3</span><span class="tag">&lt;/td&gt;</span><span class="pln">
+                </span><span class="tag">&lt;td&gt;</span><span class="pln">3_2_4</span><span class="tag">&lt;/td&gt;</span><span class="pln">
+            </span><span class="tag">&lt;/tr&gt;</span><span class="pln">
+            </span><span class="tag">&lt;tr&gt;</span><span class="pln">
+                </span><span class="tag">&lt;td&gt;</span><span class="pln">3_3_1</span><span class="tag">&lt;/td&gt;</span><span class="pln">
+                </span><span class="tag">&lt;td&gt;</span><span class="pln">3_3_2</span><span class="tag">&lt;/td&gt;</span><span class="pln">
+                </span><span class="tag">&lt;td&gt;</span><span class="pln">3_3_3</span><span class="tag">&lt;/td&gt;</span><span class="pln">
+                </span><span class="tag">&lt;td&gt;</span><span class="pln">3_3_4</span><span class="tag">&lt;/td&gt;</span><span class="pln">
+            </span><span class="tag">&lt;/tr&gt;</span><span class="pln">
+        </span><span class="tag">&lt;/tbody&gt;</span><span class="pln">
+    </span><span class="tag">&lt;/table&gt;</span><span class="pln">
+</span><span class="tag">&lt;/div&gt;</span></code></pre>    

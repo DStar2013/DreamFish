@@ -1,1 +1,26 @@
-﻿
+﻿<div class="span10 apidetail">
+        <h1>keys    <strong>Version:cQuery_110421</strong></h1>
+
+<h2>说明</h2>
+
+<pre class="prettyprint"><code><span class="pln">node $</span><span class="pun">.</span><span class="pln">pageStorage</span><span class="pun">.</span><span class="pln">keys</span><span class="pun">()</span></code></pre>
+
+<p>返回pageStorage的所有主键</p>
+
+<h2>参数</h2>
+
+<h3>无</h3>
+
+<h2>返回值</h2>
+
+<h3>Array#以数组存放的所有主键</h3>
+
+<h2>实例</h2>
+
+<p>Example</p>
+
+<pre class="prettyprint"><code><span class="pln">$</span><span class="pun">.</span><span class="pln">pageStorage</span><span class="pun">.</span><span class="pln">keys</span><span class="pun">();</span></code></pre>
+
+<p>以上代码效果</p>
+
+<pre class="prettyprint"><code><span class="pun">[</span><span class="str">"startCity','destCity',....]</span></code></pre>    
