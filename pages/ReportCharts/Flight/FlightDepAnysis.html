@@ -1,0 +1,102 @@
+﻿<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta content="width=device-width, initial-scale=1.0, minimum-scale=0.5, maximum-scale=4.0, user-scalable=yes" name="viewport">
+<title>Data Report of Ctrip Online</title>
+<!-- path -->
+<link href="../../../css/ReportChart/zh-cn/global.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript">
+//国际化静态资源数据
+var corpReport_Common = {"js_Summary":"总概","js_Airfare":"机票","js_Hotel":"酒店","js_HotelExpenses":"酒店总体情况","js_CorpHotel":"协议酒店","js_StarRating":"星级","js_Cities":"城市","js_AirfareExpenses":"机票消费","js_Departments":"部门分析","js_Passenger":"乘机人分析","js_CabinClass":"舱位","js_Carriers":"承运商","js_Itineraries":"航线","js_LeadTime":"提前预订天数","js_Savings":"节省与损失","js_CorpAirline":"协议航空","js_CO2Emissions":"碳排放","js_PrimaryAccount":"主帐户","js_Department":"部门","js_TravelType":"消费属性","js_TimePeriod":"时间范围","btn_Search":"查询","msg_Message1":"本报告数据来源于贵司在携程商旅的消费数据","msg_Message2":"此报告的最终解释权归携程旅行网商旅数据中心所有，如有疑问请联系负责您公司的客户经理。","js_LocationTracking":"定位跟踪","js_NoUseTicket":"未使用机票","js_Train":"火车票","js_TitleInfo":"携程在线数据报告","js_RMBLogo":"￥","js_SubTitleInfo":"Data Report of Ctrip Online"};
+var corpReport_FlightDepAnysis = {"js_All":"全部","js_Domestic":"国内","js_International":"国际","js_Department":"部门","js_Amount":"金额","js_Tickets":"张数","js_AvgDiscount":"平均折扣","js_FullFareTicketRate":"全价票比例","js_Savings":"节省","js_PerofSavings":"节省率","js_MissedSavings":"损失","js_PerofMissedSavings":"损失率","js_AvgMileagePrice":"国际里程平均价","js_Total":"总计","js_None":"无","js_AdvBooking":"平均提前预订天数","js_ThisCompany":"本公司","js_ThisDepartment":"本部门","js_PerOfRC":"未执行差旅政策占比"};
+</script>
+</head>
+
+<body>
+<div class="clearfix header">
+</div>
+<div class="view_wrap"><div class="clearfix container">
+<div class="sub_nav">
+	<div class="sub_logo">
+		<i class="icon i4">&times;</i>
+	</div>
+</div>
+<div class="main_cnt clearfix">
+	<div class="filter_bar">
+        <div class="menu_ico"></div>
+	</div>
+	<div class="fp fp2">
+        <div class="options">
+		    <h3>
+			    <span id="fltSelID"><input type="radio" style="visibility:hidden"></span>
+		    </h3>
+            <div class="filter_option type1 option1" id="depTxt">
+			    <label>部门</label>
+                <input type="text" placeholder="部门名称" class="" id="depNameID"/>
+			    <div class="option_box hidepop" id="depNameSelID" style="display:none">
+			    </div>
+		    </div>
+        </div>
+        <div class="M-table" id="ptAnysisID">
+			<table>
+				<thead>
+					<tr>
+					</tr>
+				</thead>
+			</table>
+			<div class="tbody">
+				<table>
+					<tbody>
+					</tbody>
+				</table>
+			</div>
+        </div>
+		<div class="remark">
+			<p>备注：</p>
+			<p>不含退票，不含儿童，婴儿票</p>
+			<p>平均折扣，全价票比例只分析国内机票</p>
+			<p>全价票比例=全价票张数/国内总张数；全价票包含全价经济舱，公务舱和头等舱</p>
+			<p>节省=全价-成交净价-服务费；损失=成交净价-最低价</p>
+			<p>节省率=节省/全价；损失率=损失/全价</p>
+		</div>
+	</div>
+</div>
+</div><input type="hidden" id="page_id" value="109205"/></div>
+
+<div class="footer"></div>
+<!-- depName T Start -->
+<div class="fp2_contrast_ly" id="depNameT" style="display:none">
+	<table id="depTMask">
+	</table>
+	<i class="i_close"  id="depTClose"></i>
+</div>
+<!-- depName T End-->
+<div class="no_data" id="noDataID" style="display:none"><img src="http://pic.ctrip.com/droco/img/loading.gif" alt=""></div>
+
+<script src="../../../js/ReportCharts/fame/jquery-1.9.1.min.js" type="text/javascript"></script>
+<script src="../../../js/ReportCharts/commpub/common.js" type="text/javascript"></script>
+<script src="../../../js/ReportCharts/commpub/header.js" type="text/javascript"></script>
+<script src="../../../js/ReportCharts/fame/droco.js" type="text/javascript"></script>
+<script type="text/javascript">
+    //语言环境
+    var lanType = "zh-cn";
+    //配置文件信息
+    var _cfgInfo = {"ConfigID":7,"UID":"2106322801","CorpCorporation":"jonson","CorporationName":"强生（中国）有限公司（强生集团）","IsOpenReport":"T","AccScope":"2587:jonson_现结","HasMemHotelProduct":"T","HasAgrHotelProduct":"T","HasInAirTicketProduct":"T","HasOutAirTicketProduct":"T","HasCorpAccBillingType":"T","HasNonCorpAccBillingType":"T","HasMonthlyData":"T","HasQuarterData":"T","HasIndustryData":"T","HasTotalTop5":"T","HasFltMonthlyExpense":"T","HasFltTop5":"T","HasFltBack":"T","HasFltDeptDetail":"T","HasFltPassengerDetail":"T","HasAirlineTop5":"T","HasAirlineSave":"T","HasAgrFltGeneral":"T","HasAgrFltUse":"T","HasAgrFltComplete":"T","HasHtlDeptDetail":"T","HasAgrHtlGeneral":"T","HasAgrHtlUse":"T","HasAgrHtlNoPerson":"T","HasHtlSave":"T","HasHtlRCDetail":"T","HasHtlRCTop5":"T","HasTrainTop5Dept":null,"HasNoUseTickets":null,"HasPositionTracking":null,"DataChangeCreateTime":"\/Date(1399878375000)\/","DataChangeLastTime":"\/Date(1411382466000)\/"};
+	//头部选中条件
+	var _headSelectInfo = CM.hashAny(window.location.hash);
+	//头部搜索条件
+	var _headInitInfo = {
+	    masterAccountInfo: [{"Name":"jonson_现结","Value":"2587"}],
+        departmentInfo: [{"Name":"部门1","Value":"0"},{"Name":"部门2","Value":"1"},{"Name":"成本中心1","Value":"2"}],
+        consumerAttrInfo: [{"Name":"全部","Value":"0"},{"Name":"因公","Value":"1"}],
+        nowTime: "2015-03-05"
+    };
+    _headInitInfo.nowTime = _headInitInfo.nowTime.replace(new RegExp('-', 'g'),'/');
+</script>
+
+<script src="../../../js/ReportCharts/fame/highcharts.js" type="text/javascript"></script>
+<script src="../../../js/ReportCharts/flight/FltDepAny.js" type="text/javascript"></script>
+</body>
+</html>

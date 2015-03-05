@@ -1,0 +1,132 @@
+﻿<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta content="width=device-width, initial-scale=1.0, minimum-scale=0.5, maximum-scale=4.0, user-scalable=yes" name="viewport">
+<title>Data Report of Ctrip Online</title>
+<!-- path -->
+<link href="../../../css/ReportChart/zh-cn/global.css" rel="stylesheet" type="text/css" />
+
+<script type="text/javascript">
+//国际化静态资源数据
+var corpReport_Common = {"js_Summary":"总概","js_Airfare":"机票","js_Hotel":"酒店","js_HotelExpenses":"酒店总体情况","js_CorpHotel":"协议酒店","js_StarRating":"星级","js_Cities":"城市","js_AirfareExpenses":"机票消费","js_Departments":"部门分析","js_Passenger":"乘机人分析","js_CabinClass":"舱位","js_Carriers":"承运商","js_Itineraries":"航线","js_LeadTime":"提前预订天数","js_Savings":"节省与损失","js_CorpAirline":"协议航空","js_CO2Emissions":"碳排放","js_PrimaryAccount":"主帐户","js_Department":"部门","js_TravelType":"消费属性","js_TimePeriod":"时间范围","btn_Search":"查询","msg_Message1":"本报告数据来源于贵司在携程商旅的消费数据","msg_Message2":"此报告的最终解释权归携程旅行网商旅数据中心所有，如有疑问请联系负责您公司的客户经理。","js_LocationTracking":"定位跟踪","js_NoUseTicket":"未使用机票","js_Train":"火车票","js_TitleInfo":"携程在线数据报告","js_RMBLogo":"￥","js_SubTitleInfo":"Data Report of Ctrip Online"};
+var corpReport_FlightPage = {"js_Monthly":"月度","js_Quarterly":"季度","js_IntAirfare":"国际机票","js_DomAirfare":"国内机票","js_Expenses":"消费","js_International":"国际","js_Domestic":"国内","js_All":"全部","js_TotalExpenses":"消费金额","js_Percent":"百分比","js_TicketChangeFee":"改签费","js_TicketRefundFee":"退票费","js_TicketChangeRate":"改签率","js_TicketRefundRate":"退票率","js_NumberofBookings":"订单数"};
+</script>
+</head>
+
+<body>
+<div class="clearfix header">
+</div>
+<div class="view_wrap"><div class="clearfix container">
+<div class="sub_nav on">
+	<div class="sub_logo">
+		<i class="icon i4">&times;</i>
+	</div>
+</div>
+<div class="main_cnt clearfix">
+	<div class="filter_bar">
+        <div class="menu_ico"></div>
+	</div>
+	<div class="fp fp1">
+		<div class="box box1 br2px bb2px">
+			<i class="icon i9"></i>
+			<p><span id="fltConsumPID"></span>机票总金额</p>
+			<p><span id="fltAvgPID"></span>机票均价</p>
+		</div>
+		<div class="box box2 bb2px" id="fltConExID">
+			<h3>
+				机票消费
+				<span id="fltConsumSelID">
+				</span>
+			</h3>
+			<div class="" id="fltConsumID" style="height:110px">
+			</div>
+		</div>
+		<div class="box box3 br2px bb2px" id="fltFivExID">
+			<h3>
+				前五部门消费情况
+				<span id="fltFivePartSelID">
+				</span>
+			</h3>
+			<div class="" id="fltFivePartConsum" style="height:310px">
+			</div>
+		</div>
+		<div class="box box4 bb2px" id="fltDesExID">
+			<h3>
+				前五目的地消费情况
+				<span id="fltFiveDesSelID">
+				</span>
+			</h3>
+			<div class="" id="fltFiveDesConsum" style="height:310px">
+			</div>
+			<i class="white_block"></i>
+		</div>
+		<div class="box box5 br2px">
+			<h3>退改签情况</h3>
+			<div class="filter_bars">
+				<div class="filter_option option4" id="bkChangeType">
+					<label>@ViewBag.Model["lbl_Type"]</label>
+					<span mark='0' id="bkTypeSpan">
+						@ViewBag.Model["lbl_ChangeFee"]
+						<i class="icon i5"></i>
+					</span>
+                    <div class="option_box hidepop" style="display:none">
+                        <ul>
+                        <li><a href="javascript:;" title="@ViewBag.Model["lbl_ChangeFee"]" mark='0'>@ViewBag.Model["lbl_ChangeFee"]</a></li>
+                        <li><a href="javascript:;" title="@ViewBag.Model["lbl_ChangeRate"]" mark='1'>@ViewBag.Model["lbl_ChangeRate"]</a></li>
+                        </ul>
+                    </div>
+				</div>
+				<div class="filter_option option4" id="bkChangePeriod">
+					<label>@ViewBag.Model["lbl_TimePeriod"]</label>
+					<span mark='0' id="bkPerSpan">
+						无数据
+						<i class="icon i5"></i>
+					</span>
+                    <div class="option_box hidepop" style="display:none" id="bkPerSelID">
+                    </div>
+				</div>
+			</div>
+			<div class="" id="bkChangeChartID" style="height:140px">
+			</div>        
+		</div>
+		<div class="box box6">
+			<h3>预订方式</h3>
+			<div class="" id="bkMethodID" style="height:140px">
+			</div>
+			<i class="white_block"></i>
+		</div>
+	</div>
+</div>
+</div><input type="hidden" id="page_id" value="109204"/></div>
+
+<div class="footer">
+</div>
+<div class="no_data" id="noDataID" style="display:none"><img src="http://pic.ctrip.com/droco/img/loading.gif" alt=""></div>
+
+<script src="../../../js/ReportCharts/fame/jquery-1.9.1.min.js" type="text/javascript"></script>
+<script src="../../../js/ReportCharts/commpub/common.js" type="text/javascript"></script>
+<script src="../../../js/ReportCharts/commpub/header.js" type="text/javascript"></script>
+<script src="../../../js/ReportCharts/fame/droco.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+    //语言环境
+    var lanType = "zh-cn";
+    //配置文件信息
+    var _cfgInfo = {"ConfigID":7,"UID":"2106322801","CorpCorporation":"jonson","CorporationName":"强生（中国）有限公司（强生集团）","IsOpenReport":"T","AccScope":"2587:jonson_现结","HasMemHotelProduct":"T","HasAgrHotelProduct":"T","HasInAirTicketProduct":"T","HasOutAirTicketProduct":"T","HasCorpAccBillingType":"T","HasNonCorpAccBillingType":"T","HasMonthlyData":"T","HasQuarterData":"T","HasIndustryData":"F","HasTotalTop5":"T","HasFltMonthlyExpense":"T","HasFltTop5":"T","HasFltBack":"F","HasFltDeptDetail":"T","HasFltPassengerDetail":"T","HasAirlineTop5":"T","HasAirlineSave":"T","HasAgrFltGeneral":"T","HasAgrFltUse":"T","HasAgrFltComplete":"T","HasHtlDeptDetail":"T","HasAgrHtlGeneral":"T","HasAgrHtlUse":"T","HasAgrHtlNoPerson":"T","HasHtlSave":"T","HasHtlRCDetail":"T","HasHtlRCTop5":"T","HasTrainTop5Dept":null,"HasNoUseTickets":null,"HasPositionTracking":null,"DataChangeCreateTime":"\/Date(1399878375000)\/","DataChangeLastTime":"\/Date(1411382466000)\/"};
+	//头部选中条件
+	var _headSelectInfo = CM.hashAny(window.location.hash);
+	//头部搜索条件
+	var _headInitInfo = {
+	    masterAccountInfo: [{"Name":"jonson_现结","Value":"2587"}],
+        departmentInfo: [{"Name":"部门1","Value":"0"},{"Name":"部门2","Value":"1"},{"Name":"成本中心1","Value":"2"}],
+        consumerAttrInfo: [{"Name":"全部","Value":"0"},{"Name":"因公","Value":"1"}],
+        nowTime: "2015-03-05"
+    };
+    _headInitInfo.nowTime = _headInitInfo.nowTime.replace(new RegExp('-', 'g'),'/');
+</script>
+<script src="../../../js/ReportCharts/fame/highcharts.js" type="text/javascript"></script>
+<script src="../../../js/ReportCharts/flight/FltConsum.js" type="text/javascript"></script>
+</body>
+</html>

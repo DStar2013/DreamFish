@@ -141,7 +141,7 @@
                         var _p = this.points,
                         _str = '<b>' + this.x + ' ' + corpReport_FlightPage.js_Expenses + '</b><br/>';
                         for (var i = 0; i < _p.length; i++) {
-                            _str = _str + _p[i].series.name + ': ' + corpReport_Common.js_RMBLogo + CM.fixData.transData(_p[i].y, 0) + '<br/>';
+                            _str = _str + _p[i].series.name + ': ' + '¥' + CM.fixData.transData(_p[i].y, 0) + '<br/>';
                         }
                         return _str;
                     },
@@ -360,7 +360,7 @@
                 tooltip: {
                     formatter: function () {
                         return '<b>' + this.point.name + '</b><br/>' +
-                            corpReport_FlightPage.js_TotalExpenses + ': ' + corpReport_Common.js_RMBLogo + CM.fixData.transData(this.point.y, 0) + '<br/>' +
+                            corpReport_FlightPage.js_TotalExpenses + ': ' + '¥' + CM.fixData.transData(this.point.y, 0) + '<br/>' +
                             corpReport_FlightPage.js_Percent + ': ' + this.percentage.toFixed(1) + '%';
                     }
                 },
@@ -542,7 +542,7 @@
                         _str = '<b>' + this.x + '</b><br/>';
                             for (var i = 0; i < _p.length; i++) {
                                 if (tp == "column") {
-                                    _str = _str + _p[i].series.name + ': ' + corpReport_Common.js_RMBLogo + CM.fixData.transData(_p[i].y, 0) + '<br/>';
+                                    _str = _str + _p[i].series.name + ': ' + '¥' + CM.fixData.transData(_p[i].y, 0) + '<br/>';
                                 } else {
                                     _str = _str + _p[i].series.name + ': ' + (_p[i].y * 100).toFixed(1) + '%<br/>';
                                 }
@@ -791,8 +791,8 @@
     var pageData = {
         init: function () {
             //初始化页面的静止数据
-            $('#fltConsumPID').html('<em>' + corpReport_Common.js_RMBLogo + '</em>' + CM.fixData.transData(_flightStrInfo.AllConsume, 0));
-            $('#fltAvgPID').html('<em>' + corpReport_Common.js_RMBLogo + '</em>' + CM.fixData.transData(_flightStrInfo.AvgPrice, 0));
+            $('#fltConsumPID').html('<em>' + '¥' + '</em>' + CM.fixData.transData(_flightStrInfo.AllConsume, 0));
+            $('#fltAvgPID').html('<em>' + '¥' + '</em>' + CM.fixData.transData(_flightStrInfo.AvgPrice, 0));
         }
     };
 
@@ -800,34 +800,24 @@
     var flightPageInit = function (data) {
         var noDataID = $('#noDataID');
         noDataID.mask();
+
+
+        _filghtPageInfo = {"Flight":{"AllConsume":81540,"AvgPrice":626,"AvgDiscount":0.59},"FlightConsumInfo":{"DomFlight_Moth":[{"Month":"1月","MPrice":22042,"Totb":"33.799%","Huhb":"51.076%"},{"Month":"2月","MPrice":4720,"Totb":"-66.695%","Huhb":"-78.586%"},{"Month":"3月","MPrice":2629,"Totb":"-46.63%","Huhb":"-44.301%"},{"Month":"4月","MPrice":7510,"Totb":"-4.526%","Huhb":"185.66%"},{"Month":"5月","MPrice":6010,"Totb":"-46.205%","Huhb":"-19.973%"}],"InteFlight_Moth":[{"Month":"1月","MPrice":3690,"Totb":"-77.601%","Huhb":"-74.709%"},{"Month":"2月","MPrice":-3437,"Totb":"-124.252%","Huhb":"-193.144%"},{"Month":"3月","MPrice":0,"Totb":"-100%","Huhb":"-100%"},{"Month":"4月","MPrice":5999,"Totb":"-23.735%","Huhb":"100%"},{"Month":"5月","MPrice":32377,"Totb":"189.805%","Huhb":"439.707%"}],"DomFlight_Quar":[{"Month":"1季度","MPrice":29391,"Totb":"-17.376%","Huhb":"-37.109%"},{"Month":"2季度","MPrice":13520,"Totb":"-85.398%","Huhb":"-54%"}],"InteFlight_Quar":[{"Month":"1季度","MPrice":253,"Totb":"-99.289%","Huhb":"-99.459%"},{"Month":"2季度","MPrice":38376,"Totb":"-58.552%","Huhb":"15068.379%"}]},"FlightFivePartInfo":{"AllConsume":[{"Name":"JJC","MPrice":10763},{"Name":"销售部","MPrice":3354},{"Name":"南中国","MPrice":2210},{"Name":"母婴渠道北中国","MPrice":1120},{"Name":"购物者行销部","MPrice":830},{"Name":"其他","MPrice":63263}],"DomConsume":[{"Name":"JJC","MPrice":5409},{"Name":"销售部","MPrice":3354},{"Name":"南中国","MPrice":2210},{"Name":"母婴渠道北中国","MPrice":1120},{"Name":"购物者行销部","MPrice":830},{"Name":"其他","MPrice":29988}],"InteConsume":[{"Name":"JJC","MPrice":5354},{"Name":"其他","MPrice":33275}]},"FlightFiveDesInfo":{"AllConsume":[{"Name":"上海","MPrice":17339},{"Name":"普吉岛","MPrice":16045},{"Name":"罗马","MPrice":9250},{"Name":"曼谷","MPrice":7082},{"Name":"东京","MPrice":5999},{"Name":"其他","MPrice":25825}],"DomConsume":[{"Name":"上海","MPrice":13770},{"Name":"北京","MPrice":5393},{"Name":"广州","MPrice":4930},{"Name":"厦门","MPrice":2590},{"Name":"济南","MPrice":2390},{"Name":"其他","MPrice":13838}],"InteConsume":[{"Name":"普吉岛","MPrice":16045},{"Name":"罗马","MPrice":9250},{"Name":"曼谷","MPrice":7082},{"Name":"东京","MPrice":5999},{"Name":"上海","MPrice":3569},{"Name":"其他","MPrice":-3316}]},"BkChangeInfo":{"BkChange_Moth":[{"Month":"1月","MPrice":0,"Percent":0.174},{"Month":"2月","MPrice":0,"Percent":0},{"Month":"3月","MPrice":72,"Percent":0.667},{"Month":"4月","MPrice":0,"Percent":0},{"Month":"5月","MPrice":0,"Percent":0}],"Change_Month":[{"Month":"1月","MPrice":0,"Percent":0.043},{"Month":"2月","MPrice":0,"Percent":0},{"Month":"3月","MPrice":0,"Percent":0},{"Month":"4月","MPrice":0,"Percent":0},{"Month":"5月","MPrice":0,"Percent":0}],"BkChange_Quar":[{"Month":"1季度","MPrice":72,"Percent":0.231},{"Month":"2季度","MPrice":0,"Percent":0}],"Change_Quar":[{"Month":"1季度","MPrice":0,"Percent":0.038},{"Month":"2季度","MPrice":0,"Percent":0}]},"BkMethodInfo":{"DomOrders":[{"Name":"Offline","Number":28},{"Name":"Online","Number":20},{"Name":"Mobile","Number":0}],"InteOrders":[{"Name":"Offline","Number":9},{"Name":"Online","Number":3},{"Name":"Mobile","Number":0}]}};
+        //初始赋值
+        _flightStrInfo = _filghtPageInfo.Flight;
+        _flightConsumInfo = _filghtPageInfo.FlightConsumInfo;
+        _flightFivePartInfo = _filghtPageInfo.FlightFivePartInfo;
+        _flightFiveDesInfo = _filghtPageInfo.FlightFiveDesInfo;
+        _bkChangeInfo = _filghtPageInfo.BkChangeInfo;
+        _bkMethodInfo = _filghtPageInfo.BkMethodInfo;
+        //初始化
+        pageData.init();
+        flightConsum.init();
+        flightPartDesConsum.init();
+        backChange.init();
+        bookMethod.init();
         //
-        $.ajax({
-            url: '../Flight/GetFlightPage',
-            type: "POST",
-            data: data,
-            success: function (data) {
-                noDataID.unmask();
-                //初始赋值
-                _filghtPageInfo = $.parseJSON(data);
-                //初始赋值
-                _flightStrInfo = _filghtPageInfo.Flight;
-                _flightConsumInfo = _filghtPageInfo.FlightConsumInfo;
-                _flightFivePartInfo = _filghtPageInfo.FlightFivePartInfo;
-                _flightFiveDesInfo = _filghtPageInfo.FlightFiveDesInfo;
-                _bkChangeInfo = _filghtPageInfo.BkChangeInfo;
-                _bkMethodInfo = _filghtPageInfo.BkMethodInfo;
-                //初始化
-                pageData.init();
-                flightConsum.init();
-                flightPartDesConsum.init();
-                backChange.init();
-                bookMethod.init();
-            },
-            error: function () {
-                noDataID.unmask();
-                CM && CM.goError();
-            }
-        });
+        noDataID.unmask();
     }
 
     //☆=================== Fun E ===================☆

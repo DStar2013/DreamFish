@@ -20,19 +20,19 @@
 
             _allConsumSelID.empty();
             _allConsumSelID.css('display', '');
-            //' + corpReport_SumPage.js_monthly + ',' + corpReport_SumPage.js_quarterly + '是否存在
+            //' + '月度' + ',' + '季度' + '是否存在
             if (_cfgInfo.HasMonthlyData == "T" || _cfgInfo.HasQuarterData == "T") {
                 var _s = [];
                 if (_cfgInfo.HasMonthlyData == "F") {
-                    //只有' + corpReport_SumPage.js_quarterly + '
-                    _s.push('<label><input type="radio" name="option1" checked="checked" value="1"/>' + corpReport_SumPage.js_Quarterly + '</label>');
+                    //只有' + '季度' + '
+                    _s.push('<label><input type="radio" name="option1" checked="checked" value="1"/>' + '季度' + '</label>');
                     //
                     allConsum.getMonArgInfo(1);
                 } else {
-                    _s.push('<label><input type="radio" name="option1" checked="checked" value="0"/>' + corpReport_SumPage.js_Monthly + '</label>');
+                    _s.push('<label><input type="radio" name="option1" checked="checked" value="0"/>' + '月度' + '</label>');
                     if (_cfgInfo.HasQuarterData == "T") {
-                        //' + corpReport_SumPage.js_monthly + '和' + corpReport_SumPage.js_quarterly + '
-                        _s.push('<label><input type="radio" name="option1" value="1"/>' + corpReport_SumPage.js_Quarterly + '</label>');
+                        //' + '月度' + '和' + '季度' + '
+                        _s.push('<label><input type="radio" name="option1" value="1"/>' + '季度' + '</label>');
                     }
                     //
                     allConsum.getMonArgInfo(0);
@@ -46,7 +46,7 @@
                     _allConsumSelID.find('input').bind('change', allConsum.onSelectChange);
                 }
             } else {
-                //' + corpReport_SumPage.js_monthly + '' + corpReport_SumPage.js_quarterly + '都不存在
+                //' + '月度' + '' + '季度' + '都不存在
                 _allConsumSelID.css('display', 'none');
                 _allConsumMID.css('display', 'none');
                 _allConsumSID.css('display', 'none');
@@ -92,73 +92,73 @@
             return _empty;
         },
         getMonArgInfo: function (index) {
-            //0为' + corpReport_SumPage.js_monthly + '数据，1为' + corpReport_SumPage.js_quarterly + '数据
+            //0为' + '月度' + '数据，1为' + '季度' + '数据
             allConsum._allConsumData = [];
             allConsum._consumBarData = [];
 
             //火车票数据新增
             allConsum._allConsumData.push({
-                Name: corpReport_SumPage.js_Train,
+                Name: '火车票',
                 Data: (index == 0) ? _inSumInfo.Train_moth : _inSumInfo.Train_quar,
                 Color: '#00cd9f'
             });
             allConsum._consumBarData.push({
-                Name: corpReport_SumPage.js_Train,
+                Name: '火车票',
                 Data: _inSumInfo.TrainPrice,
                 Color: '#00cd9f'
             });
-            //' + corpReport_SumPage.js_CorporateHotel + '是否存在
+            //' + '协议酒店' + '是否存在
             if (_cfgInfo.HasAgrHotelProduct == "T") {
                 allConsum._allConsumData.push({
-                    Name: corpReport_SumPage.js_CorporateHotel,
+                    Name: '协议酒店',
                     Data: (index == 0) ? _inSumInfo.ArgHotel_Moth : _inSumInfo.ArgHotel_Quar,
                     Color: '#feda85'
                 });
                 //
                 allConsum._consumBarData.push({
-                    Name: corpReport_SumPage.js_CorporateHotel,
+                    Name: '协议酒店',
                     Data: _inSumInfo.ArgHotelPrice,
                     Color: '#feda85'
                 });
             }
-            //' + corpReport_SumPage.js_MemberHotel + '是否存在
+            //' + '会员酒店' + '是否存在
             if (_cfgInfo.HasMemHotelProduct == "T") {
                 allConsum._allConsumData.push({
-                    Name: corpReport_SumPage.js_MemberHotel,
+                    Name: '会员酒店',
                     Data: (index == 0) ? _inSumInfo.MemHotel_Moth : _inSumInfo.MemHotel_Quar,
                     Color: '#ffa60c'
                 });
                 //
                 allConsum._consumBarData.push({
-                    Name: corpReport_SumPage.js_MemberHotel,
+                    Name: '会员酒店',
                     Data: _inSumInfo.MemHotelPrice,
                     Color: '#ffa60c'
                 });
             }
-            //' + corpReport_SumPage.js_InAirfare + '是否存在
+            //' + '国际机票' + '是否存在
             if (_cfgInfo.HasOutAirTicketProduct == "T") {
                 allConsum._allConsumData.push({
-                    Name: corpReport_SumPage.js_InAirfare,
+                    Name: '国际机票',
                     Data: (index == 0) ? _inSumInfo.InteFlight_Moth : _inSumInfo.InteFlight_Quar,
                     Color: '#79b3ff'
                 });
                 //
                 allConsum._consumBarData.push({
-                    Name: corpReport_SumPage.js_InAirfare,
+                    Name: '国际机票',
                     Data: _inSumInfo.InterFlightPrice,
                     Color: '#79b3ff'
                 });
             }
-            //' + corpReport_SumPage.js_DoAirfare + '是否存在
+            //' + '国内机票' + '是否存在
             if (_cfgInfo.HasInAirTicketProduct == "T") {
                 allConsum._allConsumData.push({
-                    Name: corpReport_SumPage.js_DoAirfare,
+                    Name: '国内机票',
                     Data: (index == 0) ? _inSumInfo.DomFlight_Moth : _inSumInfo.DomFlight_Quar,
                     Color: '#1c76ec'
                 });
                 //
                 allConsum._consumBarData.push({
-                    Name: corpReport_SumPage.js_DoAirfare,
+                    Name: '国内机票',
                     Data: _inSumInfo.DomFlightPrice,
                     Color: '#1c76ec'
                 });
@@ -213,10 +213,10 @@
                     borderWidth: 1,
                     shadow: false,
                     formatter: function () {
-                        return '<b>' + this.x + ' ' + this.series.name + ' ' + corpReport_SumPage.js_Expense + '</b><br/>' +
-                            corpReport_SumPage.js_Amount + ': ' + corpReport_Common.js_RMBLogo + CM.fixData.transData(this.y, 0) + '<br/>' +
-                            corpReport_SumPage.js_YearoverYear + ': ' + this.point.totb + '<br/>' +
-                            corpReport_SumPage.js_MonthoverMonth + ': ' + this.point.huhb + '<br/>';
+                        return '<b>' + this.x + ' ' + this.series.name + ' ' + '消费' + '</b><br/>' +
+                            '金额' + ': ' + '¥' + CM.fixData.transData(this.y, 0) + '<br/>' +
+                            '同比' + ': ' + this.point.totb + '<br/>' +
+                            '环比' + ': ' + this.point.huhb + '<br/>';
                     },
                     style: {
                         //fontSize: '8px',
@@ -320,7 +320,7 @@
                 tooltip: {
                     formatter: function () {
                         return '<b>' + this.x + '</b><br/>' +
-                            corpReport_SumPage.js_TotalExpenses + ': <b>' + corpReport_Common.js_RMBLogo + '</b>' + CM.fixData.transData(this.y, 0);
+                            '消费金额' + ': <b>' + '¥' + '</b>' + CM.fixData.transData(this.y, 0);
                     },
                     style: {
                         lineHeight: '18px'
@@ -331,7 +331,7 @@
                         dataLabels: {
                             enabled: true,
                             formatter: function () {
-                                return '<b>' + corpReport_Common.js_RMBLogo + '</b> ' + CM.fixData.transData(this.y, 0);
+                                return '<b>' + '¥' + '</b> ' + CM.fixData.transData(this.y, 0);
                             },
                             crop: false,
                             overflow: "none",
@@ -403,7 +403,7 @@
             var data = [],
             _d = {};
             _d.type = "pie";
-            _d.name = corpReport_SumPage.js_TotalExpenses;
+            _d.name = '消费金额';
             _d.data = fiveDepDesConsum.getData(dt);
             data[0] = _d;
 
@@ -436,8 +436,8 @@
                     formatter: function () {
                         if (this.percentage > 0) {
                             return '<b>' + this.point.name + '</b><br/>' +
-                            corpReport_SumPage.js_TotalExpenses + ':  ' + corpReport_Common.js_RMBLogo + CM.fixData.transData(this.point.y, 0) + '<br/>' +
-                            corpReport_SumPage.js_Percent + ': ' + this.percentage.toFixed(1) + '%'
+                            '消费金额' + ':  ' + '¥' + CM.fixData.transData(this.point.y, 0) + '<br/>' +
+                            '百分比' + ': ' + this.percentage.toFixed(1) + '%'
                         }
                     },
                     style: {
@@ -497,26 +497,26 @@
             _allHotelSelID.empty();
             _allHotelSelID.css('display', '');
 
-            //' + corpReport_SumPage.js_monthly + '' + corpReport_SumPage.js_quarterly + '是否存在
+            //' + '月度' + '' + '季度' + '是否存在
             if (_cfgInfo.HasMonthlyData == "T" || _cfgInfo.HasQuarterData == "T") {
                 var _f = [],
                 _h = [];
                 //
                 if (_cfgInfo.HasMonthlyData == "F") {
-                    //只有' + corpReport_SumPage.js_quarterly + '
+                    //只有' + '季度' + '
                     //机票
-                    _f.push('<label><input type="radio" name="option2" checked="checked" value="1"/>' + corpReport_SumPage.js_Quarterly + '</label>');
+                    _f.push('<label><input type="radio" name="option2" checked="checked" value="1"/>' + '季度' + '</label>');
                     all_flight_hotel.getFltDtInfo(1);
                     //酒店
-                    _h.push('<label><input type="radio" name="option3" checked="checked" value="1"/>' + corpReport_SumPage.js_Quarterly + '</label>');
+                    _h.push('<label><input type="radio" name="option3" checked="checked" value="1"/>' + '季度' + '</label>');
                     all_flight_hotel.getHtlDtInfo(1);
                 } else {
-                    _f.push('<label><input type="radio" name="option2" checked="checked" value="0"/>' + corpReport_SumPage.js_Monthly + '</label>');
-                    _h.push('<label><input type="radio" name="option3" checked="checked" value="0"/>' + corpReport_SumPage.js_Monthly + '</label>');
+                    _f.push('<label><input type="radio" name="option2" checked="checked" value="0"/>' + '月度' + '</label>');
+                    _h.push('<label><input type="radio" name="option3" checked="checked" value="0"/>' + '月度' + '</label>');
                     if (_cfgInfo.HasQuarterData == "T") {
                         //月、季都有
-                        _f.push('<label><input type="radio" name="option2" value="1"/>' + corpReport_SumPage.js_Quarterly + '</label>');
-                        _h.push('<label><input type="radio" name="option3" value="1"/>' + corpReport_SumPage.js_Quarterly + '</label>');
+                        _f.push('<label><input type="radio" name="option2" value="1"/>' + '季度' + '</label>');
+                        _h.push('<label><input type="radio" name="option3" value="1"/>' + '季度' + '</label>');
                     }
                     //
                     all_flight_hotel.getFltDtInfo(0);
@@ -558,40 +558,40 @@
             }
         },
         getFltDtInfo: function (index) {
-            //0表示' + corpReport_SumPage.js_monthly + '，1表示' + corpReport_SumPage.js_quarterly + '
+            //0表示' + '月度' + '，1表示' + '季度' + '
             all_flight_hotel._fltDtInfo = [];
-            //' + corpReport_SumPage.js_InAirfare + '是否存在
+            //' + '国际机票' + '是否存在
             if (_cfgInfo.HasOutAirTicketProduct == "T") {
                 all_flight_hotel._fltDtInfo.push({
-                    Name: corpReport_SumPage.js_InAirfare,
+                    Name: '国际机票',
                     Data: (index == 0) ? _inSumInfo.InteFlight_Moth : _inSumInfo.InteFlight_Quar,
                     Color: '#79b3ff'
                 });
             }
-            //' + corpReport_SumPage.js_DoAirfare + '是否存在
+            //' + '国内机票' + '是否存在
             if (_cfgInfo.HasInAirTicketProduct == "T") {
                 all_flight_hotel._fltDtInfo.push({
-                    Name: corpReport_SumPage.js_DoAirfare,
+                    Name: '国内机票',
                     Data: (index == 0) ? _inSumInfo.DomFlight_Moth : _inSumInfo.DomFlight_Quar,
                     Color: '#1c76ec'
                 });
             }
         },
         getHtlDtInfo: function (index) {
-            //0表示' + corpReport_SumPage.js_monthly + '，1表示' + corpReport_SumPage.js_quarterly + '
+            //0表示' + '月度' + '，1表示' + '季度' + '
             all_flight_hotel._htlDtInfo = [];
-            //' + corpReport_SumPage.js_CorporateHotel + '是否存在
+            //' + '协议酒店' + '是否存在
             if (_cfgInfo.HasAgrHotelProduct == "T") {
                 all_flight_hotel._htlDtInfo.push({
-                    Name: corpReport_SumPage.js_CorporateHotel,
+                    Name: '协议酒店',
                     Data: (index == 0) ? _inSumInfo.ArgHotel_Moth : _inSumInfo.ArgHotel_Quar,
                     Color: '#feda85'
                 });
             }
-            //' + corpReport_SumPage.js_MemberHotel + '是否存在
+            //' + '会员酒店' + '是否存在
             if (_cfgInfo.HasMemHotelProduct == "T") {
                 all_flight_hotel._htlDtInfo.push({
-                    Name: corpReport_SumPage.js_MemberHotel,
+                    Name: '会员酒店',
                     Data: (index == 0) ? _inSumInfo.MemHotel_Moth : _inSumInfo.MemHotel_Quar,
                     Color: '#ffa60c'
                 });
@@ -607,7 +607,7 @@
                 CM.LineHeightFix(_fltConsumID);
             } else {
                 //var _colors = ['#79b3ff', '#1c76ec'];
-                all_flight_hotel.drawColumnChart(_fltConsumID, all_flight_hotel._fltDtInfo, corpReport_SumPage.js_TotExpensesAir);
+                all_flight_hotel.drawColumnChart(_fltConsumID, all_flight_hotel._fltDtInfo, '机票总金额');
             }
         },
         dwHtlColum: function () {
@@ -620,7 +620,7 @@
                 CM.LineHeightFix(_hotelConsumID);
             } else {
                 //var _colors = ['#feda85', '#ffa60c'];
-                all_flight_hotel.drawColumnChart(_hotelConsumID, all_flight_hotel._htlDtInfo, corpReport_SumPage.js_TotExpensesHot);
+                all_flight_hotel.drawColumnChart(_hotelConsumID, all_flight_hotel._htlDtInfo, '酒店总金额');
             }
         },
         checkDataEmpty: function (dt) {
@@ -680,9 +680,9 @@
                     shared: true,
                     formatter: function () {
                         var _p = this.points,
-                        _str = '<b>' + this.x + ' ' + corpReport_SumPage.js_Expense + '</b><br/>';
+                        _str = '<b>' + this.x + ' ' + '消费' + '</b><br/>';
                         for (var i = 0; i < _p.length; i++) {
-                            _str = _str + _p[i].series.name + ': ' + corpReport_Common.js_RMBLogo + CM.fixData.transData(_p[i].y, 0) + '<br/>';
+                            _str = _str + _p[i].series.name + ': ' + '¥' + CM.fixData.transData(_p[i].y, 0) + '<br/>';
                         }
                         return _str;
                     },
@@ -747,20 +747,20 @@
     var pageData = {
         init: function () {
             //初始化页面的静止数据
-            $('#allConsumPID').html('<em>' + corpReport_Common.js_RMBLogo + '</em>' + CM.fixData.transData(_inSumInfo.AllConsumption, 0));
-            $('#allSavePID').html('<em>' + corpReport_Common.js_RMBLogo + '</em>' + CM.fixData.transData(_inSumInfo.AllSaving, 0));
+            $('#allConsumPID').html('<em>' + '¥' + '</em>' + CM.fixData.transData(_inSumInfo.AllConsumption, 0));
+            $('#allSavePID').html('<em>' + '¥' + '</em>' + CM.fixData.transData(_inSumInfo.AllSaving, 0));
 
-            $('#fltConsumPID').html('<em>' + corpReport_Common.js_RMBLogo + '</em>' + CM.fixData.transData(_flightInfo.AllConsum, 0));
-            $('#fltAvgPID').html('<em>' + corpReport_Common.js_RMBLogo + '</em>' + CM.fixData.transData(_flightInfo.AvgPrice, 0));
+            $('#fltConsumPID').html('<em>' + '¥' + '</em>' + CM.fixData.transData(_flightInfo.AllConsum, 0));
+            $('#fltAvgPID').html('<em>' + '¥' + '</em>' + CM.fixData.transData(_flightInfo.AvgPrice, 0));
             $('#fltAvgDisPID').html(_flightInfo.AveDisCount);
 
-            $('#htlConsumPID').html('<em>' + corpReport_Common.js_RMBLogo + '</em>' + CM.fixData.transData(_hotelInfo.AllConsum, 0));
-            $('#htlAvgPID').html('<em>' + corpReport_Common.js_RMBLogo + '</em>' + CM.fixData.transData(_hotelInfo.AvgPrice, 0));
+            $('#htlConsumPID').html('<em>' + '¥' + '</em>' + CM.fixData.transData(_hotelInfo.AllConsum, 0));
+            $('#htlAvgPID').html('<em>' + '¥' + '</em>' + CM.fixData.transData(_hotelInfo.AvgPrice, 0));
             //消费预警
             if (_sumPageInfo && _inSumInfo.Flag) {
                 var wI = $('#warnIcon'), wL = $('#warnLayer');
                 wI.css('display', '');
-                wL.html(corpReport_SumPage.js_WarnInfo1 + ' ' + _inSumInfo.WarnPer + ' ' + corpReport_SumPage.js_WarnInfo2);
+                wL.html('本期贵司差旅支出超出预算' + ' ' + _inSumInfo.WarnPer + ' ' + '%，请关注贵司的差旅管控。');
                 //
                 wI.bind('mouseover touchstart', function () {
                     wL.data('fi', window.setTimeout(function () { wL.css({ 'display': '' }); }, 150));
@@ -780,31 +780,20 @@
     var sumPageInit = function (data) {
         var noDataID = $('#noDataID');
         noDataID.mask();
+        _sumPageInfo = {"SumInfo":{"Flag":false,"WarnPer":"0","AllConsumption":1908174,"AllSaving":534482.62,"DomFlightPrice":42911,"InterFlightPrice":38629,"ArgHotelPrice":966357,"MemHotelPrice":859232,"TrainPrice":1045,"ArgHotel_Moth":[{"Month":"1月","MPrice":132298,"Totb":"-80.212%","Huhb":"-7.724%"},{"Month":"2月","MPrice":143331,"Totb":"21.203%","Huhb":"8.34%"},{"Month":"3月","MPrice":179953,"Totb":"1.407%","Huhb":"25.551%"},{"Month":"4月","MPrice":256238,"Totb":"76.028%","Huhb":"42.392%"},{"Month":"5月","MPrice":254537,"Totb":"67.054%","Huhb":"-0.664%"}],"MemHotel_Moth":[{"Month":"1月","MPrice":164209,"Totb":"-75.439%","Huhb":"14.534%"},{"Month":"2月","MPrice":114018,"Totb":"-3.585%","Huhb":"-30.565%"},{"Month":"3月","MPrice":219159,"Totb":"23.5%","Huhb":"92.214%"},{"Month":"4月","MPrice":173699,"Totb":"19.326%","Huhb":"-20.743%"},{"Month":"5月","MPrice":188147,"Totb":"23.482%","Huhb":"8.318%"}],"DomFlight_Moth":[{"Month":"1月","MPrice":22042,"Totb":"33.799%","Huhb":"51.076%"},{"Month":"2月","MPrice":4720,"Totb":"-66.695%","Huhb":"-78.586%"},{"Month":"3月","MPrice":2629,"Totb":"-46.63%","Huhb":"-44.301%"},{"Month":"4月","MPrice":7510,"Totb":"-4.526%","Huhb":"185.66%"},{"Month":"5月","MPrice":6010,"Totb":"-46.205%","Huhb":"-19.973%"}],"InteFlight_Moth":[{"Month":"1月","MPrice":3690,"Totb":"-77.601%","Huhb":"-74.709%"},{"Month":"2月","MPrice":-3437,"Totb":"-124.252%","Huhb":"-193.144%"},{"Month":"3月","MPrice":0,"Totb":"-100%","Huhb":"-100%"},{"Month":"4月","MPrice":5999,"Totb":"-23.735%","Huhb":"100%"},{"Month":"5月","MPrice":32377,"Totb":"189.805%","Huhb":"439.707%"}],"Train_moth":[{"Month":"1月","MPrice":472,"Totb":"100%","Huhb":"100%"},{"Month":"2月","MPrice":0,"Totb":"100%","Huhb":"-100%"},{"Month":"3月","MPrice":498,"Totb":"100%","Huhb":"100%"},{"Month":"4月","MPrice":74,"Totb":"100%","Huhb":"-85.141%"},{"Month":"5月","MPrice":0,"Totb":"100%","Huhb":"-100%"}],"ArgHotel_Quar":[{"Month":"1季度","MPrice":455582,"Totb":"-52.754%","Huhb":"10.009%"},{"Month":"2季度","MPrice":510775,"Totb":"1.624%","Huhb":"12.115%"}],"MemHotel_Quar":[{"Month":"1季度","MPrice":497386,"Totb":"-48.419%","Huhb":"20.103%"},{"Month":"2季度","MPrice":361846,"Totb":"-28.007%","Huhb":"-27.25%"}],"DomFlight_Quar":[{"Month":"1季度","MPrice":29391,"Totb":"-17.376%","Huhb":"-37.109%"},{"Month":"2季度","MPrice":13520,"Totb":"-85.398%","Huhb":"-54%"}],"InteFlight_Quar":[{"Month":"1季度","MPrice":253,"Totb":"-99.289%","Huhb":"-99.459%"},{"Month":"2季度","MPrice":38376,"Totb":"-58.552%","Huhb":"15068.379%"}],"Train_quar":[{"Month":"1季度","MPrice":970,"Totb":"100%","Huhb":"100%"},{"Month":"2季度","MPrice":74,"Totb":"100%","Huhb":"-92.371%"}]},"FivePartConInfo":{"FivePartConsumption":[{"Name":"JJC","MPrice":370587},{"Name":"南中国","MPrice":180423},{"Name":"北中国","MPrice":165194},{"Name":"购物者行销部","MPrice":157231},{"Name":"母婴渠道南中国","MPrice":119421},{"Name":"其他","MPrice":914994}]},"FiveDesConInfo":{"FiveDesConsumption":[{"Name":"北京","MPrice":347583},{"Name":"上海","MPrice":230659},{"Name":"广州","MPrice":94449},{"Name":"深圳","MPrice":87610},{"Name":"杭州","MPrice":64831},{"Name":"其他","MPrice":1082718}]},"FlightInfo":{"AllConsum":81540,"AvgPrice":626,"AveDisCount":0.59,"BeforeDiscount":[{"Day":"0天","Number":1,"Percent":0.02,"FullPriceNumber":1,"FullPricePer":1,"AvgDiscount":1,"NFullAvgDiscount":0},{"Day":"1天","Number":6,"Percent":0.122,"FullPriceNumber":1,"FullPricePer":0.167,"AvgDiscount":0.59,"NFullAvgDiscount":0.59},{"Day":"2天","Number":5,"Percent":0.102,"FullPriceNumber":0,"FullPricePer":0,"AvgDiscount":0.62,"NFullAvgDiscount":0.62},{"Day":"3天","Number":2,"Percent":0.041,"FullPriceNumber":0,"FullPricePer":0,"AvgDiscount":0.4,"NFullAvgDiscount":0.4},{"Day":"4天","Number":1,"Percent":0.02,"FullPriceNumber":0,"FullPricePer":0,"AvgDiscount":0.51,"NFullAvgDiscount":0.51},{"Day":"4天以上","Number":34,"Percent":0.694,"FullPriceNumber":6,"FullPricePer":0.176,"AvgDiscount":0.58,"NFullAvgDiscount":0.5}]},"HotelInfo":{"AllConsum":1825589,"AvgPrice":417,"StarSit":[{"Star":"2星","Percent":"16.2%"},{"Star":"3星","Percent":"10.1%"},{"Star":"4星","Percent":"38.3%"},{"Star":"5星","Percent":"34.7%"}]}};
+        _inSumInfo = _sumPageInfo.SumInfo;
+        _fivePartConInfo = _sumPageInfo.FivePartConInfo;
+        _fiveDesConInfo = _sumPageInfo.FiveDesConInfo;
+        _flightInfo = _sumPageInfo.FlightInfo;
+        _hotelInfo = _sumPageInfo.HotelInfo;
+        //初始化
+        pageData.init();
+        allConsum.init();
+        fiveDepDesConsum.init();
+        all_flight_hotel.init();
+
+        noDataID.unmask();
         //ajax
-        $.ajax({
-            url: '../ReportUI/GetSumPageData',
-            type: "POST",
-            data: data,
-            success: function (data) {
-                noDataID.unmask();
-                //初始赋值
-                _sumPageInfo = $.parseJSON(data);
-                _inSumInfo = _sumPageInfo.SumInfo;
-                _fivePartConInfo = _sumPageInfo.FivePartConInfo;
-                _fiveDesConInfo = _sumPageInfo.FiveDesConInfo;
-                _flightInfo = _sumPageInfo.FlightInfo;
-                _hotelInfo = _sumPageInfo.HotelInfo;
-                //初始化
-                pageData.init();
-                allConsum.init();
-                fiveDepDesConsum.init();
-                all_flight_hotel.init();
-            },
-            error: function () {
-                noDataID.unmask();
-                CM && CM.goError();
-            }
-        });
     }
 
     //☆=================== Fun E ===================☆

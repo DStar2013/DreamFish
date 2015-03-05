@@ -9,33 +9,33 @@ var Droco_Funs = (function ($) {
             flightSubNavInfo = [],
             filterBarInfo = [];
         //headInfo
-        headInfo.push('<div class="view_wrap"><h1 class="logo"><a href="http://ct.ctrip.com/crptravel/index.aspx"><i class="icon i1">Ctrip - 携程</i></a></h1><h2 class="site_name">' + corpReport_Common.js_TitleInfo + '<em>' + corpReport_Common.js_SubTitleInfo + '</em></h2>');
+        headInfo.push('<div class="view_wrap"><h1 class="logo"><a href="http://ct.ctrip.com/crptravel/index.aspx"><i class="icon i1">Ctrip - 携程</i></a></h1><h2 class="site_name">' + '在线报表' + '<em>' + 'onLine Report' + '</em></h2>');
         headInfo.push('<ul id="lanVerID" class="language_version"><li><a id="chV" title="中文版" class="current"><i class="icon i2">中文版</i></a></li><li><a id="enV" title="English" class=""><i class="icon i3">英文版</i></a></li></ul>');
         headInfo.push('<div id="menu" class="menu"><ul>');
-        headInfo.push('<li class="cur"><a dLink="../ReportUI/SumPage" href="SumPage">' + corpReport_Common.js_Summary + '</a></li>');
-        headInfo.push('<li><a dLink="../Flight/FlightPage" href="FlightPage">' + corpReport_Common.js_Airfare + '</a></li>');
-        headInfo.push('<li><a dLink="../Hotel/HotelPage" href="HotelPage">' + corpReport_Common.js_Hotel + '</a></li>');
-        headInfo.push('<li><a dLink="../ReportUI/TrainPage" href="TrainPage">' + corpReport_Common.js_Train + '</a></li>');
-        headInfo.push('<li><a dLink="../ReportUI/PositionTracking" href="PositionTracking">' + corpReport_Common.js_LocationTracking + '</a></li>');
+        headInfo.push('<li class="cur"><a dLink="../ReportUI/SumPage.html" href="SumPage.html">' + '总概' + '</a></li>');
+        headInfo.push('<li><a dLink="../Flight/FlightPage.html" href="FlightPage.html">' + '机票' + '</a></li>');
+        headInfo.push('<li><a dLink="../Hotel/HotelPage.html" href="HotelPage.html">' + '酒店' + '</a></li>');
+        headInfo.push('<li><a dLink="../ReportUI/TrainPage.html" href="TrainPage.html">' + '火车票' + '</a></li>');
+        headInfo.push('<li><a dLink="../ReportUI/PositionTracking.html" href="PositionTracking.html">' + '定位跟踪' + '</a></li>');
         headInfo.push('<li class="backLava"></li></ul></div></div>');
         //footerInfo
-        footerInfo.push('<div class="view_wrap"><p>' + corpReport_Common.msg_Message1 + '</p><p>' + corpReport_Common.msg_Message2 + '</p><p>Copyright© 1999-2014, ctrip.com. All Rights Reserved.</p></div>');
+        footerInfo.push('<div class="view_wrap"><p>' + '尾部赞助支付宝赞助下哦' + '</p><p>' + '~.~' + '</p><p>Copyright. All Rights Reserved.</p></div>');
         //hotelSubNavInfo
-        hotelSubNavInfo.push('<ul id="htlSubNavID"><li class="cur"><a dLink="HotelPage" href="HotelPage">' + corpReport_Common.js_HotelExpenses + '</a></li><li><a dLink="HotelAgreement" href="HotelAgreement">' + corpReport_Common.js_CorpHotel + '</a></li><li><a dLink="HotelStar" href="HotelStar">' + corpReport_Common.js_StarRating + '</a></li><li><a dLink="HotelCity" href="HotelCity">' + corpReport_Common.js_Cities + '</a></li><li><a dLink="HotelSvALs" href="HotelSvALs">' + corpReport_Common.js_Savings + '</a></li></ul>');
+        hotelSubNavInfo.push('<ul id="htlSubNavID"><li class="cur"><a dLink="HotelPage.html" href="HotelPage.html">' + '酒店总体情况' + '</a></li><li><a dLink="HotelAgreement.html" href="HotelAgreement.html">' + '协议酒店' + '</a></li><li><a dLink="HotelStar.html" href="HotelStar.html">' + '星级' + '</a></li><li><a dLink="HotelCity.html" href="HotelCity.html">' + '城市' + '</a></li><li><a dLink="HotelSvALs.html" href="HotelSvALs.html">' + '节省与损失' + '</a></li></ul>');
         //flightSubNavInfoxs
-        flightSubNavInfo.push('<ul id="fliSubNavID"><li class="cur"><a dLink="FlightPage" class="line2" href="FlightPage">' + corpReport_Common.js_AirfareExpenses + '</a></li>');
-        flightSubNavInfo.push('<li><a dLink="FlightDepAnysis" href="FlightDepAnysis">' + corpReport_Common.js_Departments + '</a></li>');
-        flightSubNavInfo.push('<li><a dLink="FlightPsgerAnysis" href="FlightPsgerAnysis">' + corpReport_Common.js_Passenger + '</a></li>');
-        flightSubNavInfo.push('<li><a dLink="FlightPositions" href="FlightPositions">' + corpReport_Common.js_CabinClass + '</a></li>');
-        flightSubNavInfo.push('<li><a dLink="FlightCarriers" href="FlightCarriers">' + corpReport_Common.js_Carriers + '</a></li>');
-        flightSubNavInfo.push('<li><a dLink="FlightRoutes" href="FlightRoutes">' + corpReport_Common.js_Itineraries + '</a></li>');
-        flightSubNavInfo.push('<li><a dLink="FlightFontDays" href="FlightFontDays">' + corpReport_Common.js_LeadTime + '</a></li>');
-        flightSubNavInfo.push('<li><a dLink="FlightSvALs" href="FlightSvALs">' + corpReport_Common.js_Savings + '</a></li>');
-        flightSubNavInfo.push('<li><a dLink="FlightNoUseTickets" href="FlightNoUseTickets">' + corpReport_Common.js_NoUseTicket + '</a></li>');
-        flightSubNavInfo.push('<li><a dLink="FlightAvtAgrmt" href="FlightAvtAgrmt">' + corpReport_Common.js_CorpAirline + '</a></li>');
-        flightSubNavInfo.push('<li><a dLink="FlightCarbEm" href="FlightCarbEm">' + corpReport_Common.js_CO2Emissions + '</a></li></ul>');
+        flightSubNavInfo.push('<ul id="fliSubNavID"><li class="cur"><a dLink="FlightPage.html.html" class="line2" href="FlightPage.html">' + '机票消费' + '</a></li>');
+        flightSubNavInfo.push('<li><a dLink="FlightDepAnysis.html" href="FlightDepAnysis.html">' + '部门分析' + '</a></li>');
+        flightSubNavInfo.push('<li><a dLink="FlightPsgerAnysis.html" href="FlightPsgerAnysis.html">' + '乘机人分析' + '</a></li>');
+        flightSubNavInfo.push('<li><a dLink="FlightPositions.html" href="FlightPositions.html">' + '舱位' + '</a></li>');
+        flightSubNavInfo.push('<li><a dLink="FlightCarriers.html" href="FlightCarriers.html">' + '承运商' + '</a></li>');
+        flightSubNavInfo.push('<li><a dLink="FlightRoutes.html" href="FlightRoutes.html">' + '航线' + '</a></li>');
+        flightSubNavInfo.push('<li><a dLink="FlightFontDays.html" href="FlightFontDays.html">' + '提前预订天数' + '</a></li>');
+        flightSubNavInfo.push('<li><a dLink="FlightSvALs.html" href="FlightSvALs.html">' + '节省与损失' + '</a></li>');
+        flightSubNavInfo.push('<li><a dLink="FlightNoUseTickets.html" href="FlightNoUseTickets.html">' + '未使用机票' + '</a></li>');
+        flightSubNavInfo.push('<li><a dLink="FlightAvtAgrmt.html" href="FlightAvtAgrmt.html">' + '协议航空' + '</a></li>');
+        flightSubNavInfo.push('<li><a dLink="FlightCarbEm.html" href="FlightCarbEm.html">' + '碳排放' + '</a></li></ul>');
         //FilterBarInfo
-        filterBarInfo.push('<div class="filter_option option1" id="masterAccountID"><label>' + corpReport_Common.js_PrimaryAccount + '</label><span><i class="icon i5"></i></span></div><div class="filter_option option2" id="departmentID"><label>' + corpReport_Common.js_Department + '</label><span><i class="icon i5"></i></span></div><div class="filter_option option3" id="consumerInfoID"><label>' + corpReport_Common.js_TravelType + '</label><span><i class="icon i5"></i></span></div><div class="filter_option option4"><label>' + corpReport_Common.js_TimePeriod + '</label><span class="" id="startDateID">yyyy-mm-dd<i class="icon i5 for_time1"></i></span><div class="option_box date date1 hidepop" style="display:none" id="startDateSelID"><ul id="stDateUlID"></ul></div><span class="time_connector">-</span><span class="" id="endDateID">yyyy-mm-dd<i class="icon i5"></i></span><div class="option_box date hidepop" style="display:none" id="endDateSelID" ><ul id="endDateUlID"></ul></div></div><div class="filter_search"><a href="javascript:void(0)" id="searchBtnID"><i class="icon i21"></i>' + corpReport_Common.btn_Search + '</a></div>');
+        filterBarInfo.push('<div class="filter_option option1" id="masterAccountID"><label>' + '主帐户' + '</label><span><i class="icon i5"></i></span></div><div class="filter_option option2" id="departmentID"><label>' + '部门' + '</label><span><i class="icon i5"></i></span></div><div class="filter_option option3" id="consumerInfoID"><label>' + '消费属性' + '</label><span><i class="icon i5"></i></span></div><div class="filter_option option4"><label>' + '时间范围' + '</label><span class="" id="startDateID">yyyy-mm-dd<i class="icon i5 for_time1"></i></span><div class="option_box date date1 hidepop" style="display:none" id="startDateSelID"><ul id="stDateUlID"></ul></div><span class="time_connector">-</span><span class="" id="endDateID">yyyy-mm-dd<i class="icon i5"></i></span><div class="option_box date hidepop" style="display:none" id="endDateSelID" ><ul id="endDateUlID"></ul></div></div><div class="filter_search"><a href="javascript:void(0)" id="searchBtnID"><i class="icon i21"></i>' + '查询' + '</a></div>');
 
         return {
             HeadInfo: headInfo.join(""),

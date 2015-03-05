@@ -384,37 +384,28 @@
         //
         var noDataID = $('#noDataID');
         noDataID.mask();
+
+        
+        if (_cfgInfo.HasFltDeptDetail == "T") {
+            //初始赋值
+            _flightDepAnisisInfo = {"FPAnysisInfoA":{"TotalInfo":{"TolPrice":80393,"TolNumbers":59,"TolAvgDiscount":0.67,"TolFullPer":0.136,"TolSave":24091,"TolSaveRate":0.289,"TolLoss":0,"TolLossRate":0,"TolIntMilAvgPrice":0.43,"TolRcRate":0,"TolPreOrderdate":3.8},"PartInfo":[{"DepartName":"其他","Price":61277,"Numbers":40,"AvgDiscount":0.7,"FullPerc":0.15,"Save":15923,"SaveRate":0.264,"Loss":0,"LossRate":0,"IntMilAvgPrice":0.4,"RcRate":0,"PreOrderdate":4},{"DepartName":"JJC","Price":11142,"Numbers":9,"AvgDiscount":0.65,"FullPerc":0,"Save":3531,"SaveRate":0.292,"Loss":0,"LossRate":0,"IntMilAvgPrice":0.54,"RcRate":0,"PreOrderdate":3.1},{"DepartName":"销售部","Price":3354,"Numbers":5,"AvgDiscount":0.62,"FullPerc":0.2,"Save":1596,"SaveRate":0.387,"Loss":0,"LossRate":0,"IntMilAvgPrice":0.59,"RcRate":0,"PreOrderdate":3.2},{"DepartName":"南中国","Price":2210,"Numbers":1,"AvgDiscount":1,"FullPerc":1,"Save":0,"SaveRate":0,"Loss":0,"LossRate":0,"IntMilAvgPrice":3.83,"RcRate":0,"PreOrderdate":1},{"DepartName":"母婴渠道北中国","Price":1120,"Numbers":2,"AvgDiscount":0.35,"FullPerc":0,"Save":1390,"SaveRate":0.641,"Loss":0,"LossRate":0,"IntMilAvgPrice":0.34,"RcRate":0,"PreOrderdate":5},{"DepartName":"购物者行销部","Price":830,"Numbers":1,"AvgDiscount":0.39,"FullPerc":0,"Save":980,"SaveRate":0.609,"Loss":0,"LossRate":0,"IntMilAvgPrice":0.35,"RcRate":0,"PreOrderdate":5},{"DepartName":"Ops，TPM","Price":460,"Numbers":1,"AvgDiscount":0.3,"FullPerc":0,"Save":670,"SaveRate":0.698,"Loss":0,"LossRate":0,"IntMilAvgPrice":0.33,"RcRate":0,"PreOrderdate":5}]},"FPAnysisInfoN":{"TotalInfo":{"TolPrice":40419,"TolNumbers":49,"TolAvgDiscount":0.6,"TolFullPer":0.163,"TolSave":23056,"TolSaveRate":0.418,"TolLoss":0,"TolLossRate":0,"TolIntMilAvgPrice":0.59,"TolRcRate":0,"TolPreOrderdate":4.6},"PartInfo":[{"DepartName":"其他","Price":27036,"Numbers":32,"AvgDiscount":0.62,"FullPerc":0.188,"Save":15059,"SaveRate":0.409,"Loss":0,"LossRate":0,"IntMilAvgPrice":0.59,"RcRate":0,"PreOrderdate":5},{"DepartName":"JJC","Price":5409,"Numbers":7,"AvgDiscount":0.55,"FullPerc":0,"Save":3361,"SaveRate":0.451,"Loss":0,"LossRate":0,"IntMilAvgPrice":0.54,"RcRate":0,"PreOrderdate":4},{"DepartName":"销售部","Price":3354,"Numbers":5,"AvgDiscount":0.62,"FullPerc":0.2,"Save":1596,"SaveRate":0.387,"Loss":0,"LossRate":0,"IntMilAvgPrice":0.59,"RcRate":0,"PreOrderdate":3.2},{"DepartName":"南中国","Price":2210,"Numbers":1,"AvgDiscount":1,"FullPerc":1,"Save":0,"SaveRate":0,"Loss":0,"LossRate":0,"IntMilAvgPrice":3.83,"RcRate":0,"PreOrderdate":1},{"DepartName":"母婴渠道北中国","Price":1120,"Numbers":2,"AvgDiscount":0.35,"FullPerc":0,"Save":1390,"SaveRate":0.641,"Loss":0,"LossRate":0,"IntMilAvgPrice":0.34,"RcRate":0,"PreOrderdate":5},{"DepartName":"购物者行销部","Price":830,"Numbers":1,"AvgDiscount":0.39,"FullPerc":0,"Save":980,"SaveRate":0.609,"Loss":0,"LossRate":0,"IntMilAvgPrice":0.35,"RcRate":0,"PreOrderdate":5},{"DepartName":"Ops，TPM","Price":460,"Numbers":1,"AvgDiscount":0.3,"FullPerc":0,"Save":670,"SaveRate":0.698,"Loss":0,"LossRate":0,"IntMilAvgPrice":0.33,"RcRate":0,"PreOrderdate":5}]},"FPAnysisInfoI":{"TotalInfo":{"TolPrice":39974,"TolNumbers":10,"TolAvgDiscount":1,"TolFullPer":0,"TolSave":1035,"TolSaveRate":0.037,"TolLoss":0,"TolLossRate":0,"TolIntMilAvgPrice":0.33,"TolRcRate":0,"TolPreOrderdate":0},"PartInfo":[{"DepartName":"其他","Price":34241,"Numbers":8,"AvgDiscount":1,"FullPerc":0,"Save":864,"SaveRate":0.037,"Loss":0,"LossRate":0,"IntMilAvgPrice":0.31,"RcRate":0,"PreOrderdate":0},{"DepartName":"JJC","Price":5733,"Numbers":2,"AvgDiscount":1,"FullPerc":0,"Save":170,"SaveRate":0.037,"Loss":0,"LossRate":0,"IntMilAvgPrice":0.54,"RcRate":0,"PreOrderdate":0}]}};
+            //初始赋值
+            _fPAnysisInfo1 = _flightDepAnisisInfo.FPAnysisInfoN;
+            _fPAnysisInfo = _flightDepAnisisInfo.FPAnysisInfoA;
+            _fPAnysisInfo2 = _flightDepAnisisInfo.FPAnysisInfoI;
+            //初始化
+            fltPartAnysis.init();
+            //
+            noticeInit();
+        } else {
+            var _t = $('#ptAnysisID');
+            $('#fltSelID,#depTxt').css('display', 'none');
+            _t.empty().height(520);
+            CM.ChargeFix(_t, "payment16.jpg", lanType);
+            //_t.html('<div class="payment"><img src="http://pic.ctrip.com/droco/img/sample/payment16.jpg" alt=""></div>');
+        }
+        noDataID.unmask();
         //ajax
-        $.ajax({
-            url: '../Flight/GetFlightDepAnysis',
-            type: "POST",
-            data: data,
-            success: function (data) {
-                noDataID.unmask();
-                if (_cfgInfo.HasFltDeptDetail == "T") {
-                    //初始赋值
-                    _flightDepAnisisInfo = $.parseJSON(data);
-                    //初始赋值
-                    _fPAnysisInfo1 = _flightDepAnisisInfo.FPAnysisInfoN;
-                    _fPAnysisInfo = _flightDepAnisisInfo.FPAnysisInfoA;
-                    _fPAnysisInfo2 = _flightDepAnisisInfo.FPAnysisInfoI;
-                    //初始化
-                    fltPartAnysis.init();
-                    //
-                    noticeInit();
-                } else {
-                    var _t = $('#ptAnysisID');
-                    $('#fltSelID,#depTxt').css('display', 'none');
-                    _t.empty().height(520);
-                    CM.ChargeFix(_t, "payment16.jpg", lanType);
-                    //_t.html('<div class="payment"><img src="http://pic.ctrip.com/droco/img/sample/payment16.jpg" alt=""></div>');
-                }
-            },
-            error: function () {
-                noDataID.unmask();
-                CM && CM.goError();
-            }
-        });
     }
 
     //☆=================== Fun E ===================☆
