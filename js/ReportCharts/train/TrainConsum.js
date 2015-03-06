@@ -467,34 +467,22 @@
     var trainPageInit = function (data) {
         var noDataID = $('#noDataID');
         noDataID.mask();
-        //
-        $.ajax({
-            url: '../ReportUI/GetTrainPage',
-            type: "POST",
-            data: data,
-            success: function (data) {
-                noDataID.unmask();
-                //初始赋值
-                _trainPageInfo = $.parseJSON(data);
-                //初始赋值
-                _trainStrInfo = _trainPageInfo.Train;
-                _trainConsumInfo = _trainPageInfo.TrainConsumInfo;
-                _fivePartConInfo = _trainPageInfo.TrainFivePartInfo;
-                _fiveDesConInfo = _trainPageInfo.TrainFiveDesInfo;
-                _trainRateInfo = _trainPageInfo.TrainRateInfo;
-                _TrainFiveTrip = _trainPageInfo.TrainTop5TripInfo;
-                //初始化
-                pageData.init();
-                trainConsum.init();
-                fiveDepDesConsum.init();
-                ticketRate.init();
-                trainTop5Trip.init();
-            },
-            error: function () {
-                noDataID.unmask();
-                CM && CM.goError();
-            }
-        });
+        //初始赋值
+        _trainPageInfo = {"Train":{"AllConsume":44957.5,"AvgPrice":369,"AvgDiscount":0},"TrainConsumInfo":{"Train_moth":[{"Month":"1月","MPrice":218,"Totb":"100%","Huhb":"100%"},{"Month":"2月","MPrice":4687,"Totb":"100%","Huhb":"2050%"},{"Month":"3月","MPrice":6074,"Totb":"100%","Huhb":"29.592%"},{"Month":"4月","MPrice":2736,"Totb":"100%","Huhb":"-54.956%"},{"Month":"5月","MPrice":3160,"Totb":"100%","Huhb":"15.497%"},{"Month":"6月","MPrice":8152,"Totb":"100%","Huhb":"157.975%"},{"Month":"7月","MPrice":19930,"Totb":"100%","Huhb":"144.48%"}],"Train_quar":[{"Month":"1季度","MPrice":10980,"Totb":"100%","Huhb":"100%"},{"Month":"2季度","MPrice":14048,"Totb":"100%","Huhb":"27.942%"},{"Month":"3季度","MPrice":19930,"Totb":"100%","Huhb":"41.871%"}]},"TrainFivePartInfo":{"FivePartConsumption":[{"Name":"CNAUS BJ","MPrice":6028},{"Name":"CNEMS","MPrice":2974},{"Name":"CNABB BJ","MPrice":2858},{"Name":"CNAUS","MPrice":2434},{"Name":"CNABB SH","MPrice":2416},{"Name":"其他","MPrice":8045}]},"TrainFiveDesInfo":{"FiveDesConsumption":[{"Name":"北京","MPrice":11546},{"Name":"上海","MPrice":8868},{"Name":"呼和浩特","MPrice":2348},{"Name":"无锡","MPrice":2134},{"Name":"徐州","MPrice":1982},{"Name":"其他","MPrice":18080}]},"TrainRateInfo":{"TicketsTypeInfo":[{"Name":"高铁","Quantity":164},{"Name":"动车","Quantity":54},{"Name":"普通车","Quantity":26}],"TicketsSeatInfo":[{"Name":"一等座","Quantity":142},{"Name":"二等座","Quantity":68},{"Name":"其他","Quantity":34}]},"TrainTop5TripInfo":{"TolTripInfo":{"TripName":"","Price":42437.5,"Tickets":122,"AvgPrice":348},"TripInfo":[{"TripName":"上海-北京","Price":6369.5,"Tickets":7,"AvgPrice":910},{"TripName":"北京-上海","Price":4285,"Tickets":5,"AvgPrice":857},{"TripName":"上海-呼和浩特","Price":2247.5,"Tickets":5,"AvgPrice":450},{"TripName":"北京-无锡","Price":2054,"Tickets":4,"AvgPrice":514},{"TripName":"北京-淮南东","Price":1975.5,"Tickets":3,"AvgPrice":658},{"TripName":"其他","Price":25506,"Tickets":98,"AvgPrice":260}]}};
+        //初始赋值
+        _trainStrInfo = _trainPageInfo.Train;
+        _trainConsumInfo = _trainPageInfo.TrainConsumInfo;
+        _fivePartConInfo = _trainPageInfo.TrainFivePartInfo;
+        _fiveDesConInfo = _trainPageInfo.TrainFiveDesInfo;
+        _trainRateInfo = _trainPageInfo.TrainRateInfo;
+        _TrainFiveTrip = _trainPageInfo.TrainTop5TripInfo;
+        //初始化
+        pageData.init();
+        trainConsum.init();
+        fiveDepDesConsum.init();
+        ticketRate.init();
+        trainTop5Trip.init();
+        noDataID.unmask();
     }
     //☆=================== Fun E ===================☆
     //
