@@ -409,7 +409,7 @@
             return false;
     }
     //☆=================== Fun E ===================☆
-    if (_cfgInfo.HasPositionTracking == "T") {
+    if (true) {
         cityMap.init();
         tarckPage.init();
     } else {
