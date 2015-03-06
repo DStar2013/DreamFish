@@ -310,30 +310,20 @@
     var flightPositionsInit = function (data) {
         var noDataID = $('#noDataID');
         noDataID.mask();
-        //
-        $.ajax({
-            url: '../Flight/GetFlightPositions',
-            type: "POST",
-            data: data,
-            success: function (data) {
-                noDataID.unmask();
-                //初始赋值
-                _flightPositionsInfo = $.parseJSON(data);
-                //初始赋值
-                _positionInfo = _flightPositionsInfo.PositionInfo;
-                _rateInfo = _flightPositionsInfo.RateInfo;
-                _industyInfo = _flightPositionsInfo.IndustyInfo;
+        
+        //初始赋值
+        _flightPositionsInfo = {"PositionInfo":{"DomPositionInfo":[{"Name":"前返经济舱","Number":0},{"Name":"折扣经济舱","Number":41},{"Name":"全价经济舱","Number":7},{"Name":"公务舱","Number":0},{"Name":"头等舱","Number":1}],"IntPositionInfo":[{"Name":"前返经济舱","Number":0},{"Name":"折扣经济舱","Number":9},{"Name":"全价经济舱","Number":1},{"Name":"公务舱","Number":0},{"Name":"头等舱","Number":0}]},"RateInfo":{"RateDistuInfo":[{"Range":"全价","Number":7,"Percent":"14.6%"},{"Range":"0.90 - 0.99","Number":2,"Percent":"4.2%"},{"Range":"0.80 - 0.89","Number":2,"Percent":"4.2%"},{"Range":"0.70 - 0.79","Number":3,"Percent":"6.2%"},{"Range":"0.60 - 0.69","Number":7,"Percent":"14.6%"},{"Range":"0.50 - 0.59","Number":7,"Percent":"14.6%"},{"Range":"0.40 - 0.49","Number":10,"Percent":"20.8%"},{"Range":"0.30 - 0.39","Number":10,"Percent":"20.8%"},{"Range":"0.20 - 0.29","Number":0,"Percent":"0%"},{"Range":"0.10 - 0.19","Number":0,"Percent":"0%"},{"Range":"0.00 - 0.09","Number":0,"Percent":"0%"}]},"IndustyInfo":{"IndustyInfo":[{"Name":"我司","Percent":0.16,"AvgDis":0.59,"MK":1},{"Name":"散客","Percent":0,"AvgDis":0,"MK":0},{"Name":"商旅","Percent":0.22,"AvgDis":0.79,"MK":0}]}};
+        //初始赋值
+        _positionInfo = _flightPositionsInfo.PositionInfo;
+        _rateInfo = _flightPositionsInfo.RateInfo;
+        _industyInfo = _flightPositionsInfo.IndustyInfo;
 
-                //初始化
-                posDistu.init();
-                rateDis.init();
-                industry.init();  //油表图
-            },
-            error: function () {
-                noDataID.unmask();
-                CM && CM.goError();
-            }
-        });
+        //初始化
+        posDistu.init();
+        rateDis.init();
+        industry.init(); //油表图
+        //
+        noDataID.unmask();
     }
     //☆=================== Fun E ===================☆
     //

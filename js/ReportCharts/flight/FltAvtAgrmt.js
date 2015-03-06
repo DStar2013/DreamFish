@@ -188,23 +188,14 @@
                 //发送ajax，获取数据，绘制table
                 var _ptDt = dpHeader.getHeadData();
                 _ptDt.CarrierUID = _fltCarrID.data('UID');
-                //
-                $.ajax({
-                    url: '../Flight/GetFltArgCompInfo',
-                    type: "POST",
-                    data: _ptDt,
-                    success: function (data) {
-                        _fltArgCompInfo = $.parseJSON(data);
-                        //绘制table
-                        fltArgComp.clearAll();
-                        fltArgComp.drawHead();
-                        fltArgComp.drawBody(_fltArgCompInfo.ArgCompInfo);
-                        fltArgComp.drawFoot(_fltArgCompInfo.TolArgCompInfo);
-                    },
-                    error: function () {
-                        alert('error!');
-                    }
-                });
+
+                _fltArgCompInfo = {"TolArgCompInfo":{"TolNumber":2273,"TolConsum":2027110,"TolDomNumber":0,"TolDomConsum":2027110,"TolDomFCNumber":10,"TolDomFCPrice":21660,"TolDomYNumber":2263,"TolDomYPrice":2005450,"TolIntNumber":0,"TolIntPrice":0,"TolPreSv":472706.92410000006},"ArgCompInfo":[{"Month":"1月","TolNumber":1301,"TolConsum":1160670,"DomNumber":1301,"DomConsum":1160670,"DomYNumber":1294,"DomYPrice":1143740,"DomFCNumber":7,"DomFCPrice":16930,"IntNumber":0,"IntPrice":0,"PreSv":272303.6109},{"Month":"2月","TolNumber":972,"TolConsum":866440,"DomNumber":972,"DomConsum":866440,"DomYNumber":969,"DomYPrice":861710,"DomFCNumber":3,"DomFCPrice":4730,"IntNumber":0,"IntPrice":0,"PreSv":200403.3132}]};
+                //绘制table
+                fltArgComp.clearAll();
+                fltArgComp.drawHead();
+                fltArgComp.drawBody(_fltArgCompInfo.ArgCompInfo);
+                fltArgComp.drawFoot(_fltArgCompInfo.TolArgCompInfo);
+                
             }, 1000);
         },
         drawHead: function () {
@@ -314,28 +305,18 @@
     var flightAvtAgrmtInit = function (data) {
         var noDataID = $('#noDataID');
         noDataID.mask();
+
+        _flightAvtAgrmtInfo = {"FltAgrInfo":{"AgrToltalInfo":{"TolPrice":7389940,"TolPercent":"38.6%"},"AgrFltDistInfo":[{"Name":"中国国际航空","Price":2675050,"UID":"CA"},{"Name":"中国东方航空","Price":2027110,"UID":"MU"},{"Name":"中国南方航空","Price":1257780,"UID":"CZ"},{"Name":"上海航空","Price":571350,"UID":"FM"},{"Name":"海南航空","Price":526050,"UID":"HU"},{"Name":"其他","Price":332600,"UID":""}]},"CarriersList":[{"Name":"中国国际航空","UID":"CA"},{"Name":"中国东方航空","UID":"MU"},{"Name":"中国南方航空","UID":"CZ"},{"Name":"上海航空","UID":"FM"},{"Name":"海南航空","UID":"HU"},{"Name":"山东航空","UID":"SC"},{"Name":"深圳航空","UID":"ZH"},{"Name":"中国联合航空","UID":"KN"},{"Name":"大新华航空","UID":"CN"}]};
+        //初始赋值
+        _fltAgrInfo = _flightAvtAgrmtInfo.FltAgrInfo;
+        _fltCarrList = _flightAvtAgrmtInfo.CarriersList;
+        //初始化
+        fltArgDis.init();
+        pageData.init();
+        fltArgComp.init();
         //
-        $.ajax({
-            url: '../Flight/GetFlightAvtAgrmt',
-            type: "POST",
-            data: data,
-            success: function (data) {
-                noDataID.unmask();
-                //初始赋值
-                _flightAvtAgrmtInfo = $.parseJSON(data);
-                //初始赋值
-                _fltAgrInfo = _flightAvtAgrmtInfo.FltAgrInfo;
-                _fltCarrList = _flightAvtAgrmtInfo.CarriersList;
-                //初始化
-                fltArgDis.init();
-                pageData.init();
-                fltArgComp.init();
-            },
-            error: function () {
-                noDataID.unmask();
-                CM && CM.goError();
-            }
-        });
+        noDataID.unmask();
+        //
     }
     //☆=================== Fun E ===================☆
     //

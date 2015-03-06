@@ -467,29 +467,17 @@
     var flightFontDaysInit = function (data) {
         var noDataID = $('#noDataID');
         noDataID.mask();
+        _flightFontDaysInfo ={"FontDaysInfo":{"DepartInfo":[{"Name":"销售部","UID":0},{"Name":"","UID":0},{"Name":"JJC","UID":0},{"Name":"Ops，TPM","UID":0},{"Name":"母婴渠道北中国","UID":0},{"Name":"南中国","UID":0},{"Name":"购物者行销部","UID":0}],"TolFullInfo":{"TolNumber":49,"TolNumPercent":1,"TolFullPriceNumber":8,"TolFullPricePer":0.163,"TolAvgDiscount":0.59,"TolNFullAvgDiscount":0.52},"FontDaysFullInfo":[{"Day":"0天","Number":1,"Percent":0.02,"FullPriceNumber":1,"FullPricePer":1,"AvgDiscount":1,"NFullAvgDiscount":0},{"Day":"1天","Number":6,"Percent":0.122,"FullPriceNumber":1,"FullPricePer":0.167,"AvgDiscount":0.59,"NFullAvgDiscount":0.59},{"Day":"2天","Number":5,"Percent":0.102,"FullPriceNumber":0,"FullPricePer":0,"AvgDiscount":0.62,"NFullAvgDiscount":0.62},{"Day":"3天","Number":2,"Percent":0.041,"FullPriceNumber":0,"FullPricePer":0,"AvgDiscount":0.4,"NFullAvgDiscount":0.4},{"Day":"4天","Number":1,"Percent":0.02,"FullPriceNumber":0,"FullPricePer":0,"AvgDiscount":0.51,"NFullAvgDiscount":0.51},{"Day":"4天以上","Number":34,"Percent":0.694,"FullPriceNumber":6,"FullPricePer":0.176,"AvgDiscount":0.58,"NFullAvgDiscount":0.5}]}};
+        //初始赋值
+        _fontDaysInfo = _flightFontDaysInfo.FontDaysInfo;
+        //初始化
+        fontDaysAvgDis.init();
+        fontDaysAllPer.init();
+        fontDaysPtAny.init();
         //
-        $.ajax({
-            url: '../Flight/GetFlightFontDays',
-            type: "POST",
-            data: data,
-            success: function (data) {
-                noDataID.unmask();
-                //初始赋值
-                _flightFontDaysInfo = $.parseJSON(data);
-                //初始赋值
-                _fontDaysInfo = _flightFontDaysInfo.FontDaysInfo;
-                //初始化
-                fontDaysAvgDis.init();
-                fontDaysAllPer.init();
-                fontDaysPtAny.init();
-                //
-                noticeInit();
-            },
-            error: function () {
-                noDataID.unmask();
-                CM && CM.goError();
-            }
-        });
+        noticeInit();
+        //
+        noDataID.unmask();
     }
     //☆=================== Fun E ===================☆
     //

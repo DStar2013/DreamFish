@@ -1,0 +1,137 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta content="width=device-width, initial-scale=1.0, minimum-scale=0.5, maximum-scale=4.0, user-scalable=yes" name="viewport">
+<title>Data Report of Ctrip Online</title>
+<!-- path -->
+<link href="../../../css/ReportChart/zh-cn/global.css" rel="stylesheet" type="text/css" />
+
+<script type="text/javascript">
+    //国际化静态资源数据
+    var corpReport_Common = {"js_Summary":"总概","js_Airfare":"机票","js_Hotel":"酒店","js_HotelExpenses":"酒店总体情况","js_CorpHotel":"协议酒店","js_StarRating":"星级","js_Cities":"城市","js_AirfareExpenses":"机票消费","js_Departments":"部门分析","js_Passenger":"乘机人分析","js_CabinClass":"舱位","js_Carriers":"承运商","js_Itineraries":"航线","js_LeadTime":"提前预订天数","js_Savings":"节省与损失","js_CorpAirline":"协议航空","js_CO2Emissions":"碳排放","js_PrimaryAccount":"主帐户","js_Department":"部门","js_TravelType":"消费属性","js_TimePeriod":"时间范围","btn_Search":"查询","msg_Message1":"本报告数据来源于贵司在携程商旅的消费数据","msg_Message2":"此报告的最终解释权归携程旅行网商旅数据中心所有，如有疑问请联系负责您公司的客户经理。","js_TitleInfo":"携程在线数据报告","js_SubTitleInfo":"Data Report of Ctrip Online","js_Train":"火车票","js_NoUseTicket":"未使用机票","js_LocationTracking":"定位跟踪","js_RMBLogo":"￥"};
+    var corpReport_NoUseTickets = {"js_OrderNO":"订单号","js_CtripID":"携程卡号","js_CardHolder":"持卡人","js_PassengerName":"乘机人","js_PrintTicketTime":"出票时间","js_TakeoffTime":"起飞时间","js_Itinerary":"航段","js_FlightNO":"航班号","js_Amount":"票面价","js_SubClass":"子舱位","js_TicketNO":"票号","js_Discount":"折扣","js_Info1":"请输入卡号","js_Info2":"请输入航段(上海-北京)","js_Info3":"请输入乘机人姓名"};
+    //
+    var DownloadAnysisUrl = '/report/Flight/NoUseTicketsDownload';
+</script>
+<style type="text/css">.inputSel {color:#999;}</style>
+</head>
+
+<body>
+<div class="clearfix header">
+</div>
+<div class="view_wrap"><div class="clearfix container">
+<div class="sub_nav">
+	<div class="sub_logo">
+		<i class="icon i4">&times;</i>
+	</div>
+</div>
+
+<div class="main_cnt clearfix">
+    <div class="filter_bar">
+        <div class="menu_ico"></div>
+        <div class="filter_option option1">
+	        <label>主帐户</label>
+	        <span id="accountSpan">
+		        无
+		        <i class="icon i5"></i>
+	        </span>
+	        <div class="option_box y_scroll main_id hidepop" style="display:none;" id="accountInfo">
+	        </div>
+        </div>
+        <div class="filter_option text">
+	        <label>卡号</label>
+	        <input type="text" id="CardNo" name="CardNo" >
+        </div>
+        <div class="filter_option text">
+	        <label>行程</label>
+	        <input type="text" id="Trip" name="Trip" >
+        </div>
+        <div class="filter_option text">
+	        <label>乘机人</label>
+	        <input type="text" id="Psger" name="Psger" >
+        </div>
+        <div class="filter_option option4">
+	        <label>出票状态</label>
+	        <span dInfo="0" id="ticketSpan">
+		        全部	
+		        <i class="icon i5"></i>
+	        </span>
+	        <div class="option_box hidepop" style="display:none;" id="ticketInfo">
+		        <ul>
+			        <li>
+				        <a href="javascript:;" title="全部" dInfo="0">全部</a>
+			        </li>
+			        <li>
+				        <a href="javascript:;" title="即将过期" dInfo="1">即将过期</a>
+			        </li>
+			        <li>
+				        <a href="javascript:;" title="一年内过期" dInfo="2">一年内过期</a>
+			        </li>
+		        </ul>
+	        </div>
+        </div>
+        <div class="filter_option option4">
+	        <label>出票时间范围</label>
+            <span class=""><input style="width: 90px;" type="text" id="StartTime" name="StartTime" /></span>
+	        <span class="time_connector"> - </span>
+            <span class=""><input style="width: 90px;" type="text" id="EndTime" name="EndTime" /></span>
+        </div>
+        <div class="filter_search">
+	        <a href="javascript:;" id="btnSearch"><i class="icon i21"></i>查询</a>
+        </div>
+    </div>
+
+    <div class="fp fp2 fp11">
+        <div class="M-table" id="fltTicket"></div>
+        <div class="remark" id="reMk">
+            <p class="m-r"></p>
+		    <div class="down_data">
+			    <a id="download" href="javascript:void(0);"><i class="icon i14"></i>下载未使用机票</a>
+		    </div>
+		    <p>备注：</p>
+		    <p>此表数据 ，仅包含中航信系统国内机票数据 ，不含春秋航空机票数据，不含未通过我司改签、退票的机票</p>
+            <p>红色字体的数据为2个月内即将过期的机票</p>
+	    </div>
+    </div>
+</div>
+
+
+</div><input type="hidden" id="page_id" value="280001"/></div>
+
+<div class="footer">
+</div>
+<div class="no_data" id="noDataID" style="display:none"><img src="http://pic.ctrip.com/droco/img/loading.gif" alt=""></div>
+
+
+
+<script src="../../../js/ReportCharts/fame/jquery-1.9.1.min.js" type="text/javascript"></script>
+<script src="../../../js/ReportCharts/commpub/common.js" type="text/javascript"></script>
+<script src="../../../js/ReportCharts/commpub/header.js" type="text/javascript"></script>
+<script src="../../../js/ReportCharts/fame/droco.js" type="text/javascript"></script>
+
+
+<script type="text/javascript">
+    //语言环境
+    var lanType = "zh-cn";
+    //配置文件信息
+    var _cfgInfo = {"ConfigID":7,"UID":"2106322801","CorpCorporation":"jonson","CorporationName":"强生（中国）有限公司（强生集团）","IsOpenReport":"T","AccScope":"2587:jonson_现结","HasMemHotelProduct":"T","HasAgrHotelProduct":"T","HasInAirTicketProduct":"T","HasOutAirTicketProduct":"T","HasCorpAccBillingType":"T","HasNonCorpAccBillingType":"T","HasMonthlyData":"T","HasQuarterData":"T","HasIndustryData":"T","HasTotalTop5":"T","HasFltMonthlyExpense":"T","HasFltTop5":"T","HasFltBack":"T","HasFltDeptDetail":"T","HasFltPassengerDetail":"T","HasAirlineTop5":"T","HasAirlineSave":"T","HasAgrFltGeneral":"T","HasAgrFltUse":"T","HasAgrFltComplete":"T","HasHtlDeptDetail":"T","HasAgrHtlGeneral":"T","HasAgrHtlUse":"T","HasAgrHtlNoPerson":"T","HasHtlSave":"T","HasHtlRCDetail":"T","HasHtlRCTop5":"T","HasTrainTop5Dept":null,"HasNoUseTickets":null,"HasPositionTracking":null,"DataChangeCreateTime":"\/Date(1399878375000)\/","DataChangeLastTime":"\/Date(1411382466000)\/"};
+	//头部选中条件
+	var _headSelectInfo = CM.hashAny(window.location.hash);
+	//头部搜索条件
+	var _headInitInfo = {
+	    masterAccountInfo: [{"Name":"jonson_现结","Value":"2587"}],
+        departmentInfo: [{"Name":"部门1","Value":"0"},{"Name":"部门2","Value":"1"},{"Name":"成本中心1","Value":"2"}],
+        consumerAttrInfo: [{"Name":"全部","Value":"0"},{"Name":"因公","Value":"1"}],
+        nowTime: "2015-03-05"
+    };
+    _headInitInfo.nowTime = _headInitInfo.nowTime.replace(new RegExp('-', 'g'),'/');
+</script>
+<script type="text/javascript" src="../../../js/ReportCharts/fame/cQuery_110421.js">{"namespace" : "cQuery"}</script>
+<script src="../../../js/ReportCharts/fame/modules.js" type="text/javascript"></script>
+<script src="../../../js/ReportCharts/commpub/CUIControl.js" type="text/javascript"></script>
+<script src="../../../js/ReportCharts/flight/FltNoUseTicket.js" type="text/javascript"></script>
+</body>
+</html>

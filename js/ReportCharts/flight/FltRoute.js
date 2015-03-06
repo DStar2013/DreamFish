@@ -427,24 +427,14 @@
     var flightRoutesInit = function (data) {
         var noDataID = $('#noDataID');
         noDataID.mask();
+
+        _flightRoutesInfo = {"FltRouteInfo":{"DomTotalInfo":{"TolNetPrice":32139,"TolNumber":49,"TolAvgPrice":626,"TolAvgDiscount":0.59,"TolBusADR":0.79,"TolTouADR":0,"TolIndADR":0.78,"TolBusAvg":928,"TolTouAvg":0,"TolIndAvg":927},"DomRouteInfo":[{"RouteName":"上海-北京","NetPrice":3283,"Number":4,"DomPotSv":3284,"DomPotSvRate":"100%","AvgPrice":821,"AvgDiscount":0.72,"BusADR":0.82,"TouADR":0,"IndADR":0.82,"BusAvg":925,"TouAvg":0,"IndAvg":927},{"RouteName":"上海-厦门","NetPrice":1160,"Number":4,"DomPotSv":1160,"DomPotSvRate":"100%","AvgPrice":290,"AvgDiscount":0.3,"BusADR":0.8,"TouADR":0,"IndADR":0.75,"BusAvg":765,"TouAvg":0,"IndAvg":721},{"RouteName":"广州-上海","NetPrice":2810,"Number":3,"DomPotSv":2811,"DomPotSvRate":"100%","AvgPrice":937,"AvgDiscount":0.73,"BusADR":0.8,"TouADR":0,"IndADR":0.81,"BusAvg":1018,"TouAvg":0,"IndAvg":1035},{"RouteName":"北京-上海","NetPrice":2210,"Number":3,"DomPotSv":2211,"DomPotSvRate":"100%","AvgPrice":737,"AvgDiscount":0.65,"BusADR":0.84,"TouADR":0,"IndADR":0.83,"BusAvg":945,"TouAvg":0,"IndAvg":944},{"RouteName":"上海-广州","NetPrice":2040,"Number":3,"DomPotSv":2040,"DomPotSvRate":"100%","AvgPrice":680,"AvgDiscount":0.53,"BusADR":0.78,"TouADR":0,"IndADR":0.79,"BusAvg":1001,"TouAvg":0,"IndAvg":1006},{"RouteName":"上海-大连","NetPrice":1420,"Number":3,"DomPotSv":1419,"DomPotSvRate":"99.9%","AvgPrice":473,"AvgDiscount":0.45,"BusADR":0.62,"TouADR":0,"IndADR":0.63,"BusAvg":653,"TouAvg":0,"IndAvg":666},{"RouteName":"贵阳-上海","NetPrice":1520,"Number":2,"DomPotSv":1520,"DomPotSvRate":"100%","AvgPrice":760,"AvgDiscount":0.45,"BusADR":0.45,"TouADR":0,"IndADR":0.44,"BusAvg":759,"TouAvg":0,"IndAvg":752},{"RouteName":"哈尔滨-济南","NetPrice":1360,"Number":2,"DomPotSv":1360,"DomPotSvRate":"100%","AvgPrice":680,"AvgDiscount":0.6,"BusADR":0.75,"TouADR":0,"IndADR":0.71,"BusAvg":846,"TouAvg":0,"IndAvg":719},{"RouteName":"上海-安庆","NetPrice":1100,"Number":2,"DomPotSv":1100,"DomPotSvRate":"100%","AvgPrice":550,"AvgDiscount":1,"BusADR":0.93,"TouADR":0,"IndADR":1,"BusAvg":507,"TouAvg":0,"IndAvg":550},{"RouteName":"安庆-上海","NetPrice":1100,"Number":2,"DomPotSv":1100,"DomPotSvRate":"100%","AvgPrice":550,"AvgDiscount":1,"BusADR":0.88,"TouADR":0,"IndADR":1,"BusAvg":482,"TouAvg":0,"IndAvg":550},{"RouteName":"其他","NetPrice":14136,"Number":21,"DomPotSv":0,"DomPotSvRate":null,"AvgPrice":602,"AvgDiscount":0.55,"BusADR":0.69,"TouADR":0,"IndADR":0.65,"BusAvg":841,"TouAvg":0,"IndAvg":811}],"IntTotalInfo":{"TolNetPrice":27160,"TolNumber":10,"TolAvgPrice":2716,"TolAvgDiscount":1,"TolBusADR":1,"TolTouADR":0,"TolIndADR":1,"TolBusAvg":2701,"TolTouAvg":0,"TolIndAvg":3206},"IntRouteInfo":[{"RouteName":"上海-香港-普吉岛-香港-上海","NetPrice":9760,"Number":4,"DomPotSv":9760,"DomPotSvRate":"100%","AvgPrice":2440,"AvgDiscount":1,"BusADR":1,"TouADR":0,"IndADR":1,"BusAvg":2108,"TouAvg":0,"IndAvg":2318},{"RouteName":"上海-巴黎-罗马-巴黎-上海","NetPrice":6050,"Number":1,"DomPotSv":6050,"DomPotSvRate":"100%","AvgPrice":6050,"AvgDiscount":1,"BusADR":1,"TouADR":0,"IndADR":1,"BusAvg":8141,"TouAvg":0,"IndAvg":6050},{"RouteName":"上海-多伦多-上海","NetPrice":3800,"Number":1,"DomPotSv":3800,"DomPotSvRate":"100%","AvgPrice":3800,"AvgDiscount":1,"BusADR":1,"TouADR":0,"IndADR":1,"BusAvg":6283,"TouAvg":0,"IndAvg":3800},{"RouteName":"上海-曼谷-上海","NetPrice":2610,"Number":1,"DomPotSv":2610,"DomPotSvRate":"100%","AvgPrice":2610,"AvgDiscount":1,"BusADR":1,"TouADR":0,"IndADR":1,"BusAvg":2766,"TouAvg":0,"IndAvg":3329},{"RouteName":"澳门-上海","NetPrice":2030,"Number":1,"DomPotSv":2030,"DomPotSvRate":"100%","AvgPrice":2030,"AvgDiscount":1,"BusADR":1,"TouADR":0,"IndADR":1,"BusAvg":1220,"TouAvg":0,"IndAvg":1667},{"RouteName":"上海-东京-上海","NetPrice":2020,"Number":1,"DomPotSv":2020,"DomPotSvRate":"100%","AvgPrice":2020,"AvgDiscount":1,"BusADR":1,"TouADR":0,"IndADR":1,"BusAvg":4605,"TouAvg":0,"IndAvg":4614},{"RouteName":"香港-上海","NetPrice":890,"Number":1,"DomPotSv":890,"DomPotSvRate":"100%","AvgPrice":890,"AvgDiscount":1,"BusADR":1,"TouADR":0,"IndADR":1,"BusAvg":1624,"TouAvg":0,"IndAvg":1344}]}};
+        //初始赋值
+        _fltRouteInfo = _flightRoutesInfo.FltRouteInfo;
+        //初始化
+        routeAnysis.init();
         //
-        $.ajax({
-            url: '../Flight/GetFlightRoutes',
-            type: "POST",
-            data: data,
-            success: function (data) {
-                noDataID.unmask();
-                _flightRoutesInfo = $.parseJSON(data);
-                //初始赋值
-                _fltRouteInfo = _flightRoutesInfo.FltRouteInfo;
-                //初始化
-                routeAnysis.init();
-            },
-            error: function () {
-                noDataID.unmask();
-                CM && CM.goError();
-            }
-        });
+        noDataID.unmask();
     }
     //☆=================== Fun E ===================☆
     //

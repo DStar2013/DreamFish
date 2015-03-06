@@ -71,26 +71,13 @@
     var flightCarbEmInit = function (data) {
         var noDataID = $('#noDataID');
         noDataID.mask();
-        //
-        $.ajax({
-            url: '../Flight/GetFlightCarbEm',
-            type: "POST",
-            data: data,
-            success: function (data) {
-                noDataID.unmask();
-                //初始赋值
-                _flightCarbEmInfo = $.parseJSON(data);
-                //初始赋值
-                _fltCarbInfo = _flightCarbEmInfo.FltCarbInfo;
-                //初始化
-                fltCarbCal.init();
-                pageData.init();
-            },
-            error: function () {
-                noDataID.unmask();
-                CM && CM.goError();
-            }
-        });
+        _flightCarbEmInfo = {"FltCarbInfo":{"TolCarbInfo":{"TolMile":14336106,"TolCarbEmis":2027979,"TolCarbComp":18271},"CarbInfo":[{"TrvType":"短途旅行","Mile":318,"CarbEmis":87,"CarbComp":1},{"TrvType":"中途旅行","Mile":2063050,"CarbEmis":318960,"CarbComp":2874},{"TrvType":"长途旅行","Mile":12272738,"CarbEmis":1708932,"CarbComp":15396}]}};
+        //初始赋值
+        _fltCarbInfo = _flightCarbEmInfo.FltCarbInfo;
+        //初始化
+        fltCarbCal.init();
+        pageData.init();
+        noDataID.unmask();
     }
 
     //☆=================== Fun E ===================☆

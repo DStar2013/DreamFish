@@ -419,22 +419,11 @@
             fltConStru._timeout = window.setTimeout(function () {
                 var _ptDt = dpHeader.getHeadData();
                 _ptDt.SLtype = type;
-                $.ajax({
-                    url: '../Flight/GetFltCustSave',
-                    type: "POST",
-                    data: _ptDt,
-                    success: function (data) {
-                        //..
-                        f.html("");
-                        _fltConStuInfo = $.parseJSON(data);
-                        //绘图
-                        fltConStru.drawChart();
-                    },
-                    error: function () {
-                        console.log('error!');
-                    }
-                });
-
+                f.html("");
+                //_fltConStuInfo = {"DomConStu":[{"Name":"最低价","Price":34289,"Percent":null,"MinP":0,"MaxP":0,"Mark":0},{"Name":"损失","Price":0,"Percent":"0%","MinP":34289,"MaxP":34289,"Mark":1},{"Name":"客户消费","Price":34289,"Percent":null,"MinP":0,"MaxP":0,"Mark":0},{"Name":"节省","Price":23056,"Percent":"40.2%","MinP":34289,"MaxP":57345,"Mark":1},{"Name":"全价","Price":57345,"Percent":null,"MinP":0,"MaxP":0,"Mark":0}],"IntConStu":[{"Name":"最低价","Price":32444,"Percent":null,"MinP":0,"MaxP":0,"Mark":0},{"Name":"损失","Price":0,"Percent":"0%","MinP":32444,"MaxP":32444,"Mark":1},{"Name":"客户消费","Price":32444,"Percent":null,"MinP":0,"MaxP":0,"Mark":0},{"Name":"节省","Price":1335.6191000000035,"Percent":"4%","MinP":32444,"MaxP":33780,"Mark":1},{"Name":"全价","Price":33780,"Percent":null,"MinP":0,"MaxP":0,"Mark":0}]};
+                _fltConStuInfo = {"DomConStu":[{"Name":"客户消费","Price":2984,"Percent":null,"MinP":0,"MaxP":0,"Mark":0},{"Name":"额外节省","Price":276,"Percent":"6.7%","MinP":2984,"MaxP":3260,"Mark":1},{"Name":"携程运价","Price":3260,"Percent":null,"MinP":0,"MaxP":0,"Mark":0},{"Name":"节省","Price":840,"Percent":"20.5%","MinP":3260,"MaxP":4100,"Mark":1},{"Name":"全价","Price":4100,"Percent":null,"MinP":0,"MaxP":0,"Mark":0}],"IntConStu":[]};
+                //绘图
+                fltConStru.drawChart();
             }, 100);
         },
         showDropDown: function (event) {
@@ -761,32 +750,22 @@
     var flightSvALsInit = function (data) {
         var noDataID = $('#noDataID');
         noDataID.mask();
+
+        //初始赋值
+        _filghtSvALsInfo ={"FltSaveAndLose":{"DomSvMoth":[{"Month":"1月","Percent":0.419},{"Month":"2月","Percent":0.544},{"Month":"3月","Percent":0.317},{"Month":"4月","Percent":0.22},{"Month":"5月","Percent":0.42}],"IntSvMoth":[{"Month":"1月","Percent":0.037},{"Month":"2月","Percent":0.037},{"Month":"3月","Percent":0},{"Month":"4月","Percent":0.062},{"Month":"5月","Percent":0.037}],"DomLsMoth":[{"Month":"1月","Percent":0},{"Month":"2月","Percent":0},{"Month":"3月","Percent":0},{"Month":"4月","Percent":0},{"Month":"5月","Percent":0}],"DomSvQuar":[{"Month":"1季度","Percent":0.435},{"Month":"2季度","Percent":0.32}],"IntSvQuar":[{"Month":"1季度","Percent":0.037},{"Month":"2季度","Percent":0.04}],"DomLsQuar":[{"Month":"1季度","Percent":0},{"Month":"2季度","Percent":0}]},"FltLsDetInfo":{"TolDomDotInfo":{"TolNumber":0,"TolPrice":0,"TolLowPrice":0,"TolLoss":0},"DomDptAnsInfo":[],"TolIntDotInfo":{"TolNumber":0,"TolPrice":0,"TolLowPrice":0,"TolLoss":0},"IntDepAnsInfo":[]},"DeptList":[{"Name":"JJC","UID":0},{"Name":"销售部","UID":0},{"Name":"","UID":0},{"Name":"Ops，TPM","UID":0},{"Name":"母婴渠道北中国","UID":0},{"Name":"购物者行销部","UID":0},{"Name":"南中国","UID":0}]};
+        //初始赋值
+        _fltSvALsInfo = _filghtSvALsInfo.FltSaveAndLose;
+        _fltConStuInfo = _filghtSvALsInfo.FltConStuInfo;
+        _fltLsDetInfo = _filghtSvALsInfo.FltLsDetInfo;
+        _fltDepDetailInfo = _filghtSvALsInfo.DeptList;
+        //初始化
+        fltSvLs.init();
+        fltConStru.init();
+        fltLsDetail.init();
         //
-        $.ajax({
-            url: '../Flight/GetFlightSvALs',
-            type: "POST",
-            data: data,
-            success: function (data) {
-                noDataID.unmask();
-                //初始赋值
-                _filghtSvALsInfo = $.parseJSON(data);
-                //初始赋值
-                _fltSvALsInfo = _filghtSvALsInfo.FltSaveAndLose;
-                _fltConStuInfo = _filghtSvALsInfo.FltConStuInfo;
-                _fltLsDetInfo = _filghtSvALsInfo.FltLsDetInfo;
-                _fltDepDetailInfo = _filghtSvALsInfo.DeptList;
-                //初始化
-                fltSvLs.init();
-                fltConStru.init();
-                fltLsDetail.init();
-                //
-                noticeInit();
-            },
-            error: function () {
-                noDataID.unmask();
-                CM && CM.goError();
-            }
-        });
+        noticeInit();
+        //
+        noDataID.unmask();
     }
     //☆=================== Fun E ===================☆
     //

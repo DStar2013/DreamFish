@@ -405,29 +405,19 @@
     var flightCarriersInit = function (data) {
         var noDataID = $('#noDataID');
         noDataID.mask();
+
+        //初始赋值
+        _flightCarriersInfo = {"CarAnyInfo":{"DomTotalInfo":{"TolNumber":49,"TolNetPrice":32139,"TolPrice":40419},"DomCarrierInfo":[{"Name":"中国东方航空","Number":15,"NetPrice":8770,"NetPercent":0.273,"Price":11100},{"Name":"中国南方航空","Number":8,"NetPrice":5664,"NetPercent":0.176,"Price":7124},{"Name":"上海航空","Number":8,"NetPrice":5073,"NetPercent":0.158,"Price":6563},{"Name":"中国国际航空","Number":5,"NetPrice":5040,"NetPercent":0.157,"Price":5960},{"Name":"上海吉祥航空","Number":7,"NetPrice":3130,"NetPercent":0.097,"Price":4340},{"Name":"海南航空","Number":1,"NetPrice":2100,"NetPercent":0.065,"Price":2210},{"Name":"天津航空","Number":2,"NetPrice":872,"NetPercent":0.027,"Price":1172},{"Name":"深圳航空","Number":2,"NetPrice":780,"NetPercent":0.024,"Price":1120},{"Name":"山东航空","Number":1,"NetPrice":710,"NetPercent":0.022,"Price":830}],"IntTotalInfo":{"TolNumber":10,"TolNetPrice":27160,"TolPrice":39974},"IntCarrierInfo":[{"Name":"国泰航空","Number":4,"NetPrice":9760,"NetPercent":0.359,"Price":13396},{"Name":"中国东方航空","Number":3,"NetPrice":8970,"NetPercent":0.33,"Price":12819},{"Name":"加拿大航空","Number":1,"NetPrice":3800,"NetPercent":0.14,"Price":6539},{"Name":"泰国国际航空","Number":1,"NetPrice":2610,"NetPercent":0.096,"Price":3911},{"Name":"中国国际航空","Number":1,"NetPrice":2020,"NetPercent":0.074,"Price":3309}]},"FlightFiveCarInfo":{"DomCarrierInfo":[{"Name":"中国东方航空","Price":8770},{"Name":"中国南方航空","Price":5664},{"Name":"上海航空","Price":5073},{"Name":"中国国际航空","Price":5040},{"Name":"上海吉祥航空","Price":3130},{"Name":"其他","Price":4462}],"IntCarrierInfo":[{"Name":"国泰航空","Price":9760},{"Name":"中国东方航空","Price":8970},{"Name":"加拿大航空","Price":3800},{"Name":"泰国国际航空","Price":2610},{"Name":"中国国际航空","Price":2020}]},"FiveRouteInfo":{"DomFiveCPInfo":[{"CP":"北京-上海","Number":7,"Data":[{"CarrName":"中国东方航空股份有限公司","Percent":0.571,"Number":4,"Color":"#398eff"},{"CarrName":"中国国际航空股份有限公司","Percent":0.286,"Number":2,"Color":"#56a0ff"},{"CarrName":"上海航空有限公司","Percent":0.143,"Number":1,"Color":"#79b3ff"}]},{"CP":"上海-广州","Number":6,"Data":[{"CarrName":"中国东方航空股份有限公司","Percent":0.333,"Number":2,"Color":"#398eff"},{"CarrName":"中国国际航空股份有限公司","Percent":0.333,"Number":2,"Color":"#56a0ff"},{"CarrName":"中国南方航空股份有限公司","Percent":0.333,"Number":2,"Color":"#9ec8ff"}]},{"CP":"上海-贵阳","Number":4,"Data":[{"CarrName":"上海吉祥航空股份有限公司","Percent":0.5,"Number":2,"Color":"#c5dfff"},{"CarrName":"中国东方航空股份有限公司","Percent":0.5,"Number":2,"Color":"#398eff"}]},{"CP":"上海-安庆","Number":4,"Data":[{"CarrName":"中国东方航空股份有限公司","Percent":1,"Number":4,"Color":"#398eff"}]},{"CP":"上海-大连","Number":4,"Data":[{"CarrName":"上海航空有限公司","Percent":0.75,"Number":3,"Color":"#79b3ff"},{"CarrName":"中国南方航空股份有限公司","Percent":0.25,"Number":1,"Color":"#9ec8ff"}]}],"IntFiveCPInfo":[{"CP":"上海-香港-普吉岛-香港-上海","Number":4,"Data":[{"CarrName":"国泰航空公司","Percent":1,"Number":4,"Color":"#e5f1ff"}]},{"CP":"上海-巴黎-罗马-巴黎-上海","Number":1,"Data":[{"CarrName":"中国东方航空股份有限公司","Percent":1,"Number":1,"Color":"#398eff"}]},{"CP":"上海-多伦多-上海","Number":1,"Data":[{"CarrName":"加拿大航空公司","Percent":1,"Number":1,"Color":"#ffa60c"}]},{"CP":"上海-曼谷-上海","Number":1,"Data":[{"CarrName":"泰国国际航空公司","Percent":1,"Number":1,"Color":"#feba3b"}]},{"CP":"澳门-上海","Number":1,"Data":[{"CarrName":"中国东方航空股份有限公司","Percent":1,"Number":1,"Color":"#398eff"}]}]}};
+        //初始赋值
+        _carAnyInfo = _flightCarriersInfo.CarAnyInfo;
+        _flightFiveCarInfo = _flightCarriersInfo.FlightFiveCarInfo;
+        _fiveRouteInfo = _flightCarriersInfo.FiveRouteInfo;
+        //初始化
+        carAnysis.init();
+        fiveFltCarr.init();
+        fiveRouteCarr.init();
         //
-        $.ajax({
-            url: '../Flight/GetFlightCarriers',
-            type: "POST",
-            data: data,
-            success: function (data) {
-                noDataID.unmask();
-                //初始赋值
-                _flightCarriersInfo = $.parseJSON(data);
-                //初始赋值
-                _carAnyInfo = _flightCarriersInfo.CarAnyInfo;
-                _flightFiveCarInfo = _flightCarriersInfo.FlightFiveCarInfo;
-                _fiveRouteInfo = _flightCarriersInfo.FiveRouteInfo;
-                //初始化
-                carAnysis.init();
-                fiveFltCarr.init();
-                fiveRouteCarr.init();
-            },
-            error: function () {
-                noDataID.unmask();
-                CM && CM.goError();
-            }
-        });
+        noDataID.unmask();
     }
     //☆=================== Fun E ===================☆
     //
