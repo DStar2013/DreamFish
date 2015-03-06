@@ -383,29 +383,18 @@
     var hotelSvALsInit = function (data) {
         var noDataID = $('#noDataID');
         noDataID.mask();
-        //
-        $.ajax({
-            url: '../Hotel/GetHotelSvALs',
-            type: "POST",
-            data: data,
-            success: function (data) {
-                noDataID.unmask();
-                //初始赋值
-                _hotelSvALsInfo = $.parseJSON(data);
-                //初始赋值
-                _htlSaveInfo = _hotelSvALsInfo.HotelSave;
-                _htlRCDetail = _hotelSvALsInfo.HotelRCDetail;
-                _htlTop5RC = _hotelSvALsInfo.HotelTop5RC;
-                //初始化
-                htlTop5RC.init();
-                htlRCDetail.init();
-                htlSave.init();
-            },
-            error: function () {
-                noDataID.unmask();
-                CM && CM.goError();
-            }
-        });
+
+        //初始赋值
+        _hotelSvALsInfo = {"HotelSave":{"HtlSaveMoth":[{"Month":"1月","Percent":0.02},{"Month":"2月","Percent":-0.095},{"Month":"3月","Percent":0},{"Month":"4月","Percent":0},{"Month":"5月","Percent":0.018},{"Month":"6月","Percent":0.019},{"Month":"7月","Percent":0.016}],"HtlSaveQuar":[{"Month":"1季度","Percent":0.019},{"Month":"2季度","Percent":0.018},{"Month":"3季度","Percent":0.016}]},"HotelRCDetail":{"TolHtlRCDetail":{"TolNumber":11317,"TolPrice":5279367.7331999987},"HtlRC":[{"Code":"OT","Info":"因商务旅行的其他原因。","Number":6329,"Price":2976999.0557999993,"Precent":"55.9%"},{"Code":"HI","Info":"需要前往的出差目的地25公里内无公司协议酒店，可以选择比当地住宿标准低20%的非公司协议酒店","Number":2078,"Price":677657.38,"Precent":"18.4%"},{"Code":"HC","Info":"业务需要必须和客户同行。","Number":930,"Price":508540.662,"Precent":"8.2%"},{"Code":"HH","Info":"私人旅行。","Number":893,"Price":473632.097,"Precent":"7.9%"},{"Code":"HB","Info":"已经获得公司授权，可以不执行住宿标准。","Number":437,"Price":277130.5384,"Precent":"3.9%"},{"Code":"HF","Info":"两人同行,分摊后的房费低于规定的各自住宿标准。","Number":350,"Price":201932,"Precent":"3.1%"},{"Code":"HE","Info":"公司以外的主办方统一安排入住。","Number":188,"Price":98346,"Precent":"1.7%"},{"Code":"HD","Info":"公司作为主办方统一安排入住。","Number":111,"Price":64630,"Precent":"1%"},{"Code":"PM","Info":"PM","Number":1,"Price":500,"Precent":"0%"}]},"HotelTop5RC":{"HtlRC":[{"RCCode":"OT","RCName":"因商务旅行的其他原因。","Quantity":6329},{"RCCode":"HI","RCName":"需要前往的出差目的地25公里内无公司协议酒店，可以选择比当地住宿标准低20%的非公司协议酒店","Quantity":2078},{"RCCode":"HC","RCName":"业务需要必须和客户同行。","Quantity":930},{"RCCode":"HH","RCName":"私人旅行。","Quantity":893},{"RCCode":"HB","RCName":"已经获得公司授权，可以不执行住宿标准。","Quantity":437},{"RCCode":"其他","RCName":"","Quantity":650}]}};
+        //初始赋值
+        _htlSaveInfo = _hotelSvALsInfo.HotelSave;
+        _htlRCDetail = _hotelSvALsInfo.HotelRCDetail;
+        _htlTop5RC = _hotelSvALsInfo.HotelTop5RC;
+        //初始化
+        htlTop5RC.init();
+        htlRCDetail.init();
+        htlSave.init();
+        noDataID.unmask();
     }
     //☆=================== Fun E ===================☆
     dpHeaderSuccess = function () {

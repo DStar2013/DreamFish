@@ -1,0 +1,75 @@
+﻿<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta content="width=device-width, initial-scale=1.0, minimum-scale=0.5, maximum-scale=4.0, user-scalable=yes" name="viewport">
+<title>Data Report of Ctrip Online</title>
+<!-- path -->
+<link href="../../../css/ReportChart/zh-cn/global.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript">
+//国际化静态资源数据
+var corpReport_Common = {"js_Summary":"总概","js_Airfare":"机票","js_Hotel":"酒店","js_HotelExpenses":"酒店总体情况","js_CorpHotel":"协议酒店","js_StarRating":"星级","js_Cities":"城市","js_AirfareExpenses":"机票消费","js_Departments":"部门分析","js_Passenger":"乘机人分析","js_CabinClass":"舱位","js_Carriers":"承运商","js_Itineraries":"航线","js_LeadTime":"提前预订天数","js_Savings":"节省与损失","js_CorpAirline":"协议航空","js_CO2Emissions":"碳排放","js_PrimaryAccount":"主帐户","js_Department":"部门","js_TravelType":"消费属性","js_TimePeriod":"时间范围","btn_Search":"查询","msg_Message1":"本报告数据来源于贵司在携程商旅的消费数据","msg_Message2":"此报告的最终解释权归携程旅行网商旅数据中心所有，如有疑问请联系负责您公司的客户经理。","js_LocationTracking":"定位跟踪","js_NoUseTicket":"未使用机票","js_Train":"火车票","js_TitleInfo":"携程在线数据报告","js_RMBLogo":"￥","js_SubTitleInfo":"Data Report of Ctrip Online"};
+var corpReport_HotelAgreement = {"js_CorpHotelRoomNights":"协议酒店预订总间夜","js_CorpHotelsPercentage":"协议酒店预订占比","js_Hotels":"家酒店","js_Percent":"百分比","js_Cities":"城市","js_CorpHotels":"签约协议酒店数量","js_MemHotelsBooked":"会员酒店预订数量","js_Total":"总计"};
+</script>
+</head>
+
+<body>
+<div class="clearfix header">
+</div>
+<div class="view_wrap"><div class="clearfix container">
+<div class="sub_nav">
+	<div class="sub_logo">
+		<i class="icon i4">&times;</i>
+	</div>
+</div>
+<div class="main_cnt clearfix">
+	<div class="filter_bar">
+        <div class="menu_ico"></div>
+	</div>
+	<div class="hp hp4">
+		<div class="full_box">
+			<div class="box box1 br2px" id="agreeHotelID">
+			</div>
+			<div class="box2">
+				<h3>协议酒店预订情况</h3>
+				<div class="" id="htlAgreeDetailID" style="height:280px">
+				</div>
+			</div>
+		</div>
+		<div class="box3" id="htlAgrCityExID">
+			<h3>协议酒店无预订记录的城市列表</h3>
+            <div class="M-table type1" id="htlAgreeCityID"></div>
+		</div>
+	</div>
+</div>
+</div><input type="hidden" id="page_id" value="109215"/></div>
+
+<div class="footer">
+</div>
+<div class="no_data" id="noDataID" style="display:none"><img src="http://pic.ctrip.com/droco/img/loading.gif" alt=""></div>
+
+<script src="../../../js/ReportCharts/fame/jquery-1.9.1.min.js" type="text/javascript"></script>
+<script src="../../../js/ReportCharts/commpub/common.js" type="text/javascript"></script>
+<script src="../../../js/ReportCharts/commpub/header.js" type="text/javascript"></script>
+<script src="../../../js/ReportCharts/fame/droco.js" type="text/javascript"></script>
+<script type="text/javascript">
+    //语言环境
+    var lanType = "zh-cn";
+    //配置文件信息
+    var _cfgInfo = {"ConfigID":7,"UID":"2106322801","CorpCorporation":"jonson","CorporationName":"强生（中国）有限公司（强生集团）","IsOpenReport":"T","AccScope":"2587:jonson_现结","HasMemHotelProduct":"T","HasAgrHotelProduct":"T","HasInAirTicketProduct":"T","HasOutAirTicketProduct":"T","HasCorpAccBillingType":"T","HasNonCorpAccBillingType":"T","HasMonthlyData":"T","HasQuarterData":"T","HasIndustryData":"T","HasTotalTop5":"T","HasFltMonthlyExpense":"T","HasFltTop5":"T","HasFltBack":"T","HasFltDeptDetail":"T","HasFltPassengerDetail":"T","HasAirlineTop5":"T","HasAirlineSave":"T","HasAgrFltGeneral":"T","HasAgrFltUse":"T","HasAgrFltComplete":"T","HasHtlDeptDetail":"T","HasAgrHtlGeneral":"T","HasAgrHtlUse":"T","HasAgrHtlNoPerson":"T","HasHtlSave":"T","HasHtlRCDetail":"T","HasHtlRCTop5":"T","HasTrainTop5Dept":null,"HasNoUseTickets":null,"HasPositionTracking":null,"DataChangeCreateTime":"\/Date(1399878375000)\/","DataChangeLastTime":"\/Date(1411382466000)\/"};
+	//头部选中条件
+	var _headSelectInfo = CM.hashAny(window.location.hash);
+	//头部搜索条件
+	var _headInitInfo = {
+	    masterAccountInfo: [{"Name":"jonson_现结","Value":"2587"}],
+        departmentInfo: [{"Name":"部门1","Value":"0"},{"Name":"部门2","Value":"1"},{"Name":"成本中心1","Value":"2"}],
+        consumerAttrInfo: [{"Name":"全部","Value":"0"},{"Name":"因公","Value":"1"}],
+        nowTime: "2015-03-05"
+    };
+    _headInitInfo.nowTime = _headInitInfo.nowTime.replace(new RegExp('-', 'g'),'/');
+</script>
+<script src="../../../js/ReportCharts/fame/highcharts.js" type="text/javascript"></script>
+<script src="../../../js/ReportCharts/hotel/HtlAgree.js" type="text/javascript"></script>
+</body>
+</html>

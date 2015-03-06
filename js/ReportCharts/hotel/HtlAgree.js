@@ -201,29 +201,19 @@
     var hotelAgreementInit = function (data) {
         var noDataID = $('#noDataID');
         noDataID.mask();
+
+        //初始赋值
+        _hotelAgreementInfo = {"HotelAgree":{"Quantity":1966,"Percent":"44.9%"},"HotelAgreeDetail":{"AgrHtlDistInfo":[{"Name":"40以上间夜","Number":9},{"Name":"21-40间夜","Number":14},{"Name":"1-20间夜","Number":193},{"Name":"无预订记录","Number":-69}]},"HotelAgrCity":{"TolHtlAgrCity":{"TolNumber":0,"TolMHotelNum":0},"AgrHtlCityInfo":[]}};
+        //初始赋值
+        _hotelStrInfo = _hotelAgreementInfo.HotelAgree;
+        _htlAgreeDetail = _hotelAgreementInfo.HotelAgreeDetail;
+        _htlAgreeCity = _hotelAgreementInfo.HotelAgrCity;
+        //初始化
+        pageData.init();
+        htlAgreeDetail.init();
+        htlAgreeCity.init();
+        noDataID.unmask();
         //
-        $.ajax({
-            url: '../Hotel/GetHotelAgreement',
-            type: "POST",
-            data: data,
-            success: function (data) {
-                noDataID.unmask();
-                //初始赋值
-                _hotelAgreementInfo = $.parseJSON(data);
-                //初始赋值
-                _hotelStrInfo = _hotelAgreementInfo.HotelAgree;
-                _htlAgreeDetail = _hotelAgreementInfo.HotelAgreeDetail;
-                _htlAgreeCity = _hotelAgreementInfo.HotelAgrCity;
-                //初始化
-                pageData.init();
-                htlAgreeDetail.init();
-                htlAgreeCity.init();
-            },
-            error: function () {
-                noDataID.unmask();
-                CM && CM.goError();
-            }
-        });
     }
     //☆=================== Fun E ===================☆
     //
