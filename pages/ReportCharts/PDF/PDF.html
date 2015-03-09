@@ -18,23 +18,26 @@
         <!-- 公共头 E -->
         <div class="page-c">
             <!-- 总概页标题 S -->
+            <div class="page-title">
+                总概<span class="sub sub-e">Overview</span>
+                <div class="tria-b"></div>
+                <div class="tria-f"></div>
+            </div>
             <div class="CT_SumPageTitle"></div>
             <!-- 总概页标题 E -->
             <div class="box-c2">
                 <div class="m-l">
-                    <div class="msg-box msg-info" id="sp_warnInfo"></div>
+                    <div class="msg-box msg-info"> <!-- 开关控制visibility的属性 -->
+                        本期贵司差旅支出同比增长30%，环比增长90%<br>请关注贵司的差旅管控
+                    </div>
                     <div class="total-bill">
                         <div class="item">
-                            <div class="cost" id="sp_allConsumID"></div>
-                            <div class="desc">
-                                总体消费情况
-                            </div>
+                            <div class="cost"><span>¥</span>9,929,886</div>
+                            <div class="desc">总体消费情况</div>
                         </div>
                         <div class="item">
-                            <div class="cost cost-r" id="sp_allSaveID"></div>
-                            <div class="desc">
-                                总节省
-                            </div>
+                            <div class="cost cost-r"><span>¥</span>9,886</div>
+                            <div class="desc">总节省</div>
                         </div>
                     </div>
                 </div>
@@ -66,14 +69,18 @@
         <!-- 公共头 E -->
         <div class="page-c">
             <!-- 总概页标题 S -->
-            <div class="CT_SumPageTitle"></div>
+            <div class="page-title">
+                总概<span class="sub sub-e">Overview</span>
+                <div class="tria-b"></div>
+                <div class="tria-f"></div>
+            </div>
             <!-- 总概页标题 E -->
             <div class="mod">
                 <div class="mod-hd">机票月度消费情况</div>
                 <div class="list">
-                    <div class="item"><div class="price" id="sp_fltConsum"></div>总体消费情况</div>
-                    <div class="item"><div class="price" id="sp_fltAvgPrice"></div>平均票价</div>
-                    <div class="item"><div class="price" id="sp_fltAvgDiscount"></div>平均折扣</div>
+                    <div class="item"><div class="price"><span>¥</span>803,946</div>总体消费情况</div>
+                    <div class="item"><div class="price"><span>¥</span>803,946</div>平均票价</div>
+                    <div class="item"><div class="price">0.5</div>平均折扣</div>
                 </div>
                 <div class="visual-data mb30" id="sp_flight" style="height:170px"></div>
                 <div class="space mb30" id="sp_flightTable"></div>
@@ -82,8 +89,8 @@
             </div>
             <div class="mod-hd">酒店月度消费情况</div>
             <div class="list">
-                <div class="item"><div class="price" id="sp_htlConsum"><span>¥</span>490,946</div>总体消费情况</div>
-                <div class="item"><div class="price" id="sp_htlAvgPrice"><span>¥</span>480</div>平均房价</div>
+                <div class="item"><div class="price"><span>¥</span>490,946</div>总体消费情况</div>
+                <div class="item"><div class="price"><span>¥</span>480</div>平均房价</div>
             </div>
             <div class="visual-data mb30" id="sp_hotel" style="height:170px"></div>
             <div class="space mb30" id="sp_hotelTable"></div>
@@ -93,15 +100,94 @@
     </div>
     <!-- ☆☆ SumPage E ☆☆ -->
 
+    <!-- ☆☆ FlightPage S ☆☆ -->
+    <div class="main-c">
+        <!-- 公共头 S -->
+        <div class="CT_header"></div>
+        <!-- 公共头 E -->
+        <div class="page-c">
+            <!-- 分类页标题 S -->
+            <div class="page-title">
+                机票<span class="line"></span><span class="subName">机票消费</span>
+                <div class="tria-b"></div>
+                <div class="tria-f"></div>
+            </div>
+            <!-- 分类页标题 E -->
+            <div class="box-c3">
+                <div class="m-l">
+                    <div class="mod-hd-icon">机票消费概览</div>
+                    <div class="total-bill">
+                        <div class="item">
+                            <div class="cost"><span>¥</span>9,929,886</div>
+                            <div class="desc">机票总金额</div>
+                        </div>
+                        <div class="item last">
+                            <div class="cost cost-r"><span>¥</span>9,886</div>
+                            <div class="desc">机票均价</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="m-r">
+                    <div class="mod-hd">预订方式</div>
+                    <div class="visual-data mb20" id="fp_bkMethod" style="height:150px"></div>
+                    <div class="" id="fp_bkmTable"></div>
+                </div>
+            </div>
+            <div class="box-c3">
+                <div class="m-l">
+                    <div class="mod-hd">前五部门消费情况—国内</div>
+                    <div class="visual-data" id="fp_fiveDepDom" style="height:300px"></div>
+                </div>
+                <div class="m-r">
+                    <div class="mod-hd">前五部门消费情况—国际</div>
+                    <div class="visual-data" id="fp_fiveDepInt" style="height:300px"></div>
+                </div>
+            </div>
+            <div class="box-c3">
+                <div class="m-l">
+                    <div class="mod-hd">前五目的地消费情况—国内</div>
+                    <div class="visual-data" id="fp_fiveDesDom" style="height:300px"></div>
+                </div>
+                <div class="m-r">
+                    <div class="mod-hd">前五目的地消费情况—国际</div>
+                    <div class="visual-data" id="fp_fiveDesInt" style="height:300px"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="main-c">
+        <!-- 公共头 S -->
+        <div class="CT_header"></div>
+        <!-- 公共头 E -->
+        <div class="page-c">
+            <!-- 分类页标题 S -->
+            <div class="page-title">
+                机票<span class="line"></span><span class="subName">机票消费</span>
+                <div class="tria-b"></div>
+                <div class="tria-f"></div>
+            </div>
+            <!-- 分类页标题 E -->
+            <div class="mod">
+                <div class="mod-hd">机票消费</div>
+                <div class="visual-data mb20" id="fp_fltConsum" style="height:150px"></div>
+                <div class="space" id="fp_fltTable"></div>
+            </div>
+            <div class="mod">
+                <div class="mod-hd">退改签情况—退改签</div>
+                <div class="visual-data mb20" id="fp_fltChangeFee" style="height:150px"></div>
+                <div class="space" id="fp_fltFeeTable"></div>
+            </div>
+            <div class="mod-hd">退改签情况—退改率</div>
+            <div class="visual-data mb20" id="fp_fltChangeRate" style="height:150px"></div>
+            <div class="space" id="fp_fltRateTable"></div>
+        </div>
+    </div>
+    <!-- ☆☆ FlightPage E ☆☆ -->
+
     <script type="text/javascript">
         var PDFConfig = {
-            cfgInfo: {
-                HasAgrHotelProduct: "T",
-                HasMemHotelProduct:"T",
-                HasOutAirTicketProduct: "T",
-                HasInAirTicketProduct: "T",
-                HasTotalTop5: "T"
-            },
+            cfgInfo: {"ConfigID":4,"UID":"2106322798","CorpCorporation":"abb","CorporationName":"ABB中国有限公司","IsOpenReport":"T","AccScope":"2164:abb,2221:abb_北京,2265:abb_上海,2266:abb_CNTUS,2267:abb_CNIAB,2268:abb_CNTHB,2269:abb_CNDMX,2270:abb_CNILX,2271:abb_CNAUS,2272:abb_CNBBC,2273:abb_CNEMS,2274:abb_CNHHS,2275:abb_CNIIB,2276:abb_CNMOT,2277:abb_CNTDS,2279:abb_CNXEC,2280:abb_CNCTC,2281:abb_CNDAT,2282:abb_CNGEN,2283:abb_CNILG,2284:abb_CNSCT,2285:abb_CNTPH,2286:abb_CNTXC,2287:abb_CNXPR,2288:abb_CNZTC,2308:abb_test,2393:abb_CNABB XM,2745:abb_广州,2746:abb_CNDEX,2881:ABB_客户活动账户,2919:abb_CNITS,2959:abb_CNGTE,3006:abb_CNCMM,3083:abb_前返,3099:abb_非管控,3616:abb_CNXDR,4001:abb_hcp,4126:Abb_CNAUS_BJ,4259:Abb_CNDCB,4287:Abb_CNBAL","HasMemHotelProduct":"T","HasAgrHotelProduct":"T","HasInAirTicketProduct":"T","HasOutAirTicketProduct":"T","HasCorpAccBillingType":"T","HasNonCorpAccBillingType":"T","HasMonthlyData":"T","HasQuarterData":"T","HasIndustryData":"T","HasTotalTop5":"T","HasFltMonthlyExpense":"T","HasFltTop5":"T","HasFltBack":"T","HasFltDeptDetail":"T","HasFltPassengerDetail":"T","HasAirlineTop5":"T","HasAirlineSave":"T","HasAgrFltGeneral":"T","HasAgrFltUse":"T","HasAgrFltComplete":"T","HasHtlDeptDetail":"T","HasAgrHtlGeneral":"T","HasAgrHtlUse":"T","HasAgrHtlNoPerson":"T","HasHtlSave":"T","HasHtlRCDetail":"T","HasHtlRCTop5":"T","HasTrainTop5Dept":"T","HasNoUseTickets":"T","HasPositionTracking":"T","DataChangeCreateTime":"\/Date(1398395127000)\/","DataChangeLastTime":"\/Date(1422351716000)\/"},
             lanType: "zh-cn",
             headInfo: {
                 AccountName: "全部",
@@ -112,13 +198,12 @@
             }
         }
 
+        //
+        PDFConfig.cfgInfo.HasFltBack = "T";
+
         var PageInfo = {
             SumPageInfo: {
                 SumInfo: {
-                    IsWarnShow: true,
-                    WarnInfo: "本期贵司差旅支出同比增长30%，环比增长90%<br>请关注贵司的差旅管控。",
-                    AllConsumption: 169111,
-                    AllSaving: 40719,
                     TrainPrice: 1906,
                     ArgHotelPrice: 99110,
                     MemHotelPrice: 68342,
@@ -132,16 +217,31 @@
                 },
                 FiveDepConsumInfo: [{Key: "部门1", Value: 119091},{Key: "部门2", Value: 219091}],
                 FiveDesConsumInfo: [{Key: "北京", Value: 63515},{Key:"上海", Value: 28369}],
+                FlightInfo: [{Key: "0天", Value: "16.4%"},{Key: "1天",Value: "16.4%"}],
+                HotelInfo: [{Key: "1星", Value: "16.12%"},{Key: "2星",Value: "12.4%"}]
+            },
+            FlightPageInfo: {
                 FlightInfo: {
-                    AllConsum: -247,
-                    AveDisCount: 0.9,
-                    AvgPrice: 1579,
-                    BeforeDiscount: [{Key: "0天", Value: "16.4%"},{Key: "1天",Value: "16.4%"}]
+                    DomFltInfo: [{ Key: "1月", Value: 1906}, { Key: "2月", Value: 2001}],
+                    InteFltInfo: [{ Key: "1月", Value: 1906}, { Key: "2月", Value: 2001}]
                 },
-                HotelInfo: {
-                    AllConsum: 167452,
-                    AvgPrice: 476,
-                    StarSit: [{Key: "1星", Value: "16.12%"},{Key: "2星",Value: "12.4%"}]
+                BkMethodInfo: {
+                    DomOrders: [{Key: "Online", Value:1000},{Key: "Offline", Value:1000},{Key: "Mobile", Value:1000}],
+                    InteOrders: [{Key: "Online", Value:1200},{Key: "Offline", Value:1200},{Key: "Mobile", Value:1200}]
+                },
+                FltFiveDepInfo: {
+                    DomFltInfo: [{ Key: "部门1", Value: 1906},{ Key: "部门2", Value: 1906}],
+                    InteFltInfo: [{ Key: "部门3", Value: 1907},{ Key: "部门4", Value: 1907}]
+                },
+                FltFiveDesInfo: {
+                    DomFltInfo: [{ Key: "上海", Value: 1906},{ Key: "北京", Value: 1906}],
+                    InteFltInfo: [{ Key: "L.A", Value: 1907},{ Key: "L.B", Value: 1907}]
+                },
+                BkChangeInfo: {
+                    FltChangeFee: [{ Key: "1月", Value: 1906},{ Key: "2月", Value: 1906}], //改签费
+                    FltBackFee: [{ Key: "1月", Value: 1906},{ Key: "2月", Value: 1906}],  //退票费
+                    FltChangeRate: [{ Key: "1月", Value: 0.069},{ Key: "2月", Value: 0.057}], //改签率
+                    FltBackRate: [{ Key: "1月", Value: 0.012},{ Key: "2月", Value: 0.057}] //退票率
                 }
             }
         }
@@ -181,8 +281,8 @@
     <script type="text/x-jquery-tmpl" id="tableTmpl">
         <table>
             <thead><tr>
-                <th></th>
-                {{each(i, v) thead}}
+                <th>${thead.Key}</th>
+                {{each(i, v) thead.Value}}
                     <th>${v}</th>
                 {{/each}}
             </tr></thead>

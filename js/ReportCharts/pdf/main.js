@@ -1,7 +1,7 @@
 ﻿(function ($) {
     //code by dstar
     //☆=================== var S ===================☆
-    var pageName = ["总概"];
+    //var pageName = ["总概"];
     //☆=================== var E ===================☆
 
     //☆=================== Fun S ===================☆
@@ -169,7 +169,7 @@
                 verticalAlign: 'bottom',
                 layout: 'vertical',
                 labelFormatter: function () {
-                    return this.name + ' ' + this.percentage.toFixed(1) + '%  ¥' + CM.fixData.transData(this.y, 0);
+                    return cfg.legendLabel || (this.name + ' ' + this.percentage.toFixed(1) + '%  ¥' + CM.fixData.transData(this.y, 0));
                 }
             },
             credits: {
@@ -179,66 +179,157 @@
         });
     }
 
+    function drawLine(content, dt, cfg) {
+        content.highcharts({
+            chart: {
+                type: 'line',
+                marginBottom: cfg.marginBottom || 48
+            },
+            title: {
+                text: null
+            },
+            xAxis: {
+                categories: dt.xData,
+                tickInterval: (parseInt(dt.xData.length / 10) + 1),
+                tickLength: 2
+            },
+            yAxis: {
+                title: {
+                    text: null
+                },
+                gridLineWidth: 0,
+                min: cfg.minY ? cfg.minY : null,
+                labels: {
+                    enabled: false
+                },
+                plotLines: [{
+                    color: '#C0D0E0',
+                    width: 1,
+                    value: 0
+                }]
+            },
+            legend: {
+                y: 11,
+                x: 0,
+                floating: true,
+                borderWidth: 0,
+                shadow: false
+            },
+            tooltip: {
+                enabled: false
+            },
+            credits: {
+                enabled: false
+            },
+            series: dt.yData
+        });
+    }
+
+    var DTM = {
+        columnDataEmpty: function (dt) {
+            for (var i = 0; i < dt.length; i++) {
+                var _iData = dt[i].Data;
+                for (var j = 0; j < _iData.length; j++) {
+                    if (_iData[j].Value != 0) { return false; }
+                }
+            }
+            return true;
+        },
+        fixColumnData: function (dt) {
+            var _x = [], _y = [];
+            for (var m = 0; m < dt.length; m++) {
+                var md = dt[m].Data, tmpY = [];
+                for (var n = 0; n < md.length; n++) {
+                    (0 == m) && (_x.push(md[n].Key));
+                    tmpY.push({ y: md[n].Value });
+                }
+                _y.push({
+                    color: dt[m].Color,
+                    name: dt[m].Name,
+                    data: tmpY
+                });
+            }
+            return {
+                xData: _x, yData: _y
+            };
+        },
+        barDataEmpty: function (dt) {
+            for (var i = 0; i < dt.length; i++) {
+                if (dt[i].Data != 0) { return false; }
+            }
+            return true;
+        },
+        fixBarData: function (dt) {
+            var _x = [], _y = [], _maxY = 0;
+
+            for (var i = 0; i < dt.length; i++) {
+                _x.push(dt[i].Name);
+                _y.push({
+                    y: dt[i].Data,
+                    color: dt[i].Color
+                });
+                //
+                if (dt[i].Data > _maxY) { _maxY = dt[i].Data; }
+            }
+            //
+            _maxY = parseInt(_maxY * 1.2);
+            return {
+                xData: _x,
+                yData: [{ data: _y}],
+                maxY: _maxY
+            };
+        },
+        fixColTableData: function (dt, cfg) {
+            var thd = [], tbd = [];
+            for (var i = 0; i < dt.length; i++) {
+                var md = dt[i].Data, tmpD = [];
+                for (var j = 0; j < md.length; j++) {
+                    (0 == i) && (thd.push(md[j].Key));
+                    tmpD.push(cfg.tbodyVal(md[j].Value));
+                }
+                tbd.push({
+                    Key: dt[i].Name,
+                    Value: tmpD
+                });
+            }
+            return {
+                thead: { Key: cfg.theadKey || "", Value: thd },
+                tbody: tbd
+            };
+        }
+    }
+
     //
     var SumPage = (function (aInfo, cfgInfo) {
         var sp = {
             init: function () {
-                sp.initTitle();
-                sp.initData();
-                //
+                //sp.initTitle();
                 sp.initChart();
             },
             initTitle: function () {
                 $('.CT_SumPageTitle').empty().html($('#pageTitleTmpl').tmpl({ pTitle: pageName[0] }));
             },
-            initData: function () {
-                //
-                $('#sp_warnInfo').html(aInfo.SumInfo.WarnInfo).css("visibility", aInfo.SumInfo.IsWarnShow ? "visible" : "hidden");
-                $('#sp_allConsumID').html("<span>¥</span>" + CM.fixData.transData(aInfo.SumInfo.AllConsumption, 0));
-                $('#sp_allSaveID').html("<span>¥</span>" + CM.fixData.transData(aInfo.SumInfo.AllSaving, 0));
-                //
-                $("#sp_fltConsum").html("<span>¥</span>" + CM.fixData.transData(aInfo.FlightInfo.AllConsum, 0));
-                $('#sp_fltAvgPrice').html("<span>¥</span>" + CM.fixData.transData(aInfo.FlightInfo.AvgPrice, 0));
-                $('#sp_fltAvgDiscount').html(aInfo.FlightInfo.AveDisCount);
-                //
-                $('#sp_htlConsum').html("<span>¥</span>" + CM.fixData.transData(aInfo.HotelInfo.AllConsum, 0));
-                $('#sp_htlAvgPrice').html("<span>¥</span>" + CM.fixData.transData(aInfo.HotelInfo.AvgPrice, 0));
-            },
             initChart: function () {
                 //bar
-                var sp_asc = $('#sp_allConsumSID'),
-                    barD = sp.getBarData(),
-                    sp_acm = $('#sp_allConsumMID'),
-                    colD = sp.getColumData(),
-                    sp_dep = $('#sp_fiveDepConsum'),
-                    sp_des = $('#sp_fiveDesConsum'),
-                    sp_f = $('#sp_flight'),
-                    fD = sp.getFlightData(),
-                    sp_fl = $('#sp_flightList'),
-                    sp_h = $('#sp_hotel'),
-                    hD = sp.getHotelData(),
-                    sp_hl = $('#sp_hotelList');
+                var sp_asc = $('#sp_allConsumSID'), barD = sp.getBarData(),
+                    sp_acm = $('#sp_allConsumMID'), colD = sp.getColumData(),
+                    sp_dep = $('#sp_fiveDepConsum'), sp_des = $('#sp_fiveDesConsum'),
+                    sp_f = $('#sp_flight'), fD = sp.getFlightData(),
+                    sp_fl = $('#sp_flightList'), sp_h = $('#sp_hotel'),
+                    hD = sp.getHotelData(), sp_hl = $('#sp_hotelList');
                 //
                 sp_asc.empty(); sp_acm.empty();
                 sp_dep.empty(); sp_des.empty();
                 sp_f.empty(); sp_h.empty();
                 //bar
-                if (sp.barDataEmpty(barD)) {
-                    CM.LineHeightFix(sp_asc);
-                } else {
-                    drawBar(sp_asc, sp.fixBarData(barD), {
-                        pointWidth: 25
-                    });
-                }
+                (DTM.barDataEmpty(barD)) ? CM.LineHeightFix(sp_asc) : drawBar(sp_asc, DTM.fixBarData(barD), { pointWidth: 25 });
                 //col
-                if (sp.columnDataEmpty(colD)) {
+                if (DTM.columnDataEmpty(colD)) {
                     CM.LineHeightFix(sp_acm);
                 } else {
-                    drawColumn(sp_acm, sp.fixColumnData(colD), {
-                        pointWidth: 30
-                    });
+                    drawColumn(sp_acm, DTM.fixColumnData(colD), { pointWidth: 30 });
                     //table
-                    sp.drawColumnTable($('#sp_allConsumTable'), colD);
+                    $('#sp_allConsumTable').empty().html($('#tableTmpl').tmpl(DTM.fixColTableData(colD, { tbodyVal: function (dt) { return "¥" + CM.fixData.transData(dt); } })));
                     //css
                     $('#sp_allConsumTable').find('table').addClass("data-table center mb30");
                 }
@@ -253,39 +344,31 @@
                     CM.ChargeFix(sp_dep, "payment15.jpg", PDFConfig.lanType);
                 }
                 //top 5 des
-                if (aInfo.FiveDesConsumInfo.length > 0) {
-                    drawPie(sp_des, sp.fixPieData(aInfo.FiveDesConsumInfo), {});
-                } else {
-                    CM.LineHeightFix(sp_des);
-                }
+                (aInfo.FiveDesConsumInfo.length > 0) ? drawPie(sp_des, sp.fixPieData(aInfo.FiveDesConsumInfo), {}) : CM.LineHeightFix(sp_des);
                 //flight
-                if (sp.columnDataEmpty(fD)) {
+                if (DTM.columnDataEmpty(fD)) {
                     CM.LineHeightFix(sp_f);
                 } else {
-                    drawColumn(sp_f, sp.fixColumnData(fD), {
-                        pointWidth: 30
-                    });
+                    drawColumn(sp_f, DTM.fixColumnData(fD), { pointWidth: 30 });
                     //table
-                    sp.drawColumnTable($('#sp_flightTable'), fD);
+                    $('#sp_flightTable').empty().html($('#tableTmpl').tmpl(DTM.fixColTableData(fD, { tbodyVal: function (dt) { return "¥" + CM.fixData.transData(dt); } })));
                     //css
                     $('#sp_flightTable').find('table').addClass("data-table center");
                 }
                 //flt list
-                sp_fl.empty().html($('#sp_listTmpl').tmpl(aInfo.FlightInfo.BeforeDiscount));
+                sp_fl.empty().html($('#sp_listTmpl').tmpl(aInfo.FlightInfo));
                 //hotel
-                if (sp.columnDataEmpty(hD)) {
+                if (DTM.columnDataEmpty(hD)) {
                     CM.LineHeightFix(sp_h);
                 } else {
-                    drawColumn(sp_h, sp.fixColumnData(hD), {
-                        pointWidth: 30
-                    });
+                    drawColumn(sp_h, DTM.fixColumnData(hD), { pointWidth: 30 });
                     //table
-                    sp.drawColumnTable($('#sp_hotelTable'), hD);
+                    $('#sp_hotelTable').empty().html($('#tableTmpl').tmpl(DTM.fixColTableData(hD, { tbodyVal: function (dt) { return "¥" + CM.fixData.transData(dt); } })));
                     //
                     $('#sp_hotelTable').find('table').addClass("data-table center");
                 }
                 //htl list
-                sp_hl.empty().html($('#sp_listTmpl').tmpl(aInfo.HotelInfo.StarSit));
+                sp_hl.empty().html($('#sp_listTmpl').tmpl(aInfo.HotelInfo));
             },
             getBarData: function () {
                 var arr = [];
@@ -324,32 +407,6 @@
                 }
                 return arr;
             },
-            barDataEmpty: function (dt) {
-                for (var i = 0; i < dt.length; i++) {
-                    if (dt[i].Data != 0) { return false; }
-                }
-                return true;
-            },
-            fixBarData: function (dt) {
-                var _x = [], _y = [], _maxY = 0;
-
-                for (var i = 0; i < dt.length; i++) {
-                    _x.push(dt[i].Name);
-                    _y.push({
-                        y: dt[i].Data,
-                        color: dt[i].Color
-                    });
-                    //
-                    if (dt[i].Data > _maxY) { _maxY = dt[i].Data; }
-                }
-                //
-                _maxY = parseInt(_maxY * 1.2);
-                return {
-                    xData: _x,
-                    yData: [{ data: _y}],
-                    maxY: _maxY
-                };
-            },
             getColumData: function () {
                 var arr = [];
                 arr.push({
@@ -387,48 +444,6 @@
                     });
                 }
                 return arr;
-            },
-            columnDataEmpty: function (dt) {
-                for (var i = 0; i < dt.length; i++) {
-                    var _iData = dt[i].Data;
-                    for (var j = 0; j < _iData.length; j++) {
-                        if (_iData[j].Value != 0) { return false; }
-                    }
-                }
-                return true;
-            },
-            fixColumnData: function (dt) {
-                var _x = [], _y = [], dList = dt[0].Data;
-                for (var m = 0; m < dt.length; m++) {
-                    var md = dt[m].Data, tmpY = [];
-                    for (var n = 0; n < md.length; n++) {
-                        (0 == m) && (_x.push(md[n].Key));
-                        tmpY.push({ y: md[n].Value });
-                    }
-                    _y.push({
-                        color: dt[m].Color,
-                        name: dt[m].Name,
-                        data: tmpY
-                    });
-                }
-                return {
-                    xData: _x, yData: _y
-                };
-            },
-            drawColumnTable: function (content, dt) {
-                var thd = [], tbd = [];
-                for (var i = 0; i < dt.length; i++) {
-                    var md = dt[i].Data, tmpD = [];
-                    for (var j = 0; j < md.length; j++) {
-                        (0 == i) && (thd.push(md[j].Key));
-                        tmpD.push("¥" + CM.fixData.transData(md[j].Value));
-                    }
-                    tbd.push({
-                        Key: dt[i].Name,
-                        Value: tmpD
-                    });
-                }
-                content.empty().html($('#tableTmpl').tmpl({ thead: thd, tbody: tbd }));
             },
             fixPieData: function (dt) {
                 var d = [];
@@ -481,8 +496,166 @@
 
         return {
             init: sp.init
-        }
+        };
     })(PageInfo.SumPageInfo, PDFConfig.cfgInfo);
+    //
+    var FlightPage = (function (aInfo, cfgInfo) {
+        var fp = {
+            init: function () {
+                var sp_bm = $('#fp_bkMethod'), bkmD = fp.getbkMothodData(),
+                    fp_fpd = $('#fp_fiveDepDom'), fp_fpi = $('#fp_fiveDepInt'),
+                    fp_fsd = $('#fp_fiveDesDom'), fp_fsi = $('#fp_fiveDesInt'),
+                    fp_fc = $('#fp_fltConsum'), fcD = fp.getFltData(),
+                    fp_fcf = $('#fp_fltChangeFee'), fcfD = fp.getFltFeeData(),
+                    fp_fcr = $('#fp_fltChangeRate'), fcrD = fp.getFltRateData();
+                //
+                sp_bm.empty(); fp_fpd.empty(); fp_fpi.empty();
+                fp_fsd.empty(); fp_fsi.empty();
+                fp_fcf.empty(); fp_fcr.empty();
+                //
+                if (DTM.columnDataEmpty(bkmD)) {
+                    CM.LineHeightFix(sp_bm);
+                } else {
+                    drawColumn(sp_bm, DTM.fixColumnData(bkmD), { pointWidth: 36 });
+                    //table
+                    $('#fp_bkmTable').empty().html($('#tableTmpl').tmpl(DTM.fixColTableData(bkmD, { tbodyVal: function (dt) { return CM.fixData.transData(dt) + "张"; }, theadKey: "预订方式" })));
+                    $('#fp_bkmTable').find('table').addClass("data-table center");
+                }
+                //dom
+                if (cfgInfo.HasInAirTicketProduct == "T") {
+                    var _depDom = aInfo.FltFiveDepInfo.DomFltInfo, _desDom = aInfo.FltFiveDesInfo.DomFltInfo;
+                    if (cfgInfo.HasFltTop5 == "T") {
+                        CM.ChargeFix(fp_fpd, "payment4.jpg", PDFConfig.lanType);
+                    } else {
+                        (_depDom && _depDom.length > 0) ? drawPie(fp_fpd, fp.fixPieData(_depDom), {}) : CM.LineHeightFix(fp_fpd);
+                    }
+                    //
+                    (_desDom && _desDom.length > 0) ? drawPie(fp_fsd, fp.fixPieData(_desDom), {}) : CM.LineHeightFix(fp_fsd);
+                } else {
+                    CM.ChargeFix(fp_fpd, "payment4.jpg", PDFConfig.lanType);
+                    CM.ChargeFix(fp_fsd, "payment4.jpg", PDFConfig.lanType);
+                }
+                //inte
+                if (cfgInfo.HasOutAirTicketProduct == "T") {
+                    var _depInte = aInfo.FltFiveDepInfo.InteFltInfo, _desInte = aInfo.FltFiveDesInfo.InteFltInfo;
+                    //
+                    if (cfgInfo.HasFltTop5 == "T") {
+                        CM.ChargeFix(fp_fpi, "payment4.jpg", PDFConfig.lanType);
+                    } else {
+                        (_depInte && _depInte.length > 0) ? drawPie(fp_fpi, fp.fixPieData(_depInte), {}) : CM.LineHeightFix(fp_fpi);
+                    }
+                    //
+                    (_desInte && _desInte.length > 0) ? drawPie(fp_fsi, fp.fixPieData(_desInte), {}) : CM.LineHeightFix(fp_fsi);
+                } else {
+                    CM.ChargeFix(fp_fpi, "payment4.jpg", PDFConfig.lanType);
+                    CM.ChargeFix(fp_fsi, "payment4.jpg", PDFConfig.lanType);
+                }
+                //
+                if (DTM.columnDataEmpty(fcD)) {
+                    CM.LineHeightFix(fp_fc);
+                } else {
+                    drawColumn(fp_fc, DTM.fixColumnData(fcD), { pointWidth: 32 });
+                    $('#fp_fltTable').empty().html($('#tableTmpl').tmpl(DTM.fixColTableData(fcD, { tbodyVal: function (dt) { return "¥" + CM.fixData.transData(dt); } })));
+                    $('#fp_fltTable').find('table').addClass("data-table center mb30");
+                }
+                //
+                if (cfgInfo.HasFltBack == "T") {
+                    //退改费
+                    if (DTM.columnDataEmpty(fcfD)) {
+                        CM.LineHeightFix(fp_fcf);
+                    } else {
+                        drawColumn(fp_fcf, DTM.fixColumnData(fcfD), { pointWidth: 36 });
+                        $('#fp_fltFeeTable').empty().html($('#tableTmpl').tmpl(DTM.fixColTableData(fcfD, { tbodyVal: function (dt) { return "¥" + CM.fixData.transData(dt); } })));
+                        $('#fp_fltFeeTable').find('table').addClass("data-table center mb30");
+                    }
+                    //退概率
+                    if (DTM.columnDataEmpty(fcrD)) {
+                        CM.LineHeightFix(fp_fcr);
+                    } else {
+                        drawLine(fp_fcr, DTM.fixColumnData(fcrD), {});
+                        $('#fp_fltRateTable').empty().html($('#tableTmpl').tmpl(DTM.fixColTableData(fcrD, { tbodyVal: function (dt) { return (dt * 100).toFixed(1) + "%"; } })));
+                        $('#fp_fltRateTable').find('table').addClass("data-table center mb30");
+                    }
+                } else {
+                    CM.ChargeFix(fp_fcf, "payment5.jpg", PDFConfig.lanType); CM.ChargeFix(fp_fcr, "payment5.jpg", PDFConfig.lanType);
+                }
+            },
+            getbkMothodData: function () {
+                var arr = [];
+                if (cfgInfo.HasOutAirTicketProduct == "T") {
+                    arr.push({
+                        Name: "国际机票",
+                        Data: aInfo.BkMethodInfo.InteOrders,
+                        Color: '#79b3ff'
+                    });
+                }
+                if (cfgInfo.HasInAirTicketProduct == "T") {
+                    arr.push({
+                        Name: "国内机票",
+                        Data: aInfo.BkMethodInfo.DomOrders,
+                        Color: '#1c76ec'
+                    });
+                }
+                return arr;
+            },
+            fixPieData: function (dt) {
+                var d = [];
+                for (var i = 0; i < dt.length; i++) {
+                    d.push({ name: dt[i].Key, y: dt[i].Value });
+                }
+                return [{
+                    type: "pie",
+                    name: "消费金额",
+                    data: d
+                }];
+            },
+            getFltData: function () {
+                var arr = [];
+                if (cfgInfo.HasOutAirTicketProduct == "T") {
+                    arr.push({
+                        Name: "国际机票",
+                        Data: aInfo.FlightInfo.InteFltInfo,
+                        Color: '#79b3ff'
+                    });
+                }
+                if (cfgInfo.HasInAirTicketProduct == "T") {
+                    arr.push({
+                        Name: "国内机票",
+                        Data: aInfo.FlightInfo.DomFltInfo,
+                        Color: '#1c76ec'
+                    });
+                }
+                return arr;
+            },
+            getFltFeeData: function () {
+                return [{
+                    Name: "改签费",
+                    Data: aInfo.BkChangeInfo.FltChangeFee,
+                    Color: '#79b3ff'
+                }, {
+                    Name: "退票费",
+                    Data: aInfo.BkChangeInfo.FltBackFee,
+                    Color: '#1c76ec'
+                }];
+            },
+            getFltRateData: function () {
+                return [{
+                    Name: "改签率",
+                    Data: aInfo.BkChangeInfo.FltChangeRate,
+                    Color: '#79b3ff'
+                }, {
+                    Name: "退票率",
+                    Data: aInfo.BkChangeInfo.FltBackRate,
+                    Color: '#1c76ec'
+                }];
+            }
+        }
+
+        return {
+            init: fp.init
+        };
+    })(PageInfo.FlightPageInfo, PDFConfig.cfgInfo);
+
     //☆=================== Fun E ===================☆
     //ready
     $(document).ready(function () {
@@ -490,5 +663,6 @@
         //
         headInit();
         SumPage.init();
+        FlightPage.init();
     });
 })(jQuery);
