@@ -185,6 +185,45 @@
     </div>
     <!-- ☆☆ FlightPage E ☆☆ -->
 
+    <!-- ☆☆ FlightDepAny S ☆☆ -->
+    <div class="main-c">
+        <!-- 公共头 S -->
+        <div class="CT_header"></div>
+        <!-- 公共头 E -->
+        <div class="page-c">
+            <!-- 分类页标题 S -->
+            <div class="page-title">
+                机票<span class="line"></span><span class="subName">部门分析</span>
+                <div class="tria-b"></div>
+                <div class="tria-f"></div>
+            </div>
+            <!-- 分类页标题 E -->
+            <div class="mod">
+                <div class="mod-hd">国内部门分析</div>
+                <div id="fda_domDepart"></div>
+                <div class="text-tips mb30">
+                    备注：
+                    <div>备注： 不含退票，不含儿童，婴儿票</div>
+                    <div>平均折扣，全价票比例只分析国内机票</div>
+                    <div>全价票比例=全价票张数/国内总张数；全价票包含全价经济舱，公务舱和头等舱</div>
+                    <div>节省=全价-成交净价-服务费；损失=成交净价-最低价</div>
+                    <div>节省率=节省/全价；损失率=损失/全价</div>
+                </div>
+            </div>
+            <div class="mod-hd">国际部门分析</div>
+            <div id="fda_inteDepart"></div>
+            <div class="text-tips mb30">
+                备注：
+                <div>备注： 不含退票，不含儿童，婴儿票</div>
+                <div>平均折扣，全价票比例只分析国内机票</div>
+                <div>全价票比例=全价票张数/国内总张数；全价票包含全价经济舱，公务舱和头等舱</div>
+                <div>节省=全价-成交净价-服务费；损失=成交净价-最低价</div>
+                <div>节省率=节省/全价；损失率=损失/全价</div>
+            </div>
+        </div>
+    </div>
+    <!-- ☆☆ FlightDepAny E ☆☆ -->    
+
     <script type="text/javascript">
         var PDFConfig = {
             cfgInfo: {"ConfigID":4,"UID":"2106322798","CorpCorporation":"abb","CorporationName":"ABB中国有限公司","IsOpenReport":"T","AccScope":"2164:abb,2221:abb_北京,2265:abb_上海,2266:abb_CNTUS,2267:abb_CNIAB,2268:abb_CNTHB,2269:abb_CNDMX,2270:abb_CNILX,2271:abb_CNAUS,2272:abb_CNBBC,2273:abb_CNEMS,2274:abb_CNHHS,2275:abb_CNIIB,2276:abb_CNMOT,2277:abb_CNTDS,2279:abb_CNXEC,2280:abb_CNCTC,2281:abb_CNDAT,2282:abb_CNGEN,2283:abb_CNILG,2284:abb_CNSCT,2285:abb_CNTPH,2286:abb_CNTXC,2287:abb_CNXPR,2288:abb_CNZTC,2308:abb_test,2393:abb_CNABB XM,2745:abb_广州,2746:abb_CNDEX,2881:ABB_客户活动账户,2919:abb_CNITS,2959:abb_CNGTE,3006:abb_CNCMM,3083:abb_前返,3099:abb_非管控,3616:abb_CNXDR,4001:abb_hcp,4126:Abb_CNAUS_BJ,4259:Abb_CNDCB,4287:Abb_CNBAL","HasMemHotelProduct":"T","HasAgrHotelProduct":"T","HasInAirTicketProduct":"T","HasOutAirTicketProduct":"T","HasCorpAccBillingType":"T","HasNonCorpAccBillingType":"T","HasMonthlyData":"T","HasQuarterData":"T","HasIndustryData":"T","HasTotalTop5":"T","HasFltMonthlyExpense":"T","HasFltTop5":"T","HasFltBack":"T","HasFltDeptDetail":"T","HasFltPassengerDetail":"T","HasAirlineTop5":"T","HasAirlineSave":"T","HasAgrFltGeneral":"T","HasAgrFltUse":"T","HasAgrFltComplete":"T","HasHtlDeptDetail":"T","HasAgrHtlGeneral":"T","HasAgrHtlUse":"T","HasAgrHtlNoPerson":"T","HasHtlSave":"T","HasHtlRCDetail":"T","HasHtlRCTop5":"T","HasTrainTop5Dept":"T","HasNoUseTickets":"T","HasPositionTracking":"T","DataChangeCreateTime":"\/Date(1398395127000)\/","DataChangeLastTime":"\/Date(1422351716000)\/"},
@@ -243,7 +282,17 @@
                     FltChangeRate: [{ Key: "1月", Value: 0.069},{ Key: "2月", Value: 0.057}], //改签率
                     FltBackRate: [{ Key: "1月", Value: 0.012},{ Key: "2月", Value: 0.057}] //退票率
                 }
-            }
+            },
+            FlightDepAnyInfo: {
+                DomDepInfo: {
+                    PartInfo: [{DepName: "总部", Price: 123456, Numbers: 3600, AvgDiscount: 0.77, FullPerc: 0.092,Save:351705,SaveRate:0.163,Loss:5257,LossRate:0.002},{DepName: "总部", Price: 123456, Numbers: 3600, AvgDiscount: 0.77, FullPerc: 0.092,Save:351705,SaveRate:0.163,Loss:5257,LossRate:0.002}],
+                    ToltalInfo: {TolPrice: 8058693, TolNumbers: 5226, TolAvgDiscount: 0.75,TolFullPer: 0.094,TolSave:1789002,TolSaveRate:0.2,TolLoss:31873,TolLossRate:0.004}
+                },
+                InteDepInfo:{
+                    PartInfo: [{DepName: "总部", Price: 123456, Numbers: 3600, IntMilAvgPrice: 0.62,Save:351705,SaveRate:0.163}],
+                    TotalInfo: {TolPrice: 8058693,TolNumbers: 5226,TolIntMilAvgPrice:0.65,TolSave:1789002,TolSaveRate:0.2}
+                }
+            }            
         }
     </script>
     <!-- ☆☆ 模板 tmpl S ☆☆ -->
@@ -305,6 +354,30 @@
             <div class="text-c1">${Value}</div>
         </div>
     </script>
+
+    <script type="text/x-jquery-tmpl" id="a_tableTmpl">
+        <table>
+            <thead>
+                {{each(i, v) thead}}
+                    <th>${v}</th>
+                {{/each}}
+            </thead>
+            <tbody>
+                {{each(i, v) tbody}}
+                    <tr>
+                        {{each(j, v_1) v}}
+                            <td>${v_1}</td>
+                        {{/each}}
+                    </tr>
+                {{/each}}
+            </tbody>
+            <tfoot><tr>
+                {{each(i, v) tfoot}}
+                    <th>${v}</th>
+                {{/each}}
+            </tr></tfoot>
+        </table>    
+    </script>    
 
     <!-- ☆☆ 模板 tmpl E ☆☆ -->
     <script src="../../../js/ReportCharts/fame/jquery-1.9.1.min.js" type="text/javascript"></script>

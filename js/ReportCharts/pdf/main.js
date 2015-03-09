@@ -656,6 +656,71 @@
         };
     })(PageInfo.FlightPageInfo, PDFConfig.cfgInfo);
 
+    var FlightDepAny = (function(aInfo, cfgInfo) {
+        var fda = {
+            init: function() {
+                var domD = fda.getDomDepData(aInfo.DomDepInfo),
+                    fda_dp = $('#fda_domDepart'),
+                    intD = fda.getInteDepData(aInfo.InteDepInfo),
+                    fda_id = $('#fda_inteDepart');
+
+                //国内
+                if (cfgInfo.HasInAirTicketProduct == "T") {
+                    if (domD.tbody.length > 0) {
+                        fda_dp.empty().html($('#a_tableTmpl').tmpl(domD));
+                        fda_dp.find('table').addClass("table-2 center mb20");
+                    } else {
+                        CM.LineHeightFix(fda_dp);
+                    }
+                } else {
+                    CM.ChargeFix(fda_dp, "payment16.jpg", PDFConfig.lanType);
+                }
+                //国际
+                if (cfgInfo.HasOutAirTicketProduct == "T") {
+                    if (intD.tbody.length > 0) {
+                        fda_id.empty().html($('#a_tableTmpl').tmpl(intD))
+                        fda_id.find('table').addClass("table-2 center mb20");
+                    } else {
+                        CM.LineHeightFix(fda_id);
+                    }
+                } else {
+                    CM.ChargeFix(fda_id, "payment16.jpg", PDFConfig.lanType);
+                }
+            },
+            getDomDepData: function(dt) {
+                var tbd = [],
+                    f = dt.ToltalInfo;
+                for (var i = 0; i < dt.PartInfo.length; i++) {
+                    var _ = dt.PartInfo[i];
+                    tbd.push([_.DepName, CM.fixData.transData(_.Price, 0), CM.fixData.transData(_.Numbers, 0), _.AvgDiscount, CM.fixData.percData(_.FullPerc), CM.fixData.transData(_.Save, 0), CM.fixData.percData(_.SaveRate), CM.fixData.transData(_.Loss, 0), CM.fixData.percData(_.LossRate)]);
+                }
+                return {
+                    thead: ["部门", "金额", "张数", "平均折扣", "全价票比例", "节省", "节省率", "损失", "损失率"],
+                    tbody: tbd,
+                    tfoot: ["总计", CM.fixData.transData(f.TolPrice, 0), CM.fixData.transData(f.TolNumbers, 0), f.TolAvgDiscount, CM.fixData.percData(f.TolFullPer), CM.fixData.transData(f.TolSave, 0), CM.fixData.percData(f.TolSaveRate), CM.fixData.transData(f.TolLoss, 0), CM.fixData.percData(f.TolLossRate)]
+                };
+            },
+            getInteDepData: function(dt) {
+                var tbd = [],
+                    b = dt.PartInfo,
+                    f = dt.TotalInfo;
+                for (var i = 0; i < b.length; i++) {
+                    var _ = b[i];
+                    tbd.push([_.DepName, CM.fixData.transData(_.Price, 0), CM.fixData.transData(_.Numbers, 0), _.IntMilAvgPrice, CM.fixData.transData(_.Save, 0), CM.fixData.percData(_.SaveRate)]);
+                }
+                return {
+                    thead: ["部门", "金额", "张数", "国际里程平均价", "节省", "节省率"],
+                    tbody: tbd,
+                    tfoot: ["总计", CM.fixData.transData(f.TolPrice, 0), CM.fixData.transData(f.TolNumbers, 0), f.TolIntMilAvgPrice, CM.fixData.transData(f.TolSave, 0), CM.fixData.percData(f.TolSaveRate)]
+                }
+            }
+        }
+
+        return {
+            init: fda.init
+        };
+    })(PageInfo.FlightDepAnyInfo, PDFConfig.cfgInfo);
+
     //☆=================== Fun E ===================☆
     //ready
     $(document).ready(function () {
@@ -664,5 +729,6 @@
         headInit();
         SumPage.init();
         FlightPage.init();
+        FlightDepAny.init();
     });
 })(jQuery);
