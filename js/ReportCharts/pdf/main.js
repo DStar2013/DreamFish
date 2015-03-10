@@ -721,6 +721,54 @@
         };
     })(PageInfo.FlightDepAnyInfo, PDFConfig.cfgInfo);
 
+    var FlightPsgerAny = (function (aInfo, cfgInfo) {
+        var fpa = {
+            init: function () {
+                var domD = fpa.getDomPsgerData(aInfo.DomPsgerInfo), fpa_dp = $('#fpa_domPsg'),
+                    inteD = fpa.getIntePsgerData(aInfo.IntePsgerInfo), fpa_ip = $('#fpa_intePsg');
+                if (cfgInfo.HasInAirTicketProduct == "T") {
+                    if (domD.tbody.length > 0) {
+                        fpa_dp.empty().html($('#a_tableTmpl').tmpl(domD));
+                        fpa_dp.find('table').addClass("table-2 table-interleave center mb20");
+                    } else { CM.LineHeightFix(fpa_dp); }
+                } else { CM.ChargeFix(fpa_dp, "payment2.jpg", PDFConfig.lanType); }
+                //
+                if (cfgInfo.HasOutAirTicketProduct == "T") {
+                    if (inteD.tbody.length > 0) {
+                        fpa_ip.empty().html($('#a_tableTmpl').tmpl(inteD));
+                        fpa_ip.find('table').addClass("table-2 table-interleave center mb20");
+                    } else { CM.LineHeightFix(fpa_ip); }
+                } else { CM.ChargeFix(fpa_ip, "payment2.jpg", PDFConfig.lanType); }
+            },
+            getDomPsgerData: function (dt) {
+                var tbd = [];
+                for (var i = 0; i < dt.length; i++) {
+                    var _ = dt[i];
+                    tbd.push([_.PsgerName, _.DepName, CM.fixData.transData(_.Price, 0), CM.fixData.transData(_.Numbers, 0), _.AvgDiscount, CM.fixData.percData(_.FullPerc), CM.fixData.transData(_.Save, 0), CM.fixData.percData(_.SaveRate), CM.fixData.transData(_.Loss, 0), CM.fixData.percData(_.LossRate)]);
+                }
+                return {
+                    thead: ["乘客姓名", "所在部门", "金额", "张数", "平均折扣", "全票价比例", "节省", "节省率", "损失", "损失率"],
+                    tbody: tbd
+                };
+            },
+            getIntePsgerData: function (dt) {
+                var tbd = [];
+                for (var i = 0; i < dt.length; i++) {
+                    var _ = dt[i];
+                    tbd.push([_.PsgerName, _.DepName, CM.fixData.transData(_.Price, 0), CM.fixData.transData(_.Numbers, 0), _.IntMilAvgPrice, CM.fixData.transData(_.Save, 0), CM.fixData.percData(_.SaveRate)]);
+                }
+                return {
+                    thead: ["乘客姓名", "所在部门", "金额", "张数", "里程平均价", "节省", "节省率"],
+                    tbody: tbd
+                };
+            }
+        };
+
+        return {
+            init: fpa.init
+        }
+    })(PageInfo.FlightPsgerAnyInfo, PDFConfig.cfgInfo);
+
     //☆=================== Fun E ===================☆
     //ready
     $(document).ready(function () {
@@ -730,5 +778,6 @@
         SumPage.init();
         FlightPage.init();
         FlightDepAny.init();
+        FlightPsgerAny.init();
     });
 })(jQuery);

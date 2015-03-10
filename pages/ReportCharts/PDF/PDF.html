@@ -223,6 +223,59 @@
         </div>
     </div>
     <!-- ☆☆ FlightDepAny E ☆☆ -->    
+    <!-- ☆☆ FlightPsgerAny S ☆☆ -->
+    <div class="main-c">
+        <!-- 公共头 S -->
+        <div class="CT_header"></div>
+        <!-- 公共头 E -->
+        <div class="page-c">
+            <!-- 分类页标题 S -->
+            <div class="page-title">
+                机票<span class="line"></span><span class="subName">乘机人分析</span>
+                <div class="tria-b"></div>
+                <div class="tria-f"></div>
+            </div>
+            <!-- 分类页标题 E -->
+            <div class="mod-hd">预订国内机票乘机人分析</div>
+            <div id="fpa_domPsg"></div>
+            <div class="text-tips mb30">
+                备注：
+                <div>备注： 不含退票，不含儿童，婴儿票</div>
+                <div>平均折扣，全价票比例只分析国内机票</div>
+                <div>全价票比例=全价票张数/国内总张数；全价票包含全价经济舱，公务舱和头等舱</div>
+                <div>节省=全价-成交净价-服务费；损失=成交净价-最低价</div>
+                <div>节省率=节省/全价；损失率=损失/全价</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-c">
+        <!-- 公共头 S -->
+        <div class="CT_header"></div>
+        <!-- 公共头 E -->
+        <div class="page-c">
+            <!-- 分类页标题 S -->
+            <div class="page-title">
+                机票<span class="line"></span><span class="subName">乘机人分析</span>
+                <div class="tria-b"></div>
+                <div class="tria-f"></div>
+            </div>
+            <!-- 分类页标题 E -->
+            <div class="mod-hd">预订国际机票乘机人分析</div>
+            <div id="fpa_intePsg"></div>
+            <div class="text-tips mb30">
+                备注：
+                <div>备注： 不含退票，不含儿童，婴儿票</div>
+                <div>平均折扣，全价票比例只分析国内机票</div>
+                <div>全价票比例=全价票张数/国内总张数；全价票包含全价经济舱，公务舱和头等舱</div>
+                <div>节省=全价-成交净价-服务费；损失=成交净价-最低价</div>
+                <div>节省率=节省/全价；损失率=损失/全价</div>
+            </div>
+        </div>
+    </div>
+    <!-- ☆☆ FlightPsgerAny E ☆☆ -->
+
+
 
     <script type="text/javascript">
         var PDFConfig = {
@@ -292,7 +345,11 @@
                     PartInfo: [{DepName: "总部", Price: 123456, Numbers: 3600, IntMilAvgPrice: 0.62,Save:351705,SaveRate:0.163}],
                     TotalInfo: {TolPrice: 8058693,TolNumbers: 5226,TolIntMilAvgPrice:0.65,TolSave:1789002,TolSaveRate:0.2}
                 }
-            }            
+            },
+            FlightPsgerAnyInfo: {
+                DomPsgerInfo: [{PsgerName:"张三",DepName:"部门1",Price:123456,Numbers:3600,AvgDiscount: 0.77,FullPerc: 0.092,Save:351705,SaveRate:0.163,Loss:5257,LossRate:0.002}],
+                IntePsgerInfo: [{PsgerName:"张三",DepName: "部门1",Price:123456,Numbers:3600,IntMilAvgPrice:0.123,Save:351705,SaveRate:0.163}]
+            }
         }
     </script>
     <!-- ☆☆ 模板 tmpl S ☆☆ -->
@@ -371,13 +428,15 @@
                     </tr>
                 {{/each}}
             </tbody>
+            {{if tfoot}}
             <tfoot><tr>
                 {{each(i, v) tfoot}}
                     <th>${v}</th>
                 {{/each}}
             </tr></tfoot>
+            {{/if}}
         </table>    
-    </script>    
+    </script>
 
     <!-- ☆☆ 模板 tmpl E ☆☆ -->
     <script src="../../../js/ReportCharts/fame/jquery-1.9.1.min.js" type="text/javascript"></script>
