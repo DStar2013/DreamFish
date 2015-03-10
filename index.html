@@ -7,7 +7,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>Dreamfish by DStar2013</title>
     <link rel="stylesheet" type="text/css" href="css/main.css">
-    <base href="http://dstar2013.github.io/DreamFish/" target="_blank" />
+    <!--<base href="http://dstar2013.github.io/DreamFish/" target="_blank" />-->
   </head>
 
   <body>
@@ -35,11 +35,11 @@
           </div>
           <nav>
             <div class="wrap-nav">
-              <div class="menu">
+              <div class="menu" id="navMenu">
                 <ul>
-                  <li><a href="">Home</a></li>
-                  <li><a href="">Blog</a></li>
-                  <li class="active"><a href="">Demo</a></li>
+                  <li side="s_Home"><a>Home</a></li>
+                  <li side="s_Blog"><a>Blog</a></li>
+                  <li side="s_Demo" class="active"><a>Demo</a></li>
                 </ul>
               </div>
             </div>
@@ -48,8 +48,18 @@
       </header>
       <!--  Content  -->
       <section>
-        <div id="sidebar" class="col-1-1">
-          <div class="wrap-col">
+        <div id="sidebar" class="col-1-1">       
+          <div class="wrap-col" id="s_Home" style="display:none">
+            <div class="box">
+              <a href="">Welcome Home</a>
+            </div>
+          </div>
+          <div class="wrap-col" id="s_Blog" style="display:none">
+            <div class="box">
+              <a href="http://blog.csdn.net/xingxing1828">Welcome Blog</a>
+            </div>
+          </div>          
+          <div class="wrap-col" id="s_Demo">
             <div class="box">
               <a href="pages/cQueryAPI">基于cQuery封装的公用控件</a>
             </div>
