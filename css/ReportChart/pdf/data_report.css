@@ -3,13 +3,14 @@
  * Desc  : onlineReport pdf
  * Creat : 2015.01.12
  * Author: zhp
- * Modify: 2015.02.04 By zhp
+ * Modify: 2015.03.09 By zhp
 */
 
 body, html {font-family: microsoft yahei;}
 * {margin: 0;padding: 0;}
 ul, li {list-style: none;}
 table {border-collapse: collapse;border-spacing: 0;}
+/* 打印样式设置 */
 @page {size: A4 portrait;margin-left: 0cm;margin-right: 0cm;}
 
 
@@ -35,7 +36,11 @@ table {border-collapse: collapse;border-spacing: 0;}
 .hd-siteTitle em {display:block; letter-spacing:0; font:12px simsun,serif; color:#606060;}
 .hd-languageVersion {float:left; padding-top:23px;}
 .hd-languageVersion li {float:left; margin-right:6px;}
-.hd-languageVersion a {background: #fcc;font-size: 0;text-indent: -9999px;overflow: hidden;display: block;width: 24px;height: 17px;}
+.hd-languageVersion a {font-size: 0;text-indent: -9999px;overflow: hidden;display: block;width: 23px;height: 16px;background: url(http://pic.c-ctrip.com/droco/img/pdf_icons.png);}
+.hd-languageVersion .cn {background-position: -88px 0;}
+.hd-languageVersion .en {background-position: -88px -18px;}
+.hd-languageVersion .cn:hover, .hd-languageVersion .cur .cn {background-position: -63px 0;}
+.hd-languageVersion .en:hover, .hd-languageVersion .cur .en {background-position: -63px -18px;}
 .hd-info {float: right;padding-right: 20px;}
 .hd-info li {float: left;margin-left: 15px;color: #333;line-height: 70px;font-size: 12px;}
 .hd-info .label {color: #999;}
@@ -59,11 +64,15 @@ table {border-collapse: collapse;border-spacing: 0;}
 .box-c3 .m-r, .box-c31 .m-r {padding-left: 2.5%;overflow: hidden;border-left: 1px solid #d7d7d7;}
 .box-c31 .m-l {margin-right: 0;}
 .box-c31 .m-l, .box-c31 .m-r {border:0 none;}
-
+.box-c4 {border-bottom: 1px solid #d7d7d7;padding-bottom: 30px;margin-bottom: 30px;overflow: hidden;}
+.box-c4 .m-l,.box-c4 .m-c,.box-c4 .m-r {float: left;width: 32%;}
+.box-c4 .m-l, .box-c4 .m-c {margin-right: 2%;}
 
 /* msg-box */
-.msg-box {padding-left: 42px;font-size: 16px;line-height: 20px;color: #333;}
-.msg-info {background: url(../img/icon-info.png) no-repeat 0 4px;}
+.msg-box {font-size: 16px;line-height: 20px;color: #333;}
+.msg-box i {background-image: url(http://pic.c-ctrip.com/droco/img/pdf_icons.png);}
+.msg-box .i-info {background-position: -63px -24px;display: inline-block;width: 32px;height: 32px;margin-right: 10px;vertical-align: middle;}
+.msg-box span {vertical-align: middle;display: inline-block;}
 
 /* total-bill */
 .total-bill {padding-top: 20px;overflow: hidden;}
@@ -79,8 +88,11 @@ table {border-collapse: collapse;border-spacing: 0;}
 
 /* header */
 .mod-hd {margin-bottom: 15px;font-size: 16px;color: #333;font-weight: normal;}
-.mod-hd-icon {padding-left: 52px;}
-.mod-hd-sub {margin-bottom: 5px;font-size: 14px;color: #666;font-weight: normal;}
+.mod-hd-icon i {background-image: url(http://pic.c-ctrip.com/droco/img/pdf_icons.png);display: inline-block;margin-right: 15px;vertical-align: middle;}
+.mod-hd-icon .i-train {background-position: 0 -107px; width: 32px;height: 41px;}
+.mod-hd-icon .i-plane {background-position: 0 -49px; width: 44px;height: 43px;}
+.mod-hd-icon .i-hotel {background-position: 0 0; width: 44px;height: 34px;}
+.mod-hd-sub {margin-bottom: 10px;font-size: 14px;color: #666;font-weight: normal;}
 
 /* visual-data */
 .visual-data {text-align: center;}
@@ -109,22 +121,22 @@ table {border-collapse: collapse;border-spacing: 0;}
 .v-list .price span {margin-right: 8px;font-size: 12px;font-family: arial;}
 
 /* table */
-.data-table {width: 100%;font-family: arial;}
-.data-table th, .data-table td {border:1px solid #e3e3e3;}
-.data-table thead th {background: #2577E3;height: 36px;line-height: 36px;color: #fff;font-size: 14px;font-weight: normal;border:1px solid #4d92eb;border-bottom: 0 none;}
-.data-table tbody th, .data-table tbody td {height: 36px;line-height: 36px;}
-.data-table tbody th {font-size: 14px;color: #666;}
-.data-table tbody td {font-size: 12px;color: #333;}
-.data-table .body-foot th {background-color: #f5f5f5;color: #333;font-size: 14px;font-weight: bold;}
-.data-table tfoot th {background: #f5f5f5;height: 36px;line-height: 36px;color: #333;font-size: 14px;font-weight: bold;border-top: 0 none;}
+.table {width: 100%;font-family: arial;}
+.table th, .table td {border:1px solid #e3e3e3;}
+.table thead th {background: #2577E3;height: 36px;line-height: 36px;color: #fff;font-size: 14px;font-weight: normal;border:1px solid #4d92eb;border-bottom: 0 none;}
+.table tbody th, .table tbody td {height: 36px;line-height: 36px;}
+.table tbody th {font-size: 14px;color: #666;}
+.table tbody td {font-size: 14px;color: #333;}
+.table .body-foot th {background-color: #f5f5f5;color: #333;font-size: 14px;font-weight: bold;}
+.table tfoot th {background: #f5f5f5;height: 36px;line-height: 36px;color: #333;font-size: 14px;font-weight: bold;border-top: 0 none;}
 
 .table-interleave tbody tr:nth-child(2n) td {background-color: #e8f6ff;}
 
 .table-2 {width: 100%;font-family: arial;}
 .table-2 th, .table-2 td {height: 20px;padding: 8px;}
 .table-2 thead th {background: #2577E3;color: #fff;font-size: 14px;font-weight: normal;border-bottom: 0 none;}
-.table-2 tbody td {border-bottom: 1px dashed #ccc;font-size: 12px;color: #333;}
-.table-2 tfoot th {font-size: 12px;color: #333;background-color: #f5f5f5;border-bottom: 2px solid #ccc;}
+.table-2 tbody td {border-bottom: 1px dashed #ccc;font-size: 14px;color: #333;}
+.table-2 tfoot th {font-size: 14px;color: #333;background-color: #f5f5f5;border-bottom: 2px solid #ccc;}
 .table-2 .bdsolid td {border-bottom: 1px solid #ccc;}
 .table-2 .crHead th {border:1px solid #5197f5;padding: 2px 8px;}
 
