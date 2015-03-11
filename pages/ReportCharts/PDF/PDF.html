@@ -222,7 +222,8 @@
             </div>
         </div>
     </div>
-    <!-- ☆☆ FlightDepAny E ☆☆ -->    
+    <!-- ☆☆ FlightDepAny E ☆☆ -->
+
     <!-- ☆☆ FlightPsgerAny S ☆☆ -->
     <div class="main-c">
         <!-- 公共头 S -->
@@ -274,6 +275,82 @@
         </div>
     </div>
     <!-- ☆☆ FlightPsgerAny E ☆☆ -->
+    <!-- ☆☆ FlightPosition S ☆☆ -->
+    <div class="main-c">
+        <!-- 公共头 S -->
+        <div class="CT_header"></div>
+        <!-- 公共头 E -->
+        <div class="page-c">
+            <!-- 分类页标题 S -->
+            <div class="page-title">
+                机票<span class="line"></span><span class="subName">仓位</span>
+                <div class="tria-b"></div>
+                <div class="tria-f"></div>
+            </div>
+            <!-- 分类页标题 E -->
+            <div class="box-c3">
+                <div class="m-l">
+                    <div class="mod-hd">国内仓位分布</div>
+                    <div class="visual-data" id="fpo_domP" style="height:370px"></div>
+                </div>
+                <div class="m-r">
+                    <div class="mod-hd">国际仓位分布</div>
+                    <div class="visual-data" id="fpo_inteP" style="height:370px"></div>
+                </div>
+            </div>
+            <div class="box-c3">
+                <div class="m-l">
+                    <div class="mod-hd">全票价比例</div>
+                    <div class="progress_box">
+                        <div class="progress_bar" status="0" id="fpo_ticketPer">
+                            <p class="num num_left">0%</p>
+                            <div class="inner">
+                                <div class="progress color1"></div>
+                                <div class="progress color2"></div>
+                                <div class="progress color3"></div>
+                                <div class="progress color4"></div>
+                            </div>
+                            <p class="num num_right">100%</p>
+                            <div class="progress_info" style=""></div>
+                            <div class="progress_info" style=""></div>
+                            <div class="progress_info" style=""></div>
+                            <div class="progress_info" style=""></div>
+                            <i class="shadow_layer"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="m-r">
+                    <div class="mod-hd">平均折扣</div>
+                    <div class="progress_box">
+                        <div class="progress_bar" status="1" id="fpo_avgDiscount">
+                            <p class="num num_left">0</p>
+                            <div class="inner">
+                                <div class="progress color1"></div>
+                                <div class="progress color2"></div>
+                                <div class="progress color3"></div>
+                                <div class="progress color4"></div>
+                            </div>
+                            <p class="num num_right">1</p>
+                            <div class="progress_info" style=""></div>
+                            <div class="progress_info" style=""></div>
+                            <div class="progress_info" style=""></div>
+                            <div class="progress_info" style=""></div>
+                            <i class="shadow_layer"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mod-hd">折扣率分布</div>
+            <div id="fpo_rateDisTable" style="width: 534px;"></div>
+            <div class="text-tips">
+                备注：
+                <div>不含退票；不含儿童票；不含婴儿票</div>
+                <div>国内区间分析只分析国内经济舱，不含头等舱，公务舱</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ☆☆ FlightPosition E ☆☆ -->    
 
 
 
@@ -349,7 +426,13 @@
             FlightPsgerAnyInfo: {
                 DomPsgerInfo: [{PsgerName:"张三",DepName:"部门1",Price:123456,Numbers:3600,AvgDiscount: 0.77,FullPerc: 0.092,Save:351705,SaveRate:0.163,Loss:5257,LossRate:0.002}],
                 IntePsgerInfo: [{PsgerName:"张三",DepName: "部门1",Price:123456,Numbers:3600,IntMilAvgPrice:0.123,Save:351705,SaveRate:0.163}]
-            }
+            },
+            FlightPositionInfo: {
+                DomPosInfo: [{Key:"前返经济舱",Value:1111},{Key:"折扣经济舱",Value:1500}],
+                IntePosInfo: [{Key:"前返经济舱",Value:1111},{Key:"折扣经济舱",Value:1510}],
+                IndustyInfo: [{Name:"我司",MK: 1,Percent:0.17,AvgDis:0.74},{Name:"所在行业",MK: 0,Percent:0.17,AvgDis:0.74},{Name:"散客",MK: 0,Percent:0.17,AvgDis:0.74},{Name:"商旅",MK: 0,Percent:0.27,AvgDis:0.54}],
+                RateDisInfo: [{Range: "全价",Number:474,Percent:"9.9%"},{Range: "0.90 - 0.99",Number:298,Percent:"6.2%"},{Range: "0.80 - 0.89",Number:1474,Percent:"36.4%"}]
+            }            
         }
     </script>
     <!-- ☆☆ 模板 tmpl S ☆☆ -->
@@ -436,6 +519,25 @@
             </tr></tfoot>
             {{/if}}
         </table>    
+    </script>
+
+    <script type="text/x-jquery-tmpl" id="fltPosRateTmpl">
+        <table>
+            <thead><tr>
+                {{each(i, v) thead}}
+                    <th>${v}</th>   
+                {{/each}}
+            </tr></thead>
+            <tbody>
+                {{each(i, v) tbody}}
+                    <tr>
+                        <td>${v.Range}</td>
+                        <td>${v.Number}</td>
+                        <td><div class="ratio-bar"><span class="num">${v.Percent}</span><div class="ratio" style="width:${v.Percent};"></div></div></td>
+                    </tr>
+                {{/each}}
+            </tbody>
+        </table>
     </script>
 
     <!-- ☆☆ 模板 tmpl E ☆☆ -->

@@ -71,7 +71,7 @@ table {border-collapse: collapse;border-spacing: 0;}
 /* msg-box */
 .msg-box {font-size: 16px;line-height: 20px;color: #333;}
 .msg-box i {background-image: url(http://pic.c-ctrip.com/droco/img/pdf_icons.png);}
-.msg-box .i-info {background-position: -63px -24px;display: inline-block;width: 32px;height: 32px;margin-right: 10px;vertical-align: middle;}
+.msg-box .i-info {background-position: -63px -49px;display: inline-block;width: 32px;height: 32px;margin-right: 10px;vertical-align: middle;}
 .msg-box span {vertical-align: middle;display: inline-block;}
 
 /* total-bill */
@@ -211,3 +211,9 @@ table {border-collapse: collapse;border-spacing: 0;}
 .planeTreeAD .pic {margin-top: 45px;position: relative;*zoom: 1;}
 .planeTreeAD .pic .benefit-tag {float: right;position: absolute;right: 0;top: -25px;}
 .planeTreeAD .pic .tree {clear: right;display: inline-block;}
+
+/* no-data */
+.no-data {text-align: center;}
+.no-data .icon {width:155px; height:64px; vertical-align:middle;display: inline-block;background: url(http://pic.c-ctrip.com/droco/img/icon.png?20150122) 0 -227px no-repeat;}
+.payment {text-align:center;padding-top: 20px;}
+.payment img{width: auto;max-width: 100%;}

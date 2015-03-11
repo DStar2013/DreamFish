@@ -148,7 +148,7 @@
                         enabled: cfg.dataLabelEnabled || false,
                         distance: 5,
                         connectorWidth: 0,
-                        formatter: function () {
+                        formatter: function() {
                             if (this.percentage > 0) {
                                 return this.point.name + ': ' + this.percentage.toFixed(1) + '%';
                             }
@@ -168,8 +168,8 @@
                 align: 'left',
                 verticalAlign: 'bottom',
                 layout: 'vertical',
-                labelFormatter: function () {
-                    return cfg.legendLabel || (this.name + ' ' + this.percentage.toFixed(1) + '%  ¥' + CM.fixData.transData(this.y, 0));
+                labelFormatter: function() {
+                    return cfg.setLegendLabel ? cfg.setLegendLabel(this) : (this.name + ' ' + this.percentage.toFixed(1) + '%  ¥' + CM.fixData.transData(this.y, 0));
                 }
             },
             credits: {
@@ -331,7 +331,7 @@
                     //table
                     $('#sp_allConsumTable').empty().html($('#tableTmpl').tmpl(DTM.fixColTableData(colD, { tbodyVal: function (dt) { return "¥" + CM.fixData.transData(dt); } })));
                     //css
-                    $('#sp_allConsumTable').find('table').addClass("data-table center mb30");
+                    $('#sp_allConsumTable').find('table').addClass("table center mb30");
                 }
                 //top 5 dep
                 if (cfgInfo.HasTotalTop5 == "T") {
@@ -353,7 +353,7 @@
                     //table
                     $('#sp_flightTable').empty().html($('#tableTmpl').tmpl(DTM.fixColTableData(fD, { tbodyVal: function (dt) { return "¥" + CM.fixData.transData(dt); } })));
                     //css
-                    $('#sp_flightTable').find('table').addClass("data-table center");
+                    $('#sp_flightTable').find('table').addClass("table center");
                 }
                 //flt list
                 sp_fl.empty().html($('#sp_listTmpl').tmpl(aInfo.FlightInfo));
@@ -365,7 +365,7 @@
                     //table
                     $('#sp_hotelTable').empty().html($('#tableTmpl').tmpl(DTM.fixColTableData(hD, { tbodyVal: function (dt) { return "¥" + CM.fixData.transData(dt); } })));
                     //
-                    $('#sp_hotelTable').find('table').addClass("data-table center");
+                    $('#sp_hotelTable').find('table').addClass("table center");
                 }
                 //htl list
                 sp_hl.empty().html($('#sp_listTmpl').tmpl(aInfo.HotelInfo));
@@ -519,7 +519,7 @@
                     drawColumn(sp_bm, DTM.fixColumnData(bkmD), { pointWidth: 36 });
                     //table
                     $('#fp_bkmTable').empty().html($('#tableTmpl').tmpl(DTM.fixColTableData(bkmD, { tbodyVal: function (dt) { return CM.fixData.transData(dt) + "张"; }, theadKey: "预订方式" })));
-                    $('#fp_bkmTable').find('table').addClass("data-table center");
+                    $('#fp_bkmTable').find('table').addClass("table center");
                 }
                 //dom
                 if (cfgInfo.HasInAirTicketProduct == "T") {
@@ -556,7 +556,7 @@
                 } else {
                     drawColumn(fp_fc, DTM.fixColumnData(fcD), { pointWidth: 32 });
                     $('#fp_fltTable').empty().html($('#tableTmpl').tmpl(DTM.fixColTableData(fcD, { tbodyVal: function (dt) { return "¥" + CM.fixData.transData(dt); } })));
-                    $('#fp_fltTable').find('table').addClass("data-table center mb30");
+                    $('#fp_fltTable').find('table').addClass("table center mb30");
                 }
                 //
                 if (cfgInfo.HasFltBack == "T") {
@@ -566,7 +566,7 @@
                     } else {
                         drawColumn(fp_fcf, DTM.fixColumnData(fcfD), { pointWidth: 36 });
                         $('#fp_fltFeeTable').empty().html($('#tableTmpl').tmpl(DTM.fixColTableData(fcfD, { tbodyVal: function (dt) { return "¥" + CM.fixData.transData(dt); } })));
-                        $('#fp_fltFeeTable').find('table').addClass("data-table center mb30");
+                        $('#fp_fltFeeTable').find('table').addClass("table center mb30");
                     }
                     //退概率
                     if (DTM.columnDataEmpty(fcrD)) {
@@ -574,7 +574,7 @@
                     } else {
                         drawLine(fp_fcr, DTM.fixColumnData(fcrD), {});
                         $('#fp_fltRateTable').empty().html($('#tableTmpl').tmpl(DTM.fixColTableData(fcrD, { tbodyVal: function (dt) { return (dt * 100).toFixed(1) + "%"; } })));
-                        $('#fp_fltRateTable').find('table').addClass("data-table center mb30");
+                        $('#fp_fltRateTable').find('table').addClass("table center mb30");
                     }
                 } else {
                     CM.ChargeFix(fp_fcf, "payment5.jpg", PDFConfig.lanType); CM.ChargeFix(fp_fcr, "payment5.jpg", PDFConfig.lanType);
@@ -769,6 +769,157 @@
         }
     })(PageInfo.FlightPsgerAnyInfo, PDFConfig.cfgInfo);
 
+    var FlightPosition = (function(aInfo, cfgInfo) {
+        var fp = {
+            init: function() {
+                var fpo_dp = $('#fpo_domP'),
+                    fpo_ip = $('#fpo_inteP'),
+                    fpo_tp = $('#fpo_ticketPer'),
+                    fpo_ad = $('#fpo_avgDiscount'),
+                    fpo_rdt = $('#fpo_rateDisTable'),
+                    rdtD = fp.fixRateData(aInfo.RateDisInfo);
+                //
+                fpo_dp.empty();
+                fpo_ip.empty();
+
+                //dom
+                if (cfgInfo.HasInAirTicketProduct == "T") {
+                    (aInfo.DomPosInfo.length > 0) ? drawPie(fpo_dp, fp.fixPieData(aInfo.DomPosInfo), {
+                        setLegendLabel: function(o) {
+                            return o.name + ' ' + o.percentage.toFixed(1) + '%  ' + CM.fixData.transData(o.y, 0);
+                        }
+                    }): CM.LineHeightFix(fpo_dp);
+                }
+                //Inte
+                if (cfgInfo.HasOutAirTicketProduct == "T") {
+                    (aInfo.IntePosInfo.length > 0) ? drawPie(fpo_ip, fp.fixPieData(aInfo.IntePosInfo), {
+                        setLegendLabel: function(o) {
+                            return o.name + ' ' + o.percentage.toFixed(1) + '%  ' + CM.fixData.transData(o.y, 0);
+                        }
+                    }): CM.LineHeightFix(fpo_ip);
+                }
+                //
+                if (aInfo.IndustyInfo && aInfo.IndustyInfo.length > 0) {
+                    fp.drawPic($('#fpo_ticketPer'), aInfo.IndustyInfo, "Percent");
+                    fp.drawPic($('#fpo_avgDiscount'), aInfo.IndustyInfo, "AvgDis");
+                }
+                //
+                if (rdtD.tbody.length > 0) {
+                    fpo_rdt.empty().html($('#fltPosRateTmpl').tmpl(rdtD));
+                    fpo_rdt.find('table').addClass("table-2 center mb30");
+                } else {
+                    CM.LineHeightFix(fpo_rdt);
+                }
+            },
+            fixPieData: function(dt) {
+                var d = [];
+                for (var i = 0; i < dt.length; i++) {
+                    d.push({
+                        name: dt[i].Key,
+                        y: dt[i].Value
+                    });
+                }
+                return [{
+                    type: "pie",
+                    name: "预定数量",
+                    data: d
+                }];
+            },
+            sortArray: function(data, pInfo, type) {
+                if (data) {
+                    return data.sort(function(a, b) {
+                        //Desc 降序
+                        return (type == "Desc") ? b[pInfo] - a[pInfo] : a[pInfo] - b[pInfo];
+                    });
+                }
+            },
+            drawPic: function(content, dt, pInfo) {
+                //全票价比，最大小于50%.平均折扣最小值大于0.5，做扩容处理
+                var _left = content.find('.num.num_left'),
+                    _right = content.find('.num.num_right'),
+                    proCon = content.find('.inner'),
+                    _fixLen = 0,
+                    sortedData = fp.sortArray(dt, pInfo, "Asc");
+                if (sortedData.length > 0) {
+                    _right.html((content.attr("status") == "0") ? (sortedData[sortedData.length - 1][pInfo] * 100).toFixed(0) + '%' : sortedData[sortedData.length - 1][pInfo]);
+                    if (sortedData[0][pInfo] > 0.5) {
+                        _fixLen = 0.5;
+                        _left.html((content.attr("status") == "0") ? '50%' : 0.5);
+                    }
+                }
+                //
+                content.find('.progress_info').removeClass('type1 type2 type3 type4 type5 type6 type7 type8');
+                for (var i = 0; i < sortedData.length; i++) {
+                    var _width, _mole = sortedData[sortedData.length - 1][pInfo] - _fixLen;
+                    if (_mole > 0) {
+                        //修正 0.01 防止超出
+                        if (i == 0) {
+                            _width = ((sortedData[i][pInfo] - _fixLen) / _mole * 100 - 0.01).toFixed(2) + "%";
+                        } else {
+                            _width = ((sortedData[i][pInfo] - sortedData[i - 1][pInfo]) / _mole * 100 - 0.01).toFixed(2) + "%";
+                        }
+                    } else {
+                        _width = "0%";
+                    }
+                    proCon.find('.progress').eq(i).css('width', _width);
+                    //
+                    var _pInfoD = (content.attr("status") == "0") ? (sortedData[i][pInfo] * 100).toFixed(0) + '%' : sortedData[i][pInfo];
+                    var iStr = (sortedData[i].MK == 0) ? "<i></i>" : "<i class='color'></i>";
+                    var _left = 0,
+                        _iDiv = content.find('.progress_info').eq(i);
+                    switch (i) {
+                        case 0:
+                            _iDiv.addClass((sortedData[i].MK == 0) ? "type1" : "type7");
+                            _iDiv.html('<span class="bubble_wrap"><span class="bubble_inner">' + sortedData[i].Name + ' ' + _pInfoD + '</span></span>' + iStr);
+                            _left = proCon.find('.color1').width() - _iDiv.eq(i).width() + 15;
+                            break;
+                        case 1:
+                            _iDiv.addClass((sortedData[i].MK == 0) ? "type2" : "type8");
+                            _iDiv.html(iStr + '<span class="bubble_wrap"><span class="bubble_inner">' + sortedData[i].Name + ' ' + _pInfoD + '</span></span>');
+                            _left = proCon.find('.color1').width() + proCon.find('.color2').width() - _iDiv.width() + 15;
+                            break;
+                        case 2:
+                            _iDiv.addClass((sortedData[i].MK == 0) ? "type5" : "type3");
+                            _iDiv.html('<span class="bubble_wrap"><span class="bubble_inner">' + sortedData[i].Name + ' ' + _pInfoD + '</span></span>' + iStr);
+                            _left = proCon.find('.color1').width() + proCon.find('.color2').width() + proCon.find('.color3').width() - 15;
+                            break;
+                        case 3:
+                            _iDiv.addClass((sortedData[i].MK == 0) ? "type6" : "type4");
+                            _iDiv.html(iStr + '<span class="bubble_wrap"><span class="bubble_inner">' + sortedData[i].Name + ' ' + _pInfoD + '</span></span>');
+                            _left = proCon.find('.color1').width() + proCon.find('.color2').width() + proCon.find('.color3').width() + proCon.find('.color4').width() - 15;
+                            break;
+                        default:
+                            console.log('超过四个值');
+                    }
+                    //橙色气泡最高
+                    if (sortedData[i].MK == 1) {
+                        _iDiv.css("z-index", "10");
+                    }
+                    //定位气泡位置
+                    _iDiv.css('left', _left + 'px');
+                }
+            },
+            fixRateData: function(dt) {
+                var tbd = [];
+                for (var i = 0; i < dt.length; i++) {
+                    tbd.push({
+                        Range: dt[i].Range,
+                        Number: CM.fixData.transData(dt[i].Number, 0),
+                        Percent: dt[i].Percent
+                    });
+                }
+                return {
+                    thead: ["折扣区间", "张数", "占比"],
+                    tbody: tbd
+                }
+            }
+        }
+
+        return {
+            init: fp.init
+        }
+    })(PageInfo.FlightPositionInfo, PDFConfig.cfgInfo);
+
     //☆=================== Fun E ===================☆
     //ready
     $(document).ready(function () {
@@ -779,5 +930,6 @@
         FlightPage.init();
         FlightDepAny.init();
         FlightPsgerAny.init();
+        FlightPosition.init();
     });
 })(jQuery);
