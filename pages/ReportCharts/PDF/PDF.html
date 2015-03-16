@@ -352,6 +352,109 @@
 
     <!-- ☆☆ FlightPosition E ☆☆ -->    
 
+    <!-- ☆☆ FlightCarriers S ☆☆ -->
+    <div class="main-c">
+        <!-- 公共头 S -->
+        <div class="CT_header"></div>
+        <!-- 公共头 E -->
+        <div class="page-c">
+            <!-- 分类页标题 S -->
+            <div class="page-title">
+                机票<span class="line"></span><span class="subName">承运商</span>
+                <div class="tria-b"></div>
+                <div class="tria-f"></div>
+            </div>
+            <!-- 分类页标题 E -->
+            <div class="box-c3">
+                <div class="m-l">
+                    <div class="mod-hd">前五城市承运商分布-国内</div>
+                    <div class="visual-data" id="fc_domC" style="height:370px"></div>
+                </div>
+                <div class="m-r">
+                    <div class="mod-hd">前五航线承运商分布-国际</div>
+                    <div class="visual-data" id="fc_inteC" style="height:370px"></div>
+                </div>
+            </div>
+            <div class="box-c3">
+                <div class="m-l">
+                    <div class="mod-hd">前五城市对承运商分布-国内</div>
+                    <div id="fc_domTable"></div>
+                </div>
+                <div class="m-r">
+                    <div class="mod-hd">前五城市对承运商分布-国际</div>
+                    <div id="fc_inteTable"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ☆☆ FlightCarriers E ☆☆ -->
+    
+    <!-- ☆☆ FlightRoutes S ☆☆ -->
+    <div class="main-c">
+        <!-- 公共头 S -->
+        <div class="CT_header"></div>
+        <!-- 公共头 E -->
+        <div class="page-c">
+            <!-- 分类页标题 S -->
+            <div class="page-title">
+                机票<span class="line"></span><span class="subName">航线</span>
+                <div class="tria-b"></div>
+                <div class="tria-f"></div>
+            </div>
+            <!-- 分类页标题 E -->
+            <div class="box-c21">
+                <div class="m-l">
+                    <div class="mod-hd">前十航线分析—国内</div>
+                    <div id="fr_domRoutes" style="height:290px;width:690px"></div>
+                </div>
+                <div class="m-r">
+                    <div class="v-list">
+                        <div class="s-list list-l" id="fr_domSvList"></div>
+                        <div class="s-list list-r" id="fr_domSvrList"></div>
+                    </div>
+                </div>
+            </div>
+            <div id="fr_domTable"></div>
+            <div class="text-tips mb30">
+                备注：
+                <div>备注： 不含退票，不含儿童，婴儿票</div>
+                <div>平均折扣，全价票比例只分析国内机票</div>
+                <div>全价票比例=全价票张数/国内总张数；全价票包含全价经济舱，公务舱和头等舱</div>
+                <div>节省=全价-成交净价-服务费；损失=成交净价-最低价</div>
+                <div>节省率=节省/全价；损失率=损失/全价</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-c">
+        <!-- 公共头 S -->
+        <div class="CT_header"></div>
+        <!-- 公共头 E -->
+        <div class="page-c">
+            <!-- 分类页标题 S -->
+            <div class="page-title">
+                机票<span class="line"></span><span class="subName">航线</span>
+                <div class="tria-b"></div>
+                <div class="tria-f"></div>
+            </div>
+            <!-- 分类页标题 E -->
+            <div class="mod">
+                <div class="mod-hd">前十航线分析—国际</div>
+                <div id="fr_inteRoutes" style="height:290px;width:690px"></div>
+            </div>
+            <div id="fr_inteTable"></div>
+            <div class="text-tips mb30">
+                备注：
+                <div>备注： 不含退票，不含儿童，婴儿票</div>
+                <div>平均折扣，全价票比例只分析国内机票</div>
+                <div>全价票比例=全价票张数/国内总张数；全价票包含全价经济舱，公务舱和头等舱</div>
+                <div>节省=全价-成交净价-服务费；损失=成交净价-最低价</div>
+                <div>节省率=节省/全价；损失率=损失/全价</div>
+            </div>
+        </div>
+    </div>
+    <!-- ☆☆ FlightRoutes E ☆☆ -->
+
 
 
     <script type="text/javascript">
@@ -432,6 +535,26 @@
                 IntePosInfo: [{Key:"前返经济舱",Value:1111},{Key:"折扣经济舱",Value:1510}],
                 IndustyInfo: [{Name:"我司",MK: 1,Percent:0.17,AvgDis:0.74},{Name:"所在行业",MK: 0,Percent:0.17,AvgDis:0.74},{Name:"散客",MK: 0,Percent:0.17,AvgDis:0.74},{Name:"商旅",MK: 0,Percent:0.27,AvgDis:0.54}],
                 RateDisInfo: [{Range: "全价",Number:474,Percent:"9.9%"},{Range: "0.90 - 0.99",Number:298,Percent:"6.2%"},{Range: "0.80 - 0.89",Number:1474,Percent:"36.4%"}]
+            },
+            FlightCarrierInfo: {
+                FiveCarrInfo: {
+                    DomCarrInfo: [{Key:"中国国际航空",Value:1508972},{Key:"中国东方航空",Value:1003446}],
+                    InteCarrInfo: [{Key:"中国XX航空",Value:1508972},{Key:"中国东方航空",Value:1003446}]
+                },
+                FiveRouteInfo: {
+                    DomRouteInfo: [{CP:"北京-上海",Data:[{CarrName:"中国航空",Number:238,Percent:"11.1"}]}],
+                    InteRouteInfo: [{CP:"L.A-L.B",Data:[{CarrName:"中国航空",Number:238,Percent:"11.1"}]}]
+                }
+            },
+            FlightRoutesInfo: {
+                DomRoutesInfo: {
+                    PartInfo: [{RouteName:"上海-北京",NetPrice:231772,Number:254,AvgPrice:912,AvgDiscount:0.74,BusADR:0.79,TouADR:0.61,IndADR:0.78,DomPotSv:91186,DomPotSvRate:"39.3%"},{RouteName:"上海-北京",NetPrice:231772,Number:254,AvgPrice:912,AvgDiscount:0.74,BusADR:0.79,TouADR:0.61,IndADR:0.78,DomPotSv:91186,DomPotSvRate:"39.3%"}],
+                    TotalInfo: {TolNetPrice:4535612,TolNumber:4808,TolAvgPrice:938,TolAvgDiscount:0.73,TolBusADR:0.74,TolTouADR:0.62,TolIndADR:0.74}
+                },
+                inteRoutesInfo: {
+                    PartInfo: [{RouteName:"上海-北京",NetPrice:231772,Number:254,AvgPrice:912,BusAvg:4083,TouAvg:0,IndAvg:4083}],
+                    TotalInfo: {TolNetPrice:4535612,TolNumber:4808,TolAvgPrice:938,TolBusAvg:4194,TolTouAvg:2077,TolIndAvg:5374}
+                }
             }            
         }
     </script>
@@ -538,6 +661,49 @@
                 {{/each}}
             </tbody>
         </table>
+    </script>
+
+    <script type="text/x-jquery-tmpl" id="car_tableTmpl">
+        <table>
+            <thead><tr>
+                <th>${thead[0]}</th>
+                <th style="width:170px">${thead[1]}</th>
+                <th style="width:76px">${thead[2]}</th>
+                <th style="width:76px">${thead[3]}</th>
+            </tr></thead>
+            <tbody>
+                {{each(i, v) tbody}}
+                    {{each(j, v_1) v.Data}}
+                        {{if (0 == j)}}
+                            <tr>
+                                <td rowspan="${v.Data.length + 1}">${v.CP}</td>
+                                <td>${v_1.Name}</td>
+                                <td>${v_1.Number}</td>
+                                <td>${v_1.Percent}</td>
+                            </tr>
+                        {{else}}
+                            <tr>
+                                <td>${v_1.Name}</td>
+                                <td>${v_1.Number}</td>
+                                <td>${v_1.Percent}</td>
+                            </tr>
+                        {{/if}}
+                         <tr class="body-foot">
+                             <th>${v.Tol.Name}</th>
+                             <th>${v.Tol.TolNum}</th>
+                             <th>${v.Tol.TolPercent}</th>
+                         </tr>
+                    {{/each}}
+                {{/each}}
+            </tbody>
+        </table>
+    </script>
+
+    <script type="text/x-jquery-tmpl" id="fr_listTmpl">
+        <div class="mod-hd">${Key}</div>
+        {{each(i, v) Value}}
+            <div class="item">${v}</div>
+        {{/each}}
     </script>
 
     <!-- ☆☆ 模板 tmpl E ☆☆ -->

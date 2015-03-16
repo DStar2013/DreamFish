@@ -920,6 +920,157 @@
         }
     })(PageInfo.FlightPositionInfo, PDFConfig.cfgInfo);
 
+
+    var FlightCarrier = (function (aInfo, cfgInfo) {
+        var fc = {
+            init: function () {
+                var fc_dc = $('#fc_domC'), fc_ic = $('#fc_inteC'),
+                    fc_dt = $('#fc_domTable'), fc_it = $('#fc_inteTable'),
+                    domD = fc.fixTableData(aInfo.FiveRouteInfo.DomRouteInfo), inteD = fc.fixTableData(aInfo.FiveRouteInfo.InteRouteInfo);
+                //
+                fc_dc.empty(); fc_ic.empty();
+                //dom
+                if (cfgInfo.HasInAirTicketProduct == "T") {
+                    var dcD = aInfo.FiveCarrInfo.DomCarrInfo;
+                    (dcD && dcD.length > 0) ? drawPie(fc_dc, fc.fixPieData(dcD), {}) : CM.LineHeightFix(fc_dc);
+                } else {
+                    CM.ChargeFix(fc_dc, "payment4.jpg", PDFConfig.lanType);
+                }
+                //inte
+                if (cfgInfo.HasOutAirTicketProduct == "T") {
+                    var icD = aInfo.FiveCarrInfo.InteCarrInfo;
+                    (icD && icD.length > 0) ? drawPie(fc_ic, fc.fixPieData(icD), {}) : CM.LineHeightFix(fc_ic);
+                } else {
+                    CM.ChargeFix(fc_ic, "payment4.jpg", PDFConfig.lanType);
+                }
+                //
+                if (cfgInfo.HasAirlineTop5 == "T") {
+                    fc_dt.empty().html($('#car_tableTmpl').tmpl(domD));
+                    fc_dt.find('table').addClass("table center");
+                    fc_it.empty().html($('#car_tableTmpl').tmpl(inteD));
+                    fc_it.find('table').addClass("table center");
+                } else {
+                    CM.LineHeightFix(fc_dt);
+                    CM.LineHeightFix(fc_it);
+                }
+            },
+            fixPieData: function (dt) {
+                var d = [];
+                for (var i = 0; i < dt.length; i++) {
+                    d.push({ name: dt[i].Key, y: dt[i].Value });
+                }
+                return [{ type: "pie", name: "成交净价", data: d}];
+            },
+            fixTableData: function (dt) {
+                var tbd = [];
+                for (var i = 0; i < dt.length; i++) {
+                    var _ = dt[i], iObj = [], iTolNum = 0;
+                    for (var j = 0; j < _.Data.length; j++) {
+                        iObj.push({ Name: _.Data[j].CarrName, Number: CM.fixData.transData(_.Data[j].Number, 0) + "张", Percent: _.Data[j].Percent });
+                        iTolNum += _.Data[j].Number;
+                    }
+                    tbd.push({ CP: _.CP, Data: iObj, Tol: { Name: "总计", TolNum: CM.fixData.transData(iTolNum, 0) + "张", TolPercent: "100%"} });
+                }
+                return {
+                    thead: ["前五城市对", "承运商", "张数", "占比"],
+                    tbody: tbd
+                };
+            }
+        }
+
+        return {
+            init: fc.init
+        };
+    })(PageInfo.FlightCarrierInfo, PDFConfig.cfgInfo);
+
+    var FlightRoutes = (function (aInfo, cfgInfo) {
+        var fr = {
+            init: function () {
+                var fr_dt = $('#fr_domTable'), domD = fr.fixDomRoutesData(aInfo.DomRoutesInfo),
+                    fr_dr = $('#fr_domRoutes'), domBarD = fr.fixBarData(aInfo.DomRoutesInfo),
+                    fr_dsl = $('#fr_domSvList'), fr_dsrl = $('#fr_domSvrList'),
+                    domListD = fr.getDomListData(aInfo.DomRoutesInfo), fr_it = $('#fr_inteTable'),
+                    fr_ir = $('#fr_inteRoutes'), inteBarD = fr.fixBarData(aInfo.inteRoutesInfo),
+                    inteD = fr.fixInteRoutesData(aInfo.inteRoutesInfo);
+                //
+                fr_dsl.empty(); fr_dsrl.empty();
+
+                if (domD.tbody.length > 0) {
+                    //
+                    drawBar(fr_dr, domBarD, { pointWidth: 25 });
+                    //
+                    fr_dsl.empty().html($('#fr_listTmpl').tmpl(domListD.sv));
+                    fr_dsrl.empty().html($('#fr_listTmpl').tmpl(domListD.svr));
+                    //
+                    fr_dt.empty().html($('#a_tableTmpl').tmpl(domD));
+                    fr_dt.find('table').addClass("table-2 center mb20");
+                } else { CM.LineHeightFix(fr_dr); CM.LineHeightFix(fr_dt); }
+
+                if (inteD.tbody.length > 0) {
+                    drawBar(fr_ir, inteBarD, { pointWidth: 25 });
+                    //
+                    fr_it.empty().html($('#a_tableTmpl').tmpl(inteD));
+                    fr_it.find('table').addClass("table-2 center mb20");
+                }
+            },
+            getDomListData: function (dt) {
+                var sv = [], svr = [];
+                for (var i = 0; i < dt.PartInfo.length; i++) {
+                    sv.push("¥" + CM.fixData.transData(dt.PartInfo[i].DomPotSv, 0));
+                    svr.push(dt.PartInfo[i].DomPotSvRate);
+                }
+                return {
+                    sv: { Key: "潜在节省", Value: sv },
+                    svr: { Key: "潜在节省率", Value: svr }
+                };
+            },
+            fixBarData: function (dt) {
+                var _x = [], _y = [], _maxY = 0, b = dt.PartInfo;
+                for (var i = 0; i < b.length; i++) {
+                    _x.push(b[i].RouteName);
+                    _y.push({ y: b[i].Number, color: '#297cdb' });
+                    if (b[i].Number > _maxY) { _maxY = b[i].Number; }
+                }
+                _maxY = parseInt(_maxY * 1.2);
+                return { xData: _x, yData: [{ data: _y}], maxY: _maxY };
+            },
+            fixDomRoutesData: function (dt) {
+                var thd = [], tbd = [], tft = [], b = dt.PartInfo, f = dt.TotalInfo;
+                //
+                thd = ["航线", "成交净价", "张数", "平均票价", "平均折扣", "商旅ADR", "散客ADR"];
+                for (var i = 0; i < b.length; i++) {
+                    var _ = b[i], iObj = [_.RouteName, CM.fixData.transData(_.NetPrice, 0), CM.fixData.transData(_.Number, 0), CM.fixData.transData(_.AvgPrice, 0), _.AvgDiscount, _.BusADR, _.TouADR];
+                    if (cfgInfo.HasIndustryData == "T") { iObj.push(_.IndADR); }
+                    tbd.push(iObj);
+                }
+                tft = ["总计", CM.fixData.transData(f.TolNetPrice, 0), CM.fixData.transData(f.TolNumber, 0), CM.fixData.transData(f.TolAvgPrice, 0), f.TolAvgDiscount, f.TolBusADR, f.TolTouADR];
+                if (cfgInfo.HasIndustryData == "T") {
+                    thd.push("行业ADR");
+                    tft.push(f.TolIndADR);
+                }
+                return { thead: thd, tbody: tbd, tfoot: tft };
+            },
+            fixInteRoutesData: function (dt) {
+                var thd = [], tbd = [], tft = [], b = dt.PartInfo, f = dt.TotalInfo;
+                thd = ["航线", "成交净价", "张数", "平均票价", "商旅平均价", "散客平均价"];
+                for (var i = 0; i < b.length; i++) {
+                    var _ = b[i], iObj = [_.RouteName, CM.fixData.transData(_.NetPrice, 0), CM.fixData.transData(_.Number, 0), CM.fixData.transData(_.AvgPrice, 0), CM.fixData.transData(_.BusAvg, 0), CM.fixData.transData(_.TouAvg, 0)];
+                    if (cfgInfo.HasIndustryData == "T") { iObj.push(CM.fixData.transData(_.IndAvg, 0)); }
+                    tbd.push(iObj);
+                }
+                tft = ["总计", CM.fixData.transData(f.TolNetPrice, 0), CM.fixData.transData(f.TolNumber, 0), CM.fixData.transData(f.TolAvgPrice, 0), CM.fixData.transData(f.TolBusAvg, 0), CM.fixData.transData(f.TolTouAvg, 0)];
+                if (cfgInfo.HasIndustryData == "T") {
+                    thd.push("行业平均价");
+                    tft.push(CM.fixData.transData(f.TolIndAvg, 0));
+                }
+                return { thead: thd, tbody: tbd, tfoot: tft };
+            }
+        }
+
+        return {
+            init: fr.init
+        }
+    })(PageInfo.FlightRoutesInfo, PDFConfig.cfgInfo);
     //☆=================== Fun E ===================☆
     //ready
     $(document).ready(function () {
@@ -931,5 +1082,7 @@
         FlightDepAny.init();
         FlightPsgerAny.init();
         FlightPosition.init();
+        FlightCarrier.init();
+        FlightRoutes.init();
     });
 })(jQuery);
