@@ -1,4 +1,4 @@
-@charset "utf-8";
+﻿@charset "utf-8";
 /* 
  * Desc  : onlineReport pdf
  * Creat : 2015.01.12
@@ -31,12 +31,12 @@ table {border-collapse: collapse;border-spacing: 0;}
 /* header */
 .header {border-bottom: 2px solid #2577e3;height: 70px;}
 .hd-logo {float:left; margin-left:20px; padding-top:15px; overflow:hidden; width:107px; height:39px;}
-.hd-logo a {display:block; width:107px; height:40px;background:url(http://pic.c-ctrip.com/droco/img/icon.png?20140514) no-repeat;font-size: 0;text-indent: -9999px;}
+.hd-logo a {display:block; width:107px; height:40px;background:url(../images/icon.png?20140514) no-repeat;font-size: 0;text-indent: -9999px;}
 .hd-siteTitle {float:left; margin:0 20px;padding-top:22px; text-align:center; letter-spacing:2px; font-size:18px; font-weight:400; color:#2577E3;}
 .hd-siteTitle em {display:block; letter-spacing:0; font:12px simsun,serif; color:#606060;}
 .hd-languageVersion {float:left; padding-top:23px;}
 .hd-languageVersion li {float:left; margin-right:6px;}
-.hd-languageVersion a {font-size: 0;text-indent: -9999px;overflow: hidden;display: block;width: 23px;height: 16px;background: url(http://pic.c-ctrip.com/droco/img/pdf_icons.png);}
+.hd-languageVersion a {font-size: 0;text-indent: -9999px;overflow: hidden;display: block;width: 23px;height: 16px;background: url(../images/pdf_icons.png);}
 .hd-languageVersion .cn {background-position: -88px 0;}
 .hd-languageVersion .en {background-position: -88px -18px;}
 .hd-languageVersion .cn:hover, .hd-languageVersion .cur .cn {background-position: -63px 0;}
@@ -70,7 +70,7 @@ table {border-collapse: collapse;border-spacing: 0;}
 
 /* msg-box */
 .msg-box {font-size: 16px;line-height: 20px;color: #333;}
-.msg-box i {background-image: url(http://pic.c-ctrip.com/droco/img/pdf_icons.png);}
+.msg-box i {background-image: url(../images/pdf_icons.png);}
 .msg-box .i-info {background-position: -63px -49px;display: inline-block;width: 32px;height: 32px;margin-right: 10px;vertical-align: middle;}
 .msg-box span {vertical-align: middle;display: inline-block;}
 
@@ -88,7 +88,7 @@ table {border-collapse: collapse;border-spacing: 0;}
 
 /* header */
 .mod-hd {margin-bottom: 15px;font-size: 16px;color: #333;font-weight: normal;}
-.mod-hd-icon i {background-image: url(http://pic.c-ctrip.com/droco/img/pdf_icons.png);display: inline-block;margin-right: 15px;vertical-align: middle;}
+.mod-hd-icon i {background-image: url(../images/pdf_icons.png);display: inline-block;margin-right: 15px;vertical-align: middle;}
 .mod-hd-icon .i-train {background-position: 0 -107px; width: 32px;height: 41px;}
 .mod-hd-icon .i-plane {background-position: 0 -49px; width: 44px;height: 43px;}
 .mod-hd-icon .i-hotel {background-position: 0 0; width: 44px;height: 34px;}
@@ -171,7 +171,7 @@ table {border-collapse: collapse;border-spacing: 0;}
 .progress_box .progress_info.type6,
 .progress_box .progress_info.type8 {top:-3px; }
 .progress_box .progress_info.type5, .progress_box .progress_info.type6, .progress_box .progress_info.type7, .progress_box .progress_info.type8{*width: 73px; *height: 71px;}
-.progress_box .progress_info span {display:block; height:34px; font:12px/24px simsun; color:#2788F6; white-space:nowrap; background:url(http://pic.c-ctrip.com/droco/img/bubbles.png); }
+.progress_box .progress_info span {display:block; height:34px; font:12px/24px simsun; color:#2788F6; white-space:nowrap; background:url(../images/bubbles.png); }
 .progress_box .progress_info i {float:left; width:28px; height:28px; box-shadow:2px 2px 2px rgba(0,0,0,.4); border:1px solid #D8D8D8; border-radius:14px; background-color:#EDEDED; }
 .progress_box .progress_info .color {border-color:#FF9C39; background-color:#FF9C39; }
 .progress_box .progress_info.type1 .bubble_wrap {margin:0 9px 5px 0; padding-left:7px; background-position:0 0; }
@@ -214,6 +214,6 @@ table {border-collapse: collapse;border-spacing: 0;}
 
 /* no-data */
 .no-data {text-align: center;}
-.no-data .icon {width:155px; height:64px; vertical-align:middle;display: inline-block;background: url(http://pic.c-ctrip.com/droco/img/icon.png?20150122) 0 -227px no-repeat;}
+.no-data .icon {width:155px; height:64px; vertical-align:middle;display: inline-block;background: url(../images/icon.png?20150122) 0 -227px no-repeat;}
 .payment {text-align:center;padding-top: 20px;}
 .payment img{width: auto;max-width: 100%;}
