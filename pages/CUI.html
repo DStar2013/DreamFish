@@ -4,6 +4,7 @@
 		<meta http-equiv=Content-Type content="text/html;charset=utf-8"> <!-- meta -->
 		<title>UI 控件</title>
 		<meta http-equiv="X-UA-Compatible" content="IE=edge"> <!-- 针对ie8的设置,用最高版本的ie识别 -->
+		<link rel="stylesheet" type="text/css" href="../css/CUI.css">
 	</head>
 	<body>
 		<div>
@@ -28,6 +29,9 @@
 			<div id="depDiv">
 			</div>
 		</div>
+
+		<div id="htlOAApp"></div>
+
 		<!-- ☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆ 模板 tmpl ☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆ -->
 		<script type="text/startmpl" id="departTmpl">
 			{{if ((pInfo = $data.PartInfo) && (tInfo = $data.TotalInfo))}}{{/if}}
@@ -74,6 +78,85 @@
 					</tr>
 				</tfoot>
 			</table>
+		</script>
+
+		<script type="text/startmpl" id="htlOATmpl">
+			<div class="modal-oa">
+				<div class="modal-oa-hd">
+            		<a class="modal-oa-return" href="javascript:;">&lt; 返回OA</a>
+            		<h4>OA审批单</h4>
+            		<a class="modal-oa-close" href="javascript:;">×</a>
+        		</div>
+        		<div class="modal-oa-bd">
+        			<div class="modal-oa-search">
+                		<input class="xui-form-text form-text-oa" type="text" value="" placeholder="请输入出行人，城市或审批单号">
+                		<button class="xui-btn xui-btn-secondary xui-btn-xmd">搜索</button>
+            		</div>
+            		<ul>
+            			{{each(i,v) $data}}
+            				<li id="oali_${v.AppNO}">
+            					<div class="modal-oa-summary">
+            						<strong>审批单号：${v.AppNO}</strong>
+            						<p>出行人：${v.Passengers.join(",")}</p>
+            					</div>
+            					<div class="modal-oa-detail" style="display:none">
+            						<div class="approval-icon"><i class="xuico-hotel-white2" style="display: inline-block"></i></div>
+            						<div class="approval-number">审批单号：${v.AppNO}</div>
+            						<div class="approval-detail">
+            							<ul class="approval-detail-list">
+            								<li class="approval-detail-item block-item">
+            									<div class="item-title">出行人</div>
+            									<div class="item-content">${v.Passengers.join(",")}</div>
+            								</li>
+            								<li class="approval-detail-item">
+            									<div class="item-title">城市</div>
+            									<div class="item-content">${v.CityName}</div>
+            								</li>
+            								<li class="approval-detail-item">
+            									<div class="item-title">公司ID</div>
+            									<div class="item-content">${v.CorpID}</div>
+            								</li>
+            								<li class="approval-detail-item">
+            									<div class="item-title">预定类型</div>
+            									<div class="item-content">${v.BookType}</div>
+            								</li>
+            								<li class="approval-detail-item">
+            									<div class="item-title">币种</div>
+            									<div class="item-content">${v.Currency}</div>
+            								</li>
+            								<li class="approval-detail-item">
+            									<div class="item-title">入住日期</div>
+            									<div class="item-content">${v.InStartDate}至${v.InEndDate}</div>
+            								</li>
+            								<li class="approval-detail-item">
+            									<div class="item-title">离店日期</div>
+            									<div class="item-content">${v.OutStartDate}至${v.OutEndDate}</div>
+            								</li>
+            								<li class="approval-detail-item">
+            									<div class="item-title">最小价格</div>
+            									<div class="item-content">${v.MinPrice}</div>
+            								</li>
+            								<li class="approval-detail-item">
+            									<div class="item-title">最大价格</div>
+            									<div class="item-content">${v.MaxPrice}</div>
+            								</li>
+            								<li class="approval-detail-item">
+            									<div class="item-title">最小星级</div>
+            									<div class="item-content">${v.MinStar}</div>
+            								</li>  
+            								<li class="approval-detail-item">
+            									<div class="item-title">最大星级</div>
+            									<div class="item-content">${v.MaxStar}</div>
+            								</li>
+            							</ul>
+            							<div class="approval-button"><button class="xui-btn xui-btn-primary xui-btn-lg">选 择</button></div>
+            						</div>
+            					</div>
+            				</li>
+            			{{/each}}
+            		</ul>
+        		</div>
+			</div>
 		</script>
 
 

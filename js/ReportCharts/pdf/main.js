@@ -225,6 +225,141 @@
         });
     }
 
+    function drawMixChart(content, dt, cfg) {
+        content.highcharts({
+            colors: ['#1c76ec'],
+            title: {
+                text: null
+            },
+            tooltip: {
+                enabled: false
+            },
+            xAxis: {
+                categories: dt.xData,
+                tickLength: 2
+            },
+            plotOptions: {
+                column: {
+                    borderWidth: 0,
+                    borderRadius: 0.5,  //设置柱状图的圆角，美观
+                    pointWidth: 30,
+                    dataLabels: {
+                        enabled: true,
+                        formatter: function () {
+                            return this.y;
+                        },
+                        crop: false,
+                        overflow: "none",
+                        style: {
+                            color: '#666'
+                        }
+                    }
+                }
+            },
+            yAxis: [{
+                labels: {
+                    format: '{value}'
+                },
+                title: {
+                    text: dt.yData[0].name || "",
+                    margin: 6
+                },
+                gridLineWidth: 0
+            }, {
+                labels: {
+                    format: '{value}'
+                },
+                title: {
+                    text: dt.yData[1].name || "",
+                    margin: 8
+                },
+                gridLineWidth: 0,
+                opposite: true
+            }],
+            credits: {
+                enabled: false
+            },
+            legend: {
+                align: 'right',
+                verticalAlign: 'top',
+                borderWidth: 0,
+                x: -80,
+                y: -15,
+                floating: true
+            },
+            series: dt.yData
+        });
+    }
+
+    function drawBubble(content, dt, cfg) {
+        content.highcharts({
+            chart: {
+                type: 'bubble',
+                plotBorderWidth: 1,
+                zoomType: 'xy'
+            },
+            title: {
+                text: null
+            },
+            xAxis: {
+                gridLineWidth: 0,
+                categories: dt.xData,
+                tickLength: 2
+            },
+            yAxis: {
+                startOnTick: false,
+                endOnTick: false,
+                gridLineWidth: 0,
+                title: {
+                    text: null
+                },
+                tickLength: 2,
+                labels: {
+                    formatter: function () {
+                        return (this.value * 100).toFixed(0) + '%';
+                    }
+                }
+            },
+            legend: {
+                align: 'right',
+                verticalAlign: 'top',
+                borderWidth: 0,
+                floating: true
+            },
+            credits: {
+                enabled: false
+            },
+            plotOptions: {
+                bubble: {
+                    dataLabels: {
+                        enabled: true,
+                        formatter: function () {
+                            return (this.point.y * 100).toFixed(1) + '%';
+                        },
+                        color: 'black',
+                        inside: false
+                    }
+                }
+            },
+            tooltip: {
+                enabled: false
+            },
+            series: [{
+                data: dt.yData,
+                name: dt.name || "",
+                marker: {
+                    fillColor: {
+                        radialGradient: { cx: 0.4, cy: 0.3, r: 0.7 },
+                        stops: [
+                            [0, 'rgba(255,255,255,0.5)'],
+                            [1, 'rgba(69,114,167,0.5)']
+                        ]
+                    }
+                }
+            }]
+        });
+    }
+
     var DTM = {
         columnDataEmpty: function (dt) {
             for (var i = 0; i < dt.length; i++) {
@@ -1071,6 +1206,84 @@
             init: fr.init
         }
     })(PageInfo.FlightRoutesInfo, PDFConfig.cfgInfo);
+
+    var FlightFontDays = (function (aInfo, cfgInfo) {
+        var ffd = {
+            init: function () {
+                var chD = ffd.fixChartData(aInfo.FullInfo),
+                    ffd_D = $('#ffd_Discount'), ffd_dt = $('#ffd_disTable'),
+                    ffd_fp = $('#ffd_fullPer'), ffd_fpt = $('#ffd_fullPerTable'),
+                    ffd_di = $('#ffd_depInfo'), chTableD = ffd.fixTableData(aInfo.FullInfo);
+                //
+                ffd_D.empty(); ffd_fp.empty();
+                //
+                if (chD.DiscountInfo.xData.length > 0) {
+                    drawMixChart(ffd_D, chD.DiscountInfo, {});
+                    ffd_dt.empty().html($('#tableTmpl').tmpl(chD.DiscountTableInfo));
+                    ffd_dt.find('table').addClass("table center");
+                    //
+                    drawBubble(ffd_fp, chD.FullPerInfo, {});
+                    ffd_fpt.empty().html($('#tableTmpl').tmpl(chD.FullPerTableInfo));
+                    ffd_fpt.find('table').addClass("table center");
+                } else { CM.LineHeightFix(ffd_D); CM.LineHeightFix(ffd_fp); }
+                //
+
+                $('#ffd_depInfo').empty().html($('#ffd_tableTmpl').tmpl(chTableD));
+            },
+            fixChartData: function (dt) {
+                var d = dt[0], dix = [], diyCol = [], diyLine = [],
+                    fpiy = [], fpiNum = [], fpiPer = [];
+                for (var i = 0; i < d.PartInfo.length; i++) {
+                    var _ = d.PartInfo[i];
+                    dix.push(_.Day); diyCol.push(_.Number); diyLine.push(_.AvgDiscount);
+                    fpiy.push([i, _.FullPricePer, _.FullPriceNumber]);
+                    fpiNum.push(CM.fixData.transData(_.FullPriceNumber, 0));
+                    fpiPer.push(CM.fixData.percData(_.FullPricePer));
+                }
+                return {
+                    DiscountInfo: {
+                        xData: dix,
+                        yData: [{ name: "张数", type: "column", data: diyCol }, { name: "平均折扣", type: "line", data: diyLine, color: "#539eff", yAxis: 1}]
+                    },
+                    DiscountTableInfo: {
+                        thead: { Key: "", Value: dix },
+                        tbody: [{ Key: "张数", Value: diyCol }, { Key: "平均折扣", Value: diyLine}]
+                    },
+                    FullPerInfo: {
+                        xData: dix,
+                        yData: fpiy,
+                        name: "全价票比例(张数越多,气泡越大)"
+                    },
+                    FullPerTableInfo: {
+                        thead: { Key: "", Value: dix },
+                        tbody: [{ Key: "全票价张数", Value: fpiNum }, { Key: "全票价比例", Value: fpiPer}]
+                    }
+                };
+            },
+            fixTableData: function (dt) {
+                var tmp = [];
+                for (var i = 0; i < dt.length; i++) {
+                    var tbd = [], pInfo = dt[i].PartInfo, fInfo = dt[i].TotalInfo;
+                    for (var j = 0; j < pInfo.length; j++) {
+                        var _ = pInfo[j];
+                        tbd.push([_.Day, CM.fixData.transData(_.Number, 0), CM.fixData.percData(_.Percent), CM.fixData.transData(_.FullPriceNumber, 0), CM.fixData.percData(_.FullPricePer), _.AvgDiscount, _.NFullAvgDiscount]);
+                    }
+                    tmp.push({
+                        name: dt[i].DepName,
+                        thead: ["提前预订天数", "张数", "张数占比", "全价票张数", "全价票比例", "平均折扣", "不含全价票平均折扣"],
+                        tbody: tbd,
+                        tfoot: ["总计", CM.fixData.transData(fInfo.TolNumber, 0), CM.fixData.percData(fInfo.TolNumPercent), CM.fixData.transData(fInfo.TolFullPriceNumber, 0), CM.fixData.percData(fInfo.TolFullPricePer), fInfo.TolAvgDiscount, fInfo.TolNFullAvgDiscount]
+                    });
+                }
+
+                return tmp;
+            }
+        };
+
+        return {
+            init: ffd.init
+        }
+    })(PageInfo.FlightFontDaysInfo, PDFConfig.cfgInfo);
     //☆=================== Fun E ===================☆
     //ready
     $(document).ready(function () {
@@ -1084,5 +1297,6 @@
         FlightPosition.init();
         FlightCarrier.init();
         FlightRoutes.init();
+        FlightFontDays.init();
     });
 })(jQuery);

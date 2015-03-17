@@ -454,7 +454,42 @@
         </div>
     </div>
     <!-- ☆☆ FlightRoutes E ☆☆ -->
+    <!-- ☆☆ FlightFontDays S ☆☆ -->
+    <div class="main-c">
+        <!-- 公共头 S -->
+        <div class="CT_header"></div>
+        <!-- 公共头 E -->
+        <div class="page-c">
+            <!-- 分类页标题 S -->
+            <div class="page-title">
+                机票<span class="line"></span><span class="subName">提前预订天数</span>
+                <div class="tria-b"></div>
+                <div class="tria-f"></div>
+            </div>
+            <!-- 分类页标题 E -->
+            <div class="box-c3">
+                <div class="m-l">
+                    <div class="mod-hd">提前预订天数-平均折扣</div>
+                    <div class="visual-data mb20 center" style="height:200px" id="ffd_Discount"></div>
+                    <div id="ffd_disTable"></div>
+                </div>
+                <div class="m-r">
+                    <div class="mod-hd">提前预订天数-全票价比例</div>
+                    <div class="visual-data mb20 center" style="height:200px" id="ffd_fullPer"></div>
+                    <div id="ffd_fullPerTable"></div>
+                </div>
+            </div>
+            <div class="mod-hd">提前预订天数-按部门分析</div>
+            <div id="ffd_depInfo"></div>
 
+            <div class="text-tips">
+                <div>备注：</div>
+                <div>不含退票，不含儿童，婴儿票</div>
+                <div>只分析国内机票，不包含提前预订天数小于0的数据</div>
+            </div>
+        </div>
+    </div>
+    <!-- ☆☆ FlightFontDays E ☆☆ -->
 
 
     <script type="text/javascript">
@@ -510,7 +545,7 @@
                     InteFltInfo: [{ Key: "L.A", Value: 1907},{ Key: "L.B", Value: 1907}]
                 },
                 BkChangeInfo: {
-                    FltChangeFee: [{ Key: "1月", Value: 1906},{ Key: "2月", Value: 1906}], //改签费
+                    FltChangeFee: [{ Key: "1月", Value: 1906}, { Key: "2月", Value: 1906}], //改签费
                     FltBackFee: [{ Key: "1月", Value: 1906},{ Key: "2月", Value: 1906}],  //退票费
                     FltChangeRate: [{ Key: "1月", Value: 0.069},{ Key: "2月", Value: 0.057}], //改签率
                     FltBackRate: [{ Key: "1月", Value: 0.012},{ Key: "2月", Value: 0.057}] //退票率
@@ -555,7 +590,18 @@
                     PartInfo: [{RouteName:"上海-北京",NetPrice:231772,Number:254,AvgPrice:912,BusAvg:4083,TouAvg:0,IndAvg:4083}],
                     TotalInfo: {TolNetPrice:4535612,TolNumber:4808,TolAvgPrice:938,TolBusAvg:4194,TolTouAvg:2077,TolIndAvg:5374}
                 }
-            }            
+            },
+            FlightFontDaysInfo: {
+                FullInfo: [{
+                    DepName: "全部",
+                    PartInfo: [{Day:"0天",Number:618,Percent:0.129,FullPriceNumber:67,FullPricePer:0.108,AvgDiscount:0.75,NFullAvgDiscount:0.72},{Day:"1天",Number:818,Percent:0.129,FullPriceNumber:133,FullPricePer:0.094,AvgDiscount:0.35,NFullAvgDiscount:0.72}],
+                    TotalInfo: {TolNumber:1100,TolNumPercent:1,TolFullPriceNumber:1200,TolFullPricePer:0.127,TolAvgDiscount:0.74,TolNFullAvgDiscount:0.7}
+                },{
+                    DepName: "南京分公司",
+                    PartInfo: [{Day:"0天",Number:618,Percent:0.129,FullPriceNumber:67,FullPricePer:0.108,AvgDiscount:0.75,NFullAvgDiscount:0.72}],
+                    TotalInfo: {TolNumber:1100,TolNumPercent:1,TolFullPriceNumber:1200,TolFullPricePer:0.127,TolAvgDiscount:0.74,TolNFullAvgDiscount:0.7}
+                }]
+            }                    
         }
     </script>
     <!-- ☆☆ 模板 tmpl S ☆☆ -->
@@ -704,6 +750,33 @@
         {{each(i, v) Value}}
             <div class="item">${v}</div>
         {{/each}}
+    </script>
+
+    <script type="text/x-jquery-tmpl" id="ffd_tableTmpl">
+        <div class="mod-hd-sub">${name}</div>
+        <table class="table-2 center mb20">
+            <thead>
+                {{each(i, v) thead}}
+                    <th>${v}</th>
+                {{/each}}
+            </thead>
+            <tbody>
+                {{each(i, v) tbody}}
+                    <tr>
+                        {{each(j, v_1) v}}
+                            <td>${v_1}</td>
+                        {{/each}}
+                    </tr>
+                {{/each}}
+            </tbody>
+            {{if tfoot}}
+            <tfoot><tr>
+                {{each(i, v) tfoot}}
+                    <th>${v}</th>
+                {{/each}}
+            </tr></tfoot>
+            {{/if}}
+        </table>
     </script>
 
     <!-- ☆☆ 模板 tmpl E ☆☆ -->
