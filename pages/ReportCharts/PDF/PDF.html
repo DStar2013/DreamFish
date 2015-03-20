@@ -491,6 +491,107 @@
     </div>
     <!-- ☆☆ FlightFontDays E ☆☆ -->
 
+    <!-- ☆☆ FlightSvALs S ☆☆ -->
+    <div class="main-c">
+        <!-- 公共头 S -->
+        <div class="CT_header"></div>
+        <!-- 公共头 E -->
+        <div class="page-c">
+            <!-- 分类页标题 S -->
+            <div class="page-title">
+                机票<span class="line"></span><span class="subName">节省与损失</span>
+                <div class="tria-b"></div>
+                <div class="tria-f"></div>
+            </div>
+            <!-- 分类页标题 E -->
+            <div class="mod">
+                <div class="mod-hd">节省与损失</div>
+                <div class="visual-data mb20" id="fsal_svls" style="height:150px"></div>
+                <div class="space" id="fsal_svlsTable"></div>
+            </div>
+            <div class="box-c3">
+                <div class="m-l">
+                    <div class="mod-hd">客户消费结构分析RMB—国内</div>
+                    <div class="visual-data mb20" style="height:370px" id="fsal_domConsum"></div>
+                    <div class="text-tips">
+                        备注：
+                        <div>备注： 不含儿童，婴儿票</div>
+                        <div>损失=成交净价-最低价</div>
+                        <div>节省=全价-成交净价-服务费</div>
+                    </div>
+                </div>
+                <div class="m-r">
+                    <div class="mod-hd">客户节省分析RMB—国内</div>
+                    <div class="visual-data mb20" style="height:370px" id="fsal_domSave"></div>
+                    <div class="text-tips">
+                        备注：
+                        <div>备注： 不含儿童，婴儿票</div>
+                        <div>损失=成交净价-最低价</div>
+                        <div>节省=全价-成交净价-服务费</div>
+                    </div>
+                </div>
+            </div>
+            <div class="box-c3">
+                <div class="m-l">
+                    <div class="mod-hd">客户消费结构分析RMB—国际</div>
+                    <div class="visual-data mb20" style="height:370px" id="fsal_inteConsum"></div>
+                    <div class="text-tips">
+                        备注：
+                        <div>备注： 不含儿童，婴儿票</div>
+                        <div>损失=成交净价-最低价</div>
+                        <div>节省=全价-成交净价-服务费</div>
+                    </div>
+                </div>
+                <div class="m-r">
+                    <div class="mod-hd">
+                        客户节省分析RMB—国际</div>
+                    <div class="visual-data mb20" style="height:370px" id="fsal_inteSave"></div>
+                    <div class="text-tips">
+                        备注：
+                        <div>备注： 不含儿童，婴儿票</div>
+                        <div>损失=成交净价-最低价</div>
+                        <div>节省=全价-成交净价-服务费</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-c">
+        <!-- 公共头 S -->
+        <div class="CT_header"></div>
+        <!-- 公共头 E -->
+        <div class="page-c">
+            <!-- 分类页标题 S -->
+            <div class="page-title">
+                机票<span class="line"></span><span class="subName">节省与损失</span>
+                <div class="tria-b"></div>
+                <div class="tria-f"></div>
+            </div>
+            <!-- 分类页标题 E -->
+            <div class="mod-hd">损失明细—国内</div>
+            <div id="fsal_domTable"></div>
+        </div>
+    </div>
+
+    <div class="main-c">
+        <!-- 公共头 S -->
+        <div class="CT_header"></div>
+        <!-- 公共头 E -->
+        <div class="page-c">
+            <!-- 分类页标题 S -->
+            <div class="page-title">
+                机票<span class="line"></span><span class="subName">节省与损失</span>
+                <div class="tria-b"></div>
+                <div class="tria-f"></div>
+            </div>
+            <!-- 分类页标题 E -->
+            <div class="mod-hd">损失明细—国际</div>
+            <div id="fsal_inteTable"></div>
+        </div>
+    </div>
+    <!-- ☆☆ FlightSvALs E ☆☆ -->
+
 
     <script type="text/javascript">
         var PDFConfig = {
@@ -601,7 +702,29 @@
                     PartInfo: [{Day:"0天",Number:618,Percent:0.129,FullPriceNumber:67,FullPricePer:0.108,AvgDiscount:0.75,NFullAvgDiscount:0.72}],
                     TotalInfo: {TolNumber:1100,TolNumPercent:1,TolFullPriceNumber:1200,TolFullPricePer:0.127,TolAvgDiscount:0.74,TolNFullAvgDiscount:0.7}
                 }]
-            }                    
+            },
+            FlightSvALsInfo: {
+                FltSvALs: {
+                    DomSave: [{Key: "1月",Value: 0.005},{Key:"2月",Value: 0.005}],
+                    DomLoss: [{Key: "1月",Value: 0.315},{Key:"2月",Value: 0.267}],
+                    InteSave: [{Key: "1月",Value: 0.033},{Key:"2月",Value: 0.035}]
+                },
+                CustomerInfo: {
+                    DomConsum: [{Name:"客户消费",Mark:0,Price:6485},{Name:"额外节省",Mark:1,MinP:6485,MaxP:7195,Price:710,Percent:"7.1%"},{Name:"携程运价",Mark:0,Price:7195},{Name:"节省",Mark:1,MinP:7195,MaxP:9970,Price:2775,Percent:"27.8%"},{Name:"全价",Mark:0,Price:9970}],
+                    InteConsum: [],
+                    DomSave: [{Name:"最低价",Mark:0,Price:6485},{Name:"额外节省",Mark:1,MinP:6485,MaxP:7195,Price:710,Percent:"7.1%"},{Name:"携程运价",Mark:0,Price:7195},{Name:"节省",Mark:1,MinP:7195,MaxP:9970,Price:2775,Percent:"27.8%"},{Name:"全价",Mark:0,Price:9970}],
+                    InteSave: []
+                },
+                LsDetailInfo: {
+                    DomDetail:[{
+                        DepName:"全部",
+                        PartInfo: [{RCInfo:"BD—因票价限制条件不适应商务出行",Number:534,Price:520298,LowPrice:493823,Loss:26325,LossRate:0.873}],
+                        TotalInfo: {TolNumber:547,TolPrice:531175,TolLowPrice:501482,TolLoss:30142}
+                    }],
+                    InteDetail: []
+                }
+
+            }                     
         }
     </script>
     <!-- ☆☆ 模板 tmpl S ☆☆ -->

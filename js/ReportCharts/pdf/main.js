@@ -1284,6 +1284,183 @@
             init: ffd.init
         }
     })(PageInfo.FlightFontDaysInfo, PDFConfig.cfgInfo);
+
+    var FlightSvALs = (function (aInfo, cfgInfo) {
+        var fsal = {
+            init: function () {
+                var fsal_sl = $('#fsal_svls'), lineD = fsal.getLineData(),
+                    fsal_dc = $('#fsal_domConsum'), fsal_ds = $('#fsal_domSave'),
+                    fsal_ic = $('#fsal_inteConsum'), fsal_is = $('#fsal_inteSave'),
+                    fsal_dt = $('#fsal_domTable'), fsal_it = $('#fsal_inteTable'),
+                    domD = fsal.fixTableData(aInfo.LsDetailInfo.DomDetail), inteD = fsal.fixTableData(aInfo.LsDetailInfo.InteDetail);
+                //
+                fsal_sl.empty(); fsal_dc.empty(); fsal_ds.empty();
+                fsal_ic.empty(); fsal_is.empty();
+                //
+                if (DTM.columnDataEmpty(lineD)) {
+                    CM.LineHeightFix(fsal_sl);
+                } else {
+                    drawLine(fsal_sl, DTM.fixColumnData(lineD), { minY: 0 });
+                    $('#fsal_svlsTable').empty().html($('#tableTmpl').tmpl(DTM.fixColTableData(lineD, { tbodyVal: function (dt) { return (dt * 100).toFixed(1) + "%"; } })));
+                    $('#fsal_svlsTable').find('table').addClass("table center mb30");
+                }
+                //
+                if (cfgInfo.HasInAirTicketProduct == "T") {
+                    aInfo.CustomerInfo.DomConsum.length > 0 ? fsal.drawColRange(fsal_dc, aInfo.CustomerInfo.DomConsum) : CM.LineHeightFix(fsal_dc);
+                    aInfo.CustomerInfo.DomSave.length > 0 ? fsal.drawColRange(fsal_ds, aInfo.CustomerInfo.DomSave) : CM.LineHeightFix(fsal_ds); 
+                    //
+                    (domD && domD.length > 0) ? fsal_dt.empty().html($('#ffd_tableTmpl').tmpl(domD)) : CM.LineHeightFix(fsal_dt);
+                }
+                //
+                if (cfgInfo.HasOutAirTicketProduct == "T") {
+                    aInfo.CustomerInfo.InteConsum.length > 0 ? fsal.drawColRange(fsal_ic, aInfo.CustomerInfo.InteConsum) : CM.LineHeightFix(fsal_ic);
+                    aInfo.CustomerInfo.InteSave.length > 0 ? fsal.drawColRange(fsal_is, aInfo.CustomerInfo.InteSave) : CM.LineHeightFix(fsal_is);
+                    (inteD && inteD.length > 0) ? fsal_it.empty().html($('#ffd_tableTmpl').tmpl(inteD)) : CM.LineHeightFix(fsal_it); 
+                }
+            },
+            getLineData: function () {
+                var arr = [];
+                //dom
+                if (cfgInfo.HasInAirTicketProduct == "T") {
+                    arr.push({
+                        Name: "国内节省",
+                        Data: aInfo.FltSvALs.DomSave,
+                        Color: '#1c76ec'
+                    });
+                    arr.push({
+                        Name: "国内损失",
+                        Data: aInfo.FltSvALs.DomLoss,
+                        Color: '#79b3ff'
+                    });
+                }
+                //inte
+                if (cfgInfo.HasOutAirTicketProduct == "T") {
+                    arr.push({
+                        Name: "国际节省",
+                        Data: aInfo.FltSvALs.InteSave,
+                        Color: '#ffa60c'
+                    });
+                }
+                return arr;
+            },
+            fixRangeData: function (d) {
+                var _b = {}, _x = [], _y = [];
+                for (var i = 0; i < d.length; i++) {
+                    var _in = [0, 0];
+                    if (d[i].Mark == 0) {
+                        _in[1] = d[i].Price;
+                    } else {
+                        _in[0] = d[i].MinP; _in[1] = d[i].MaxP;
+                    }
+                    _x.push(d[i].Name); _y.push(_in);
+                }
+                _b.x = _x; _b.y = _y;
+                return _b;
+            },
+            drawColRange: function (content, d) {
+                var myData = fsal.fixRangeData(d), yLast = myData.y[myData.y.length - 1][1], _maxY = 0;
+                (yLast && yLast > 0) && (_maxY = yLast * 1.1);
+                content.highcharts({
+                    chart: {
+                        type: 'columnrange',
+                        inverted: false  //设置横向还是纵向展示
+                    },
+                    colors: ['#398eff', '#ffa60c'],
+                    xAxis: {
+                        title: {
+                            text: null
+                        },
+                        categories: myData.x
+                    },
+                    title: {
+                        text: null
+                    },
+                    yAxis: {
+                        title: {
+                            text: null
+                        },
+                        labels: {
+                            enabled: false
+                        },
+                        min: 0,
+                        gridLineWidth: 0,
+                        minPadding: 0,
+                        max: _maxY
+                    },
+                    tooltip: {
+                        enabled: false
+                    },
+                    plotOptions: {
+                        columnrange: {
+                            colorByPoint: true,
+                            dataLabels: {
+                                enabled: true,
+                                overflow: "none",
+                                crop: false,
+                                formatter: function () {
+                                    if (this.point.maxP && this.point.maxP == this.y && this.point.price && this.point.price > 0) {
+                                        var _s = [];
+                                        _s.push('<b>' + this.x + ': </b> ¥' + CM.fixData.transData(this.point.price, 0) + '<br/>');
+                                        _s.push('<b>' + this.x + '率:</b> ' + this.point.percent);
+                                        return _s.join("");
+                                    }
+                                },
+                                useHTML: false,
+                                yHigh: 5
+                            }
+                        }
+                    },
+                    legend: {
+                        enabled: false
+                    },
+                    credits: {
+                        enabled: false
+                    },
+                    series: [{
+                        data: myData.y
+                    }]
+                });
+                var chart = content.highcharts();
+                for (var i = 0; i < d.length; i++) {
+                    if (d[i].Mark == 1) {
+                        chart.series[0].data[i].update({ percent: d[i].Percent, maxP: d[i].MaxP, price: d[i].Price, mark: d[i].Mark });
+                        //dot line 
+                        var dotLine = function (s, m, e) {
+                            var sX = s.graphic.x + 11, sY = m.graphic.y + m.graphic.height + 11, mX = m.graphic.x + 11, eY = e.graphic.y + 11, eX = e.graphic.x + 11;
+                            //s-line
+                            chart.renderer.path(['M', sX, sY, 'L', mX, sY]).attr({ 'stroke-width': 1, stroke: '#333', style: "stroke-dasharray:6" }).add();
+                            //e-line
+                            chart.renderer.path(['M', mX, eY, 'L', eX, eY]).attr({ 'stroke-width': 1, stroke: '#333', style: "stroke-dasharray:6" }).add();
+                        }
+                        try { dotLine(chart.series[0].data[i - 1], chart.series[0].data[i], chart.series[0].data[i + 1]); } catch (e) { console.log(e); }
+                    }
+                }
+            },
+            fixTableData: function (dt) {
+                var tmp = [];
+                for (var i = 0; i < dt.length; i++) {
+                    var tbd = [], pInfo = dt[i].PartInfo, fInfo = dt[i].TotalInfo;
+                    for (var j = 0; j < pInfo.length; j++) {
+                        var _ = pInfo[j];
+                        tbd.push([_.RCInfo, CM.fixData.transData(_.Number, 0), CM.fixData.transData(_.Price, 0), CM.fixData.transData(_.LowPrice, 0), CM.fixData.transData(_.Loss, 0), CM.fixData.percData(_.LossRate)]);
+                    }
+                    tmp.push({
+                        name: dt[i].DepName,
+                        thead: ["RC", "张数", "成交净价", "最低航班家", "损失", "损失分布"],
+                        tbody: tbd,
+                        tfoot: ["总计", CM.fixData.transData(fInfo.TolNumber, 0), CM.fixData.transData(fInfo.TolPrice, 0), CM.fixData.transData(fInfo.TolLowPrice, 0), CM.fixData.transData(fInfo.TolLoss, 0), '-']
+                    });
+                }
+
+                return tmp;
+            }
+        }
+
+        return {
+            init: fsal.init
+        }
+    })(PageInfo.FlightSvALsInfo, PDFConfig.cfgInfo);
+
     //☆=================== Fun E ===================☆
     //ready
     $(document).ready(function () {
@@ -1298,5 +1475,6 @@
         FlightCarrier.init();
         FlightRoutes.init();
         FlightFontDays.init();
+        FlightSvALs.init();
     });
 })(jQuery);
