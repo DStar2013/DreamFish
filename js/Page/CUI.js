@@ -92,5 +92,4 @@
 
 	$('#htlOAApp').html($.tmpl.render($('#htlOATmpl').html(), htlInfo.OAInfo));
 
-
 })(window, cQuery);

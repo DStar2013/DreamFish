@@ -592,6 +592,44 @@
     </div>
     <!-- ☆☆ FlightSvALs E ☆☆ -->
 
+    <!-- ☆☆ FlightAvtAgrmt S ☆☆ -->
+    <div class="main-c">
+        <!-- 公共头 S -->
+        <div class="CT_header"></div>
+        <!-- 公共头 E -->
+        <div class="page-c">
+            <!-- 分类页标题 S -->
+            <div class="page-title">
+                机票<span class="line"></span><span class="subName">协议航空</span>
+                <div class="tria-b"></div>
+                <div class="tria-f"></div>
+            </div>
+            <!-- 分类页标题 E -->
+            <div class="box-c2">
+                <div class="m-l">
+                    <div class="mod-hd">协议航空使用概览</div>
+                    <div class="total-bill">
+                        <div class="item">
+                            <div class="cost"><span>¥</span>9,929,886</div>
+                            <div class="desc">总体消费情况</div>
+                        </div>
+                        <div class="item">
+                            <div class="cost cost-r"><span>¥</span>9,886</div>
+                            <div class="desc">总节省</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="m-r">
+                    <div class="mod-hd">协议航空使用分布情况</div>
+                    <div class="visual-data" id="faa_fltDis" style="height:195px"></div>
+                </div>
+            </div>
+            <div class="mod-hd">协议航空完成情况</div>
+            <div id="faa_fltAgrCom"></div>
+        </div>
+    </div>
+    <!-- ☆☆ FlightAvtAgrmt E ☆☆ -->
+
 
     <script type="text/javascript">
         var PDFConfig = {
@@ -724,7 +762,15 @@
                     InteDetail: []
                 }
 
-            }                     
+            },
+            FlightAvtAgrmtInfo: {
+                DistInfo: [{Key:"中国国际航空",Value:994053},{Key:"中国东方航空",Value:520727}],
+                AvtAgrDetailInfo: [{
+                    CarrierName: "中国国航+深圳航空",
+                    PartInfo: [{Month:"2月",TolNumber:131,TolConsum:134031,DomNumber:131,DomConsum:134031,DomYNumber:130,DomYPrice:131110,DomFCNumber:1,DomFCPrice:2921,IntNumber:0,IntPrice:0,PreSv:30434}],
+                    TotalInfo: {TolNumber:131,TolConsum:134031,TolDomNumber:0,TolDomConsum:134031,TolDomYNumber:130,TolDomYPrice:131110,TolDomFCNumber:1,TolDomFCPrice:2921,TolIntNumber:0,TolIntPrice:0,TolPreSv:30434}
+                }]
+            }                           
         }
     </script>
     <!-- ☆☆ 模板 tmpl S ☆☆ -->
@@ -882,6 +928,48 @@
                 {{each(i, v) thead}}
                     <th>${v}</th>
                 {{/each}}
+            </thead>
+            <tbody>
+                {{each(i, v) tbody}}
+                    <tr>
+                        {{each(j, v_1) v}}
+                            <td>${v_1}</td>
+                        {{/each}}
+                    </tr>
+                {{/each}}
+            </tbody>
+            {{if tfoot}}
+            <tfoot><tr>
+                {{each(i, v) tfoot}}
+                    <th>${v}</th>
+                {{/each}}
+            </tr></tfoot>
+            {{/if}}
+        </table>
+    </script>
+
+    <script type="text/x-jquery-tmpl" id="faa_tableTmpl">
+        <div class="mod-hd-sub">${name}</div>
+        <table class="table-2 center mb20">
+            <thead class="crHead">
+                <tr>
+                    <th rowspan="2" width="48">${thead[0]}</th>
+                    <th rowspan="2" width="48">${thead[1]}</th>
+                    <th rowspan="2" width="92">${thead[2]}</th>
+                    <th colspan="6" width="540">${thead[3]}</th>
+                    <th colspan="2" width="204">${thead[4]}</th>
+                    <th rowspan="2">${thead[5]}</th>
+                </tr>
+                <tr>
+                    <th>${thead[6]}</th>
+                    <th>${thead[7]}</th>
+                    <th width="52">${thead[8]}</th>
+                    <th>${thead[9]}</th>
+                    <th>${thead[10]}</th>
+                    <th>${thead[11]}</th>
+                    <th>${thead[12]}</th>
+                    <th>${thead[13]}</th>
+                </tr>
             </thead>
             <tbody>
                 {{each(i, v) tbody}}

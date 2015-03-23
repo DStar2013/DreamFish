@@ -1461,6 +1461,53 @@
         }
     })(PageInfo.FlightSvALsInfo, PDFConfig.cfgInfo);
 
+    var FlightAvtAgrmt = (function (aInfo, cfgInfo) {
+        var faa = {
+            init: function () {
+                var faa_fd = $('#faa_fltDis'), faa_fac = $('#faa_fltAgrCom'),
+                    agrD = faa.fixTableData(aInfo.AvtAgrDetailInfo);
+                //
+                faa_fd.empty();
+                //
+                if (cfgInfo.HasAgrFltUse == "T") {
+                    if (aInfo.DistInfo.length > 0) {
+                        drawPie(faa_fd, faa.fixPieData(aInfo.DistInfo), {});
+                    } else { CM.LineHeightFix(faa_fd); }
+                } else { CM.ChargeFix(faa_fd, "payment10.jpg", PDFConfig.lanType); }
+                //
+                (agrD && agrD.length > 0) ? faa_fac.empty().html($('#faa_tableTmpl').tmpl(agrD)) : CM.LineHeightFix(faa_fac);
+            },
+            fixPieData: function (dt) {
+                var d = [];
+                for (var i = 0; i < dt.length; i++) {
+                    d.push({ name: dt[i].Key, y: dt[i].Value });
+                }
+                return [{ type: "pie", name: "成交净价", data: d}];
+            },
+            fixTableData: function (dt) {
+                var tmp = [];
+                for (var i = 0; i < dt.length; i++) {
+                    var tbd = [], pInfo = dt[i].PartInfo, fInfo = dt[i].TotalInfo;
+                    for (var j = 0; j < pInfo.length; j++) {
+                        var _ = pInfo[j];
+                        tbd.push([_.Month, CM.fixData.transData(_.TolNumber, 0), CM.fixData.transData(_.TolConsum, 0), CM.fixData.transData(_.DomNumber, 0), CM.fixData.transData(_.DomConsum, 0), CM.fixData.transData(_.DomYNumber, 0), CM.fixData.transData(_.DomYPrice, 0), CM.fixData.transData(_.DomFCNumber, 0), CM.fixData.transData(_.DomFCPrice, 0), CM.fixData.transData(_.IntNumber, 0), CM.fixData.transData(_.IntPrice, 0), CM.fixData.transData(_.PreSv, 0)]);
+                    }
+                    tmp.push({
+                        name: dt[i].CarrierName,
+                        thead: ["月份", "总张数", "总消费金额", "国内", "国际", "预计节省", "票张数", "消费额", "Y舱前返张数", "Y舱前返消费额", "F/C舱前返张数", "F/C舱前返销售额", "票张数", "消费额"],
+                        tbody: tbd,
+                        tfoot: ["总计", CM.fixData.transData(fInfo.TolNumber, 0), CM.fixData.transData(fInfo.TolConsum, 0), CM.fixData.transData(fInfo.TolDomNumber, 0), CM.fixData.transData(fInfo.TolDomConsum, 0), CM.fixData.transData(fInfo.TolDomYNumber, 0), CM.fixData.transData(fInfo.TolDomYPrice, 0), CM.fixData.transData(fInfo.TolDomFCNumber, 0), CM.fixData.transData(fInfo.TolDomFCPrice, 0), CM.fixData.transData(fInfo.TolIntNumber, 0), CM.fixData.transData(fInfo.TolIntPrice, 0), CM.fixData.transData(fInfo.TolPreSv, 0)]
+                    });
+                }
+                return tmp;
+            }
+        }
+        return {
+            init: faa.init
+        };
+    })(PageInfo.FlightAvtAgrmtInfo, PDFConfig.cfgInfo);
+
+
     //☆=================== Fun E ===================☆
     //ready
     $(document).ready(function () {
@@ -1476,5 +1523,6 @@
         FlightRoutes.init();
         FlightFontDays.init();
         FlightSvALs.init();
+        FlightAvtAgrmt.init();
     });
 })(jQuery);
