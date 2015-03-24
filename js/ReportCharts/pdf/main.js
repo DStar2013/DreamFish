@@ -1507,6 +1507,31 @@
         };
     })(PageInfo.FlightAvtAgrmtInfo, PDFConfig.cfgInfo);
 
+    var FlightCarbEm = (function (aInfo, cfgInfo) {
+        var fce = {
+            init: function () {
+                var carD = fce.fixTableData(aInfo), fce_ct = $('#fce_carbTable');
+                if (carD.tbody.length > 0) {
+                    fce_ct.empty().html($('#a_tableTmpl').tmpl(carD));
+                    fce_ct.find('table').addClass('table-2 center');
+                } else { CM.LineHeightFix(fce_ct); }
+            },
+            fixTableData: function (dt) {
+                var tbd = [], b = dt.PartInfo, f = dt.TotalInfo;
+                for (var i = 0; i < b.length; i++) {
+                    tbd.push([b[i].TrvType, CM.fixData.transData(b[i].Mile, 0), CM.fixData.transData(b[i].CarbEmis, 0), CM.fixData.transData(b[i].CarbComp, 0)]);
+                }
+                return {
+                    thead: ["旅行类型", "总里程", "排放量（kg）", "碳排放（种树棵树）"],
+                    tbody: tbd,
+                    tfoot: ["总计", CM.fixData.transData(f.TolMile, 0), CM.fixData.transData(f.TolCarbEmis, 0), CM.fixData.transData(f.TolCarbComp, 0)]
+                }
+            }
+        };
+        return {
+            init: fce.init
+        }
+    })(PageInfo.FlightCarbEmInfo, PDFConfig.cfgInfo);
 
     //☆=================== Fun E ===================☆
     //ready
@@ -1524,5 +1549,6 @@
         FlightFontDays.init();
         FlightSvALs.init();
         FlightAvtAgrmt.init();
+        FlightCarbEm.init();
     });
 })(jQuery);

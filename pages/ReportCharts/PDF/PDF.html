@@ -630,6 +630,66 @@
     </div>
     <!-- ☆☆ FlightAvtAgrmt E ☆☆ -->
 
+    <!-- ☆☆ FlightCarbEm S ☆☆ -->
+    <div class="main-c">
+        <!-- 公共头 S -->
+        <div class="CT_header"></div>
+        <!-- 公共头 E -->
+        <div class="page-c">
+            <!-- 分类页标题 S -->
+            <div class="page-title">
+                机票<span class="line"></span><span class="subName">碳排放</span>
+                <div class="tria-b"></div>
+                <div class="tria-f"></div>
+            </div>
+            <!-- 分类页标题 E -->
+            <div class="box-c3">
+                <div class="m-l">
+                    <img class="mb20" src="http://pic.c-ctrip.com/droco/img/ad_co2.jpg" alt="低碳环保广告" width="467" height="217">
+                    <div class="list">
+                        <div class="item item-auto">
+                            <div class="text-c1 fs-large">396,050KM</div>
+                            <div class="fs-large">总里程</div>
+                        </div>
+                        <div class="item item-auto">
+                            <div class="text-c1 fs-large">55,522KG</div>
+                            <div class="fs-large">碳排放量</div>
+                        </div>
+                        <div class="item item-auto">
+                            <div class="text-c2 fs-large">501</div>
+                            <div class="fs-large">碳补偿可植树</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="m-r">
+                    <div class="mod-hd">碳排放计算</div>
+                    <div id="fce_carbTable"></div>
+                </div>
+            </div>
+            <div class="box-c31">
+                <div class="m-l">
+                    <div class="text-tips-2">
+                        <div>说明：</div>
+                        <div>航空旅行所产生的二氧化碳排放量：</div>
+                        <div>短途旅行（200公里以内）：二氧化碳（Kg）= 公里数 * 0.275</div>
+                        <div>中途旅行（200-1000公里）：二氧化碳排放量（KG）= 55 + 0.105 X（公里数-200）</div>
+                        <div>长途旅行（1000公里）：二氧化碳排放量（KG）= 公里数 X（公里数-200）</div>
+                        <div>碳排放（种树棵树）：排放111KG二氧化碳需种植一棵树</div>
+                    </div>
+                </div>
+                <div class="m-r">
+                    <div class="planeTreeAD">
+                        <div class="text">携程800积分可兑换1颗树苗</div>
+                        <div class="pic">
+                            <img class="benefit-tag" src="http://pic.c-ctrip.com/droco/img/benefit_tag.png" alt="公益达人">
+                            <img class="tree" src="http://pic.c-ctrip.com/droco/img/icon_tree.png" alt="中国绿化基金会">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ☆☆ FlightCarbEm E ☆☆ -->
 
     <script type="text/javascript">
         var PDFConfig = {
@@ -770,7 +830,11 @@
                     PartInfo: [{Month:"2月",TolNumber:131,TolConsum:134031,DomNumber:131,DomConsum:134031,DomYNumber:130,DomYPrice:131110,DomFCNumber:1,DomFCPrice:2921,IntNumber:0,IntPrice:0,PreSv:30434}],
                     TotalInfo: {TolNumber:131,TolConsum:134031,TolDomNumber:0,TolDomConsum:134031,TolDomYNumber:130,TolDomYPrice:131110,TolDomFCNumber:1,TolDomFCPrice:2921,TolIntNumber:0,TolIntPrice:0,TolPreSv:30434}
                 }]
-            }                           
+            },
+            FlightCarbEmInfo: {
+                PartInfo: [{TrvType: "短途旅行",Mile: 349,CarbEmis:96,CarbComp:1},{TrvType: "长途旅行",Mile: 349,CarbEmis:96,CarbComp:1}],
+                TotalInfo: {TolMile: 11111,TolCarbEmis:123456,TolCarbComp:12111}
+            }                               
         }
     </script>
     <!-- ☆☆ 模板 tmpl S ☆☆ -->
