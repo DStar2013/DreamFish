@@ -5,161 +5,98 @@
 		<title>UI 控件</title>
 		<meta http-equiv="X-UA-Compatible" content="IE=edge"> <!-- 针对ie8的设置,用最高版本的ie识别 -->
 		<link rel="stylesheet" type="text/css" href="../css/CUI.css">
+		<link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
+		<style type="text/css">
+			body {margin: 20px}
+		</style>
 	</head>
 	<body>
-		<div>
-			<span>城市选择器：</span><br/>
-			<input type="text" id="txtCity" name="txtCity" value="">
+		<div class="row-fluid show-grid">
+			<div class="span12">
+				<span>城市选择器：</span><br/>
+				<input type="text" id="txtCity" name="txtCity" value="">
+			</div>
+		</div><hr/>
+		<div class="row-fluid show-grid">
+			<div class="span12">
+				<span>日历选择器</span>
+				<div>
+					<span>起始時間:</span>
+					<input type="text" id="start">
+				</div>
+				<div>
+					<span>終止時間:</span>
+					<input type="text" id="end">
+				</div>
+			</div>
+		</div><hr/>
+
+		<div class="row-fluid show-grid">
+			<div class="span12">
+				<span>基于cQuery的模板使用：</span>
+				<div id="depDiv"></div>
+			</div>
 		</div><hr/>
 
 		<div>
-			<span>日历选择器</span>
-			<div>
-				<span>起始時間:</span>
-				<input type="text" id="start">
-			</div>
-			<div>
-				<span>終止時間:</span>
-				<input type="text" id="end">
-			</div>
-		</div><hr/>
-
+			<span>Page 分页</span>
 		<div>
-			<span>基于cQuery的模板使用：</span>
-			<div id="depDiv">
-			</div>
-		</div>
 
-		<div id="htlOAApp"></div>
+
 
 		<!-- ☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆ 模板 tmpl ☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆ -->
 		<script type="text/startmpl" id="departTmpl">
 			{{if ((pInfo = $data.PartInfo) && (tInfo = $data.TotalInfo))}}{{/if}}
-			<table>
+			<table class="table table-hover">
 				<thead>
 					<tr>
-						<th width="15%">部门</th>
-						<th width="15%">金额</th>
-						<th width="10%">张数</th>
-						<th width="10%">平均折扣</th>
-						<th width="10%">全价票比例</th>
-						<th width="10%">节省</th>
-						<th width="10%">节省率</th>
-						<th width="10%">损失</th>
-						<th width="10%">损失率</th>
+						<th>部门</th>
+						<th>金额</th>
+						<th>张数</th>
+						<th>平均折扣</th>
+						<th>全价票比例</th>
+						<th>节省</th>
+						<th>节省率</th>
+						<th>损失</th>
+						<th>损失率</th>
 					</tr>
 				</thead>
 				<tbody>
 					{{each(i, v) pInfo}}
 						<tr>
-							<td width="15%">${v.DepartName}</td>
-							<td width="15%">${v.Price}</td>
-							<td width="10%">${v.Numbers}</td>
-							<td width="10%">${v.AvgDiscount}</td>
-							<td width="10%">${v.FullPerc}</td>
-							<td width="10%">${v.Save}</td>
-							<td width="10%">${v.SaveRate}</td>
-							<td width="10%">${v.Loss}</td>
-							<td width="10%">${v.LossRate}</td>
+							<td>${v.DepartName}</td>
+							<td>${v.Price}</td>
+							<td>${v.Numbers}</td>
+							<td>${v.AvgDiscount}</td>
+							<td>${v.FullPerc}</td>
+							<td>${v.Save}</td>
+							<td>${v.SaveRate}</td>
+							<td>${v.Loss}</td>
+							<td>${v.LossRate}</td>
 						</tr>
 					{{/each}}
 				</tbody>
 				<tfoot>
 					<tr>
-						<td width="15%">总计</td>
-						<td width="15%">${tInfo.TolPrice}</td>
-						<td width="10%">${tInfo.TolNumbers}</td>
-						<td width="10%">${tInfo.TolAvgDiscount}</td>
-						<td width="10%">${tInfo.TolFullPer}</td>
-						<td width="10%">${tInfo.TolSave}</td>
-						<td width="10%">${tInfo.TolSaveRate}</td>
-						<td width="10%">${tInfo.TolLoss}</td>
-						<td width="10%">${tInfo.TolLossRate}</td>
+						<td>总计</td>
+						<td>${tInfo.TolPrice}</td>
+						<td>${tInfo.TolNumbers}</td>
+						<td>${tInfo.TolAvgDiscount}</td>
+						<td>${tInfo.TolFullPer}</td>
+						<td>${tInfo.TolSave}</td>
+						<td>${tInfo.TolSaveRate}</td>
+						<td>${tInfo.TolLoss}</td>
+						<td>${tInfo.TolLossRate}</td>
 					</tr>
 				</tfoot>
 			</table>
-		</script>
+		</script>	
 
-		<script type="text/startmpl" id="htlOATmpl">
-			<div class="modal-oa">
-				<div class="modal-oa-hd">
-            		<a class="modal-oa-return" href="javascript:;">&lt; 返回OA</a>
-            		<h4>OA审批单</h4>
-            		<a class="modal-oa-close" href="javascript:;">×</a>
-        		</div>
-        		<div class="modal-oa-bd">
-        			<div class="modal-oa-search">
-                		<input class="xui-form-text form-text-oa" type="text" value="" placeholder="请输入出行人，城市或审批单号">
-                		<button class="xui-btn xui-btn-secondary xui-btn-xmd">搜索</button>
-            		</div>
-            		<ul>
-            			{{each(i,v) $data}}
-            				<li id="oali_${v.AppNO}">
-            					<div class="modal-oa-summary">
-            						<strong>审批单号：${v.AppNO}</strong>
-            						<p>出行人：${v.Passengers.join(",")}</p>
-            					</div>
-            					<div class="modal-oa-detail" style="display:none">
-            						<div class="approval-icon"><i class="xuico-hotel-white2" style="display: inline-block"></i></div>
-            						<div class="approval-number">审批单号：${v.AppNO}</div>
-            						<div class="approval-detail">
-            							<ul class="approval-detail-list">
-            								<li class="approval-detail-item block-item">
-            									<div class="item-title">出行人</div>
-            									<div class="item-content">${v.Passengers.join(",")}</div>
-            								</li>
-            								<li class="approval-detail-item">
-            									<div class="item-title">城市</div>
-            									<div class="item-content">${v.CityName}</div>
-            								</li>
-            								<li class="approval-detail-item">
-            									<div class="item-title">公司ID</div>
-            									<div class="item-content">${v.CorpID}</div>
-            								</li>
-            								<li class="approval-detail-item">
-            									<div class="item-title">预定类型</div>
-            									<div class="item-content">${v.BookType}</div>
-            								</li>
-            								<li class="approval-detail-item">
-            									<div class="item-title">币种</div>
-            									<div class="item-content">${v.Currency}</div>
-            								</li>
-            								<li class="approval-detail-item">
-            									<div class="item-title">入住日期</div>
-            									<div class="item-content">${v.InStartDate}至${v.InEndDate}</div>
-            								</li>
-            								<li class="approval-detail-item">
-            									<div class="item-title">离店日期</div>
-            									<div class="item-content">${v.OutStartDate}至${v.OutEndDate}</div>
-            								</li>
-            								<li class="approval-detail-item">
-            									<div class="item-title">最小价格</div>
-            									<div class="item-content">${v.MinPrice}</div>
-            								</li>
-            								<li class="approval-detail-item">
-            									<div class="item-title">最大价格</div>
-            									<div class="item-content">${v.MaxPrice}</div>
-            								</li>
-            								<li class="approval-detail-item">
-            									<div class="item-title">最小星级</div>
-            									<div class="item-content">${v.MinStar}</div>
-            								</li>  
-            								<li class="approval-detail-item">
-            									<div class="item-title">最大星级</div>
-            									<div class="item-content">${v.MaxStar}</div>
-            								</li>
-            							</ul>
-            							<div class="approval-button"><button class="xui-btn xui-btn-primary xui-btn-lg">选 择</button></div>
-            						</div>
-            					</div>
-            				</li>
-            			{{/each}}
-            		</ul>
-        		</div>
-			</div>
-		</script>
+		<script type="text/startmpl" id="testTmpl">
+			{{each(i, v) $data}}
 
-
+			{{/each}}
+		</script>	
 
 		<!-- ☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆ 模板 tmpl ☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆ -->
 		<!-- <script type="text/javascript" src="../js/frame/cQuery/LAB.js"></script> -->

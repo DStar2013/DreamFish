@@ -55,41 +55,7 @@
 	})();
 
 
-	var htlInfo = {
-		OAInfo: [{
-			AppNO: "1234564789465465",
-			CorpID: "小米",
-			BookType: "海外酒店",
-			InStartDate: "2015-1-1",
-			InEndDate: "2015-1-5",
-			OutStartDate: "2015-1-10",
-			OutEndDate: "2015-1-12",
-			Passengers: ["张三", "李四"],
-			CityName: "上海",
-			MaxPrice: 580.00,
-			MinPrice: 480.00,
-			Currency: "RMB",
-			MaxStar: 5,
-			MinStar: 3
-		}, {
-			AppNO: "2222224789465465",
-			CorpID: "小米",
-			BookType: "国内酒店",
-			InStartDate: "2015-1-1",
-			InEndDate: "2015-1-5",
-			OutStartDate: "2015-1-10",
-			OutEndDate: "2015-1-12",
-			Passengers: ["张三", "李四"],
-			CityName: "上海",
-			MaxPrice: 580.00,
-			MinPrice: 480.00,
-			Currency: "RMB",
-			MaxStar: 5,
-			MinStar: 3
-		}]
-	};
-	
+	var testInfo = [{Key:"1"},{Key:"2"},{Key:"3"}]
 
-	$('#htlOAApp').html($.tmpl.render($('#htlOATmpl').html(), htlInfo.OAInfo));
 
 })(window, cQuery);

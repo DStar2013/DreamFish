@@ -924,15 +924,13 @@ button,label { cursor:pointer; }
 }
 .trp .sub_filter .option4 { margin: 25px 0; }
 .trp .sub_filter .option4 .option_box { top: 57px; }
-.trp .sub_filter .check {
-	float: left;
-	font: 12px simsun,serif;
-}
-.trp .sub_filter .check label { margin-bottom: 10px;display: block; }
-.trp .sub_filter .check input {
-	position: relative; top: -1px;
-	vertical-align: middle;
-}
+
+/* filter_userTrack */
+.trp .filter_userTrack {clear: left;font: 12px simsun,serif;}
+.trp .filter_userTrack .checkItem { margin-bottom: 10px; display: block;position: relative;*zoom: 1; }
+.trp .filter_userTrack input {position: relative; top: -1px;vertical-align: middle;}
+.trp .filter_userTrack .icon-info {display: inline-block;margin-left: 10px;width: 12px;height: 12px;vertical-align: text-bottom;background: url(http://pic.c-ctrip.com/droco/img/icon.png?20150122) -117px -362px no-repeat;cursor: pointer;}
+
 .trp .sub_filter .filter_search {
 	width: auto;
 	margin-top: 20px;
@@ -983,3 +981,14 @@ button,label { cursor:pointer; }
 
 /* no ues flight filter bar */
 .fliter_nouse_flight span, .fliter_nouse_flight input{width: 100px;}
+
+/* loading */
+.loading {background: url(http://pic.c-ctrip.com/droco/img/loading.gif?20150304) center center no-repeat;}
+.loading_x32 {background: url(http://pic.c-ctrip.com/droco/img/loading_x32.gif?20150304) center center no-repeat;}
+.loadFailed {text-align: center;font-size: 12px;color: #999;}
+.loadFailed a {text-decoration: none;color: #06c;}
+.loadFailed a:hover {text-decoration: underline;}
+
+/* layer-box */
+.layer-box {width: 330px;border:1px solid #67a1e2;padding:6px 10px;background:#fff;line-height: 24px;z-index: 10;font-size: 12px;color: #333;} 
+.layer-box .title {font-weight: bold;}

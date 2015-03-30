@@ -324,6 +324,7 @@
         init: function () {
             tarckPage.dateInit();
             tarckPage.cityInit();
+            tarckPage.hoverInit();
         },
         dateInit: function () {
             var start = $cq('#StartTime');
@@ -391,7 +392,16 @@
         },
         addCityExist: function () {
             $('#addCity').css('visibility', $('#cityItem').find('.txts').length < 10 ? 'visible' : 'hidden');
-        }
+        },
+        hoverInit: function() {
+            $.each($('#chsCheck').find('span'), function(i, obj) {
+                var o = $(obj), t =$('#' + obj.getAttribute('tarid'));
+                CM.bindHover(o, t, {
+                    topFix: o.height(),
+                    leftFix: 0
+                });
+            });
+        }        
     }
 
     function regNotice(_, n, t) {
