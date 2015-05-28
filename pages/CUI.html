@@ -38,6 +38,29 @@
 			</div>
 		</div><hr/>
 
+		<div class="row-fluid show-grid">
+			<div class="span12">
+				<span>Tab控件切换：</span>
+				<div id="tabs">
+					<ul>
+						<li class="xx_nocurrent">选择一</li>
+						<li class="xx_nocurrent">选择二</li>
+						<li class="xx_nocurrent" data-ajaxUrl="1.txt">选择三</li>
+						<li class="xx_nocurrent" data-ajaxUrl="1.txt">选择四</li>
+						<li class="xx_nocurrent">选择五</li>
+					</ul>
+				</div>
+				<div id="content">
+					<div>1</div>
+					<div>2</div>
+					<div>3</div>
+					<div>4</div>
+					<div>5</div>
+				</div>
+			</div>
+		</div><hr/>
+
+
 		<div>
 			<span>Page 分页</span>
 		<div>
@@ -92,11 +115,80 @@
 			</table>
 		</script>	
 
-		<script type="text/startmpl" id="testTmpl">
-			{{each(i, v) $data}}
-
+<script type="text/startmpl" id="testTmpl">
+	{{if $data.hasResult}}
+	<div class="keyword_prompting_lhsl keyword_prompting_lhsl_mini">
+		<div class="sug_item item_list_city" style="">
+			<p class="title"><span class="text_input">${$data.val}，</span>${message.filterResult}</p>
+			{{each (i,item) list}}
+			{{if cQuery.type(item)=="string"}}
+			<label>${item}</label>
+			{{else}}
+			<a href="javascript:;" data="${data}">
+				<span class="city">
+				${right.replace(val, "<strong class=b>"+val+"</strong>")}
+				${data.split("|")[3]==""?"":", "+data.split("|")[3]}
+				${data.split("|")[4]==""?"":", "+data.split("|")[4]}
+				</span>
+				<span class="num"></span>
+			</a>
+			{{/if}}
 			{{/each}}
-		</script>	
+		</div>
+		{{if page.max>1}}
+			<div class="c_page_mini" style="display: block;">
+			{{if page.current>0}}
+			<a href="javascript:void(0);" page="${page.current-1}">&lt;-</a>
+		{{/if}}
+		{{if page.current<2}}
+			{{loop(index) Math.min(5,page.max+1)}}
+			<a href="javascript:void(0);" {{if page.current==index}} class="c_page_mini_current" {{/if}} page="${index}">${index+1}</a>
+			{{/loop}}
+		{{else page.current>page.max-2}}
+			{{loop(index) Math.max(0,page.max-4),page.max+1}}
+			<a href="javascript:void(0);" {{if page.current==index}} class="c_page_mini_current" {{/if}} page="${index}">${index+1}</a>
+			{{/loop}}
+		{{else}}
+		{{loop(index) Math.max(0,page.current-2),Math.min(page.current+3,page.max+1)}}
+			<a href="javascript:void(0);" {{if page.current==index}} class="c_page_mini_current" {{/if}} page="${index}">${index+1}</a>
+		{{/loop}}
+		{{/if}}
+		{{if page.current<page.max}}
+			<a href="javascript:void(0);" page="${page.current+1}">-&gt;</a>
+		{{/if}}
+		</div>
+		{{/if}}
+	</div>
+	{{else}}
+	<div class="error_tips">
+		<p>${message.noFilterResult}: ${$data.val}</p>
+	</div>
+	{{/if}}
+</script>
+
+<script type="text/start">
+	<div class="city_select_lhsl">
+		<a class="close" href="javascript:;">×</a>
+		<p class="title">${message.label.title}</p>
+		{{if (message.historyCityHtml()) }}
+			<p class="search_title">${message.label.history}</p>
+			<div class="search_history_box">${message.historyCityHtml()}</div>
+		{{/if}}
+		<ul class="tab_box">
+		{{enum(key) data}}
+			<li>${key}</li>
+		{{/enum}}
+		</ul>
+		{{enum(key,arr) data}}
+			<div class="city_item">
+			{{each arr}}
+				<a href="javascript:void(0);" title="${display}" data="${data}">${display}</a>
+			{{/each}}
+			</div>
+		{{/enum}}
+	</div>
+</script>
+
 
 		<!-- ☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆ 模板 tmpl ☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆ -->
 		<!-- <script type="text/javascript" src="../js/frame/cQuery/LAB.js"></script> -->

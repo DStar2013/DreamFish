@@ -1,1 +1,19 @@
 @charset "UTF-8";
+
+	*{padding:0;margin:0;}
+	li {list-style-type:none;}
+	#tabs {width:100%;overflow:hidden;}
+	#tabs li {float:left;padding:5px 10px;color:#fff;background:#f60;margin:0 5px;border:1px solid #fff;}
+	#tabs .xx_current {background:#fff;color:#000;border:1px solid #dedede;};
+	#tabs .xx_nocurrent {background:#ddd;}
+	
+	#tabsB {width:100%;overflow:hidden;}
+	#tabsB li {float:left;padding:5px 10px;color:#fff;background:#f60;margin:0 5px;border:1px solid #fff;}
+	#tabsB .selectd {background:#fff;color:#000;border:1px solid #dedede;}
+	/*#content {float:left;}*/
+	#content div {width:400px;height:200px;border:1px solid #dedede;display:none;}
+	#content .show {display:block;}
+	
+	#contentB {float:left;}
+	#contentB div {width:400px;height:200px;border:1px solid #dedede;display:none;}
+	#contentB .show {display:block;}
