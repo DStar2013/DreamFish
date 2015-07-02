@@ -102,4 +102,45 @@
 		});
 
 	})();
+
+	//封装对象
+	var Base = (function(){
+		//
+		var innerObj = function(a,b){
+			this.a = a;
+			this.b = b;
+
+			return this;
+		}
+
+		var Control1 = function(innerObj){
+			console.log(innerObj.a);
+			console.log(innerObj.b);
+		}
+
+		var Control2 = function(innerObj){
+			console.log(innerObj.a);
+
+			console.log(innerObj.b);
+		}
+
+
+		return {
+			innerObj:innerObj,
+			Control1:Control1,
+			Control2:Control2
+		}
+
+	})();
+
+
+	//var p1 = Base.innerObj("obj1_a","obj1_b");
+	//var p2 = Base.innerObj("obj2_a","obj2_b");
+	var p1 = new Base.innerObj("obj1_a","obj1_b");
+	var p2 = new Base.innerObj("obj2_a","obj2_b");
+
+	var t1 = Base.Control1(p1);
+	var t2 = Base.Control2(p2);
+
+
 })(window, cQuery);
