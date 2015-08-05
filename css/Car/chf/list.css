@@ -1,86 +1,29 @@
 @charset "utf-8";
-/*
- * @desc: 用车接送机搜索列表
- * @build: 2015-04-07
- * @auchor: zhp
- * @last Modified: none
- */
+/**
+  * @Desc  : 用车接送机搜索列表 
+  * @Build : 2015-04-07 
+  * @Author: zhp 
+  * @Update: 2015/07/20 by lll 
+  */
 
-/* 防止用户自定义背景颜色对网页的影响，添加让用户可以自定义字体 */
-html {color:#333;background:#fff;-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;}
+/* --------------------------------------------------------------------------
+   重置样式
+   -------------------------------------------------------------------------- */
+html,body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td,em,button{ margin: 0; padding: 0; }
+body { background: #fff; color: #333; font: normal 12px/1.5 "Lucida Grande", Tahoma, Arial, Helvetica, "Hiragino Sans GB", "Microsoft Yahei", Simsun, STXihei, Sans-serif; -webkit-font-smoothing: antialiased; }
+img,fieldset { border: 0; margin: 0; padding: 0; }
+input, textarea, select { font-size: 12px; font-family: "Lucida Grande", Tahoma, Arial, Helvetica, "Hiragino Sans GB", "Microsoft Yahei", Simsun, STXihei, Sans-serif; }
+table { border-collapse: collapse; border-spacing: 0; }
+a { color:#0066cc; text-decoration: none; outline: none; }
+a:hover { text-decoration: underline; }
+h1,h2,h3,h4,h5 { font-weight: normal; }
+li { list-style: none; }
+dfn { font-style: normal; font-family: arial; }
+i,em { font-style: normal; } 
 
-/* 内外边距通常让各个浏览器样式的表现位置不同 */
-body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td,hr,button,article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section {
-    margin:0;padding:0;
-}
-
-/* 重设 HTML5 标签, IE 需要在 js 中 createElement(TAG) */
-article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section { display:block;}
-
-/* HTML5 媒体文件跟 img 保持一致 */
-audio,canvas,video {display: inline-block;*display: inline;*zoom: 1;}
-
-/* 要注意表单元素并不继承父级 font 的问题 */
-body,button,input,select,textarea {font:12px/1.5 "Microsoft Yahei",tahoma,arial;}
-input,select,textarea {font-size:100%;}
-
-/* 去掉各Table  cell 的边距并让其边重合 */
-table {border-collapse:collapse;border-spacing:0;}
-
-/* IE bug fixed: th 不继承 text-align*/
-th {text-align:inherit;}
-
-/* 去除默认边框 */
-fieldset,img {border:0;}
-
-/* ie6 7 8(q) bug 显示为行内表现 */
-iframe {display:block;}
-
-/* 去掉 firefox 下此元素的边框 */
-abbr,acronym {border:0;font-variant:normal;}
-
-/* 一致的 del 样式 */
-del {text-decoration:line-through;}
-
-address,caption,cite,code,dfn,em,th,var {font-style:normal;font-weight:500;}
-
-/* 去掉列表前的标识, li 会继承 */
-ol,ul {list-style:none;}
-
-/* 标题样式重置 */
-h1,h2,h3,h4,h5,h6 {font-size:100%;font-weight:500;}
-
-/* 统一上标和下标 */
-sub, sup {font-size: 75%; line-height: 0; position: relative; vertical-align: baseline;;}
-sub { bottom: -0.25em; }
-
-/* 鼠标悬停 */
-a:hover {text-decoration: none;}
-
-/* 默认不显示下划线，保持页面简洁 */
-ins,a {text-decoration:none;}
-
-/*鼠标经过光标形状*/
-a{cursor: pointer;}
-
-/*表单元素input*/
-input, select{outline: none;}
-input[type="button"]{cursor: pointer;}
-
-/* 清理浮动 */
-.clearfix {
-    *zoom:1
-}
- .clearfix:before,.clearfix:after {
-    display:table;
-    line-height:0;
-    content:""
-}
- .clearfix:after {
-    clear:both
-}
-
-/* 外层结构layout */
+/* --------------------------------------------------------------------------
+   主体布局结构样式
+   -------------------------------------------------------------------------- */
 html, body {min-width:980px;}
 body{ background-color: #f1f1f1 !important;-webkit-font-smoothing: antialiased; }
 .wrap {width: 1180px;margin: 0px auto;font-size: 12px;}
@@ -89,15 +32,19 @@ body{ background-color: #f1f1f1 !important;-webkit-font-smoothing: antialiased; 
 .wrap .cnt .main {margin-left: 310px;background-color: #fff;}
 .wrap .side {width: 300px;margin-left: -100%;background-color: #fff;float: left;margin-bottom: 40px;}
 
-/*--css3过渡效果--*/
-.change-btn,.change-btn .rightrec,.book-btn,.search-btn{
-	transition: all 0.3s ease;
-	-webkit-transition: all 0.3s ease;
-	-moz-transition: all 0.3s ease;
-	-o-transition: all 0.3s ease;
-	-ms-transition: all 0.3s ease;
-}
+/* --------------------------------------------------------------------------
+   模块、组件样式
+   -------------------------------------------------------------------------- */
+/* 三角 */
+.i-tri {display: inline-block;*display: inline;*zoom: 1;margin-left: 4px;vertical-align: baseline;height: 0;width: 0;border: 5px solid transparent;}
+.i-tri-up {border-bottom-color: #2577e3;vertical-align:text-top;}
+.i-tri-down {border-top-color: #2577e3;vertical-align:text-bottom;}
 
+/* 模块加载 */
+.loadingBox {text-align: center;}
+.loadingBox p {color: #999;}
+.loading-animate {display: inline-block;vertical-align: middle;width: 100px;height: 100px;margin-top: 50px;background: url(http://pic.c-ctrip.com/flight_intl/loading/62-62-loading.gif) 50% 50% no-repeat;}
+.loading-inline {display: inline-block;vertical-align: middle;margin: 0 5px;}
 
 /*--面包屑导航---*/
 .breadCrumbs{width: 1180px;margin: 0px auto;height: 36px;line-height: 36px;color: #666;}
@@ -122,20 +69,28 @@ body{ background-color: #f1f1f1 !important;-webkit-font-smoothing: antialiased; 
 .s-filter-item .list-2 dd {float: left;width: 45%;padding-right: 5%;}
 .s-filter .btn-fold {line-height: 44px;color: #06c;display: inline-block;height: 44px;}
 .s-filter .btn-fold:hover {text-decoration: underline;}
+.s-filter-loading {background-color: #fff;height: 390px;text-align: center;}
+.s-filter-loading h4 {font-size: 18px;color: #333;line-height: 18px;margin-bottom:5px;text-align: left;}
+
 /* 车型模块 */
-.ctBox {padding: 0 20px;}
-.ctBox-hd {border-bottom: 2px solid #ddd;padding-left: 245px;*zoom: 1;}
+.ctBox-list { padding: 0 20px;background-color: #fff;}
+.ctBox {background: #fff;border-bottom: 3px solid #EAEAEA;margin-bottom: 15px;}
+.ctBox-list .last-ctBox {border-bottom: 0 none;}
+.ctBox-hd {border-bottom: 1px dashed #ddd;padding-left: 245px;*zoom: 1;}
 .ctBox-hd:after {content: '';height: 0;clear: both;visibility: hidden;font-size: 0;display: block;}
 .ctBox-hd .pic {float: left;margin-left: -245px;width: 225px;}
 .ctBox-hd .cName {padding-top: 30px;}
 .ctBox-hd .cName span {font-size: 24px;line-height: 24px;color: #2577e3;vertical-align: middle;margin-right: 10px;}
-.ctBox-hd .cName .icon {margin-right: 4px; padding-left: 25px;height: 20px;font-style: normal;line-height: 20px;background: url(http://pic.c-ctrip.com/ctrip_car/chf/multi-supplier.png) no-repeat;display: inline-block;zoom: 1;vertical-align: middle;}
-.ctBox-hd .cName .i-personcon {background-position: -174px -58px;}
-.ctBox-hd .cName .i-baggagecon {background-position: -174px -35px;}
+.ctBox-hd .cName .icon {margin-right: 4px; padding-left: 25px;height: 20px;font-style: normal;line-height: 20px;background: url(http://pic.c-ctrip.com/corp_niv/car/icons_set.png) no-repeat;display: inline-block;zoom: 1;vertical-align: middle;}
+.ctBox-hd .cName .i-personcon {background-position: -10px -216px;}
+.ctBox-hd .cName .i-baggagecon {background-position: -10px -193px;}
 .ctBox-hd .cBrands {margin-top: 15px;font-size: 16px;color: #666;}
 .ctBox-hd .cBrand {position: relative;z-index: 1;margin-right: 3px;font-size: 16px;line-height: 20px;}
-.ctBox-hd .cBrand img {height: 20px;display: inline-block;vertical-align: bottom;margin-right: 4px;}
+.ctBox-hd .cBrand img {height: 20px;display: inline-block;vertical-align: text-bottom;margin-right: 4px;}
 .ctBox-hd .cBrands em {margin-left: 10px;font-style: normal;}
+.ctBox-loading {background-color: #fff;height: 400px;}
+.ctBox-loading .loading-animate {margin-top: 120px;}
+
 /* 服务提供商模块 */
 .servicer {padding: 22px 8px;border-bottom: 1px dashed #ccc;*zoom: 1;}
 .servicer:last-child {border-bottom: 0 none;}
@@ -162,9 +117,12 @@ body{ background-color: #f1f1f1 !important;-webkit-font-smoothing: antialiased; 
 .search-box .btn-search {overflow: visible;}
 .search-box .map {padding-left: 27px;float: right;height: 20px;background: url(http://pic.c-ctrip.com/corp_niv/car/icons_set.png) -6px -245px no-repeat;overflow: hidden;color:#06c;}
 .search-box .map:hover {text-decoration: underline;}
-.search-box .msg {clear: both;padding-left: 25px;margin-top: 8px;background: url(http://pic.c-ctrip.com/corp_niv/car/icons_set.png) no-repeat;}
-.search-box .msg-tips {background-position: -6px -154px;}
-.search-box .msg-error {background-position: -6px -174px;color: #b00;}
+.search-box .msg {clear: both;margin-top: 8px;}
+.search-box .msg i {margin-right: 5px;vertical-align: bottom;}
+.search-box .msg-error {color: #b00;}
+.search-box .msg a {color: #06c;}
+.search-box .msg a:hover {text-decoration: underline;}
+
 /* search-tabs */
 .search-tabs {overflow: hidden;*zoom: 1;margin-bottom: 25px;}
 .search-tabs li {float: left;margin-right: 25px;padding-left: 35px;height: 20px;line-height: 20px;display: block;color: #06c;text-decoration: none;opacity: 1;background: #fff url(http://pic.c-ctrip.com/corp_niv/car/icons_set.png) no-repeat;overflow: hidden;opacity: 0.5;filter:progid:DXImageTransform.Microsoft.Alpha(opacity=50);cursor: pointer;}
@@ -174,7 +132,7 @@ body{ background-color: #f1f1f1 !important;-webkit-font-smoothing: antialiased; 
 .search-tabs .tack-train {background-position: -5px -58px;padding-left: 31px;}
 .search-tabs .send-train {background-position: -5px -90px;padding-left: 27px;}
 /* search-panel */
-.search-panel {*zoom: 1;}
+.search-panel {*zoom: 1;display: none;}
 .search-panel .item {float: left;margin-right: 25px;}
 .search-panel .item label {line-height: 28px;margin-right: 5px;float: left;}
 .search-panel input {height:18px;line-height: 18px;padding: 5px;border:1px solid #ccc;}
@@ -187,18 +145,18 @@ body{ background-color: #f1f1f1 !important;-webkit-font-smoothing: antialiased; 
 .search-panel .inp-w1 {width: 82px;}
 .search-panel .inp-w2 {width: 188px;}
 .search-panel .inp-date, .search-panel .inp-location {width: 188px;}
-/* 航班号input输入 */
-.flight-input {position: relative;display: inline-block;*display: inline;zoom:1;height: 28px;border:1px solid #ccc;z-index: 1;}
-.flight-input input {border:0 none;width:152px;cursor:default;float: left;}
-.flight-input a {display: inline-block;height: 16px;line-height: 16px;padding: 0 13px;vertical-align: top;color: #06c;border-left: 1px solid #ccc;margin-top: 5px;}
-/* 选择式input */
-.search-panel {display: none;}
+.search-panel .flight-input {position: relative;display: inline-block;*display: inline;zoom:1;height: 28px;border:1px solid #ccc;z-index: 1;}
+.search-panel .flight-input input {border:0 none;width:152px;cursor:default;float: left;}
+.search-panel .flight-input a {display: inline-block;height: 16px;line-height: 16px;padding: 0 13px;vertical-align: top;color: #06c;border-left: 1px solid #ccc;margin-top: 5px;}
 .search-panel .inp-select {border:1px solid #ccc;height: 28px;line-height: 28px;padding: 0 25px 0 5px;background: url(http://pic.c-ctrip.com/car/ui/picker_bg-2.png) right 0px no-repeat;cursor: pointer;color: #000;width: 168px;}
 .search-panel .inp-select:hover {background-position: right -330px;}
+.search-panel .dropdown-select {position: relative;zoom: 1;border: 1px solid #ccc;height: 28px;line-height: 28px;padding: 0 25px 0 5px;background: url(http://pic.c-ctrip.com/car/ui/picker_bg-2.png) right 0px no-repeat;cursor: pointer;color: #000;}
+.search-panel .dropdown-select select {opacity: 0;left: 0;right: 0;top: 0;bottom: 0;position: absolute;height: 100%;min-width: 100%;cursor: pointer;filter: alpha(opacity=0);-webkit-appearance: none;}
 .widget-tab-content .tab-active {display: block;}
 .search-panel .inp-select-w1 {width: 82px;}
+.search-panel .inp-select-w2 {width: 108px;}
 /* input-set */
-.inputSet {overflow: hidden;*zoom: 1;padding-right: 1px;}
+.inputSet {float: left; overflow: hidden;*zoom: 1;padding-right: 1px;}
 .inputSet .inputSet-item {float: left;margin-right: -1px;}
 .inputSet .inp-date {width: 162px;}
 .inputSet .inp-hour {width: 36px;}
@@ -217,8 +175,30 @@ body{ background-color: #f1f1f1 !important;-webkit-font-smoothing: antialiased; 
 .btm-ad-r .service .icon {background-position: -1px -369px;}
 .btm-ad-r p {overflow: hidden;color: #5d5d5d;line-height: 20px;white-space: nowrap;}
 
+/* 搜索无结果模块 */
+.noResult {text-align: center;padding: 80px 0;}
+.noResult i {float: left;width: 52px;height: 52px;margin: 10px 10px 0 248px;background: url(http://pic.ctrip.com/car20140207/yikoujia/icon.png) 0 -243px no-repeat;}
+.noResult .msg {font: 500 18px/36px "Microsoft YaHei";text-align: left;}
 
-/*------------ 小屏下展现样式 START ------------*/
+/* 全屏半透明遮罩 */
+.main-mask {position: fixed;top: 0;left: 0;width: 100%;height: 100%;z-index: 9999;background-color:#000;opacity: 0.7;filter:progid:DXImageTransform.Microsoft.Alpha(opacity=70);display: none;}
+/* 地图 */
+.mod-map {display: none;width: 640px;background-color: #fff;z-index: 10000;position: fixed;top: 50%;left: 50%;margin-left: -320px;margin-top: -265px;}
+.mod-map-hd {background-color: #d6e9f9;height: 30px;line-height: 30px;text-indent: 10px;font-weight: bold;}
+.mod-map-hd .btn-close {float: right;margin-right: 8px;font-size: 20px;color: #2577e3;cursor: pointer;}
+.mod-map-bd {height: 450px;}
+.mod-map-ft {height: 50px;background-color: #fff;line-height: 50px;font-size: 14px;padding-left: 20px;}
+.mod-map-ft .expected {color: #2577e3;margin-right: 25px;}
+
+/* 提示气泡 */
+.tooltip {background-color: #fff5d1;border:1px solid #ffd077;position: absolute;*zoom: 1;}
+.tooltip .tri {position: absolute;border:5px solid transparent;display: block;width: 0;height: 0;overflow: hidden;}
+.tooltip .tri-f {border-bottom-color: #fff5d1;left: 50px;top: -10px;}
+.tooltip .tri-b {border-bottom-color: #ffd077;left: 50px;top: -11px;}
+
+/* --------------------------------------------------------------------------
+   小屏下展现样式
+   -------------------------------------------------------------------------- */
 @media screen and (max-width:1200px){
 	body {min-width: 980px;}
 	/* 面包屑 */
@@ -252,7 +232,7 @@ body{ background-color: #f1f1f1 !important;-webkit-font-smoothing: antialiased; 
 	.btm-ad-r .price {margin-right: 50px;}
 	.btm-ad-r .service {margin-right: 0;}
 }
-/* 通过JS添加类来解决IE8不支持media query */
+/* 通过JS添加tablet类来解决IE8不支持media query */
 body.tablet {min-width: 980px;}
 /* 面包屑 */
 .tablet .breadCrumbs {width: 980px;}
@@ -284,5 +264,4 @@ body.tablet {min-width: 980px;}
 /* 底部广告 */
 .tablet .btm-ad-r .price {margin-right: 50px;}
 .tablet .btm-ad-r .service {margin-right: 0;}
-/*------------ 小屏下展现样式 END ------------*/
 

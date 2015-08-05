@@ -1,0 +1,97 @@
+@charset "utf-8";
+/**
+ * 用车国内租车订单完成页
+ * @author: zhp  
+ * @update: 2015-07-15  
+ * @lastModify: lll 
+ */
+
+/* --------------------------------------------------------------------------
+   重置样式
+   -------------------------------------------------------------------------- */
+html,body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td,em,button{ margin: 0; padding: 0; }
+body { background: #fff; color: #333; font: normal 12px/1.5 "Lucida Grande", Tahoma, Arial, Helvetica, "Hiragino Sans GB", "Microsoft Yahei", Simsun, STXihei, Sans-serif; -webkit-font-smoothing: antialiased; }
+img,fieldset { border: 0; margin: 0; padding: 0; }
+input, textarea, select, button { font-size: 12px; font-family: "Lucida Grande", Tahoma, Arial, Helvetica, "Hiragino Sans GB", "Microsoft Yahei", Simsun, STXihei, Sans-serif; }
+table { border-collapse: collapse; border-spacing: 0; }
+a { color:#0066cc; text-decoration: none; outline: none; }
+a:hover { text-decoration: underline; }
+h1,h2,h3,h4,h5 { font-weight: normal; }
+li { list-style: none; }
+dfn { font-style: normal; font-family: arial; }
+i,em { font-style: normal; }   
+
+/* --------------------------------------------------------------------------
+   主体布局结构样式
+   -------------------------------------------------------------------------- */
+.wrap {max-width: 1180px;min-width: 980px;margin: 0 auto;}
+.wrap .cnt {float: left;width: 100%;}
+.wrap .cnt .main {margin-right: 400px;}
+.wrap .side {float: left;width: 380px;margin-left: -380px;}
+
+/* --------------------------------------------------------------------------
+   模块、组件样式
+   -------------------------------------------------------------------------- */
+/* base类 */
+.base-check {margin-right: 15px;}
+.base-check input {width: auto;vertical-align: middle;margin-right: 5px;}
+
+.base-remark {color: #999;}
+
+.base-price {color: #f60;font-family: tahoma;}
+.base-price em {color: #666;font-family: arial;margin-right: 3px;}
+
+.base-tips i {margin-right: 5px;}
+
+/* step */
+.book_process, .book_process2{ margin:20px 0;}
+.book_process ol, .book_process2 ol{ overflow:hidden; zoom:1; margin-left:-14px;}
+.book_process li, .book_process2 li{ display:inline-block; *display:inline; *zoom:1; height:15px; line-height:15px; color:#999; background-repeat:no-repeat; background-position:0 -25px;}
+.book_process li{ margin-left:14px; padding-left:252px; background-image:url(http://pic.c-ctrip.com/cncorp120313/hotel130402/book/bg_step_new.png);}
+.book_process2 li{ margin-left:15px; padding-left:396px; background-image:url(http://pic.c-ctrip.com/cncorp120313/hotel130402/book/bg_step_new2.png);}
+.process_step1 .step1, .process_step2 .step1, .process_step2 .step2, .process_step3 .step1, .process_step3 .step2, .process_step3 .step3{ color:#799d08; background-position:0 0;}
+
+/* order-box */
+.order-box {margin-left: 150px;}
+.order-box .xuico-succes-xlg {float: left;margin-left: -85px;}
+.order-box .title {font-size: 22px;color: #333;}
+.order-box .number,
+.order-box .total {font-size: 14px;line-height: 24px;}
+.order-box p {line-height: 24px;}
+.order-box .tips {margin: 20px 0;line-height: 24px;}
+.order-box .btn-viewOrder {margin-top: 3px;font-family: "Microsoft Yahei";}
+
+/* send-msg */
+.send-msg {border-top: 1px dashed #ccc;margin-top: 20px;}
+.send-msg .check {margin: 10px 0;}
+.send-msg .check .base-check {margin-right: 0;}
+.send-box {border:1px solid #ccc;padding: 14px;margin-bottom: 10px;overflow: hidden;*zoom: 1;}
+.send-box:after { clear: both; display: table; height: 0; content: ""; }
+.send-box .fill {margin-right: 15px;padding: 4px 6px;width: 130px;height: 20px;border: 1px solid #ccc;outline: 0 none;vertical-align: middle;}
+.send-box .base-check {margin-right: 8px;vertical-align: middle;}
+.send-box .passenger-item { float: left; margin-bottom: 10px; }
+.send-box .xui-btn {float: left;font-family: "Microsoft Yahei";}
+.send-msg .base-tips {display: block;clear: both;margin-bottom: 10px;}
+
+/* side-detial */
+.side-detial {border:1px solid #e0e0e0;background: #fff;margin-bottom: 10px;padding: 15px;}
+.side-detial .title {font-size: 20px;font-weight: bold;margin-bottom: 10px;}
+.side-detial .pic {width: 150px;}
+.side-detial .tenancy {float: right;margin: 25px 30px 0 0;}
+.side-detial p {line-height: 24px;}
+.side-detial .desc {clear: left;font-size: 18px;margin: 15px 0 10px;}
+.side-detial .desc span {font-size: 16px;}
+.detial-list li {padding-left: 60px;line-height: 24px;overflow: hidden;*zoom: 1;color: #333;}
+.detial-list .label {float: left;margin-left: -60px;width: 60px;line-height: 24px;color: #333;}
+.detial-list .content {float: left;width: 100%;}
+.detial-list .btn-change-store {float: right;}
+.link-map {margin-bottom: 20px;display: block;}
+.total-price {text-align: right;font-weight: bold;color: #000;}
+.total-price .price {color: #f60;font: normal 28px/1.5 tahoma;margin-left: 8px;}
+.total-price .price em {color: #666;font-size: 12px;font-family: arial;margin-right: 2px;}
+
+/* btm-tips */
+.btm-tips {clear: both;line-height: 24px;margin-bottom: 25px;}
+
+/* 全屏半透明遮罩 */
+.main-mask {position: fixed;top: 0;left: 0;width: 100%;height: 100%;z-index: 9999;background-color:#000;opacity: 0.7;filter:progid:DXImageTransform.Microsoft.Alpha(opacity=70);display: none;}

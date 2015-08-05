@@ -1,0 +1,259 @@
+@charset "utf-8";
+/**
+ * 用车国内接机预订页
+ * @author: zhp  
+ * @update: 2015-07-20 
+ * @lastModify: lll 
+ */
+
+/* --------------------------------------------------------------------------
+   重置样式
+   -------------------------------------------------------------------------- */
+html,body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td,em,button{ margin: 0; padding: 0; }
+body { background: #fff; color: #333; font: normal 12px/1.5 "Lucida Grande", Tahoma, Arial, Helvetica, "Hiragino Sans GB", "Microsoft Yahei", Simsun, STXihei, Sans-serif; -webkit-font-smoothing: antialiased; }
+img,fieldset { border: 0; margin: 0; padding: 0; }
+input, textarea, select { font-size: 12px; font-family: "Lucida Grande", Tahoma, Arial, Helvetica, "Hiragino Sans GB", "Microsoft Yahei", Simsun, STXihei, Sans-serif; }
+table { border-collapse: collapse; border-spacing: 0; }
+a { color:#0066cc; text-decoration: none; outline: none; }
+a:hover { text-decoration: underline; }
+h1,h2,h3,h4,h5 { font-weight: normal; }
+li { list-style: none; }
+dfn { font-style: normal; font-family: arial; }
+i,em { font-style: normal; } 
+
+/* --------------------------------------------------------------------------
+   头部样式
+   -------------------------------------------------------------------------- */
+.topline{padding: 5px 0px;height: 41px;}
+.topline .com-icon{display: block;float: left;width: 116px;height: 41px;background: url(http://pic.c-ctrip.com/ctrip_car/zj-internal/icon.png) no-repeat 0px -16px;}
+.topline .info{padding: 10px 0px; float: right;line-height: 20px;font-size: 12px;color: #bfbfbf}
+.topline .name{line-height: 20px;color: #0066CC;}
+.topline .name:hover{text-decoration: underline;}
+.topline .service{line-height: 20px;color: #4c4c4c;}
+
+/* --------------------------------------------------------------------------
+   主体布局结构样式
+   -------------------------------------------------------------------------- */
+.order-main{margin: 0px auto;width: 1180px;color: #333333;}
+.main-form{margin-top: 20px;}
+.main-form .form-wrap {float: left;width: 100%;}
+.main-form .form-wrap .main {margin-right: 400px;}
+.main-form .form-side {float: left;width: 380px;margin-left: -380px;}
+
+.f-block{position: relative;margin-bottom: 12px;border:1px solid #daeaf6;z-index: 1;}
+.f-block-label {position: absolute;left: 0px;top: 0px;padding: 20px 12px; width: 86px;line-height: 20px;font-size: 16px;color: #000000;z-index: 2;}
+.f-block-main {padding: 16px 20px;margin-left: 110px;line-height: 20px;background-color: #EFF6FC;}
+.f-block-main2 {margin-left: 110px;line-height: 20px;background-color: #fff;}
+
+/* --------------------------------------------------------------------------
+   模块、组件样式
+   -------------------------------------------------------------------------- */
+/* icons */
+.i-tips {display: inline-block;*display: inline;*zoom: 1;margin-left: 10px;width: 16px;height: 16px;vertical-align: middle;background: url(http://pic.c-ctrip.com/corp_niv/car/book_icons.png) -3px 0 no-repeat;}
+/* row */
+.row .collection {margin-left: 90px;}
+.row .collection-row {margin-bottom: 10px;}
+.row .inp {width: 188px;padding: 4px 5px;height: 14px;line-height: 14px;border:1px solid #bbb;vertical-align: middle;}
+.row .i-tips {margin: 0 3px 0 5px;}
+.row .help_inline {vertical-align: top;margin-left: 8px;}
+
+/* btn-add */
+.btn-add { display:inline-block; width:129px; _width:109px; height:36px; _padding-left:20px; font:14px/36px "Microsoft Yahei", Simsun, sans-serif; text-align:center; vertical-align:middle; border:1px solid #D1D1D1; border-radius:3px; color:#333; background-color:#FFF; box-shadow:0 1px 0 rgba(95, 50, 0, 0.5); }
+.btn-add b { display:inline-block; width:16px; height:16px; margin-right:5px; vertical-align:middle; overflow:hidden;background: url(http://pic.c-ctrip.com/corp_niv/car/book_icons.png) -3px -31px no-repeat; }
+.btn-add b { _position:absolute; _margin:3px 0 0 -25px; }
+.btn-add:hover { text-decoration:none; color:#FFF; background-color:#27C; border-color:#27C; }
+.btn-add:hover b { background-position:-3px -64px; }
+.btn-add.disable,.btn-add.disable:hover { color: #999; background-color: #EEEEEE; border-color: #DCDCDC; cursor: pointer; }
+.btn-add.disable b { display: none; }
+
+/* base类 */
+.base-check {margin-right: 15px;}
+.base-check input {width: auto;vertical-align: middle;margin-right: 5px;}
+
+.base-remark {color: #999;}
+
+.base-price em {color: #f60;margin-left: 3px;}
+
+/* block-flight */
+.block-flight .inp-select {height: 22px;line-height: 22px;border:1px solid #bbb;background: #fff;display: inline-block;*display: inline;*zoom: 1;}
+.block-flight .inp-select input {border:0 none;width: 190px;float: left;*margin-left: -90px;}
+.block-flight .inp-select .btn-select {height: 18px;line-height: 18px;margin-top: 2px;border-left: 1px solid #bbb;padding-left: 20px;color: #0f85d0;cursor: pointer;}
+
+/* block-passenger */
+.passenger_list {border-bottom: 1px dashed #ccc;padding:16px 0 0 20px;margin:0 20px 20px 0;}
+.m-passenger {margin-bottom: 10px;background-color: #EFF6FC;padding: 16px 20px;}
+.m-passenger .desc {margin:0 0 5px 90px;font-weight: bold;color: #666;}
+.m-passenger .desc .btn-delete {margin-left: 10px;font-weight: normal;}
+.m-passenger .row input {width: 255px;}
+.btn-add-passenger {margin-bottom: 10px;}
+
+/* block-payType */
+.block-payType .base-check {margin-right: 40px;}
+
+/* block-invoice */
+.block-invoice span {margin-right: 0;}
+.block-invoice .top-check {margin-left:36px;}
+.block-invoice .top-check .base-check {margin-right: 5px;}
+.block-invoice .invoice-detail {margin-top: 10px;}
+.block-invoice .base-price {margin-right: 3px;}
+.block-invoice .check-list {overflow: hidden;*zoom: 1;}
+.block-invoice .check-list .base-check {float: left;*margin-right: 12px;white-space: nowrap;} 
+.block-invoice .promotion-inline {*display:inline-block;margin-right: 0;background: #fff;color: #fba62c;border:1px solid #fba62c;padding-right: 2px;*line-height: 1;}
+.block-invoice .promotion-inline em {background: #fba62c;color: #fff;margin-right: 2px;}
+.block-invoice .inp {margin-bottom: 10px;width: 243px;}
+.block-invoice .inp-gap {margin-right: 8px;}
+.block-invoice .inp-addr {width: 348px;margin-right: 10px;}
+.block-invoice .inp-zip {width: 136px;}
+.block-invoice .address {}
+.block-invoice .address .input-txt {float: left;width: 142px;height: 22px;padding: 0 2px;line-height: 22px;border: 1px solid #bbbbbb;margin-bottom: 10px;}
+.block-invoice .address span {float: left;margin: 0 10px 0 4px;}
+.block-invoice .help_block {margin-top: 0;}
+
+/* block-coupon */
+.block-coupon select {min-width: 199px;height: 22px;border: 1px solid #bbbbbb;}
+.block-coupon .coupon-item { margin-right: 30px; }
+.block-coupon .coupon-hot { color: #f60; }
+
+/* block-bottom */
+.f-bottom {position: relative;margin: 25px 0px;text-align: center;z-index: 1;}
+.f-bottom .back{position: absolute;left: 20px;top: 8px;font-size: 14px;line-height: 20px;color: #0066CC;z-index: 2;}
+.f-bottom .back:hover{text-decoration: underline;}
+.f-bottom .f-bl{position: absolute;right: 0px;top: 8px;line-height: 20px;z-index: 2;}
+.f-bottom .f-bl a{color: #0066CC;}
+.f-bottom .f-bl a:hover{text-decoration: underline;}
+.f-bottom .f-bl .cb1 {vertical-align: middle;margin-right: 5px;}
+.sub-btn {width: 158px;height: 34px;color: #ffffff;line-height: 34px;font-size: 14px;font-weight: bold;background-color: #ffb000;box-shadow: 0px 1px 1px #999999;border: 1px solid #f28200;border-radius: 3px; cursor: pointer; outline: none;}
+.sub-btn:hover { background-color: #ff9900; }
+.sub-btn.disable { background-color: #EEEEEE; border-color: #DCDCDC; cursor: default; }
+
+/* side-detial */
+.side-detial {border:1px solid #e0e0e0;background: #fff;margin-bottom: 10px;}
+.side-detial .info-box {padding: 15px 20px;border-bottom: 1px dashed #ccc;}
+.side-detial .title {font-size: 20px;font-weight: bold;margin-bottom: 5px;}
+.side-detial .title span {font-weight: normal;}
+.route {border-left: 1px dotted #ccc;margin: 15px 0 0 15px;}
+.route li {line-height: 30px;*zoom: 1;}
+.route li:after {content: '';display: block;width: 0;line-height: 0;font-size: 0;clear: both;}
+.route .label {display: block;float: left;margin-left: -15px;margin-right: 10px;height: 30px;width: 30px;border-radius: 50%;color: #fff;text-align: center;line-height: 30px;font-size: 14px;}
+.route .start .label {background: #099fde;}
+.route .end .label {background: #ff9201;}
+.route .mc {float: left;}
+.route .site {font-size: 18px;}
+.side-car-info {padding: 20px 15px;}
+.side-car-info .cName span {font-size: 18px;line-height: 24px;color: #2577e3;vertical-align: middle;margin-right: 10px;}
+.side-car-info .cName .icon {margin-right: 4px; padding-left: 25px;height: 20px;font-style: normal;line-height: 20px;background: url(http://pic.c-ctrip.com/corp_niv/car/icons_set.png) no-repeat;display: inline-block;zoom: 1;vertical-align: middle;}
+.side-car-info .cName .i-personcon {background-position: -10px -216px;}
+.side-car-info .cName .i-baggagecon {background-position: -10px -193px;}
+.side-car-info .dl-list li {margin: 10px 0;line-height: 16px;padding-left: 55px;}
+.side-car-info .dl-list .label {width: 50px;float: left;margin-left: -55px;}
+
+/* side-total */
+.side-total {border:1px solid #f1ebd9;}
+.side-total-hd {background: #fffaed;padding: 15px 20px 0;}
+.side-total-hd .total {float: right;font-weight: bold;color: #000;}
+.side-total-hd .total-price {font-size: 26px;color: #f60;font-weight: normal;font-family: arial;margin-left: 10px;}
+.side-total-hd .total-price em {font-size: 12px;color: #666;vertical-align: 2px;margin-right: 5px;}
+.side-total-hd .title {font-size: 22px;font-weight: bold;}
+.side-total-list {padding: 15px 20px;background: #fffaed;}
+.side-total-list .item {margin-top: 10px;color: #666;border-top: 1px dashed #ccc;position: relative;zoom: 1;height: 16px;width: 100%;}
+.side-total-list .name,
+.side-total-list .price {padding-right: 5px;background: #fffaed;position: absolute;top: -10px;}
+.side-total-list .price {right: 0;padding-left: 5px;color: #f60;font-weight: bold;}
+.side-total-list .price em {color: #666;font-weight: normal;margin-right: 2px;font-family: Arial;}
+
+/* notice-box */
+.notice-box {border:1px solid #d7e8f5;padding: 15px;}
+.notice-box h5 {margin-bottom: 10px;}
+.notice-box p {line-height: 24px;}
+
+/* 脚部样式 */
+#base_ft{width:950px;clear:both;text-align:center;padding-top:15px;margin:0 auto 20px;font-family:Arial,verdana;color:#4c4c4c;font-size:12px;}
+#base_ft a{color:#4c4c4c;margin:0 1px;text-decoration:none;}
+#base_ft a:hover{text-decoration:underline;}
+#base_ft p .suggestions{color:#06c;}
+
+/* xui-tooltip */
+.xui-tooltip-pop { position: absolute; display: inline-block; min-width: 200px; max-width: 480px; background-color: #FFF; border-style: solid; }
+.xui-tooltip-pop { padding: 8px 10px; border-color: #67A1E2; border-width: 1px; }
+
+/* Modals ========================================================================== */
+.xui-modal { display: block; border-style: solid; background-color: #FFFFFF; -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4); box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4); }
+
+.xui-modal-close { position: absolute; display: inline-block; color: #99BBDD; font-size: 18px; line-height: 1em; }
+.xui-modal-close:hover { color: #0066CC; text-decoration: none; }
+
+.xui-modal-box { border-color: #DCDCDC; border-width: 10px; }
+.xui-modal-box .modal-dialog { position: relative; padding: 20px; }
+.xui-modal-box .dialog-title { padding-right: 30px; font-size: 14px; }
+.xui-modal-box .dialog-content { margin: 20px 0; }
+.xui-modal-box .xui-modal-close { top: 3px; right: 5px; width: 20px; height: 20px; line-height: 20px; font-size: 30px; font-weight: 100; }
+.xui-modal-box .dialog-button { text-align: center; }
+
+.xui-modal-pop { border-color: #67A1E1; border-width: 1px; }
+.xui-modal-pop .xui-modal-hd { position: relative; background-color: #EFF6FC; }
+.xui-modal-pop .xui-modal-hd h4 { padding: 8px 30px 8px 10px; font-size: 14px; font-weight: bold; line-height: 1em; }
+.xui-modal-pop .xui-modal-bd { padding: 10px; }
+.xui-modal-pop .xui-modal-ft { padding: 10px; }
+.xui-modal-pop .xui-modal-close { top: 5px; right: 5px; width: 16px; height: 16px; line-height: 16px; font-size: 20px; font-weight: 100; }
+
+.modal-policy .content-box { max-height: 399px; overflow-y: scroll; }
+
+/* 省市区选择器 */
+.base-droplist { position: absolute; z-index: 99; border: 1px solid #C5C5C5; background-color: #fff; box-shadow: 3px 2px 3px rgba(210,210,210,.5); }
+.base-droplist .droplist-content { overflow: hidden; *zoom: 1; }
+.base-droplist .droplist-content:after { clear: both; display: table; height: 0; content: ""; }
+.base-droplist .droplist-content li { float: left; width: 24.8%; text-align: center; line-height: 30px; }
+.base-droplist .droplist-content a { display: block; }
+.base-droplist .droplist-content a:hover { text-decoration: none; background-color: #72A1E1; color: #fff; }
+.address-list { width: 300px; }
+
+/* 常用联系人 */
+.consignee { position: absolute; border:  1px solid #bbb; }
+.consignee .title { height: 28px; padding: 0 5px;  line-height: 28px; background-color: #f1f1f1; border-bottom: #bbb 1px solid; overflow: hidden; *zoom: 1; }
+.consignee .title span,
+.consignee-list span { display: inline-block; float: left; padding-right: 5px; min-height: 18px; }
+.consignee .title .close-btn{ float: right; display: inline-block; width: 28px; height: 28px; font-size: 18px; color: #333; text-align: center; cursor: pointer; }
+.consignee .title .close-btn:hover{ color: #06C; text-decoration: none; }
+.consignee-list { background-color: #fff; overflow-x: hidden; overflow-y: auto; width: 630px; max-height: 200px; }
+.consignee-list a { display: block; margin: 0 5px; line-height: 1.5; padding: 7px 0; border-bottom: #ccc 1px dashed; cursor: pointer; overflow: hidden; _zoom: 1; }
+.consignee-list a:hover { color: #333; background-color: #daedff; }
+.consignee .consignee-w1 { width: 115px; }
+.consignee .consignee-w2 { width: 125px; }
+.consignee .consignee-w3 { width: 265px; }
+.consignee .consignee-w4 { width: 61px; }
+.consignee .page { padding: 10px 0; text-align: center; background-color: #fff; }
+.consignee .page a { cursor: pointer; color: #555; font-size: 14px; margin: 0 5px; }
+.consignee .page a:hover { color: #06C; text-decoration: underline; }
+.consignee .page a.current { color: #06C; font-weight: 700; }
+
+/* 优惠券 */
+.coupon-box{ width: 417px; max-height: 198px; padding: 0 10px; border: 1px solid #bbb; background-color: #fff; overflow: auto; }
+.couponcodelist a{ height: 32px; line-height: 32px; display: block; border-bottom: #ccc 1px dashed; clear: left; }
+.couponcodelist a:hover { background-color: #daedff; color: #333; }
+.couponcodelist a span{ float: left; display: inline-block; padding-left: 10px; white-space: nowrap; text-overflow: ellipsis; overflow: hidden; }
+.couponcodelist a .yhq-name{ width: 110px; margin-right: 10px; }
+.couponcodelist a .yhq-del{ width: 260px; }
+
+/* 发票抬头 */
+.invoice-box .droplist-content li { width: 100%; text-align: left; }
+.invoice-box .droplist-content a  { padding: 0 10px; }
+
+/* 满员提示 */
+.user_pop{position:absolute;border:1px solid #FFB533;background-color:#FFF5D1;width:123px;padding:5px;}
+.user_pop .icon{
+  display:inline-block;position:absolute;bottom:-7px;_bottom:-11px;left:50%;width:13px;height:7px;margin-left:-7px;
+  background:url(http://pic.c-ctrip.com/cncorp120313/hotel130402/book/u_p.png) no-repeat 0;
+}
+
+/* --------------------------------------------------------------------------
+   小屏下展现样式
+   -------------------------------------------------------------------------- */
+@media screen and (max-width:1200px){
+  .order-main {width: 980px;}
+  .f-block .help_inline {display: block;margin-left: 0;margin-top: 5px;}
+  .f-block .help_inline .tip_arrow_left {display: none;}
+}
+/* 通过JS添加tablet类来解决IE9以下的窄屏样式 */
+.tablet .order-main {width: 980px;}
+.tablet .f-block .help_inline {display: block;margin-left: 0;margin-top: 5px;}
+.tablet .f-block .help_inline .tip_arrow_left {display: none;}

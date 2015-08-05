@@ -1,0 +1,27 @@
+/* 地图 */
+.mapBlock {display: none;width: 1046px;background-color: #fff;z-index: 10000;position: fixed;top: 50px;left: 50%;margin-left: -523px;}
+.map-hd {background-color: #d6e9f9;height: 50px;line-height: 50px;padding-left: 15px;}
+.map-hd .btn-close {float: right;margin-right: 8px;font-size: 20px;color: #2577e3;cursor: pointer;}
+.map-bd {height: 620px;background-color: #ccc;}
+.map-side {height:100%;width: 348px;float: left;background-color: #fff;}
+.map-search {padding: 28px 0 12px;height: 150px;}
+.map-search .item {margin: 0 0 20px 20px;padding-left: 40px;}
+.map-search .label-circle {float: left;margin-left: -40px;width: 30px;height: 30px;line-height: 30px;font-size: 14px;border-radius: 50%;background: #099fde;color: #fff;text-align: center;}
+.map-search input {width: 218px;padding: 6px 10px;height: 16px;line-height: 16px;border:1px solid #ccc;}
+.map-detail {border-top: 1px solid #ccc;height: 429px;overflow: auto;}
+.map-detail .m-hd {height: 30px;line-height: 30px;padding-left: 28px;background-color: #d6e9f9;font-size: 14px;font-weight: bold;}
+.map-routeList .item {margin-bottom: 25px;}
+.map-routeList .abstract {border-bottom: 1px dashed #ccc;padding: 8px 10px 8px 60px;font-weight: bold;color: #000;}
+.map-routeList .abstract .index {float: left;margin-left: -20px}
+.map-routeList .abstract .notice {font-size: 12px;color: #999;font-weight: normal;}
+.map-routeList .item-cur .map-routeSteps {display: block;}
+.map-routeSteps {margin: 15px 0 0 38px;border-left:1px solid #c3c1bb;display: none;}
+.map-routeSteps li {margin-bottom: 10px;padding-left: 20px;min-height: 28px;}
+.map-routeSteps .i-start {float: left;margin-left: -36px;width: 30px;height: 30px;line-height: 30px;font-size: 14px;border-radius: 50%;background: #5b9b08;color: #fff;text-align: center;}
+.map-routeSteps .i-terminal {float: left;margin-left: -36px;width: 30px;height: 30px;line-height: 30px;font-size: 14px;border-radius: 50%;background-color: #d71909;color: #fff;text-align: center;font-style: normal;}
+.map-routeSteps .i-bus, .map-routeSteps .i-walk {float: left;margin-left: -36px;width: 15px;height: 30px;background: #fff url(http://pic.c-ctrip.com/corp_niv/car/isd_icons.png) no-repeat;}
+.map-routeSteps .i-bus { background-position: -80px -18px;margin-left: -29px;}
+.map-routeSteps .i-walk { background-position: -110px -18px;margin-left: -25px;}
+.map-routeSteps p {line-height: 25px;}
+.map-routeSteps .place-start {color: #51BF4C;line-height: 30px;font-weight: bold;}
+.map-routeSteps .place-end {color: #d71909;line-height: 30px;font-weight: bold;}

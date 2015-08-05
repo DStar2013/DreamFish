@@ -1,0 +1,266 @@
+@charset "utf-8";
+/*
+ * @desc: 用车租车搜索列表
+ * @build: 2015-04-07
+ * @auchor: zhp
+ * @last Modified: lll
+ */
+
+/* --------------------------------------------------------------------------
+   重置样式
+   -------------------------------------------------------------------------- */
+html,body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td,em,button{ margin: 0; padding: 0; }
+body { background: #fff; color: #333; font: normal 12px/1.5 "Lucida Grande", Tahoma, Arial, Helvetica, "Hiragino Sans GB", "Microsoft Yahei", Simsun, STXihei, Sans-serif; -webkit-font-smoothing: antialiased; }
+img,fieldset { border: 0; margin: 0; padding: 0; }
+input, textarea, select { font-size: 12px; font-family: "Lucida Grande", Tahoma, Arial, Helvetica, "Hiragino Sans GB", "Microsoft Yahei", Simsun, STXihei, Sans-serif; }
+table { border-collapse: collapse; border-spacing: 0; }
+a { color:#0066cc; text-decoration: none; outline: none; }
+a:hover { text-decoration: underline; }
+h1,h2,h3,h4,h5 { font-weight: normal; }
+li { list-style: none; }
+dfn { font-style: normal; font-family: arial; }
+i,em { font-style: normal; }
+
+/* --------------------------------------------------------------------------
+   主体布局结构样式
+   -------------------------------------------------------------------------- */
+html, body {min-width:980px;}
+body{ background-color: #F0F0F0 !important;-webkit-font-smoothing: antialiased; }
+.wrap {width: 1180px;margin: 0px auto;font-size: 12px;}
+.wrap:after {content: '';height: 0;clear: both;visibility: hidden;font-size: 0;display: block;}
+.wrap .cnt {width: 100%;float: left;margin-bottom: 40px;}
+.wrap .cnt .main {margin-left: 310px;}
+.wrap .side {width: 300px;margin-left: -100%;background-color: #fff;float: left;margin-bottom: 40px;}
+
+/* --------------------------------------------------------------------------
+   模块、组件样式
+   -------------------------------------------------------------------------- */
+/* 三角 */
+.i-tri {display: inline-block;*display: inline;*zoom: 1;margin-left: 4px;vertical-align: baseline;height: 0;width: 0;border: 5px solid transparent;}
+.i-tri-up {border-bottom-color: #2577e3;vertical-align:text-top;}
+.i-tri-down {border-top-color: #2577e3;vertical-align:text-bottom;}
+
+/* 模块加载 */
+.loadingBox {text-align: center;}
+.loadingBox p {color: #999;}
+.loading-animate {display: inline-block;vertical-align: middle;width: 100px;height: 100px;margin-top: 50px;background: url(http://pic.c-ctrip.com/flight_intl/loading/62-62-loading.gif) 50% 50% no-repeat;}
+.loading-inline {display: inline-block;vertical-align: middle;margin: 0 5px;}
+
+/*--面包屑导航---*/
+.breadCrumbs{width: 1180px;margin: 0px auto;height: 36px;line-height: 36px;color: #666;}
+.breadCrumbs a{color: #0066cc;cursor: pointer;}
+
+/* 搜索无结果模块 */
+.noResult {text-align: center;padding: 80px 0;background: #fff;}
+.noResult i {float: left;width: 52px;height: 52px;margin: 10px 10px 0 248px;background: url(http://pic.ctrip.com/car20140207/yikoujia/icon.png) 0 -243px no-repeat;}
+.noResult .msg {font: 500 18px/36px "Microsoft YaHei";text-align: left;}
+
+/* 侧边栏筛选 */
+.s-filter {padding: 10px 10px 0;text-align: center;}
+.s-filter-hd {border-bottom: 1px dashed #bfbbb2;padding-bottom: 20px;position: relative;text-align: left;*zoom: 1;}
+.s-filter-hd .btn-clear {position: absolute;right: 0; top: 0; text-decoration: none;color: #06c;}
+.s-filter-hd .btn-clear:hover {text-decoration: underline;}
+.s-filter-hd h4 {font-size: 18px;color: #333;line-height: 18px;margin-bottom: 5px;}
+.s-filter-hd .itemChecked {float: left;margin-right: 9px;color: #fff;background-color: #2577e3;height: 20px;padding: 0 20px 0 5px;line-height: 20px;position: relative;*zoom: 1;margin-top: 10px;white-space: nowrap;}
+.s-filter-hd .itemChecked a {color: #fff;font-size: 18px;margin-left: 8px;line-height: 20px;position: absolute;right: 5px;top: 0;display: block;height: 20px;}
+.s-filter-hd:after {content: '';height: 0;clear: both;visibility: hidden;font-size: 0;display: block;}
+.s-filter-bd {text-align: left;-webkit-user-select: none;-moz-user-select: none;-ms-user-select: none;-o-user-select: none;user-select: none;}
+.s-filter-item {border-bottom: 1px dashed #bfbbb2;margin-top: 10px;padding-bottom: 7px;position: relative;*zoom: 1;}
+.s-filter-item h5 {color: #999;line-height: 22px;}
+.s-filter-item .name {line-height: 22px;margin-top: 3px;}
+.s-filter-item dd {line-height: 28px;}
+.s-filter-item dd input {vertical-align: middle;margin-right: 3px;}
+.s-filter-item .list-1 span {float: right;}
+.s-filter-item .list-2 {overflow: hidden;zoom: 1;}
+.s-filter-item .list-2 dd {float: left;width: 45%;padding-right: 5%;}
+.s-filter .btn-fold {line-height: 44px;color: #06c;display: inline-block;height: 44px;}
+.s-filter .btn-fold:hover {text-decoration: underline;}
+.s-filter-item .list-wrap .btn-expand {position: absolute;right: 0;top: 0;color: #06c;}
+.s-filter-item .list-wrap .btn-expand:hover {text-decoration: underline;}
+.s-filter-loading {background-color: #fff;height: 390px;text-align: center;}
+.s-filter-loading h4 {font-size: 18px;color: #333;line-height: 18px;margin-bottom:5px;text-align: left;}
+
+/* 筛选模块 */
+.sortBox {background-color: #fff;padding: 10px 20px;overflow: hidden;*zoom: 1;margin-bottom: 2px;}
+.sortBox .item {border:1px solid #2577e3;color: #2577e3;float: left;margin-right: 10px;width: 108px;line-height: 26px;text-align: center;cursor: pointer;}
+.sortBox .active {background-color: #2577e3;color: #fff;}
+
+/* 车型模块顶部 */
+.ctBox-list { padding: 0 20px;background-color: #fff;}
+.ctBox {background: #fff;border-bottom: 2px solid #EAEAEA;}
+.ctBox-list .last-ctBox {border-bottom: 0 none;}
+.ctBox-hd {border-bottom: 1px dashed #ddd;padding-left: 350px;*zoom: 1;}
+.ctBox-hd:after {content: '';height: 0;clear: both;visibility: hidden;font-size: 0;display: block;}
+.ctBox-hd .pic {float: left;margin-left: -350px;width: 225px;}
+.ctBox-hd .cName {padding-top: 50px;font-size: 16px;color: #000;line-height: 20px;}
+.ctBox-hd .cName img {display: inline-block;margin-right: 5px;vertical-align: text-bottom;height: 18px;}
+.ctBox-hd .desc {font-size: 14px;}
+.ctBox-hd .i-count {height: 16px;width: 20px;margin: 0px 3px 0 10px;display: inline-block;background: url(http://pic.c-ctrip.com/corp_niv/car/isd_icons.png) 2px -22px no-repeat;vertical-align: text-top;}
+.ctBox-hd .stars span {color: #f60;font-size: 14px;}
+.ctBox-hd .i-star {height: 8px;width: 60px;display: inline-block;background: url(http://pic.c-ctrip.com/corp_niv/car/isd_icons.png) no-repeat;vertical-align: middle;margin-left: 8px;}
+.ctBox-hd .i-star-4 {background-position:0 0;}
+.ctBox-hd .i-star-4-half {background-position:-12px -8px;}
+.ctBox-hd .i-star-5 {background-position:0 -8px;}
+.ctBox-bd .expand {background-color: #fff;height: 47px;text-align: right;padding-right: 28px;}
+.ctBox-bd .expand a {color: #08c;margin-top: 12px;display: inline-block;}
+.ctBox-bd .expand a:hover {text-decoration: underline;}
+.ctBox-loading {background-color: #fff;height: 400px;}
+.ctBox-loading .loading-animate {margin-top: 120px;}
+
+/* 租车服务提供商模块 */
+.servicer {padding: 22px 8px;border-bottom: 1px dashed #ccc;*zoom: 1;}
+.servicer .col {float: left;}
+.servicer .col-1 {padding-left: 130px;width: 210px;padding-right: 25px;color: #000;}
+.servicer .col-1 img {width: 105px;margin-left: -130px;float: left;}
+.servicer .col-1 .viewMap {color: #08c;margin-left: 5px;}
+.servicer .grade {color: #666;font-family: arial;font-size: 12px;}
+.servicer .grade span {color: #06c;font-size: 18px;}
+.servicer .grade:hover {text-decoration: underline;}
+.servicer .rc {border-left: 1px solid #ccc;padding-left: 5px;margin-left: 5px;}
+.servicer .rc a {color: #000;border-bottom: 1px dashed #000;cursor: default;display: inline-block;padding: 0 2px}
+.servicer .rc a:hover {text-decoration: none;}
+.servicer:after {content: '';height: 0;clear: both;visibility: hidden;font-size: 0;display: block;}
+.servicer .promotion {clear:left;background-color: #fff;border: #f60 1px solid;float: left;zoom: 1;padding: 0 8px 0 0;line-height: 20px;height: 20px;color: #f60;margin-bottom: 10px;}
+.servicer .promotion em {display: inline-block;width: 20px;height: 20px;line-height: 18px;text-align: center;color: #fff;background-color: #f60;float: left;margin-right: 3px;}
+.servicer .prom-2 {border-color: #f00;color: #f00;}
+.servicer .prom-2 em {background-color: #f00;}
+.servicer .col-3 {float: right;}
+.servicer .col-3 .desc {color: #999;margin-bottom: 5px;text-align: right;font-size: 14px;}
+.servicer .col-3 .origPrice {color: #999;text-decoration: line-through;text-align: right;font-size: 15px;}
+.servicer .price {color: #ff6600;font-size: 30px;font-family: arial,"Microsoft YaHei";line-height: 30px;text-align: right;} 
+.servicer .price sup { margin-right: 3px;font-size: 16px;vertical-align: 6px;}
+.servicer .price sub {font-size: 14px;vertical-align: 3px;}
+.servicer .btn-buy {float: right;display: block;height: 30px;font-weight: 700;font-size: 16px;color: #fff;border: 1px solid #e77c00;border-radius: 3px;box-shadow: 0 1px 0 rgba(0,0,0,0.4);background-color: #ffb000;text-align: center;line-height: 30px;padding: 0 10px;margin: 16px 20px 0 40px;cursor: pointer;}
+.servicer .btn-buy:hover {color: #fff;border-color: #F88500;background-color: #F79700;}
+
+/* 搜索模块 */
+.search-box {padding: 15px;background-color: #fff;margin-bottom: 10px;overflow: hidden;*zoom: 1;}
+.search-box:after { clear: both; display: table; content: :; height: 0; }
+.search-box .btn-search {overflow: visible;}
+.search-box .msg {clear: both;padding-left: 25px;margin-top: 8px;background: url(http://pic.c-ctrip.com/corp_niv/car/icons_set.png) no-repeat;}
+.search-box .msg-tips {background-position: -6px -154px;}
+.search-box .msg-error {background-position: -6px -174px;color: #b00;}
+.search-box .item {float: left;margin-right: 20px;}
+.search-box input {height:18px;line-height: 18px;padding: 5px;border:1px solid #ccc;}
+.search-box .inp-select {border:1px solid #ccc;height: 28px;line-height: 28px;padding: 0 25px 0 5px;background: url(http://pic.c-ctrip.com/car/ui/picker_bg-2.png) right 0px no-repeat;cursor: pointer;color: #000;}
+.search-box .inp-select:hover {background-position: right -330px;}
+.search-box label {float: left;line-height: 28px;margin-right: 5px;}
+.search-box .inp-w1 {width: 60px;}
+.search-box .inp-w2 {width: 135px;}
+.search-box .inp-date {width: 105px;}
+.search-box .inp-hour {width: 36px;}
+.search-box .inputSet {float: left;padding-right: 1px;overflow: hidden;*zoom: 1;}
+.search-box .inputSet .inputSet-item {float: left;margin-right: -1px;}
+
+/* 搜索结果提示信息 */
+.s-result-desc {margin-bottom: 10px;font-size: 18px;}
+.s-result-desc .count {color: #ff6604;}
+
+/* 顶部服务商筛选模块 */
+.servicers-list {background-color: #fff;padding: 5px 25px;margin-bottom: 10px;position: relative;*zoom: 1;overflow: hidden;}
+.servicers-list .title {line-height: 20px;margin-bottom: 5px;}
+.servicers-list .list {margin-left: -15px;*padding-bottom: 10px;*zoom: 1;-webkit-user-select: none;-moz-user-select: none;-ms-user-select: none;-o-user-select: none;user-select: none;}
+.servicers-list .list:after {content: '';height: 0;clear: both;visibility: hidden;font-size: 0;display: block;}
+.servicers-list li {position: relative;*zoom: 1;float: left;padding: 6px 8px;width: 134px;height: 38px;background-color: #e4f0ff;border:1px solid #c4deff;margin-bottom: 10px;margin-left: 15px;cursor: pointer;}
+.servicers-list .site {white-space: nowrap;overflow: hidden;text-overflow: ellipsis;}
+.servicers-list .distance {float: right;}
+.servicers-list .checked {background-color: #fffced;border-color: #ffdba9;}
+.servicers-list .i-check {display: none;width: 18px;height: 18px;position: absolute;right: -9px;bottom: -9px;background: url(http://pic.c-ctrip.com/corp_niv/car/isd_icons.png) -24px -22px no-repeat;}
+.servicers-list .checked .i-check {display: block;}
+.servicers-list .btn-close {position: absolute;width: 18px;height: 18px;text-align: center;line-height: 17px;right: 7px;top: 7px;background-color: #666;color: #fff;border-radius: 50%;font-size: 14px;font-family: tahoma;cursor: pointer;}
+
+/* tooltips */
+.tooltip {max-width: 200px;padding: 3px 8px;color: #ffffff;text-align: center;background-color: #000000;opacity: 0.8;filter: alpha(opacity=80);border-radius: 4px;position: absolute;font-size: 12px;}
+.tooltip .tri {position: absolute;border:5px solid transparent;display: block;width: 0;height: 0;overflow: hidden;border-top-color: #000;left: 50%;top: 100%;margin-left: -5px;}
+
+/* 分页 */
+.page_box{position:relative;zoom:1;width:100%;height:46px;overflow:hidden;}
+.page_box .ico_to_top{margin-top:15px;}
+.c_page{position:absolute;right:0;height:26px;padding:10px 0;color:#666;font:12px/2 Arial;margin-right:10px;zoom:1;}
+.c_page_list,.c_up,.c_down,.c_pagevalue,.c_up_nocurrent,.c_down_nocurrent{float:left;}
+.c_up,.c_down,.c_up_nocurrent,.c_down_nocurrent{width:25px;height:0;padding:23px 0 0;border:0;overflow:hidden;background-image:url(http://pic.c-ctrip.com/hotelcommon/icon_hotel7.png);background-repeat:no-repeat;}
+.c_up{margin-right:10px;border:solid 1px #aaa;background-position:-12px -165px;}
+.c_down{width:61px;height:23px;padding:0 0 0 9px;margin-left:1px;border:solid 1px #aaa;background-position:55px -165px;line-height:23px;color:#06c;background-color:#fff;}
+.c_page_list{margin-right:10px;}
+.c_page_list a,.c_page_list .c_page_ellipsis{float:left;}
+.c_page_list a{height:23px;margin:0 1px;padding:0 8px;border:solid 1px #aaa;background:#fff;text-decoration:none;overflow:hidden;color:#06c;}
+.c_page_list a:hover{background-position:0 -25px;text-decoration:none;}
+.c_page_list .c_page_ellipsis{margin:0 3px;}
+.c_page_list .current,.c_page_list .current:hover{background:#27c;cursor:default;border-color:#1256aa;text-decoration:none;color:#fff;}
+.c_up_nocurrent,.c_up_nocurrent:hover{margin-right:10px;border:solid 1px #ccc;background-position:-12px -186px;color:#666;cursor:default;}
+.c_down_nocurrent,.c_down_nocurrent:hover{width:61px;height:23px;padding:0 0 0 9px;border:solid 1px #ccc;background-position:55px -186px;cursor:default;line-height:23px;color:#ccc;font-weight:bold;text-decoration:none;}
+.c_pagevalue{margin-left:20px;}
+.c_pagevalue .c_page_num{width:25px;height:14px;margin:0 3px;padding:3px;border:1px solid #ccc;vertical-align:middle;}
+.c_page_submit{width:40px;height:23px;margin-left:10px;padding:0 8px;background-image:-ms-linear-gradient(top,#FFFFFF 0%,#EEEEEE 100%);background-image:-moz-linear-gradient(top,#FFFFFF 0%,#EEEEEE 100%);background-image:-o-linear-gradient(top,#FFFFFF 0%,#EEEEEE 100%);background-image:-webkit-gradient(linear,left top,left bottom,color-stop(0,#FFFFFF),color-stop(1,#EEEEEE));background-image:-webkit-linear-gradient(top,#FFFFFF 0%,#EEEEEE 100%);background-image:linear-gradient(to bottom,#FFFFFF 0%,#EEEEEE 100%);background-color:#eee;border:solid 1px #aaa;cursor:pointer;vertical-align:middle;}
+.c_page_submit:hover{background:#27c;border:1px solid #1256aa;color:#fff;}
+
+/* 全屏半透明遮罩 */
+.main-mask {position: fixed;top: 0;left: 0;width: 100%;height: 100%;z-index: 9999;background-color:#000;opacity: 0.7;filter:progid:DXImageTransform.Microsoft.Alpha(opacity=70);display: none;}
+
+/* --------------------------------------------------------------------------
+   小屏下展现样式
+   -------------------------------------------------------------------------- */
+@media screen and (max-width:1200px){
+  body {min-width: 980px;}
+  /* 面包屑 */
+  .breadCrumbs {width: 980px;}
+  /* 外层结构layout */
+  .wrap {margin: 0px auto;width: 980px;}
+  .wrap:after {content: '';height: 0;clear: both;visibility: hidden;font-size: 0;display: block;}
+  .wrap .cnt {width: 100%;float: left;margin-bottom: 40px;}
+  .wrap .cnt .main {margin-left: 120px;}
+  .wrap .side {width: 110px;margin-left: -100%;background-color: #fff;float: left;margin-bottom: 40px;}
+  /* 侧边筛选栏 */
+  .s-filter {padding:0;}
+  .s-filter .btn-fold {display: none;}
+  .s-filter-hd {border-bottom: 1px solid #e9e9e9;padding: 0;}
+  .s-filter-hd h4 {text-align: center;line-height: 40px;font-size: 14px;color: #666;font-weight: bold;margin-bottom: 0;cursor: pointer;}
+  .s-filter-hd .list {display: none;position: absolute;top: 0;left: 100%;}
+  .s-filter-item {padding: 0;margin: 0;border-bottom: 1px solid #e9e9e9;position: relative;*zoom: 1;}
+  .s-filter-item h5 {line-height: 40px;text-align: center;font-size: 14px;color: #666;font-weight: bold;cursor: pointer;}
+  .s-filter-item .list {display: none;position: absolute;top: 0;left: 100%;border: 1px solid #ccc;}
+  .s-filter-hd:hover h4,
+  .s-filter-item:hover h5 {background-color: #2577e3;color: #fff;}
+  .s-filter-hd:hover .list {display: block;background-color: #fff;padding: 25px 6px 15px 15px;border: 1px solid #ccc;width: 210px;}
+  .s-filter-hd:hover .btn-clear {left: 15px;top: 8px;}
+  .s-filter-item:hover .list {display: block;padding: 4px 15px;background: #fff;width: 198px;}
+  .s-filter-item .list-wrap {display: none;}
+  
+  /* 顶部搜索模块 */
+  .search-box .inp-date {width: 68px;}
+
+  /* 顶部服务商筛选模块 */
+  .servicers-list li {width: 132px;}
+}
+
+/* 通过JS添加tablet类来解决IE9以下的窄屏样式 */
+body {min-width: 980px;}
+/* 面包屑 */
+.tablet .breadCrumbs {width: 980px;}
+/* 外层结构layout */
+.tablet .wrap {margin: 0px auto;width: 980px;}
+.tablet .wrap:after {content: '';height: 0;clear: both;visibility: hidden;font-size: 0;display: block;}
+.tablet .wrap .cnt {width: 100%;float: left;margin-bottom: 40px;}
+.tablet .wrap .cnt .main {margin-left: 120px;}
+.tablet .wrap .side {width: 110px;margin-left: -100%;background-color: #fff;float: left;margin-bottom: 40px;}
+/* 侧边筛选栏 */
+.tablet .s-filter {padding:0;}
+.tablet .s-filter .btn-fold {display: none;}
+.tablet .s-filter-hd {border-bottom: 1px solid #e9e9e9;padding: 0;}
+.tablet .s-filter-hd h4 {text-align: center;line-height: 40px;font-size: 14px;color: #666;font-weight: bold;margin-bottom: 0;cursor: pointer;}
+.tablet .s-filter-hd .list {display: none;position: absolute;top: 0;left: 100%;}
+.tablet .s-filter-item {padding: 0;margin: 0;border-bottom: 1px solid #e9e9e9;position: relative;*zoom: 1;}
+.tablet .s-filter-item h5 {line-height: 40px;text-align: center;font-size: 14px;color: #666;font-weight: bold;cursor: pointer;}
+.tablet .s-filter-item .list {display: none;position: absolute;top: 0;left: 100%;border: 1px solid #ccc;}
+.tablet .s-filter-hd:hover h4,
+.tablet .s-filter-item:hover h5 {background-color: #2577e3;color: #fff;}
+.tablet .s-filter-hd:hover .list {display: block;background-color: #fff;padding: 25px 6px 15px 15px;border: 1px solid #ccc;width: 210px;}
+.tablet .s-filter-hd:hover .btn-clear {left: 15px;top: 8px;}
+.tablet .s-filter-item:hover .list {display: block;padding: 4px 15px;background: #fff;width: 198px;}
+.tablet .s-filter-item .list-wrap {display: none;}
+/* 顶部搜索模块 */
+.tablet .search-box .inp-date {width: 68px;}
+/* 顶部服务商筛选模块 */
+.tablet .servicers-list li {width: 132px;}
+
+

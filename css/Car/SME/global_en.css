@@ -1,0 +1,47 @@
+@charset "utf-8";
+
+body {background: #000 url(http://pic.c-ctrip.com/mail/mail0421/bg-cover.jpg) no-repeat center top}
+
+.container .overwrap {width: 1060px;overflow: hidden;margin-top: 24px;}
+.overwrap .main {float: left;width: 530px;padding: 135px 0 0 168px;}
+.overwrap .sub {float: right;padding: 15px 0 0 20px;height: 465px;width: 330px;}
+
+/* .auth-hotel */
+.auth-hotel .title {font-size: 24px;font-weight: bold;}
+.auth-hotel .title-name {color: #fff;font-size: 22px;line-height: 64px;width: 100%;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;}
+.auth-hotel .info-item {margin-bottom: 10px;font-weight: bold;}
+.auth-hotel .info-item span {color: #fff;margin-bottom: 10px;font-weight: normal;}
+.auth-hotel .info-item .price {color: #ffbd21;font-size: 16px;}
+
+/* .auth-plane */
+.sub .auth-plane .list {margin: 0 0 20px;}
+.auth-plane .list p {line-height: 30px;}
+.auth-plane .info-item {margin-bottom: 10px;font-weight: bold;}
+.auth-plane .info-item span {color: #fff;margin-bottom: 10px;font-weight: normal;}
+.auth-plane .info-item .price {color: #ffbd21;font-size: 16px;}
+
+/* .auth-train */
+.sub .auth-train .list {margin: 0 0 20px;}
+.auth-train .list li {text-align: center;}
+.auth-train .list .site {text-align: left;width: 100%;overflow: hidden;white-space: nowrap;text-overflow:ellipsis;}
+.auth-train .list .icon {display: inline-block;margin: 10px 0;top: 0;}
+.auth-train .info-item {margin-bottom: 10px;font-weight: bold;}
+.auth-train .info-item span {color: #fff;margin-bottom: 10px;font-weight: normal;}
+.auth-train .info-item .price {color: #ffbd21;font-size: 16px;}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

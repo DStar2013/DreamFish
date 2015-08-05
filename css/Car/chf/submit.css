@@ -1,0 +1,100 @@
+@charset "utf-8";
+/**
+ * 用车国接送机订单完成页
+ * @author: zhp  
+ * @update: 2015-07-21  
+ * @lastModify: lll 
+ */
+
+/* --------------------------------------------------------------------------
+   重置样式
+   -------------------------------------------------------------------------- */
+html,body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td,em,button{ margin: 0; padding: 0; }
+body { background: #fff; color: #333; font: normal 12px/1.5 "Lucida Grande", Tahoma, Arial, Helvetica, "Hiragino Sans GB", "Microsoft Yahei", Simsun, STXihei, Sans-serif; -webkit-font-smoothing: antialiased; }
+img,fieldset { border: 0; margin: 0; padding: 0; }
+input, textarea, select, button { font-size: 12px; font-family: "Lucida Grande", Tahoma, Arial, Helvetica, "Hiragino Sans GB", "Microsoft Yahei", Simsun, STXihei, Sans-serif; }
+table { border-collapse: collapse; border-spacing: 0; }
+a { color:#0066cc; text-decoration: none; outline: none; }
+a:hover { text-decoration: underline; }
+h1,h2,h3,h4,h5 { font-weight: normal; }
+li { list-style: none; }
+dfn { font-style: normal; font-family: arial; }
+i,em { font-style: normal; }   
+
+/* --------------------------------------------------------------------------
+   主体布局结构样式
+   -------------------------------------------------------------------------- */
+.wrap {max-width: 1180px;min-width: 980px;margin: 0 auto;}
+.wrap .cnt {float: left;width: 100%;}
+.wrap .cnt .main {margin-right: 400px; margin-bottom: 40px; }
+.wrap .side {float: left;width: 380px;margin-left: -380px;}
+
+/* --------------------------------------------------------------------------
+   模块、组件样式
+   -------------------------------------------------------------------------- */
+/* base类 */
+.base-check {margin-right: 15px;}
+.base-check input {width: auto;vertical-align: middle;margin-right: 5px;}
+
+.base-remark {color: #999;}
+
+.base-price {color: #f60;font-family: tahoma;}
+.base-price em {color: #666;font-family: arial;margin-right: 3px;}
+
+.base-tips i {margin-right: 5px;}
+
+/* step */
+.book_process, .book_process2{ margin:20px 0;}
+.book_process ol, .book_process2 ol{ overflow:hidden; zoom:1; margin-left:-14px;}
+.book_process li, .book_process2 li{ display:inline-block; *display:inline; *zoom:1; height:15px; line-height:15px; color:#999; background-repeat:no-repeat; background-position:0 -25px;}
+.book_process li{ margin-left:14px; padding-left:252px; background-image:url(http://pic.c-ctrip.com/cncorp120313/hotel130402/book/bg_step_new.png);}
+.book_process2 li{ margin-left:15px; padding-left:396px; background-image:url(http://pic.c-ctrip.com/cncorp120313/hotel130402/book/bg_step_new2.png);}
+.process_step1 .step1, .process_step2 .step1, .process_step2 .step2, .process_step3 .step1, .process_step3 .step2, .process_step3 .step3{ color:#799d08; background-position:0 0;}
+
+/* order-box */
+.order-box {margin-left: 150px;}
+.order-box .xuico-succes-xlg {float: left;margin-left: -85px;}
+.order-box .title {font-size: 22px;color: #333;}
+.order-box .number,
+.order-box .total {font-size: 14px;line-height: 24px;}
+.order-box p {line-height: 24px;}
+.order-box .tips {margin: 20px 0;line-height: 24px;}
+.order-box .btn-viewOrder {margin-top: 3px;font-family: "Microsoft Yahei";}
+
+/* send-msg */
+.send-msg {border-top: 1px dashed #ccc;margin-top: 20px;}
+.send-msg .check {margin: 10px 0;}
+.send-msg .check .base-check {margin-right: 0;}
+.send-box {border:1px solid #ccc;padding: 14px;margin-bottom: 10px;overflow: hidden;*zoom: 1;}
+.send-box:after { clear: both; display: table; height: 0; content: ""; }
+.send-box .fill {margin-right: 15px;padding: 4px 6px;width: 130px;height: 20px;border: 1px solid #ccc;outline: 0 none;vertical-align: middle;}
+.send-box .base-check {margin-right: 8px;vertical-align: middle;}
+.send-box .passenger-item { float: left; margin-bottom: 10px; }
+.send-box .xui-btn {float: left; font-family: "Microsoft Yahei";}
+.send-msg .base-tips {display: block;clear: both;margin-bottom: 10px;}
+
+/* side-detial */
+.side-detial {border:1px solid #e0e0e0;background: #fff;margin-bottom: 10px;padding: 15px;}
+.side-detial .title {font-size: 20px;font-weight: bold;margin-bottom: 10px;}
+.side-detial .pic {width: 150px;}
+.side-detial .tenancy {margin: 5px 0 20px 0;}
+.total-price {text-align: right;font-weight: bold;color: #000;}
+.total-price .price {color: #f60;font: normal 28px/1.5 tahoma;margin-left: 8px;}
+.total-price .price em {color: #666;font-size: 12px;font-family: arial;margin-right: 2px;}
+.route {border-bottom: 1px dashed #ccc;padding: 0 0 15px 16px;margin-bottom: 10px;}
+.route ul {border-left: 1px dotted #ccc;margin-top: 15px;}
+.route li {line-height: 30px;*zoom: 1;}
+.route li:after {content: '';display: block;width: 0;line-height: 0;font-size: 0;clear: both;}
+.route .label {display: block;float: left;margin-left: -15px;margin-right: 10px;height: 30px;width: 30px;border-radius: 50%;color: #fff;text-align: center;line-height: 30px;font-size: 14px;}
+.route .start .label {background: #099fde;}
+.route .end .label {background: #ff9201;}
+.route .mc {float: left;}
+.route .site {font-size: 18px;}
+.car-type { margin-bottom: 10px; }
+.car-type span {font-size: 18px;line-height: 24px;color: #2577e3;vertical-align: middle;margin-right: 10px;}
+.car-type .icon {margin-right: 4px; padding-left: 25px;height: 20px;font-style: normal;line-height: 20px;background: url(http://pic.c-ctrip.com/corp_niv/car/icons_set.png) no-repeat;display: inline-block;zoom: 1;vertical-align: middle;}
+.car-type .i-personcon {background-position: -10px -216px;}
+.car-type .i-baggagecon {background-position: -10px -193px;}
+.dl-list li {line-height: 24px;padding-left: 60px;overflow: hidden;zoom: 1;}
+.dl-list .label {float: left;font-weight: normal;text-align: right;margin-left: -60px;width: 50px;}
+.dl-list .mc {float: left;color: #000;}

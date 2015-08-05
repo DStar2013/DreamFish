@@ -1,0 +1,259 @@
+@charset "utf-8";
+/*
+◇ Writer:一七
+◇ For:Ctrip Mail Authorization
+◇ Time:2014.9.11
+◇ Version:2014_10_21 16:57
+*/
+
+/*- Html Tags Reset -*/
+html { overflow-y:scroll; }
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, fieldset, input, textarea, p, blockquote, th, td, figure { padding:0; margin:0; }
+body { font:18px/1.5 "Microsoft YaHei",Helvetica,Tahoma,simsun,sans-serif; color:#a4e1ff; background: #000 url(http://pic.c-ctrip.com/mail/mail0421/big_bg.jpg) no-repeat center 73px; }
+abbr,article,aside,bb,datagrid,datalist,details,dialog,event-source,figure,figcaption,footer,header,mark,menu,meter,nav,output,progress,section,time { display:block; height:auto; }
+table { border-collapse:collapse; border-spacing:0; }
+ol, ul { list-style:none outside; }
+h1, h2, h3, h4, h5, h6 { font-size:100%; }
+fieldset, img { border:0 none; vertical-align:middle; }
+a { text-decoration:none; }
+a:hover { text-decoration:underline; }
+em { font-style:normal; }
+textarea { overflow-y:auto; }
+input,select,textarea,button { font:14px "Microsoft YaHei",Tahoma,Helvetica,simsun,sans-serif; }
+button { overflow:visible; vertical-align:middle; }
+button,label { cursor:pointer; }
+.clearfix:after { content:"."; height:0; visibility:hidden; display:block; clear:both; font-size:0; line-height:0; }
+.clearfix { display:inline-block; }
+.clearfix { display:block; }
+.clearboth { overflow:hidden; height:1px; line-height:1; font-size:0; clear:both; }
+
+/*- Icons -*/
+.icon { position: relative; display: inline-block; background: url(http://pic.c-ctrip.com/mail/mail0421/icon.png) no-repeat; }
+.i1 { width: 116px; height: 42px; background-position: 0 0; }
+.i2 { width: 36px; height: 36px; background-position: -67px -44px; }
+.i3 { width: 35px; height: 9px; background-position: 0 -82px; }
+.i4 { width: 35px; height: 9px; background-position: -37px -82px; }
+.i5 { width: 32px; height: 32px; background-position: 0 -44px; }
+.i6 { width: 31px; height: 31px; background-position: -34px -44px; }
+
+/*- Header -*/
+.header {
+	min-width: 1000px; height: 70px;
+	border-bottom: 3px solid #0f85d0;
+	background-color: #FFF;
+}
+.header .overwrap {
+	width: 1000px;
+	margin: 0 auto; padding-top: 14px;
+}
+.header .logo {
+	height: 42px;
+	font-size: 26px; line-height: 42px;
+}
+.header .logo a { color: #333333; text-decoration: none; }
+.header .logo .icon { margin-right: 60px; vertical-align: top; }
+.header .logo .icon:after {
+	content: "";
+	display: inline-block; width: 1px; height: 42px;
+	margin-left: 146px;
+	background-color: #0f85d0;
+}
+
+/*- Container -*/
+.container {
+	position: relative;
+	max-height: 827px;
+}
+.container .overwrap {
+	width: 1000px;
+	margin: 25px auto 0;
+}
+/* MainBox */
+.container .main {
+	float: left; width: 540px;
+	padding: 135px 0 0 140px;
+}
+.main .order_number {
+	font-size: 36px;
+	color: #ffffff;
+}
+.main .order_number .icon {
+	top: 5px;
+	*top: 0;
+	margin-right: 12px;
+}
+.main .order_number p { font: 14px simsun,serif; text-indent: 48px; }
+.main .btns { margin-top: 35px; }
+.main .btn {
+	display: inline-block; height: 68px;
+	border-radius: 5px;
+	font-size: 24px; text-align: center; line-height: 68px; text-decoration: none;
+	color: #ffffff;
+}
+.main .btn.b1 {
+	width: 252px;
+	margin-right: 10px;
+	background-color: #f5af0f;
+}
+.main .btn.disable {
+	color: #7c91a7; background-color: #acc7d8 !important;
+	cursor: not-allowed;
+}
+.main .btn.b1:hover { background-color: #f4910f; }
+.main .btn.b2 {
+	width: 128px;
+	background-color: #b2bab5;
+}
+.main .btn.b2:hover { background-color: #c9cfca; }
+/* SubBox */
+.container .sub {
+	float: right; width: 290px;
+	padding: 15px 5px 0 20px;
+}
+.sub .tit { font-size: 24px; margin-bottom: 10px;}
+.sub .list {*margin-bottom: 15px;}
+.sub .list li {
+	margin-bottom: 15px;
+	font-size: 24px;
+	color: #ffffff;
+	line-height: 1;
+}
+.sub .list li p {
+	padding: 0;
+	font: 12px/1.8 simsun,serif;
+	color:#a4e1ff;
+}
+.sub .list .icon {
+	top: -4px;
+	*top:-10px;
+	margin: 0 20px;
+}
+.sub .table { font-size: 18px; }
+.sub .table caption {
+	padding: 0 0 15px;
+	font-size: 24px; text-align: left;
+	color: #ffffff;
+}
+.sub .table th {
+	width: 90px;
+	padding-bottom: 10px;
+	text-align: right;
+	vertical-align: top;
+}
+.sub .table td {
+	padding-bottom: 10px;
+	color: #ffffff;
+}
+.sub .table td .color { color: #ffbd21; }
+
+.sub.type0 .list { margin: 30px 0; }
+.sub.type1 .list li { margin-top: 10px; }
+.sub.type1 .table { margin-top: 50px; }
+
+.copyright {
+	position: fixed; left: 0; bottom: 30px;
+	width: 100%;
+	font: 12px Helvetica,Tahoma; text-align: center; text-shadow: 1px 1px 0 rgba(0,0,0,.5);
+	color: #ffffff;
+}
+
+.shadowlayer {
+	position: absolute; left: 0; top: 0;
+	width: 100%; height: 100%;
+	background: rgba(0,0,0,.5); background-color: #000000;
+	filter:alpha(opacity=50); opacity: .5;
+}
+.submit_ly {
+	position: absolute; left: 50%; top: 50%;
+	width: 608px; height: 348px;
+	margin: -174px 0 0 -304px;
+	border-radius: 15px;
+	background-color: #ffffff;
+}
+.submit_ly p {
+	font-size: 30px; text-align: center;
+	color: #333333;
+}
+.submit_ly.type0 p { margin: 100px 0 30px; }
+.submit_ly.type1 p { margin-top: 15px; }
+.submit_ly textarea {
+	display: block; width: 88%; height: 140px;
+	border: 1px solid #d3d1d1;
+	margin: 20px auto; padding: 5px 1%;
+	font: 14px/1.5 simsun,serif;
+	*margin-left: 331px;
+}
+.submit_ly .btns { text-align: center; }
+.submit_ly .btn {
+	display: inline-block; width: 250px; height: 68px;
+	border-radius: 10px;
+	font-size: 30px; text-align: center; line-height: 68px; text-decoration: none;
+	color: #ffffff; background-color: #f5af0f;
+}
+.submit_ly .btn:hover { background-color: #f4910f; }
+.submit_ly .i5 {
+	top: 5px;
+	*top: 0;
+	margin-right: 10px;
+}
+.submit_ly .i6 {
+	position: absolute; right: -15px; top: -15px;
+	-webkit-transition: all 0.2s; -moz-transition: all 0.2s; -ms-transition: all 0.2s; -o-transition: all 0.2s; transition: all 0.2s;
+}
+.submit_ly .i6:hover { -webkit-transform: scale(1.3); -moz-transform: scale(1.3); -ms-transform: scale(1.3); -o-transform: scale(1.3); transform: scale(1.3); }
+
+/*- 满意度调查 -*/
+.satisfaction { background-image: none; background-color: #f6f6f6; }
+.satisfaction .overwrap {
+	width: 700px;
+	margin: 80px auto 0;
+	color: #333333;
+}
+.sa_logo {
+	width: 319px; height: 47px;
+	margin-bottom: 20px;
+	background: url(http://pic.c-ctrip.com/mail/mail0421/satisfaction_logo.png) no-repeat;
+}
+.sa_logo a {
+	float: left; overflow: hidden; height: 47px;
+	text-indent: -20em;
+}
+.sa_logo .link1 { width: 120px; }
+.sa_logo .link2 {
+	float: right;
+	width: 165px;
+}
+.satisfaction .inner {
+	height: 435px;
+	background: url(http://pic.c-ctrip.com/mail/mail0421/satisfaction_bg.jpg) no-repeat center bottom #ffffff;
+}
+.satisfaction .text { padding: 55px 60px 0; }
+.satisfaction .text h3 { font-size: 18px; font-weight: 400; }
+.satisfaction .text p { font-size: 14px; }
+.satisfaction a { text-decoration: underline; }
+.sa_footer {
+	margin: 8px 0;
+	font: 12px simsun,serif; text-align: right;
+}
+.sa_footer p { margin-top: 7px; }
+
+/* 机票多程显示 */
+.sub.type-multi {  }
+.sub.type-multi .list { margin: 0; max-height: 300px; *height: 300px; overflow-y: scroll; }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

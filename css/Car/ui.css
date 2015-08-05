@@ -5,6 +5,8 @@
 * { margin: 0; padding: 0; }
 
 .ui-hide { display: none; }
+.fl { float: left; }
+.fr { float: right; }
 
 /* loading */
 .loading-big,
@@ -138,28 +140,6 @@ input[type="text"]:focus, input[type="text"].focus { border-color: #5d9de5; }
 
 .ui-selector { border: 1px solid #999; background: #fff; box-shadow: 0 3px 5px #ccc; }
 
-/*时间控件样式*/
-.ui-timer { font-size: 12px; }
-.ui-timer table { width:100%; }
-.ui-timer .hour-head { width: 60%; }
-
-.ui-timer .hour-head,.ui-timer .minute-head { height:26px; line-height:26px; text-align:center; font-weight:bold; }
-
-.ui-timer .hour-head,.ui-timer .minute-head { border-bottom: #ccc 1px dotted;}
-
-.ui-timer .hour-body div { overflow-y:scroll; height:144px; border-right: #ccc 1px dotted; }
-
-.ui-timer .tool-part { border-top: 1px dotted #ccc; padding: 4px; }
-
-.ui-timer .hour-body a,.ui-timer .minute-body a { cursor: pointer; display: block; padding: 3px 3px;text-align: center; text-decoration: none; color: #333; line-height:18px; height:18px; }
-
-.ui-timer .hour-body a:hover,.ui-timer .minute-body a:hover { background-color: #e6f4ff; text-decoration: none; }
-
-.ui-timer .hour-body a.selected,.ui-timer .minute-body a.selected { background-color: #2577e3; font-weight: bold; color: #fff !important; }
-.ui-timer a.disabled { font-weight: normal; color: #dbdbdb; outline: 0; cursor: default; }
-/*时间控件样式*/
-
-
 /*地址搜索控件样式*/    
 .ui-suggestion .selected { background-color: #2577e3 !important; color: #fff; }
 /*地址搜索控件样式*/
@@ -188,6 +168,7 @@ input[type="text"]:focus, input[type="text"].focus { border-color: #5d9de5; }
 
 .ui-selector a { text-decoration: none; color:#333; cursor: pointer; }
 .ui-selector a:hover { text-decoration: none; }
+.ui-selector a.disabled, .ui-selector a.disabled:hover { background-color: #d5d5d5; color: #999; cursor: default; }
 
 .ui-selector .message { border-bottom: #ccc 1px dotted; position: relative; color: #f00; font: 500 12px/1.5 "Microsoft Yahei"; max-height: none; display: block; line-height: 1.5; background-color:#ffc; padding:8px 10px; }
 
@@ -204,37 +185,36 @@ input[type="text"]:focus, input[type="text"].focus { border-color: #5d9de5; }
 .ui-selector-list .list a:hover { background-color: #e0f1ff; }
 
 .ui-selector-list .list a.selected { background-color: #2577e3; color: #fff; }
+.ui-selector-list .list a.disabled { font-weight: normal; background-color: #fff; color: #dbdbdb; outline: 0; cursor: default; }
+
+/*时间控件样式*/
+.ui-timer { font-size: 12px; }
+.ui-timer table { width:100%; }
+.ui-timer .hour-head { width: 60%; }
+
+.ui-timer .hour-head,.ui-timer .minute-head { height:26px; line-height:26px; text-align:center; font-weight:bold; }
+
+.ui-timer .hour-head,.ui-timer .minute-head { border-bottom: #ccc 1px dotted;}
+
+.ui-timer .hour-body div { overflow-y:scroll; height:144px; border-right: #ccc 1px dotted; }
+
+.ui-timer .tool-part { border-top: 1px dotted #ccc; padding: 4px; }
+
+.ui-timer .hour-body a,.ui-timer .minute-body a { cursor: pointer; display: block; padding: 3px 3px;text-align: center; text-decoration: none; color: #333; line-height:18px; height:18px; }
+
+.ui-timer .hour-body a:hover,.ui-timer .minute-body a:hover { background-color: #e6f4ff; text-decoration: none; }
+
+.ui-timer .hour-body a.selected,.ui-timer .minute-body a.selected { background-color: #2577e3; font-weight: bold; color: #fff !important; }
+.ui-timer a.disabled,.ui-timer a.disabled:hover { font-weight: normal; color: #dbdbdb; outline: 0; cursor: default; background-color: #fff;}
+/*时间控件样式*/
 
 .ui-placeholder { color: #b3b3b3 !important; }
-
-/* loading */
-.ui-loading {
-    position: absolute;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: #666;
-    filter: alpha(opacity=50);
-    -moz-opacity: 0.5;
-    -khtml-opacity: 0.5;
-    opacity: 0.5;
-    z-index: 99999;
-}
-
-    .ui-loading img {
-        position: absolute;
-        display: inherit;
-        top: 50%;
-        left: 50%;
-        margin: -16px 0 0 -16px;
-    }
-
 
 .tck-ts {
     color: #777;
     height: 38px;
     line-height: 38px;
-    border-bottom: #ccc 1px dotted;
+    border-bottom: #0066CC 1px solid;
     position: relative;
 }
 
@@ -312,15 +292,22 @@ input[type="text"]:focus, input[type="text"].focus { border-color: #5d9de5; }
 
 .bt { border-bottom: #ccc 1px dotted; }
 
-.mf-list .mf-list-thd { width: 100%; border-bottom: 1px solid #06c; }
-.mf-list .mf-list-thd th { height: 30px; padding: 10px 10px 5px; text-align: left; }
 .mf-list .mf-list-bd { height: 280px; overflow-x: hidden; overflow-y: scroll; }
 .mf-list .mf-tbd { width: 100%; }
-.mf-list .mf-tbd td { padding: 10px; text-align: left; }
-.mf-tbd .line-gray td { background-color: #F3F3F3; }
-.mf-tbd tr:hover td { background-color: #06c; color: #fff; }
+.mf-tbd > li { cursor: pointer; }
+.mf-tbd > li .ad-line { background-color: transparent; }
+.mf-tbd .line-gray { background-color: #f3f3f3; }
+.mf-tbd .mf-info-hd { padding: 10px 10px 5px; }
+.mf-tbd .mf-info-hd .info-time { margin-right: 20px; }
+.mf-tbd .mf-info-bd { padding-bottom: 10px; text-align: center; }
+.mf-tbd .mf-info-bd .col { display: inline-block; }
+.mf-tbd .mf-info-bd .col-2 { width: 120px; }
+.mf-info-bd .col > em { font-size: 18px; }
 .mf-more { margin-top: 10px; text-align: center; }
-
+.arr-flight { display: inline-block; width: 80px; height: 20px; background: url(http://pic.c-ctrip.com/corp_niv/car/ui_fltarr.png?20150409) -2px 0 no-repeat; }
+.mf-tbd > li:hover { background-color: #2577E3; color: #fff; }
+.mf-tbd > li:hover .arr-flight { background-position: -2px -20px;}
+.mf-tbd > li:hover .grey { color: #f1f1f1; }
 
 /* Modal */
 .ui-modal-backdrop {
@@ -345,7 +332,7 @@ input[type="text"]:focus, input[type="text"].focus { border-color: #5d9de5; }
 
 .ui-modal {
     padding: 10px 15px;
-    position: fixed;
+    position: absolute;
     z-index: 1050;
     min-width: 250px;
     background-color: #ffffff;
@@ -474,6 +461,26 @@ font-weight:bold;
 
 .no_flight { height: 144px; font: 700 14px/144px "simSun"; color: #333; text-align: center; }
 
+/* loading */
+.ui-loading {
+    width: 100px;
+    height: 100px;
+}
+
+.ui-loading img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin: -32px 0 0 -16px;
+}
+.ui-loading .txt {
+    position: absolute;
+    bottom: 50%;
+    left: 0;
+    width: 100%;
+    margin-bottom: -30px;
+    text-align: center;
+}
 
 /* marquee */
 .marquee-box {
@@ -496,14 +503,6 @@ input.input {
 
 .m0 {
     margin: 0 !important;
-}
-
-.tck-ts {
-    color: #777;
-    height: 38px;
-    line-height: 38px;
-    border-bottom: #ccc 1px dotted;
-    position: relative;
 }
 
 .sr-wrap a i {
@@ -685,8 +684,10 @@ input.input {
 }
 
 .ui-selector-city .sublist li {
+    position: relative;
     width:49%;
     *width:48%;
+    height: 30px;
     float:left;
 }
 
@@ -752,10 +753,12 @@ a:hover .icon-location.landmark {
     background-position: -18px -43px;
 }
 .sublist-list {
+    position:relative;
     max-height: 360px;
-overflow: auto;
-position:relative;
+    overflow: auto;
+    zoom: 1;    
 }
+.sublist-list:after { clear: both; display: table; height: 0; content: ""; }
     .sublist-list .subtext {
         width:60%;
         overflow: hidden;
@@ -790,6 +793,8 @@ display: inline-block;
 .ui-chfsearch .selected i.airport,.ui-ochsearch .selected i.airport,.ui-osdsearch .selected i.airport{background-position:-18px -11px}
 .ui-chfsearch a i.train,.ui-ochsearch a i.train,.ui-osdsearch a i.train{background-position:0 -27px}
 .ui-chfsearch .selected i.train,.ui-ochsearch .selected i.train,.ui-osdsearch .selected i.train{background-position:-18px -27px}
+.ui-chfsearch a i.landmark,.ui-ochsearch a i.landmark,.ui-osdsearch a i.landmark{background-position:0 -43px}
+.ui-chfsearch .selected i.landmark,.ui-ochsearch .selected i.landmark,.ui-osdsearch .selected i.landmark{background-position:-18px -43px}
 
 .ui-asearch .asp_net_pager{margin:6px 0;text-align:center}
 .ui-asearch .asp_net_pager a{margin-left:0;padding:0 6px;height:20px;line-height:20px;color:#06c;text-align:center;border:none;text-decoration:underline;font-family:arial;font-size:14px;cursor:pointer}
@@ -798,3 +803,17 @@ display: inline-block;
 .ui-asearch .asp_net_pager .current:hover{background-color:#fff;border:none}
 .asp_net_pager .next i,.asp_net_pager .prev i,.ui-asearch .asp_net_pager .next.undo,.ui-asearch .asp_net_pager .prev.undo,.ui-asearch .asp_net_pager .undo{display:none}
 .ui-asearch .ui-selector-list .list{max-height:800px}
+
+/* 酒店模糊查询 */
+.ad-pop { width: 498px; font-family: "Microsoft Yahei"; background-color: #fff }
+.ad-top,.ad-topun { margin: 0 10px; padding: 10px 0 12px; color: #666; line-height: 20px; border-bottom: 1px dotted #ccc; }
+.ad-topun { text-align: center; border-bottom: none; }
+.ad-close { display: block; margin: 6px 4px 0 0; width: 10px; height: 9px; background: url(http://pic.ctrip.com/car20140207/zj14.07.08/tck-bg.png) no-repeat; *margin:-26px 4px 0 0; }
+.ad-close:hover { background-position: -12px 0; }
+.ad-content { max-height: 425px; overflow-y: auto; }
+.ad-line { overflow: hidden; padding: 8px 10px; cursor: pointer; display: block; }
+.ad-line:hover { background-color: #e0f1ff; }
+.ad-l { width: 320px;  }
+.ad-l .grey,.ad-l .title { line-height:22px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.ad-l .grey { color: #999; }
+.ad-r { padding-left: 10px; width: 125px; line-height: 22px; height: 44px; overflow: hidden; }

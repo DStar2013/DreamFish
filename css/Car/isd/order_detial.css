@@ -1,0 +1,149 @@
+@charset "utf-8";
+/**
+ * @Desc  : 用车国内租车订单详情页 
+ * @Build : 2015/05/26 
+ * @Author: lll 
+ * @Update: 2015/07/31 by lll 
+ */
+
+/* --------------------------------------------------------------------------
+   重置样式
+   -------------------------------------------------------------------------- */
+html,body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td,em,button{ margin: 0; padding: 0; }
+body { background: #fff; color: #333; font: normal 12px/1.5 "Lucida Grande", Tahoma, Arial, Helvetica, "Hiragino Sans GB", "Microsoft Yahei", Simsun, STXihei, Sans-serif; -webkit-font-smoothing: antialiased; }
+img,fieldset { border: 0; margin: 0; padding: 0; }
+input, textarea, select { font-size: 12px; font-family: "Lucida Grande", Tahoma, Arial, Helvetica, "Hiragino Sans GB", "Microsoft Yahei", Simsun, STXihei, Sans-serif; }
+table { border-collapse: collapse; border-spacing: 0; }
+a { color:#0066cc; text-decoration: none; outline: none; }
+a:hover { text-decoration: underline; }
+h1,h2,h3,h4,h5 { font-weight: normal; }
+li { list-style: none; }
+dfn { font-style: normal; font-family: arial; }
+i,em { font-style: normal; }   
+
+/* --------------------------------------------------------------------------
+   主体布局结构样式
+   -------------------------------------------------------------------------- */
+.wrap {max-width: 1180px;min-width: 980px;margin: 0 auto 20px;}
+
+/* --------------------------------------------------------------------------
+   模块、组件样式
+   -------------------------------------------------------------------------- */
+/* 面包屑 */
+.breadCrumbs {height: 36px;line-height: 36px;}
+
+/* mod */
+.mod,
+.mod2 {margin-bottom: 10px;border:1px solid #daeaf6;}
+.mod-hd,
+.mod2-hd {height: 30px;line-height: 30px;font-size: 16px;padding: 0 12px;background: #eff6fc;font-weight: bold;}
+.mod-bd {padding: 15px 20px;background: #fff;}
+.mod2-bd {position: relative;*zoom: 1;}
+.mod2-bd:after {content: '';display: block;width: 0;line-height: 0;font-size: 0;clear: both;}
+.mod2-l {margin-right: 350px;padding:15px 20px;border-right: 1px dotted #ccc;position: relative;*zoom: 1;}
+.mod2-r {position: absolute;right: 0;top: 0;height: 100%;width: 350px;}
+
+/* m-orderInfo */
+.m-orderInfo .info-box {overflow: hidden;*zoom: 1;padding-top: 10px;}
+.m-orderInfo .dl-list {float: left;width: 50%;}
+.order-total {float: left;width: 39%;margin-right: 10%;}
+.order-total .total {font-size: 14px;font-weight: bold;height: 34px;margin-bottom: 5px;}
+.order-total .total-price {font-size: 24px;font-weight: normal;margin-left: 5px;}
+.order-total .total-price em {font-size: 12px;vertical-align: 8px;color: #666;}
+.total-list {width: 100%;border: 1px solid #f2f2f2;overflow: hidden;*zoom: 1;}
+.total-list:after { clear: both; display: table; height: 0; content: ""; }
+.total-list .col-cost { float: left; width: 33.3%; text-align: center; }
+.col-cost .cost-hd { color: #000; background-color: #f2f2f2; }
+.col-cost .cost-bd { padding: 5px; }
+
+.flow {clear: both;overflow: hidden;zoom: 1;margin-bottom: 15px;}
+.flow .step {float: left;height: 34px;line-height: 34px;font-weight: bold;color: #fff;padding: 0 30px 0 20px;background: #acd252;margin-top: 20px;margin-right: 36px;position: relative;zoom: 1;}
+.flow .first {padding-left: 42px;}
+.flow .tri-f {position: absolute;right: -34px;top: 0;display: block;width: 0;height: 0;border-color: transparent transparent transparent #acd252;border-width: 17px;border-style: solid;}
+.flow .tri-b {position: absolute;left: -34px;top: 0;display: block;width: 0;height: 0;border-color: #acd252 #acd252 #acd252 transparent;border-width: 17px;border-style: solid;}
+.flow .step-off {background: #ccc;}
+.flow .step-off .tri-f {border-left-color: #ccc;}
+.flow .step-off .tri-b {border-color: #ccc #ccc #ccc transparent;}
+.m-orderInfo .btns {height: 114px;width: 140px;position: absolute;top: 50%;left: 50%;margin-top: -57px;margin-left: -70px;}
+.m-orderInfo .btns .xui-btn {line-height: 26px;display: block;padding: 0;width: 139px;text-align: center;margin: 0 auto 15px;}
+.m-orderInfo .btns .btn-cancel-order {margin-bottom: 0;}
+.m-orderInfo .cnt {position: relative;zoom: 1;}
+.m-orderInfo .cancel-block {display: none;position: absolute;bottom: 0;left: 0;height: 73px;line-height: 73px;width: 100%;background: #eff6fc;text-align: center;font-size: 24px;}
+.m-orderInfo .cancel-block .xuico-tip-xmd {margin-right: 5px;}
+
+/* m-useCar */
+.route {position: relative;border-bottom: 1px dashed #ccc;padding: 0 0 15px 36px;margin-bottom: 10px;}
+.route ul {margin-top: 15px;}
+.route li {*zoom: 1;}
+.route li:after {content: '';display: block;width: 0;line-height: 0;font-size: 0;clear: both;}
+.route .label {display: block;float: left;width: 30px;border-radius: 50%;color: #fff;text-align: center;font-size: 14px;}
+.route .label-route { position: absolute; left: 15px; top: 0; display: block;height: 30px;width: 30px;line-height: 30px;border-radius: 50%;color: #fff;text-align: center;font-size: 14px;}
+.route .start.label-route {background: #099fde;}
+.route .end.label-route {background: #ff9201;}
+.route .mc {float: left;}
+.route .site {font-size: 18px;}
+.driver-box {padding: 25px;}
+.driver-box .title {font-size: 18px;margin-bottom: 10px;line-height: 36px;}
+.driver-box .detial {line-height: 20px;overflow: hidden;zoom: 1;margin-bottom: 25px;}
+.driver-box .logo {margin: 10px 0 20px;}
+
+/* dl-list */
+.dl-list li {line-height: 24px;padding-left: 100px;overflow: hidden;}
+.dl-list .label {float: left;color: #999;font-weight: normal;text-align: right;margin-left: -100px;width: 90px;}
+.dl-list .mc {float: left;color: #000;}
+
+/* passenger mod */
+.mod-passenger, .passenger-box { overflow: hidden; *zoom: 1; }
+.mod-passenger:after, .passenger-box:after { clear: both; display: table; height: 0; content: ""; }
+.mc-driver, .mc-passenger { float: left; height: 186px; }
+.mc-driver h4, .mc-passenger h4 { margin-bottom: 20px; font-size: 16px; color: #099fde; }
+.mc-driver h4 { padding-left: 15%; }
+.mc-passenger h4 { padding-left: 3.75%; }
+.mc-driver { width: 24.5%; }
+.mc-passenger { width: 75%; border-left: 1px dashed #dedede; }
+.passenger-info dt { padding-left: 15%; margin-bottom: 5px; font-size: 14px; font-weight: bold; }
+.passenger-info dd { padding-left: 15%; line-height: 24px; }
+.passenger-info dd .title { color: #999; }
+.passenger-box .passenger-info { float: left; width: 24.8%; margin-bottom: 20px; }
+
+/* service mod */
+.icon-service-ok { display: inline-block; width: 30px; height: 30px; margin-right: 10px; vertical-align: middle; background: url(//pic.c-ctrip.com/corp_niv/car/icon_service_ok.png?20150508) center no-repeat; }
+.mod-service { padding: 20px 0; }
+.service-list { overflow: hidden; *zoom: 1; }
+.service-list:after { clear: both; display: table; height: 0; content: ""; }
+.service-list  li { float: left; width: 17.5%; height: 46px; text-align: center; border-right: 1px dashed #e8e8e8; }
+.service-list  .service-name { display: inline-block; font-size: 14px; text-align: left; vertical-align: middle; }
+.service-list  .service-name em { font-size: 12px; }
+.service-list .service-gps { width: 29.5%; }
+.service-list .service-child { border: none; }
+
+/* base-price */
+.base-price {color: #f60;}
+.base-price em {color: #333;font-family: arial;margin-right: 2px;font-weight: bold;}
+
+/* tips */
+.tips-block {padding: 4px 10px;border:1px solid #dca;background: #fffcd8;color: #333;}
+.tips-block p {line-height: 24px;}
+
+/* 全屏遮罩 */
+.main-mask {position: fixed;top: 0;left: 0;width: 100%;height: 100%;z-index: 9999;background-color:#000;opacity: 0.7;filter:progid:DXImageTransform.Microsoft.Alpha(opacity=70);display: none;}
+
+/* 取消订单浮层 */
+.modal-cancel-order {width: 400px;position: fixed;left:50%;margin-left: -201px;top: 200px;display: none;z-index: 10000;}
+.modal-cancel-order .xuico-tip-md {margin-right: 5px;}
+.modal-cancel-order .xui-modal-bd,
+.modal-cancel-order .xui-modal-ft {text-align: center;}
+.modal-cancel-order .xui-modal-bd {padding: 30px 0 10px;}
+.modal-cancel-order .btn-cancel {margin-right: 15px;}
+
+/* fixed bar */
+.xui-fixbar .bar-first  { background-color: #1C99E8; }
+.xui-fixbar .bar-second { background-color: #72C5FF; }
+.xui-fixbar .bar-carset .bar-title { font-size: 16px; line-height: 1.5; }
+
+/* --------------------------------------------------------------------------
+   Print style
+   -------------------------------------------------------------------------- */
+@media print {
+    #base_hd, #base_ft, .xui-fixbar { display: none; }
+}
