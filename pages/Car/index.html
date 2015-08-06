@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+	<meta name="renderer" content="webkit">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">   
+    <title>用车首页</title>
+    <!-- Css -->
+    <link href="../../css/Car/ui.css" rel="stylesheet" type="text/css">
+    <link href="../../css/Car/home/index.css" rel="stylesheet" type="text/css">
+    <link href="../../css/Car/corphd_niv.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+	<container style="position: absolute; top: 0px; left: 0px; width: 0px; height: 0px; z-index: 100;"></container>
+	<!-- 商旅登陆后公用头 =E -->
+	<script> 
+	var label={Thailand:'泰国',Phuket:'普吉岛',HKT:'普吉国际机场',HongQiaoRailwayStation:'上海虹桥火车站',China:'中国',ShangHai:'上海',HIATT:'虹桥国际机场T1航站楼',NotEmpty:'不可以为空',EnterDepartureAirport:'请输入出发机场',EnterArrivalAirport:'请输入到达机场',EnterDropoffPlace:'请输入还车地点',EnterPlickupPlace:'请输入取车地点',EnterPlickupArea:'请选择取车区域',ChooseRailwayStation:'请选择火车站',ChooseAirport:'请选择机场',EnterDeparturePlace:'请输入出发地点',EnterArrivalPlace:'请输入送达地点',UIC_NoBusRoute:'暂无路线',UIC_BusRoute:'公交路线',UIC_MapSearchRoute:'查询路线',UIC_End:'终',UIC_Start:'始',UIC_MustPlaceHolder:'必填，地点',UIC_PsgTmpl_Baby:'<p>婴儿</p><p class="lg">（0-2岁）</p>',UIC_PsgTmpl_Child:'<p>儿童</p><p class="lg">（2-11岁）</p>',UIC_PsgTmpl_Adult:'<p>成人</p><p class="lg">（>12岁）</p>',UIC_HtlNoResult:'您目前没有未出行的酒店订单。',UIC_HtlMsgTitle:'<span class="mf-tit">选择您的接机酒店/城市</span>（共<span class="orange">${$data.length}</span>个未出行订单）',UIC_FltMsgNoOrder:'您目前没有未出行的机票订单。',UIC_FltMsgSonTitle:'<span class="mf-tit">选择您的接机航班/城市</span>（共<span class="orange">${$data.length}</span>个未出行订单）',UIC_FltMsgTitle:'输入接机航班号，例如“MU5166”',UIC_GoBack:'点击返回',UIC_Close:'关闭',UIC_Minute:'分',UIC_Hour:'时',UIC_Msg_fltnoEmpty:'请输入航班号',UIC_Msg_dateOut:'End日期不能小于Start日期',UIC_Msg_hmIllegal:'时间格式不对',UIC_Msg_hmEmpty:'时间不能为空',UIC_Msg_ymdIllegal:'日期格式需要为yyy-mm-dd',UIC_Msg_ymdEmpty:'日期不能为空',UIC_Msg_dateEmpty:'请选择时间',UIC_KMeter:'公里',UIC_About:'约',UIC_Meter:'米',UIC_ChsEnd:'请选择终点',UIC_ChsStart:'请选择起点',UIC_liveChat:'在线客服',UIC_suggestion:'意见反馈',UIC_Psger_BabyNum:'婴儿数量',UIC_Psger_ChildNum:'儿童数量',UIC_Psger_AdultNum:'成人数量',UIC_Psger_Baby:'婴儿',UIC_Psger_Child:'儿童',UIC_Psger_Adult:'成人',UIC_Tab_snd:'国内送机',UIC_Tab_jnt:'国内接机',UIC_Tab_ojnt:'海外接机',UIC_FltNoResult:'查询不到，请重新选择',UIC_FltSearch:'正在查询航班信息...',UIC_FltErrMsg6:'预计${1}起飞离开${2}',UIC_FltErrMsg5:'抱歉，${1}暂不提供接机服务',UIC_FltErrMsg4_2:'抵达机场为${1}，请切换到${2}进行预订',UIC_FltErrMsg4_1:'抵达机场为${1}，请点击<a _type="${3}" href="javascript:void(0)">${2}</a>前往预订',UIC_FltErrMsg3:'您预订的时间过晚，请尝试<a _type="goAirport" href="javascript:void(0)">按机场预订</a>',UIC_FltErrMsg2:'找不到您输入的航班信息，请尝试<a _type="goAirport" href="javascript:void(0)">按机场预订</a>',UIC_FltErrMsg1:'预计${1}抵达${2}，晚点司机将免费等待',UIC_Confirm:'确定',UIC_Page:'页',UIC_To:'到',UIC_NextPage:'下一页',UIC_CanNotEmpty:'不能为空',UIC_SearchFilterNoResult:'对不起，找不到${unescape($data.val)}，请换一个词试试。',UIC_SearchFilterTitle:'${$data.val}，若需缩小范围，请输入更多条件。',UIC_Loading:'数据加载中，请稍等···',UIC_Map:'地图',UIC_EasyMapDesc:'里程与时间仅供参考，具体以实际行驶路线为准',UIC_Msg_dateExpire:'现在最早可以预订${1}之后的用车服务'}
+	</script>
+
+	<div class="base_bd">
+	    <div class="search-container">
+	        <div class="search-tab" style="overflow: visible">
+	            <div class="search-tab-hd" id="main_search_table">
+	                <a href="javascript:void(0);" class=" tab-nav">国内接送机<i class="ico arr-right"></i><i class="icon_new"></i></a>
+	                <a href="javascript:void(0);" class=" tab-nav">海外接送机<i class="ico arr-right"></i></a>
+	                <a href="javascript:void(0);" class=" tab-nav">日租包车<i class="ico arr-right"></i></a>
+	                <a href="javascript:void(0);" class=" tab-nav">国内租车<i class="ico arr-right"></i><i class="icon_new"></i></a>
+	                <a href="javascript:void(0);" class=" tab-nav">国际租车<i class="ico arr-right"></i></a>
+	            </div>
+	            <!-- 散客用车地址 -->
+	            <input type="hidden" id="carUrl" value="@ViewData["CarUrl"]" />
+	            <input type="hidden" id="IsBusiness" value="@ViewData["IsBusiness"]"/>
+	            <input type="hidden" id="IsPersonal" value="@ViewData["IsPersonal"]"/>
+	            <input type="hidden" id="InitialType" value="@ViewData["InitialType"]"/>
+	            <div class="search-tab-bd" id="search_content">
+	                <!-- 国内接送机 -->
+					<div class="search-form" id="search_from_bigchf" style="display: none;">
+					    <div class="search-fhd">
+					        <h3>国内接送机/火车</h3>
+					        <div class="type-box">
+					            <a href="javascript:void(0)"  name="feeType_chf" v="C" style="display: none;float:left;" class="type cur"><i class="icon icon_corp"></i><span class="name">因公</span></a>
+					            <a href="javascript:void(0)"  name="feeType_chf" v="P" style="display: none;float:right;margin-right: 35px;" class="type disable"><i class="icon icon_personal"></i><span class="name">因私</span></a>
+					        </div>
+					        <input type="hidden" id="feeType_chf" value="C"/>
+					    </div>
+					    <div class="search-fbd">
+					        <div class="business-tab" id="bigchf_business_table">
+					            <div class="business-tab-hd">
+					                <a href="javascript:void(0);"  id="business_table_jnt" class=" biz-nav">接机</a> 
+					                <a href="javascript:void(0);"  id="business_table_snd" class=" biz-nav">送机</a> 
+					                <a href="javascript:void(0);"  id="business_table_jhc" class=" biz-nav">接火车</a>
+					                <a href="javascript:void(0);"  id="business_table_shc" class=" biz-nav">送火车</a>
+					            </div>
+					            <div class="business-tab-bd" id="bigchf_business_content">
+					                <!-- 接机 -->
+					                <div class="business-form" id="business_form_jnt" style="display: block;">
+					                    <div class="form-box">
+					                        <label class="form-type" for="jnt_flightno"><input class="form-radio" type="radio" id="jnt_flightno" name="radio_jnt" checked="checked"/>按航班号</label>
+					                        <label class="form-type" for="jnt_airport"> <input class="form-radio" type="radio" id="jnt_airport"  name="radio_jnt"/>按机场</label>
+					                    </div>
+					                     <!-- 按航班号 -->
+					                     <div class="form-box" id="div_jnt_start_date" name="jnt_flightno">
+					                        <label class="form-title" for="">起飞日期</label>
+					                        <input id="jnt_start_date" class="form-text" type="text"  readonly="readonly"/>
+					                    </div>
+					                    <div class="form-box" id="div_jnt_flight_number" name="jnt_flightno">
+					                        <label class="form-title" for="jnt_flight_number">航班号</label>
+					                        <div class="form-text">
+					                            <input id="jnt_flight_number" class="input-txt" type="text" value="" placeholder="@*输入航班号，如MU5166*@@Label.EnterFlightNumber" maxlength="6"/>
+					                            <a class="form-myflt" id="jnt_my_flightno" href="javascript:void(0);">我的航班</a>
+					                        </div>
+					                        <div id="jnt_flight_msg"></div>
+					                    </div>
+					                    <div class="form-box"  id="div_jnt_address_flightno" name="jnt_flightno">
+					                        <label class="form-title" for="jnt_address_flightno">送达地点</label>
+					                        <input id="jnt_address_flightno" class="form-text" type="text" value="" placeholder="必填，可送达周边城市" disabled="disabled"/>
+					                    </div>
+
+					                    <!-- 按机场 -->
+					                    <div class="form-box" id="div_jnt_end_airport" name="jnt_airport"  style="display: none;">
+					                        <label class="form-title" for="jnt_end_airport">机场</label>
+					                        <input id="jnt_end_airport" class="form-text" type="text" value="" placeholder="英文/中文/拼音/三字码"/>
+					                    </div>
+					                    <div class="form-box" id="div_jnt_address_airport" name="jnt_airport"  style="display: none;">
+					                        <label class="form-title" for="jnt_address_airport">送达地点</label>
+					                        <input id="jnt_address_airport" class="form-text" type="text" value="" placeholder="必填，可送达周边城市"/>
+					                    </div>
+					                   <div class="form-box" id="div_jnt_end_date" name="jnt_airport" style="display: none;">
+					                        <label class="form-title" for="">接机时间</label>
+					                        <input id="jnt_end_date" class="form-text time-calendar" type="text" readonly="readonly"/>
+					                        <input id="jnt_end_time" class="time-hours form-dropbox" type="text" readonly="readonly"/>
+					                    </div>
+					                    <div class="form-button"><button id="search_chf_jnt" class="xui-btn xui-btn-lg xui-btn-primary">搜索</button></div>
+					                </div>
+					                <!-- 送机 -->
+					                <div class="business-form" id="business_form_snd" style="display: none;">
+					                    <div class="form-box">
+					                        <label class="form-title" for="snd_airport">机场</label>
+					                        <input id="snd_airport" class="form-text" type="text" value="" placeholder="@*英文/中文/拼音/三字码*@@Label.ECTP"/>
+					                    </div>
+					                    <div class="form-box">
+					                        <label class="form-title" for="snd_address">出发地点</label>
+					                        <input id="snd_address" class="form-text" type="text" value="" placeholder="@*必填，可从周边城市出发*@@Label.RequiredStarting"/>
+					                    </div>
+					                    <div class="form-box">
+					                        <label class="form-title" for="snd_date">出发时间</label>
+					                        <input id="snd_date" class="form-text time-calendar" type="text"readonly="readonly" />
+					                        <input id="snd_time" class="time-hours form-dropbox" type="text"  readonly="readonly"/>
+					                    </div>
+					                    <div class="form-button"><button id="search_chf_snd" class="xui-btn xui-btn-lg xui-btn-primary">搜索</button></div>
+					                </div>
+					                <!-- 接火车 -->
+					                <div class="business-form" id="business_form_jhc" style="display: none;">
+					                    <div class="form-box">
+					                        <label class="form-title" for="jhc_station">火车站</label>
+					                        <input id="jhc_station" class="form-text" type="text" value="" placeholder="@*英文/中文/拼音/三字码*@@Label.ECTP"/>
+					                    </div>
+					                    <div class="form-box">
+					                        <label class="form-title" for="jhc_address">送达地点</label>
+					                        <input id="jhc_address" class="form-text" type="text" value="" placeholder="@*必填，可送达周边城市*@@Label.RequiredCity"/>
+					                    </div>
+					                    <div class="form-box">
+					                        <label class="form-title" for="jhc_date">用车时间</label>
+					                        <input id="jhc_date" class="form-text time-calendar" type="text"  readonly="readonly"/>
+					                        <input id="jhc_time" class="time-hours form-dropbox" type="text"  readonly="readonly"/>
+					                    </div>
+					                    <div class="form-button"><button id="search_chf_jhc" class="xui-btn xui-btn-lg xui-btn-primary">搜索</button></div>
+					                </div>
+					                <!-- 送火车 -->
+					                <div class="business-form" id="business_form_shc" style="display: none;">
+					                    <div class="form-box">
+					                        <label class="form-title" for="shc_station">火车站</label>
+					                        <input id="shc_station" class="form-text" type="text" value="" placeholder="@*英文/中文/拼音/三字码*@@Label.ECTP"/>
+					                    </div>
+					                    <div class="form-box">
+					                        <label class="form-title" for="shc_address">出发地点</label>
+					                        <input id="shc_address" class="form-text" type="text" value="" placeholder="@*必填，可从周边城市出发*@@Label.RequiredStarting"/>
+					                    </div>
+					                    <div class="form-box">
+					                        <label class="form-title" for="shc_date">用车时间</label>
+					                        <input id="shc_date" class="form-text time-calendar" type="text" readonly="readonly"/>
+					                        <input id="shc_time" class="time-hours form-dropbox" type="text"  readonly="readonly"/>
+					                    </div>
+					                    <div class="form-button"><button id="search_chf_shc" class="xui-btn xui-btn-lg xui-btn-primary">搜索</button></div>
+					                </div>
+
+					            </div>
+					        </div>
+					    </div>
+					</div>
+	                <!-- 海外接送机 -->
+					<div class="search-form" id="search_from_bigoch" style="display: none;">
+					    <div class="search-fhd">
+					        <h3>海外接送机</h3>
+					    </div>
+					    <div class="search-fbd">
+					        <div class="business-tab" id="bigoch_business_table">
+					            <div class="business-tab-hd">
+					                <a href="javascript:void(0);" id="business_table_ojnt"  class=" biz-nav">海外接机</a> 
+					                <a href="javascript:void(0);" id="business_table_osnd"  class=" biz-nav">海外送机</a>
+					            </div>
+					            <div class="business-tab-bd" id="bigoch_business_content">
+					                <!-- 接机 -->
+					                <div class="business-form" id="business_form_ojnt"  style="display: block;">
+					                    <div class="form-box">
+					                        <label class="form-type" for="ojnt_flightno"><input class="form-radio" type="radio" id="ojnt_flightno" name="radio_ojnt" checked="checked"/>按航班号</label>
+					                        <label class="form-type" for="ojnt_airport"> <input class="form-radio" type="radio" id="ojnt_airport"   name="radio_ojnt"/>按机场</label>
+					                    </div>
+					                   <!-- 按航班号 -->
+					                   <div class="form-box" id="div_ojnt_start_date" name="ojnt_flightno">
+					                        <label class="form-title" for="ojnt_start_date">起飞日期</label>
+					                        <input id="ojnt_start_date"  class="form-text" type="text" readonly="readonly"/>
+					                        <i class="xuico-tip-xsm  form-tips" title="@*请填写接机航班的起飞日期，按起飞城市的当地时间填写*@@Label.LocalDepartureDate"></i>
+					                    </div>
+					                    <div class="form-box" id="div_ojnt_flight_number" name="ojnt_flightno">
+					                        <label class="form-title" for="ojnt_flight_number">航班号</label>
+					                        <div class="form-text">
+					                            <input id="ojnt_flight_number" class="input-txt" type="text" value="" placeholder="@*输入航班号，如MU547*@@Label.EnterFlightNumber2" maxlength="6"/>
+					                            <a class="form-myflt" id="ojnt_my_flightno" href="javascript:void(0);">我的航班</a>
+					                        </div>
+					                     
+					                        <div id="ojnt_flight_msg"></div>
+					                    </div>
+					                    <div class="form-box" id="div_ojnt_hotel_flightno" name="ojnt_flightno">
+					                        <label class="form-title" for="ojnt_address_flightno">送达地点</label>
+					                        <div class="form-text">
+					                            <input id="ojnt_address_flightno" style="background-color: #fff;"  class="input-txt" type="text" value="" placeholder="@*请输入送达地点/酒店名称*@@Label.EnterServicePlaceHotel" disabled="disabled"/>
+					                            <a class="form-myflt" id="ojnt_hotel_flightno" href="javascript:void(0);" >我的酒店</a>
+					                        </div>
+					                    </div>
+					                    <div class="form-box" id="div_ojnt_par_flightno" name="ojnt_flightno">
+					                        <label class="form-title" for="ojnt_par_flightno">人数</label>
+					                        <input id="ojnt_par_flightno" class="form-text form-dropbox" type="text" value="@*2成人,0儿童,0婴儿*@@string.Format(Label.AdultChildrenBaby,2,0,0)" readonly="readonly"/>
+					                    </div>
+					                    <!-- 按机场 -->
+					                    <div class="form-box" id="div_ojnt_end_airport" name="ojnt_airport" style="display: none;">
+					                        <label class="form-title" for="ojnt_end_airport">机场</label>
+					                        <input id="ojnt_end_airport" class="form-text" type="text" value="" placeholder="@*英文/中文/拼音/三字码*@@Label.ECTP"/>
+					                    </div>
+					                    <div class="form-box" id="div_ojnt_address_airport" name="ojnt_airport" style="display: none;">
+					                        <label class="form-title" for="ojnt_address_airport">送达地点</label>
+					                        <div class="form-text">
+					                            <input id="ojnt_address_airport"  class="input-txt"  type="text" value="" placeholder="@*请输入送达地点/酒店名称*@@Label.EnterServicePlaceHotel"  />
+					                            <a class="form-myflt" id="ojnt_hotel_airport" href="javascript:void(0);">我的酒店</a>
+					                        </div>
+					                    </div>
+					                   <div class="form-box" id="div_ojnt_date"  name="ojnt_airport" style="display: none;">
+					                        <label class="form-title" for="ojnt_date">接机时间</label>
+					                        <input id="ojnt_date" class="form-text time-calendar" type="text" readonly="readonly"/>
+					                        <input id="ojnt_time" class="time-hours form-dropbox" type="text" readonly="readonly"/>
+					                    </div>
+					                    <div class="form-box" id="div_" name="ojnt_airport" style="display: none;">
+					                        <label class="form-title" for="ojnt_par_airport">人数</label>
+					                        <input id="ojnt_par_airport" class="form-text form-dropbox" type="text" value="@*2成人,0儿童,0婴儿*@@string.Format(Label.AdultChildrenBaby,2,0,0)" readonly="readonly"/>
+					                    </div>
+
+					                  <div class="form-button"><button id="search_och_ojnt" class="xui-btn xui-btn-lg xui-btn-primary">搜索</button></div>
+					                </div>
+					                <!-- 送机 -->
+					                <div class="business-form" id="business_form_osnd"  style="display: none;">
+					                    <!-- 按机场 -->
+					                    <div class="form-box" name="osnd_airport" >
+					                        <label class="form-title" for="osnd_start_airport">机场</label>
+					                        <input id="osnd_start_airport" class="form-text" type="text" value="" placeholder="@*英文/中文/拼音/三字码*@@Label.ECTP"/>
+					                    </div>
+					                    <div class="form-box" name="osnd_airport">
+					                        <label class="form-title" for="osnd_address_airport">出发地点</label>
+					                        <div class="form-text">
+					                            <input id="osnd_address_airport" class="input-txt" type="text" value="" placeholder="@*可选周边城市出发*@@Label.OptionalPeripheralCity"/>
+					                            <a class="form-myflt" id="osnd_hotel_airport" href="javascript:void(0);">我的酒店</a>
+					                        </div>
+					                    </div>
+					                   <div class="form-box" name="osnd_airport">
+					                        <label class="form-title" for="osnd_date">出发时间</label>
+					                        <input id="osnd_date" class="form-text time-calendar" type="text" readonly="readonly"/>
+					                        <input id="osnd_time" class="time-hours form-dropbox" type="text" readonly="readonly"/>
+					                    </div>
+					                    <div class="form-box" name="osnd_airport">
+					                        <label class="form-title" for="osnd_par_airport">人数</label>
+					                        <input id="osnd_par_airport" class="form-text form-dropbox" type="text" value="@*2成人,0儿童,0婴儿*@@string.Format(Label.AdultChildrenBaby, 2, 0, 0)" readonly="readonly"/>
+					                    </div>
+
+					                    <div class="form-button"><button id="search_och_osnd" class="xui-btn xui-btn-lg xui-btn-primary">搜索</button> </div>
+					                </div>
+					            </div>
+					        </div>
+					    </div>
+					</div>
+	                <!-- 日租包车 -->
+					<div class="search-form" id="search_from_bigtim" style="display: none;">
+					    <div class="search-fhd">
+					        <h3>日租包车</h3>
+					    </div>
+					    <div class="search-fbd">
+					        <div class="business-form">
+					            <div class="form-box" style="display: ;">
+					                <label class="form-title" for="tim_city">用车城市</label>
+					                <input id="tim_city" class="form-text" type="text" value="@*上海*@@Label.ShangHai" placeholder="@*上海*@@Label.ShangHai" readonly="readonly"/>
+					                <input type="hidden" id="tim_cityid"/ value="2">
+					            </div>
+					            <div class="form-box" style="display: ;">
+					                <label class="form-title" for="tim_date">用车时间</label>
+					                <input id="tim_date" class="form-text time-calendar" type="text" readonly="readonly" />
+					                <input id="tim_time" class="time-hours form-dropbox" type="text"  readonly="readonly"/>
+					            </div>
+					            <div class="form-box">
+					                <label class="form-title" for="">用车时长</label>
+					                <label class="form-type form-type-txt" for="tim_day_harf"><input class="form-radio" type="radio" id="tim_day_harf" name="tim_day_radio" value="30" checked="checked"/>半日</label>
+					                <label class="form-type form-type-txt" for="tim_day_one"><input class="form-radio" type="radio" id="tim_day_one" name="tim_day_radio"  value="23" />一整日</label>
+					            </div>
+					        </div>
+					        <div class="form-button"><button id="search_tim" class="xui-btn xui-btn-lg xui-btn-primary">搜索</button>
+					        </div>
+					    </div>
+					</div>
+	                <!-- 国内租车 -->
+					<div class="search-form" id="search_from_bigisd" style="display: none;">
+					    <div class="search-fhd">
+					        <h3>国内租车</h3>
+					        <div class="type-box">
+					            <a href="javascript:void(0)"  name="feeType_isd" v="C" style="display: none;float:left;" class="type cur">
+					                <i class="icon icon_corp"></i><span class="name">因公</span></a>
+					            <a href="javascript:void(0)"  name="feeType_isd" v="P" style="display: none;float:right;margin-right: 35px;" class="type disable">
+					                <i class="icon icon_personal"></i><span class="name">因私</span></a>
+					        </div>
+					        <input type="hidden" id="feeType_isd" value="C"/>
+					    </div>
+					    <div class="search-fbd">
+					        <div class="business-form">
+					            <div class="form-box">
+					                <label class="form-title" for="isd_start_city">取车地点</label>
+					                <input id="isd_start_city" class="form-text" type="text" value="@*上海*@@Label.ShangHai" placeholder="@*城市*@@Label.City" readonly="readonly"/>
+					                <input type="hidden" id="isd_start_cityid" value="2" />
+					            </div>
+					            <div class="form-box">
+					                <label class="form-title" for="isd_start_address">取车区域</label>
+					                <input id="isd_start_address" class="form-text" type="text" value="" placeholder="@*商圈/地标*@@Label.CircleLandmark" />
+					                <!-- sth hid -->
+					                <input type="hidden" id="testLat" value="" />
+					                <input type="hidden" id="testLon" value="" />
+					            </div>
+					            <div class="form-box" >
+					                <label class="form-title" for="isd_start_date">取车时间</label>
+					                <input id="isd_start_date" class="form-text time-calendar" type="text" readonly="readonly"/>
+					                <input id="isd_start_time" class="time-hours form-dropbox" type="text" readonly="readonly"/>
+					            </div>
+					            <div class="form-box form-return">
+					                <label class="form-title" for="isd_end_city">还车地点</label>
+					                <input id="isd_end_city" class="form-text" type="text" value="@*上海*@@Label.ShangHai" placeholder="@*城市*@@Label.City" readonly="readonly"/>
+					                <input type="hidden" id="isd_end_cityid" value="2" />
+					            </div>
+					            <div class="form-box">
+					                <label class="form-title" for="isd_end_date">还车时间</label>
+					                <input id="isd_end_date" class="form-text time-calendar" type="text"  readonly="readonly"/>
+					                <input id="isd_end_time" class="time-hours form-dropbox" type="text" readonly="readonly"/>
+					            </div>
+					        </div>
+					        <div class="form-button"><button id="search_isd" class="xui-btn xui-btn-lg xui-btn-primary">搜索</button></div>
+					    </div>
+					</div>
+	                <!-- 国际租车 -->
+					<div class="search-form" id="search_from_bigosd" style="display: none;">
+					    <div class="search-fhd">
+					        <h3>国际租车</h3>
+					    </div>
+					    <div class="search-fbd">
+					        <div class="business-form">
+					            <div class="form-box">
+					                <label class="form-title" for="osd_start_address">取车地点</label>
+					                <input id="osd_start_address" class="form-text" type="text" value=""  placeholder="@*请输入您要取车的城市/机场/商圈*@@Label.CityAirportDistrict"/>
+					            </div>
+					            <div class="form-box" style="display: ;">
+					                <label class="form-title" for="osd_start_date">取车时间</label>
+					                <input id="osd_start_date" class="form-text time-calendar" type="text"  readonly="readonly"/>
+					                <input id="osd_start_time" class="time-hours form-dropbox" type="text" readonly="readonly"/>
+					            </div>
+					            <div class="form-box form-return" >
+					                <label class="form-title" for="osd_end_address">还车地点</label>
+					                <input id="osd_end_address" class="form-text" type="text" value=""  placeholder="@*请输入您要还车的城市/机场/商圈*@@Label.DropoffCityAirportDistrict"/>
+					            </div>
+					            <div class="form-box">
+					                <label class="form-title" for="osd_end_date">还车时间</label>
+					                <input id="osd_end_date" class="form-text time-calendar" type="text"  readonly="readonly"/>
+					                <input id="osd_end_time" class="time-hours form-dropbox" type="text" readonly="readonly"/>
+					                <div class="help_block"><i class="xuico-tip-xsm"></i>取还车时间均为当地时间</div>
+					            </div>
+					        </div>
+					        <div class="form-button"><button id="search_osd" class="xui-btn xui-btn-lg xui-btn-primary">搜索</button>
+					        </div>
+					    </div>
+					</div>
+	            </div>
+	        </div>
+	    </div>
+	    <div class="top-container">
+	        <!-- 晶赞 S -->
+	        <iframe id="adiframe" scrolling="no" frameborder="0" marginheight="0" marginwidth="0" style="width: 100%;height: 405px;" src="/car/main/ad"></iframe>
+	        <!-- 晶赞 E -->
+	    </div>
+	    <div class="features-container">
+	        <div class="feature-wrap">
+	            <div class="feat-item">
+	                <div class="feat-inner">
+	                    <div class="feat-graphyic">
+	                        <span class="feat-flight"></span>
+	                    </div>
+	                    <h3>商务接送机</h3>
+	                    <p>夜间航班，不排队<br/>航班晚点免费等</p>
+	                </div>
+	            </div>
+	            <div class="feat-item">
+	                <div class="feat-inner">
+	                    <div class="feat-graphyic">
+	                        <span class="feat-car"></span>
+	                    </div>
+	                    <h3>租车服务</h3>
+	                    <p>车型多样随便选<br/>多供应商门店服务</p>
+	                </div>
+	            </div>
+	            <div class="feat-item">
+	                <div class="feat-inner">
+	                    <div class="feat-graphyic">
+	                        <span class="feat-pay"></span>
+	                    </div>
+	                    <h3>支付快捷</h3>
+	                    <p>公司支付方便<br/>强大的账单结算功能</p>
+	                </div>
+	            </div>
+	        </div>
+	        <div class="partner-wrap">
+	            <div class="partner-hd">
+	                <h2>合作伙伴</h2>
+	            </div>
+	            <div class="partner-bd">
+	                <div class="logo-slider">
+	                    <div class="logo-slider-container">
+	                        <ul id="partner_ul">
+	                            <li><img style="height: 80px;width: 148px;"  alt="" src="http://pic.c-ctrip.com/corp_niv/car/logo/logo_aa.png" /></li>
+	                            <li><img style="height: 80px;width: 148px;"  alt="" src="http://pic.c-ctrip.com/corp_niv/car/logo/logo_alamo.jpg " /></li>
+	                            <li><img style="height: 80px;width: 148px;"  alt="" src="http://pic.c-ctrip.com/corp_niv/car/logo/logo_avis.jpg " /></li>
+	                            <li><img style="height: 80px;width: 148px;"  alt="" src="http://pic.c-ctrip.com/corp_niv/car/logo/logo_budget.png" /></li>
+	                            <li><img style="height: 80px;width: 148px;"  alt="" src="http://pic.c-ctrip.com/corp_niv/car/logo/logo_csd.png" /></li>
+	                            <li><img style="height: 80px;width: 148px;"  alt="" src="http://pic.c-ctrip.com/corp_niv/car/logo/logo_dollar.png" /></li>
+	                            <li><img style="height: 80px;width: 148px;"  alt="" src="http://pic.c-ctrip.com/corp_niv/car/logo/logo_ehai.png" /></li>
+	                            <li><img style="height: 80px;width: 148px;"  alt="" src="http://pic.c-ctrip.com/corp_niv/car/logo/logo_enterprise.jpg" /></li>
+	                            <li><img style="height: 80px;width: 148px;"  alt="" src="http://pic.c-ctrip.com/corp_niv/car/logo/	logo_hertz.jpg" /></li>
+	                            <li><img style="height: 80px;width: 148px;"  alt="" src="http://pic.c-ctrip.com/corp_niv/car/logo/logo_holiday.png" /></li>
+	                            <li><img style="height: 80px;width: 148px;"  alt="" src="http://pic.c-ctrip.com/corp_niv/car/logo/logo_national.png" /></li>
+	                            <li><img style="height: 80px;width: 148px;"  alt="" src="http://pic.c-ctrip.com/corp_niv/car/logo/logo_reocar.png" /></li>
+	                            <li><img style="height: 80px;width: 148px;"  alt="" src="http://pic.c-ctrip.com/corp_niv/car/logo/logo_sixt.jpg" /></li>
+	                            <li><img style="height: 80px;width: 148px;"  alt="" src="http://pic.c-ctrip.com/corp_niv/car/logo/logo_thrifty.jpg" /></li>
+	                            <li><img style="height: 80px;width: 148px;"  alt="" src="http://pic.c-ctrip.com/corp_niv/car/logo/logo_tongye.png" /></li>
+	                            <li><img style="height: 80px;width: 148px;"  alt="" src="http://pic.c-ctrip.com/corp_niv/car/logo/logo_topone.png" /></li>
+	                            <li><img style="height: 80px;width: 148px;"  alt="" src="http://pic.c-ctrip.com/corp_niv/car/logo/logo_txx.png" /></li>
+	                            <li><img style="height: 80px;width: 148px;"  alt="" src="http://pic.c-ctrip.com/corp_niv/car/logo/logo_yidao.png" /></li>
+	                            <li><img style="height: 80px;width: 148px;"  alt="" src="http://pic.c-ctrip.com/corp_niv/car/logo/logo_yihao.png" /></li>
+	                        </ul>
+	                    </div>
+	                    <a class="slide-btn prev" id="partner_left" href="javascript:void(0);"></a>
+	                    <a class="slide-btn next disable" id="partner_right" href="javascript:void(0);"></a>
+	                </div>
+	            </div>
+	        </div>
+	    </div>
+	</div>
+
+<!-- 模板及浮层 S-->
+<!-- Hour Min S-->
+<div id="chf_jnt_airport_date_layer" class="pop_star ui-selector unselectable ui-timer points-ltlb in"
+     style="width: 100px; z-index: 5; min-width: 100px; position: absolute; visibility: hidden; left:-100px; top:-100px;">
+</div>
+<div id="chf_snd_date_layer" class="pop_star ui-selector unselectable ui-timer points-ltlb in"
+     style="width: 100px; z-index: 5; min-width: 100px; position: absolute; visibility: hidden; left:-100px; top:-100px;">
+</div>
+<div id="chf_jhc_date_layer" class="pop_star ui-selector unselectable ui-timer points-ltlb in"
+     style="width: 100px; z-index: 5; min-width: 100px; position: absolute; visibility: hidden; left:-100px; top:-100px;">
+</div>
+<div id="chf_shc_date_layer" class="pop_star ui-selector unselectable ui-timer points-ltlb in"
+     style="width: 100px; z-index: 5; min-width: 100px; position: absolute; visibility: hidden; left:-100px; top:-100px;">
+</div>
+<div id="och_ojnt_airport_date_layer" class="pop_star ui-selector unselectable ui-timer points-ltlb in"
+     style="width: 100px; z-index: 5; min-width: 100px; position: absolute; visibility: hidden; left:-100px; top:-100px;">
+</div>
+<div id="och_osnd_airport_date_layer" class="pop_star ui-selector unselectable ui-timer points-ltlb in"
+     style="width: 100px; z-index: 5; min-width: 100px; position: absolute; visibility: hidden; left:-100px; top:-100px;">
+</div>
+<div id="tim_date_layer" class="pop_star ui-selector unselectable ui-timer points-ltlb in"
+     style="width: 100px; z-index: 5; min-width: 100px; position: absolute; visibility: hidden; left:-100px; top:-100px;">
+</div>
+<div id="isd_start_date_layer" class="pop_star ui-selector unselectable ui-alist in points-ltlb"
+     style="z-index: 5; width: 100px; position: absolute; visibility: hidden; left:-100px; top:-100px;">
+</div>
+<div id="isd_end_date_layer" class="pop_star ui-selector unselectable ui-alist in points-ltlb"
+     style="z-index: 5; width: 100px; position: absolute; visibility: hidden; left:-100px; top:-100px;">
+</div>
+<div id="osd_start_date_layer" class="pop_star ui-selector unselectable ui-timer points-ltlb in"
+     style="width: 100px; z-index: 5; min-width: 100px; position: absolute; visibility: hidden; left:-100px; top:-100px;">
+</div>
+<div id="osd_end_date_layer" class="pop_star ui-selector unselectable ui-timer points-ltlb in"
+     style="width: 100px; z-index: 5; min-width: 100px; position: absolute; visibility: hidden; left:-100px; top:-100px;">
+</div>
+<!-- Hour Min E-->
+<!-- Area S -->
+<div id="isd_start_area_layer" class="pop_star ui-selector unselectable ui-asearch in points-ltlb"
+     style="width: 318px; z-index: 5; min-width: 280px; position: absolute;visibility: hidden; left:-100px; top:-100px;">
+</div>
+<div id="jnt_flight_layer" class="ui-modal in points-cmcm" tabindex="-1" role="dialog" aria-hidden="true" style="display:none;position: absolute; width: 670px; z-index: 5;"></div>
+<div id="ojnt_flight_layer" class="ui-modal in points-cmcm" tabindex="-1" role="dialog" aria-hidden="true" style="display:none;position: absolute; width: 670px; z-index: 5;"></div>
+
+<div id="ojnt_hotel_flightno_layer" class="ui-modal in points-cmcm" tabindex="-1" role="dialog" aria-hidden="true" style="display:none;position: absolute; width: 670px; z-index: 5;"></div>
+<div id="ojnt_hotel_airport_layer" class="ui-modal in points-cmcm" tabindex="-1" role="dialog" aria-hidden="true" style="display:none;position: absolute; width: 670px; z-index: 5;"></div>
+<div id="osnd_hotel_airport_layer" class="ui-modal in points-cmcm" tabindex="-1" role="dialog" aria-hidden="true" style="display:none;position: absolute; width: 670px; z-index: 5;"></div>
+<!-- Area E -->
+<!-- Person S -->
+<div id="ojnt_person_layer" class="pop_star_dis ui-selector unselectable ui-personer in points-ltlb" style="display: none;position: absolute; z-index: 5; min-width: 274px; width: 276px;"></div>
+<div id="osnd_person_layer" class="pop_star_dis ui-selector unselectable ui-personer in points-ltlb" style="display: none;position: absolute; z-index: 5; min-width: 274px; width: 276px;"></div>
+<div id="ojnt_par_flightno_layer" class="pop_star_dis ui-selector unselectable ui-personer in points-ltlb" style="display: none;position: absolute; z-index: 5; min-width: 274px; width: 276px;"></div>
+<div id="ojnt_par_airport_layer" class="pop_star_dis ui-selector unselectable ui-personer in points-ltlb" style="display: none;position: absolute; z-index: 5; min-width: 274px; width: 276px;"></div>
+<div id="osnd_par_airport_layer" class="pop_star_dis ui-selector unselectable ui-personer in points-ltlb" style="display: none;position: absolute; z-index: 5; min-width: 274px; width: 276px;"></div>
+<div id="carPersonaltip" class="xui-tooltip-balloon tri-up"  style="display:none;position: absolute; width: 210px; margin-bottom: 20px; left: 795px; top: 185px; z-index: 100;"  >
+    <div class="tri tri-border"></div>
+    <div class="tri tri-background"></div>
+    <a onclick="cQuery(this).parentNode().css('display','none')" href="javascript:void(0);"class="btn-close">×</a>
+    <div class="xui-tip-content">@*私人订单，不会分享给公司及其他人。*@@Label.PersonalMessage</div>
+</div>
+<!-- Person E -->
+
+
+    <!-- Script -->
+    <script type="text/javascript" src="../../js/Car/Fame/cQuery_110421.js"></script>
+    <script type="text/javascript" src="../../js/Car/Common/common.js"></script>
+
+    <script type="text/javascript" src="../../js/Car/Fame/modules.js"></script>
+    <script type="text/javascript" src="../../js/Car/Common/UIControl.js"></script>
+    <script type="text/javascript" src="../../js/Car/Home/main.js"></script>
+    <script type="text/javascript" src="../../js/Car/Home/partner.js"></script>
+
+</body>
+
+</html>
