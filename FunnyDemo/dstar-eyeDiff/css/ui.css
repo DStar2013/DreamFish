@@ -100,3 +100,22 @@ input[type="checkbox"]{width:13px;height:15px;}
 .slidecount li a:hover{text-decoration:none;background:white;border:3px solid orange;}
 .slidecount li.focus a{background:orange;border:3px solid orange;}
 /* 标签分页 end */
+
+
+.section{position:fixed;left:50%;width:960px;margin-left:-480px;}
+.section span{position:absolute;z-index:1;display:block;width:50px;height:50px;background:#999;opacity:.5;border-radius:25px;}
+.section-1 .span-1{left:400px;top:100px;}
+.section-1 .span-2{left:700px;top:200px;}
+.section-1 .span-3{left:750px;top:400px;}
+.section-1 .span-4{left:1100px;top:250px;}
+
+.section-2 .span-1{left:-50px;top:700px;}
+.section-2 .span-2{left:-100px;top:1000px;}
+.section-2 .span-3{left:200px;top:850px;}
+.section-2 .span-4{left:800px;top:800px;}
+
+.section-3 .span-1{left:-150px;top:1100px;}
+.section-3 .span-2{left:800px;top:1500px;}
+.section-3 .span-3{left:1200px;top:1850px;}
+.section-3 .span-4{left:800px;top:2500px;}  
+
