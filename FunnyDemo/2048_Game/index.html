@@ -1,0 +1,513 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>2048</title>
+    <style>
+    * { margin: 0px; padding: 0px; border: 0px; outline: 0px; font-family: Cambria, "Hoefler Text", Utopia, "Liberation Serif", "Nimbus Roman No9 L Regular", Times, "Times New Roman", serif; }
+    li {
+        list-style-type: none;
+    }
+    ul, li, li:after, button {
+        border-radius: 8px;
+    }
+    body {
+        overflow: hidden;
+    }
+    button {
+        display: block;
+        margin: 30px auto;
+        width: 200px;
+        height: 80px;
+        line-height: 80px;
+        font-size: 30px;
+        font-weight: 600;
+        border: 0;
+        outline: 0;
+        background-color: #9DCD14;
+        color: #EEE;
+        position: relative;
+        z-index: 10000
+    }
+
+    ul#gameView.scale { 
+        width: 750px; 
+        height: 750px;
+        padding: 4.5px;
+    }
+    ul#gameView.scale li {
+        width: 172.5px;
+        height: 172.5px;
+        margin: 7.5px;
+    }
+    ul#gameView.scale li:after {
+        width: 172.5px;
+        height: 172.5px;
+        line-height: 172.5px;
+    }
+
+    ul#gameView {
+        position: relative;
+        display: block;
+        width: 500px;
+        height: 500px;
+        margin: 0 auto;
+        background-color: #CDB59B;
+        padding: 3px;
+    }
+
+    ul#gameView li {
+        position: relative;
+        width: 115px;
+        height: 115px;
+        margin: 5px;
+        float: left;
+        background-color: #CEC6BD;
+    }
+
+    ul#gameView li:after {
+        content: '';
+        display: block;
+        width: 115px;
+        height: 115px;
+        position: absolute;
+        left: 0px;
+        top: 0px;
+        line-height: 115px;
+        text-align: center;
+        font-size: 50px;
+        font-weight: 900;
+        background-color: #CEC6BD;
+        transition: all .3s;
+    }
+
+    ul#gameView li.v2:after {
+        content: '2';
+        color: #636163;
+        background-color: #FFEFDE;
+        transition: all .3s;
+    }
+
+    ul#gameView li.v4:after {
+        content: '4';
+        color: #636163;
+        background-color: #FFE7BD;
+        transition: all .3s;
+    }
+
+    ul#gameView li.v8:after {
+        content: '8';
+        color: #EEE;
+        background-color: #F59563;
+        transition: all .3s;
+    }
+
+    ul#gameView li.v16:after {
+        content: '16';
+        color: #EEE;
+        background-color: #ED8040;
+        transition: all .3s;
+    }
+
+    ul#gameView li.v32:after {
+        content: '32';
+        color: #EEE;
+        background-color: #ED6140;
+        transition: all .3s;
+    }
+
+    ul#gameView li.v64:after {
+        content: '64';
+        color: #EEE;
+        background-color: #F23B0C;
+        transition: all .3s;
+    }
+
+    ul#gameView li.v128:after {
+        font-size: 45px;
+        content: '128';
+        color: #EEE;
+        background-color: #EDCF72;
+        transition: all .3s;
+    }
+
+    ul#gameView li.v256:after {
+        font-size: 45px;
+        content: '256';
+        color: #EEE;
+        background-color: #EDCC61;
+        transition: all .3s;
+    }
+
+    ul#gameView li.v512:after {
+        font-size: 45px;
+        content: '512';
+        color: #EEE;
+        background-color: #EDC850;
+        transition: all .3s;
+    }
+
+    ul#gameView li.v1024:after {
+        font-size: 40px;
+        content: '1024';
+        color: #EEE;
+        background-color: #EDC53F;
+        transition: all .3s;
+    }
+
+    ul#gameView li.v2048:after {
+        font-size: 40px;
+        content: '2048';
+        color: #EEE;
+        background-color: #EDC22E;
+        transition: all .3s;
+    }
+
+    div#score-borad {
+        width: 500px;
+        height: 100px;
+        line-height: 100px;
+        margin: 0 auto;
+        text-align: center;
+        font-size: 40px;
+        font-weight: 600;
+        color: #636163;
+    }
+
+    div#touchArea {
+        position: fixed;
+        left: 0px;
+        height: 0px;
+        width: 100%;
+        background-color: rgba(0,0,0,.1);
+        z-index: 9999;
+    }
+    </style>
+</head>
+<body>
+    <div id="touchArea"></div>
+    <div id="score-borad">当前分数：<span></span></div>
+    <ul id="gameView">
+        <li id="00" class=""></li>
+        <li id="01" class=""></li>
+        <li id="02" class=""></li>
+        <li id="03" class=""></li>
+
+        <li id="10" class=""></li>
+        <li id="11" class=""></li>
+        <li id="12" class=""></li>
+        <li id="13" class=""></li>
+
+        <li id="20" class=""></li>
+        <li id="21" class=""></li>
+        <li id="22" class=""></li>
+        <li id="23" class=""></li>
+
+        <li id="30" class=""></li>
+        <li id="31" class=""></li>
+        <li id="32" class=""></li>
+        <li id="33" class=""></li>
+    </ul>
+    <button onmousedown="changeColor(this)" onmouseup="this.style.backgroundColor = '#9DCD14';playAgain();">
+            重新开始
+    </button>
+    <script>
+
+    var Grids;
+    var deBug = false;
+    var roundFlag = false;
+    var score = 0;
+    var scoreBorad;
+    var needScale = false;
+
+    window.onload = function() {
+        scoreBorad = document.getElementById('score-borad').getElementsByTagName('span')[0];
+        if(needScale) {
+            scoreBorad.className = 'scale';
+            document.getElementById('gameView').className = 'scale';
+        }
+        initGrids();
+        if(deBug) ; else { randomNewNum(); randomNewNum(); randomNewNum();}
+        loadAction();
+        loadTouch();
+        F5();
+    }
+
+    function initGrids() {
+        Grids = [
+            [[0, true], [0, true], [0, true], [0, true]],
+            [[0, true], [0, true], [0, true], [0, true]],
+            [[0, true], [0, true], [0, true], [0, true]],
+            [[0, true], [0, true], [0, true], [0, true]]
+        ];
+    }
+
+    function Map(Func) {
+        Grids.map(function(row, y) {
+            row.map(function(grid, x) {
+                Func(grid, x, y);
+            });
+        });
+    }
+
+    function F5() {
+        Map(function(grid, x, y) {
+            grid[1] = true;
+            var mapID = y.toString() + x.toString();
+            if(grid[0] !== 0) {
+                document.getElementById(mapID).className = 'v' + grid[0];
+            } else {
+                document.getElementById(mapID).className = '';
+            }
+        });
+        scoreBorad.innerHTML = score;
+        roundFlag = false;
+    }
+
+    function randomNewNum() {
+        var emptyGrids = [];
+        Map(function(grid, x, y) {
+            if(grid[0] === 0) {
+                emptyGrids.push([x, y]);
+            }
+        });
+        if(emptyGrids.length !== 0) {
+            var randomNum = parseInt(Math.random() * emptyGrids.length);
+            var x = emptyGrids[randomNum][0], y = emptyGrids[randomNum][1];
+            Grids[y][x][0] = Math.random() > 0.05 ? 2 : 4;
+        }
+    }
+
+    function loadAction() {
+        document.body.onkeyup = function(e) {
+            var eve = e || window.event;
+            switch(eve.keyCode){
+                case 37:
+                    Move.left();
+                    break;
+                case 38:
+                    Move.up();
+                    break;
+                case 39:
+                    Move.right();
+                    break;
+                case 40:
+                    Move.down();
+            }
+            if(deBug) ; else {if(roundFlag) randomNewNum()};
+            F5();
+        }
+    }
+
+    var Move = {
+        left : function() {
+            for(var y = 0; y < 4; y++) {
+                for(var x = 0; x < 4; x++) {
+                    move_this('left', x, y);
+                }
+            }
+        },
+        right : function() {
+            for(var y = 0; y < 4; y++) {
+                for(var x = 3; x >= 0; x--) {
+                    move_this('right', x, y);
+                }
+            }
+        },
+        up : function() {
+            for(var x = 0; x < 4; x++) {
+                for(var y = 0; y < 4; y++) {
+                    move_this('up', x, y);
+                }
+            }
+        },
+        down : function() {
+            for(var x = 0; x < 4; x++) {
+                for(var y = 3; y >= 0; y--) {
+                    move_this('down', x, y);
+                }
+            }
+        }
+    }
+
+    function can_go(direction, grid) {
+        var x = grid.x, y = grid.y;
+        var flag = false;
+        switch(direction) {
+            case 'left':
+                if(Grids[y][x - 1]) if(Grids[y][x - 1][0] === 0) flag = true;
+                break;
+            case 'up':
+                if(Grids[y - 1]) if(Grids[y - 1][x][0] === 0) flag = true;
+                break;
+            case 'right':
+                if(Grids[y][x + 1]) if(Grids[y][x + 1][0] === 0) flag = true;
+                break;
+            case 'down':
+                if(Grids[y + 1]) if(Grids[y + 1][x][0] === 0) flag = true;
+        }
+        return flag;
+    }
+
+    function lets_go(direction, grid) {
+        var x = grid.x, y = grid.y;
+        switch(direction) {
+            case 'left':
+                Grids[y][x - 1][0] = grid.v;
+                grid.x--;
+                break;
+            case 'up':
+                Grids[y - 1][x][0] = grid.v;
+                grid.y--;
+                break;
+            case 'right':
+                Grids[y][x + 1][0] = grid.v;
+                grid.x++;
+                break;
+            case 'down':
+                Grids[y + 1][x][0] = grid.v;
+                grid.y++;
+        }
+        Grids[y][x][0] = 0;
+        roundFlag = true;
+        // return grid;
+    }
+
+    function can_add(direction, grid) {
+        var x = grid.x, y = grid.y;
+        var flag = false;
+        switch(direction) {
+            case 'left':
+                if(Grids[y][x - 1]) if(Grids[y][x - 1][0] === grid.v && Grids[y][x - 1][1]) flag = true;
+                break;
+            case 'up':
+                if(Grids[y - 1]) if(Grids[y - 1][x][0] === grid.v && Grids[y - 1][x][1]) flag = true;
+                break;
+            case 'right':
+                if(Grids[y][x + 1]) if(Grids[y][x + 1][0] === grid.v && Grids[y][x + 1][1]) flag = true;
+                break;
+            case 'down':
+                if(Grids[y + 1]) if(Grids[y + 1][x][0] === grid.v && Grids[y + 1][x][1]) flag = true;
+        }
+        return flag;
+
+    }
+
+    function lets_add(direction, grid) {
+        var x = grid.x, y = grid.y;
+        switch(direction) {
+            case 'left':
+                Grids[y][x - 1][0] = grid.v * 2;
+                Grids[y][x - 1][1] = false;
+                break;
+            case 'up':
+                Grids[y - 1][x][0] = grid.v * 2;
+                Grids[y - 1][x][1] = false;
+                break;
+            case 'right':
+                Grids[y][x + 1][0] = grid.v * 2;
+                Grids[y][x + 1][1] = false;
+                break;
+            case 'down':
+                Grids[y + 1][x][0] = grid.v * 2;
+                Grids[y + 1][x][1] = false;
+        }
+        score += grid.v * 2;
+        Grids[y][x][0] = 0;
+        roundFlag = true;
+    }
+
+    function move_this(direction, x, y) {
+        var grid = {
+            x : x,
+            y : y,
+            v : Grids[y][x][0]
+        }
+        if(grid.v !== 0){
+            while(can_go(direction, grid)) {
+                lets_go(direction, grid);
+            }
+
+            if(can_add(direction, grid)) {
+                lets_add(direction, grid);
+            }
+        }
+    }
+    function changeColor(btn) {
+        btn.style.backgroundColor = '#333';
+        setTimeout(function() {
+            btn.style.backgroundColor = '#9DCD14';
+        }, 300);
+    }
+
+    function playAgain() {
+        initGrids();
+        if(deBug) ; else { randomNewNum(); randomNewNum(); randomNewNum();}
+        score = 0;
+        F5()
+    }
+
+    var mLocBegin,mLocEnd;
+
+    function loadTouch() {
+        document.getElementById('touchArea').style.height = document.documentElement.clientHeight + 'px';
+        document.getElementById('touchArea').ontouchstart = function(e){
+            mLocBegin = getTouchLoc(e);
+        }
+        document.getElementById('touchArea').ontouchmove = function(e){
+            mLocEnd = getTouchLoc(e);
+        }
+        document.getElementById('touchArea').ontouchend = function(){
+            var direction = checkAct();
+            switch(direction){
+                case 'left':
+                    Move.left();
+                    break;
+                case 'up':
+                    Move.up();
+                    break;
+                case 'right':
+                    Move.right();
+                    break;
+                case 'down':
+                    Move.down();
+            }
+            if(deBug) ; else {if(roundFlag) randomNewNum()};
+            F5();
+        }
+
+        document.getElementById('touchArea').onmousedown = document.getElementById('touchArea').ontouchstart;
+        document.getElementById('touchArea').onmousemove = document.getElementById('touchArea').ontouchmove;
+        document.getElementById('touchArea').onmouseup = document.getElementById('touchArea').ontouchend;
+    }
+
+    function getTouchLoc(e){
+        var eve = e || window.event;
+        var loc = new Array(
+            eve.touches ? eve.touches[0].clientX : eve.x,
+            eve.touches ? eve.touches[0].clientY : eve.y
+        );
+        return loc;
+    }
+    function checkAct(){
+        if(!!!mLocBegin || !!!mLocEnd) return;
+        var shiftX = mLocEnd[0] - mLocBegin[0];
+        var shiftY = mLocEnd[1] - mLocBegin[1];
+        if((Math.abs(shiftX) < 100) && (Math.abs(shiftY) < 100)) return;
+        if(Math.abs(shiftX) - Math.abs(shiftY) > 0){
+            if(shiftX > 0){
+                return 'right';
+            }else{
+                return 'left';
+            }
+        }else{
+            if(shiftY > 0){
+                return 'down';
+            }else{
+                return 'up';
+            }
+        }
+    }
+    </script>
+</body>
+</html>
