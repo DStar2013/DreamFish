@@ -1,0 +1,33 @@
+<html> 
+<head> 
+<title> DStar 窗口抖动特效 </title> 
+<meta name="Generator" content="EditPlus"> 
+<meta name="Author" content=""> 
+<meta name="Keywords" content=""> 
+<meta name="Description" content=""> 
+<meta charset="UTF-8">
+
+<script> 
+function zd(u) {
+	var a = ['top', 'left'],
+		b = 0;
+	u = setInterval(function() {
+		document.getElementById('win').style[a[b % 2]] = (b++) % 4 < 2 ? 0 : 4;
+		if (b > 15) {
+			clearInterval(u);
+			b = 0
+		}
+	}, 32)
+}
+</script> 
+
+</head> 
+
+<body id="win" style='position:relative;' border="1"> 
+<button onclick="zd()">振动</button>
+<div style="">
+	做人没梦想，跟咸鱼有什么分别
+</div>
+
+</body> 
+</html> 
