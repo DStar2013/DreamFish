@@ -9,7 +9,7 @@ var Droco_Funs = (function ($) {
             flightSubNavInfo = [],
             filterBarInfo = [];
         //headInfo
-        headInfo.push('<div class="view_wrap"><h1 class="logo"><a href="http://ct.ctrip.com/crptravel/index.aspx"><i class="icon i1">Ctrip - 携程</i></a></h1><h2 class="site_name">' + '在线报表' + '<em>' + 'onLine Report' + '</em></h2>');
+        headInfo.push('<div class="view_wrap"><h1 class="logo"><a href="http://ct.ctrip.com/crptravel/index.aspx"></a></h1><h2 class="site_name">' + '在线报表' + '<em>' + 'onLine Report' + '</em></h2>');
         headInfo.push('<ul id="lanVerID" class="language_version"><li><a id="chV" title="中文版" class="current"><i class="icon i2">中文版</i></a></li><li><a id="enV" title="English" class=""><i class="icon i3">英文版</i></a></li></ul>');
         headInfo.push('<div id="menu" class="menu"><ul>');
         headInfo.push('<li class="cur"><a dLink="../ReportUI/SumPage.html" href="SumPage.html">' + '总概' + '</a></li>');
