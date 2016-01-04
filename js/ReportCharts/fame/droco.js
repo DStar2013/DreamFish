@@ -19,7 +19,7 @@ var Droco_Funs = (function ($) {
         headInfo.push('<li><a dLink="../ReportUI/PositionTracking.html" href="PositionTracking.html">' + '定位跟踪' + '</a></li>');
         headInfo.push('<li class="backLava"></li></ul></div></div>');
         //footerInfo
-        footerInfo.push('<div class="view_wrap"><p>' + '尾部赞助支付宝赞助下哦' + '</p><p>' + '~.~' + '</p><p>Copyright. All Rights Reserved.</p></div>');
+        footerInfo.push('<div class="view_wrap"><p>' + 'xjshuang' + '</p><p>' + '~.~' + '</p><p>Copyright. All Rights Reserved.</p></div>');
         //hotelSubNavInfo
         hotelSubNavInfo.push('<ul id="htlSubNavID"><li class="cur"><a dLink="HotelPage.html" href="HotelPage.html">' + '酒店总体情况' + '</a></li><li><a dLink="HotelAgreement.html" href="HotelAgreement.html">' + '协议酒店' + '</a></li><li><a dLink="HotelStar.html" href="HotelStar.html">' + '星级' + '</a></li><li><a dLink="HotelCity.html" href="HotelCity.html">' + '城市' + '</a></li><li><a dLink="HotelSvALs.html" href="HotelSvALs.html">' + '节省与损失' + '</a></li></ul>');
         //flightSubNavInfoxs
