@@ -10,7 +10,9 @@
 
     $(document).ready(function(){
 
-        DrawRose();
+
+        //DrawRose();
+
     });
 
 })(jQuery, window);
