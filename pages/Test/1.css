@@ -1,0 +1,27 @@
+
+
+.test {
+    width: 100px;
+    height: 100px;
+    background: red;
+    /*margin: 0 auto;*/
+    margin-top: 100px;
+    margin-left: 500px;
+    position: absolute;
+    left:0px; top:200px;
+}
+
+.g-next {
+    animation: btn-next-keyframe 5s;
+
+}
+
+
+@-webkit-keyframes btn-next-keyframe /* Safari and Chrome */
+{
+    0%   {background: #fffa3b; left:0px; top:200px;}
+    25%  {background: #ff4bbc; left:400px; top:400px;}
+    50%  {background: #2d51ff; left:200px; top:0px;}
+    75%  {background: #21d629; left:200px; top:400px;}
+    100% {background: rgba(36, 44, 220, 0.8); left:400px; top:0px;}
+}

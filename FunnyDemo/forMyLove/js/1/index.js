@@ -127,13 +127,13 @@
                 explode();
                 if(input.value != '') {
                     setTimeout(function() {
-                        createText(input.value.toUpperCase());
+                        createText("LOVE " + input.value.toUpperCase());
                     }, 810);
                 } else {
                     textFormed = false;
                 }
             } else {
-                createText(input.value.toUpperCase());
+                createText("LOVE " + input.value.toUpperCase());
             }
 
         });

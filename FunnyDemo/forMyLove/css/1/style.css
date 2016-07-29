@@ -19,7 +19,7 @@ input[type="text"] {
 
 input[type="submit"] {
   display: block;
-  width: 100px;
+  width: 80px;
   border: 0;
   line-height: 35px;
   height: 35px;
@@ -29,9 +29,49 @@ input[type="submit"] {
   top: 30px;
   left: 350px;
   cursor: pointer;
+  border-radius: 5px;
 }
 
 form {
   width: 600px;
   height: 100px;
+}
+
+.form-span {
+  width: 200px;
+  font-size: 18px;
+  top: 30px;
+  left: -70px;
+  line-height: 35px;
+  color: rgba(36, 44, 220, 0.8);
+}
+
+.btn-next {
+  width: 80px;
+  height: 35px;
+  line-height: 35px;
+  border: 0;
+  border-radius: 5px;
+  background: rgba(36, 44, 220, 0.8);
+  color: #fff;
+  left: 200px;
+  top: 0px;
+  cursor: pointer;
+
+
+}
+
+.g-next {
+  animation: btn-next-keyframe 5s;
+
+}
+
+
+@-webkit-keyframes btn-next-keyframe /* Safari and Chrome */
+{
+  0%   {background: #fffa3b; left:0px; top:0px;}
+  25%  {background: #ff4bbc; left:200px; top:0px;}
+  50%  {background: #2d51ff; left:200px; top:200px;}
+  75%  {background: #21d629; left:0px; top:200px;}
+  100% {background: rgba(36, 44, 220, 0.8); left:200px; top:0px;}
 }
