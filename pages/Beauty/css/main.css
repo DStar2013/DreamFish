@@ -1,0 +1,24 @@
+
+
+
+/* header banner img url */
+.banner-1 {
+    background: url(../images/h-banner-1.jpg) no-repeat;
+    background-size:cover;
+    -webkit-background-size:cover;
+    -moz-background-size:cover;
+    -o-background-size:cover;
+    -ms-background-size:cover;
+    min-height: 780px;
+}
+
+.banner-2 {
+    background:url(../images/h-banner-2.jpg) no-repeat;
+    background-size:cover;
+    -webkit-background-size:cover;
+    -moz-background-size:cover;
+    -o-background-size:cover;
+    -ms-background-size:cover;
+    min-height: 780px;
+}
+/*  */
