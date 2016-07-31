@@ -202,7 +202,7 @@
     function EventBind() {
         if (_fp2Input) {
             _fp2Input.onclick = function(){
-                alert("Go next page!");
+                alert("咸鱼还未往下开发嘞");
             }
         }
     }
