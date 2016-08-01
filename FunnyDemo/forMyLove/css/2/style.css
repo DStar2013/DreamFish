@@ -106,14 +106,14 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d1e4ea', end
 }
 .sun {
 	background:#ff9944;
-	width: 80px;
-	height: 80px;
+	width: 60px;
+	height: 60px;
 	border-radius:50%;
 	box-shadow:0 0 50px rgba(255,153,68,0.7);
 	position:absolute;
 	left:49%;
 	/*bottom:350px;*/
-	top: 60%;
+	top: 50%;
 }
 .tree-1 {
 	position:absolute;
@@ -795,3 +795,22 @@ to{-webkit-transform:rotate(0deg);}
 	box-shadow:100px 0 0 #fff;
 	background:#fff;
 }
+
+/* double start css */
+.st-content {
+	position: absolute;
+	text-align: center;
+	width: 800px;
+	left: 50%;
+	margin-left: -400px;
+
+
+
+
+
+
+}
+
+
+
+
