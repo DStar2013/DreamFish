@@ -84,6 +84,12 @@
         //
         //timeInit();
         AnivivaslInit();
+
+        //test code
+        //setTimeout(function(){
+        //    $('#heartName').html("click");
+        //},3000)
+
     })
 
 })(jQuery);
