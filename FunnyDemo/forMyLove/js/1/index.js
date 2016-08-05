@@ -202,7 +202,7 @@
     function EventBind() {
         if (_fp2Input) {
             _fp2Input.onclick = function(){
-                alert("咸鱼还未往下开发嘞");
+                location.href = "2.html";
             }
         }
     }
