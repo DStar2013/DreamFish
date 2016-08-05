@@ -35,6 +35,10 @@ body {
   height: 512px;
   color: #FFF;
 }
+.myRose {
+  width: 512px;
+  height: 512px;
+}
 #top {
   width: 200px;
   margin: auto;
@@ -132,6 +136,16 @@ body {
   animation: BOUNCE 2.5s infinite;
 }
 
+
+.rose {
+  position: absolute;
+  width: 512px;
+  height: 512px;
+  top: 10%;
+  left: 30%;
+}
+
+
 @keyframes HEARTBEAT {
   0% {
     transform: scale(1);
@@ -172,6 +186,7 @@ body {
     top: 110px;
   }
 }
+
 
 
 
