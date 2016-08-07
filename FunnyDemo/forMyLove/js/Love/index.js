@@ -81,6 +81,7 @@
         var hd = $('#heartDiv'), rd = $('#roseDiv');
         //heart click
         $('#heartDesc').bind('click', function () {
+
             hd.hide(3000, function () {
                 rd.fadeIn(500, function () {
                     DrawRose();
