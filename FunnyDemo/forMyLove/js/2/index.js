@@ -5,6 +5,20 @@
 
 (function ($) {
 
+    function textAppendInit() {
+        var sDesc = $('#st-desc');
+        //desc
+        var descArr = [];
+
+        for (var i in TC.eventDes) {
+            if (TC.eventDes.hasOwnProperty(i)) {
+                descArr.push("<p class='link link--urpi' data-letters='" + TC.eventDes[i] + "' style='display: none;'>" + TC.eventDes[i] + "</p><br/>");
+            }
+        }
+        sDesc.html(descArr.join(""));
+    }
+
+
     function textShowInit() {
         var pList = $('#st-content').find('p');
         //js dom list 转化为数组对象
@@ -22,28 +36,28 @@
                 animateIndex == 3 ? animateIndex = 1 : animateIndex++;
                 switch (animateIndex) {
                     case 1:
-                        currObj.show(3000, function(){
+                        currObj.show(5000, function () {
                             animateFun(pArr);
                         });
                         break;
                     case 2:
-                        currObj.fadeIn(3000, function(){
+                        currObj.fadeIn(5000, function () {
                             animateFun(pArr);
                         });
                         break;
                     case 3:
-                        currObj.slideDown(3000,function(){
+                        currObj.slideDown(5000, function () {
                             animateFun(pArr);
                         });
                         break;
                     default:
-                        currObj.show(5000, function(){
+                        currObj.show(5000, function () {
                             animateFun(pArr);
                         });
                         break;
                 }
             } else {
-                currObj.show(3000, function(){
+                currObj.show(5000, function () {
                     animateFun(pArr);
                 });
             }
@@ -57,13 +71,13 @@
     //Ev init
     function EventInit() {
         $('#p-next').bind('click', function () {
-            location.href="Love.html";
+            location.href = "Love.html";
         });
     }
 
     //extend function
     $.extend($.fn, {
-        mask: function(o) {
+        mask: function (o) {
             var a = this[0];
             if (!a)
                 return console.log("mask", "the cDom object is empty"), this;
@@ -96,24 +110,24 @@
             this.data("__mask__", b);
             return this;
         },
-        unmask: function() {
+        unmask: function () {
             if (!this[0])
                 return console.log("mask", "the cDom object is empty"), this;
             var a = this.data("__mask__");
             a && (this[0].style.cssText = a.cssText, (a.nextSibling ? this.first().insertBefore(a.nextSibling) : this.first().appendTo(a.parentNode)), $(a.maskDiv).remove(), a.maskIframe && $(a.maskIframe).remove(), this.removeData("__mask__"));
         },
-        placeholder: function() {
+        placeholder: function () {
             if ("placeholder" in document.createElement("input")) {
                 return this; //如果原生支持placeholder属性，则返回对象本身
             } else {
-                return this.each(function() {
+                return this.each(function () {
                     var _this = $(this);
-                    _this.focus(function() {
+                    _this.focus(function () {
                         if (_this.val() === _this.attr("placeholder")) {
                             _this.css("color", "");
                             _this.val("")
                         }
-                    }).blur(function() {
+                    }).blur(function () {
                         if (_this.val().length === 0) {
                             _this.val(_this.attr("placeholder"));
                             _this.css("color", "gray");
@@ -122,7 +136,8 @@
                     if (!_this.val()) {
                         _this.val(_this.attr("placeholder"));
                         _this.css("color", "gray");
-                    };
+                    }
+                    ;
                 })
             }
         }
@@ -130,7 +145,8 @@
 
 
     $(document).ready(function () {
-
+        //
+        textAppendInit();
         //
         textShowInit();
         //
