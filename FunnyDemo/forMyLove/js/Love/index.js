@@ -1,5 +1,6 @@
 (function ($) {
 
+    var PageInitRose = false;
 
     function timeInit() {
         var note = $('#note'),
@@ -84,7 +85,8 @@
 
             hd.hide(3000, function () {
                 rd.fadeIn(500, function () {
-                    DrawRose();
+                    !PageInitRose && DrawRose();
+                    PageInitRose = true;
                 });
             });
         });
