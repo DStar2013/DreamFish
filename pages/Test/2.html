@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>聚焦时候的title</title>
+</head>
+<body>
+
+
+<script type="text/javascript">
+
+
+    // 部分浏览器只支持 vendor-prefixed
+    // 根据浏览器支持情况设置隐藏属性和可见状态改变事件
+    var hidden, state, visibilityChange;
+    if (typeof document.hidden !== "undefined") {
+        hidden = "hidden";
+        visibilityChange = "visibilitychange";
+        state = "visibilityState";
+    } else if (typeof document.mozHidden !== "undefined") {
+        hidden = "mozHidden";
+        visibilityChange = "mozvisibilitychange";
+        state = "mozVisibilityState";
+    } else if (typeof document.msHidden !== "undefined") {
+        hidden = "msHidden";
+        visibilityChange = "msvisibilitychange";
+        state = "msVisibilityState";
+    } else if (typeof document.webkitHidden !== "undefined") {
+        hidden = "webkitHidden";
+        visibilityChange = "webkitvisibilitychange";
+        state = "webkitVisibilityState";
+    }
+
+    // 添加一个时间来实时改变页面的标题
+    document.addEventListener(visibilityChange, function(e) {
+        // Start or stop processing depending on state
+        if (document.webkitHidden) {
+            document.title = "离开当前窗口啦";
+        } else {
+            document.title = "选中当前窗口啦";
+        }
+
+
+    }, false);
+</script>
+
+</body>
+</html>
